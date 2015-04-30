@@ -1,0 +1,7 @@
+package com.cnfwsy.service;
+
+import com.cnfwsy.model.User;
+
+public interface UserService {
+	public int insertUser(User user);
+}
