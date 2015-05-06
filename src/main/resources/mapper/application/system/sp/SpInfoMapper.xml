@@ -3,9 +3,60 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cnfwsy.application.dao.SpManageDao">
-
+	<sql id="searchSPSql">
+			sp_id AS spId,
+			sp_name AS name,
+			sp_kind  AS type,
+			sp_address   AS address,
+			cooperation_time AS cooperationTime,
+			remark AS remark
+	</sql>
 	<insert id="insertSP" parameterType="SpInfo" keyProperty="id">
 		
 	</insert>
+	
+	
+	<select id="listSPInfosCounts" resultType="Integer">
+		SELECT COUNT(*) FROM t_supplier		
+	</select>
+	
+	<select id="listFilteredSPInfosCounts" resultType="Integer">
+		SELECT COUNT(*) FROM t_supplier		where 1=1 
+		<if test="searchValue !=null and searchValue != ''">
+				and ( 
+					sp_id like concat('%',#{searchValue},'%') or
+					sp_name like concat('%',#{searchValue},'%') or
+					sp_kind like concat('%',#{searchValue},'%') or
+					sp_address like concat('%',#{searchValue},'%') or
+					cooperation_time like concat('%',#{searchValue},'%') or
+					remark like concat('%',#{searchValue},'%')
+					
+				)
+		</if>
+		
+	</select>
+	
+	<select id="searchSP" resultType="SpInfo">
+		SELECT 
+			<include refid="searchSPSql"/>
+		FROM t_supplier
+		WHERE 1=1
+		<if test="searchValue!=null and searchValue != ''">
+				and ( 
+					sp_id like concat('%',#{searchValue},'%') or
+					sp_name like concat('%',#{searchValue},'%') or
+					sp_kind like concat('%',#{searchValue},'%') or
+					sp_address like concat('%',#{searchValue},'%') or
+					cooperation_time like concat('%',#{searchValue},'%') or
+					remark like concat('%',#{searchValue},'%')
+				)
+		</if>
+		<if test="orderColumn!=null and orderColumn != ''">
+		  ORDER BY #{orderColumn} #{orderDir}
+		</if>	
+		limit #{start} ,#{length}
+		
+	</select>
+	
 
 </mapper>

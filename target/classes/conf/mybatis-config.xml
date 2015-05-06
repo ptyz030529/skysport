@@ -5,7 +5,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- 命名空间 -->
 	<typeAliases>
-		<typeAlias alias="SpInfo" type="com.cnfwsy.application.bean.SpInfo" />
+		<typeAlias alias="SpInfo" 	  type="com.cnfwsy.interfaces.bean.SpInfo" />
+		<typeAlias alias="Dictionary" type="com.cnfwsy.common.bean.Dictionary" />
 	</typeAliases>
 
 	<!-- 映射map -->

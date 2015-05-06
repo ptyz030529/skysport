@@ -48,7 +48,10 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	<!-- 数据字典等初始化 -->
+	<listener>
+		<listener-class>com.cnfwsy.core.init.InitSytemInfoListener</listener-class>
+	</listener>
 
 	<!-- springMVC核心配置 -->
 	<servlet>

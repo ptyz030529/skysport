@@ -5,11 +5,11 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.cnfwsy.common.bean.User;
-import com.cnfwsy.common.business.login.service.UserService;
+import com.cnfwsy.core.bean.User;
+import com.cnfwsy.core.model.login.service.IUserService;
 
 public class UserTest {
-	UserService userService;
+	IUserService userService;
 
 	@Before
 	public void before() {
@@ -17,7 +17,7 @@ public class UserTest {
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "classpath:conf/spring.xml",
 						"classpath:conf/spring-mybatis.xml" });
-		userService = (UserService) context.getBean("userServiceImpl");
+		userService = (IUserService) context.getBean("userServiceImpl");
 	}
 
 	@Test
