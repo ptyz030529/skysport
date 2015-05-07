@@ -7,6 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.cnfwsy.core.bean.DataTablesInfo;
+import com.cnfwsy.core.constant.CommonConstant;
+import com.cnfwsy.core.instance.SytemInitInfo;
 
 /**
  * 
@@ -24,8 +26,7 @@ public class CommonAction<K, V, T> {
 	 * @author: zhangjh
 	 * @version: 2015年4月30日 下午4:34:11
 	 */
-	public <K, V> Map<K, V> buildSearchJsonMap(List<T> results,
-			int recordsTotal, int recordsFiltered, int draw) {
+	public <K, V> Map<K, V> buildSearchJsonMap(List<T> results, int recordsTotal, int recordsFiltered, int draw) {
 		Map<String, Object> info = new HashMap<String, Object>();
 		info.put("data", results);
 		info.put("recordsTotal", recordsTotal);
@@ -34,8 +35,8 @@ public class CommonAction<K, V, T> {
 		return (Map<K, V>) info;
 	}
 
-
 	/**
+	 * 将页面的分页信息传到后台
 	 * 
 	 * @param request
 	 *            HttpServletRequest对象
@@ -51,6 +52,8 @@ public class CommonAction<K, V, T> {
 		int draw = Integer.parseInt(request.getParameter("draw"));
 
 		String orderColumn = request.getParameter("order[0][column]");
+		String pageColumnName = request.getParameter("columns[" + orderColumn + "][data]");
+		String tableColumnName = getRealTableColumnName(pageColumnName);
 
 		String orderDir = request.getParameter("order[0][dir]");
 
@@ -58,13 +61,23 @@ public class CommonAction<K, V, T> {
 
 		dataTablesInfo.setStart(start);
 		dataTablesInfo.setLength(length);
-		dataTablesInfo.setOrderColumn(orderColumn);
+		dataTablesInfo.setOrderColumn(tableColumnName);
 		dataTablesInfo.setOrderDir(orderDir);
 		dataTablesInfo.setSearchValue(searchValue);
 		dataTablesInfo.setStart(start);
 		dataTablesInfo.setDraw(draw);
 
 		return dataTablesInfo;
+	}
+
+	/**
+	 * 
+	 * @param pageColumnName
+	 * @return
+	 */
+	private String getRealTableColumnName(String pageColumnName) {
+		String tableColumnName = SytemInitInfo.SINGLETONE.getDictionaryValue(CommonConstant.SP_TABLE, pageColumnName);
+		return tableColumnName;
 	}
 
 }

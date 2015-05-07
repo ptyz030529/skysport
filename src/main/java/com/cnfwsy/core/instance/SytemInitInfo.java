@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.cnfwsy.core.bean.Dictionary;
+import com.cnfwsy.core.constant.CommonConstant;
+import com.cnfwsy.core.constant.DictionaryTypeConstant;
 
 /**
  * 系统初始化类
@@ -25,26 +27,26 @@ public enum SytemInitInfo {
 	private Map<String, Map<String, String>> dictionayMap = new ConcurrentHashMap<String, Map<String, String>>();
 
 	private static final byte[] LOCK = new byte[0];
-	
-	
+
 	public Map<String, Map<String, String>> getDictionayMap() {
 		return dictionayMap;
 	}
 
-	
 	public void initDictionaryMap(String type, Map<String, String> valueMap) {
 		synchronized (LOCK) {
 			dictionayMap.put(type, valueMap);
 		}
 	}
-	
-	
+
 	public Map<String, String> getValueMapByTypeKey(String typeName) {
 		return dictionayMap.get(typeName);
 	}
 
 	/**
-	 * @param dictionary 数据字段对象
+	 * 初始化数据字段集合
+	 * 
+	 * @param dictionary
+	 *            数据字段对象
 	 */
 	public void initDictionaryMap(Dictionary dictionary) {
 		if (dictionary != null) {
@@ -60,4 +62,23 @@ public enum SytemInitInfo {
 		}
 
 	}
+
+	/**
+	 * 
+	 * @param type
+	 * @param key
+	 * @return
+	 */
+	public String getDictionaryValue(String type, String key) {
+		String value = CommonConstant.EMPTY;
+		Map<String, String> valueMap = getDictionayMap().get(type);
+		for (Map.Entry<String, String> entry : valueMap.entrySet()) {
+			if (entry.getKey().equals(key)) {
+				value = entry.getValue();
+				break;
+			}
+		}
+		return value;
+	}
+
 }

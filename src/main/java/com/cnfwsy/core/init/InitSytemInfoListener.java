@@ -24,11 +24,14 @@ public class InitSytemInfoListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
 		// spring иообнд
-		ApplicationContext appContext = WebApplicationContextUtils
-				.getWebApplicationContext(arg0.getServletContext());
-		
-				
+		ApplicationContext appContext = WebApplicationContextUtils.getWebApplicationContext(arg0.getServletContext());
 		SystemInitHelper.SINGLETONE.init(appContext);
+		
+		
+		
+		
+		
+		
 		
 		
 		/*

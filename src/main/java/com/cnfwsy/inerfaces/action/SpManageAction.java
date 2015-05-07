@@ -30,14 +30,10 @@ import com.cnfwsy.inerfaces.model.system.sp.service.ISpManageService;
 @Controller
 @RequestMapping("/system/sp")
 public class SpManageAction extends CommonAction<String, Object, SpInfo> {
-
 	@Resource(name = "spManageService")
 	private ISpManageService spManageService;
-
 	/**
-	 * 
-	 * 此方法描述的是：展示list页面
-	 * 
+	 * 此方法描述的是：展示list页面	 * 
 	 * @author: zhangjh
 	 * @version: 2015年4月29日 下午5:34:53
 	 */
@@ -47,11 +43,8 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
 		ModelAndView mav = new ModelAndView("/system/sp/list2");
 		return mav;
 	}
-
 	/**
-	 * 
 	 * 此方法描述的是：
-	 * 
 	 * @author: zhangjh
 	 * @version: 2015年4月29日 下午5:34:53
 	 */
@@ -61,6 +54,8 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
 			throws Exception {
 		// HashMap<String, String> paramMap = convertToMap(params);
 		DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(request);
+		
+		
 		// 总记录数
 		int recordsTotal = spManageService.listSPInfosCounts();
 		int recordsFiltered = recordsTotal;

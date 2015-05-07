@@ -22,11 +22,18 @@ public enum SystemInitHelper {
 	}
 
 	private void initDictionary(ApplicationContext appContext) {
+		
+		
+		
 		ISystemInitService service = (ISystemInitService) appContext
 				.getBean("systemInitService");
 		List<Dictionary> dictionaries = service.queryAllDictionaries();
 		initDictionaryMap(dictionaries);
-
+		
+		
+		
+		
+		
 	}
 
 	private void initDictionaryMap(List<Dictionary> dictionaries) {
