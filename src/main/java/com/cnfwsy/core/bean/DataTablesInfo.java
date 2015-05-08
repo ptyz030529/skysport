@@ -1,34 +1,34 @@
 package com.cnfwsy.core.bean;
 
 /**
- * jquery.datatables´«µ½ºóÌ¨µÄĞÅÏ¢
+ * jquery.datatablesä¼ åˆ°åå°çš„ä¿¡æ¯
  * 
  * @author: zhangjh
- * @version:2015Äê5ÔÂ5ÈÕ ÏÂÎç3:06:01
+ * @version:2015å¹´5æœˆ5æ—¥ ä¸‹åˆ3:06:01
  */
 public class DataTablesInfo {
 	/**
-	 * µ±Ç°Ò³µÄ¿ªÊ¼¼ÇÂ¼ÊıÏÂ±ê
+	 * å½“å‰é¡µçš„å¼€å§‹è®°å½•æ•°ä¸‹æ ‡
 	 */
 	private int start;
 	/**
-	 * Ò»Ò³µÄ³¤¶È
+	 * ä¸€é¡µçš„é•¿åº¦
 	 */
 	private int length;
 	/**
-	 * µã»÷´ÎÊı
+	 * ç‚¹å‡»æ¬¡æ•°
 	 */
 	private int draw;
 	/**
-	 * ÅÅĞòµÄÁĞ
+	 * æ’åºçš„åˆ—
 	 */
 	private String orderColumn;
 	/**
-	 * ÉıĞò»¹ÊÇµ¹Ğò
+	 * å‡åºè¿˜æ˜¯å€’åº
 	 */
 	private String orderDir;
 	/**
-	 * ²éÑ¯ĞÅÏ¢
+	 * æŸ¥è¯¢ä¿¡æ¯
 	 */
 	private String searchValue;
 

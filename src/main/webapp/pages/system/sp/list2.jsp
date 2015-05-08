@@ -13,7 +13,8 @@
     <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="<%=path%>/resources/js/date/bootstrap-datetimepicker.min.js"></script>
     <script src="<%=path%>/resources/js/handlebars-v3.0.1.js"></script>
-
+	<script src="<%=path%>/resources/js/angular/angular-1.3.9.min.js"></script>
+	<script type="text/javascript" src="<%=path%>/resources/js/util.js"></script>
     <!--<script type="text/javascript" src="/dt-page/extjs.js"></script>-->
 </head>
 <body>
@@ -38,7 +39,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -48,36 +49,42 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="name" placeholder="姓名">
+                    <input type="text" class="form-control"  id="spId" placeholder="供应商编号">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="position" placeholder="位置">
+                    <input type="text" class="form-control"  id="name" placeholder="供应商名称">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="salary" placeholder="薪资">
+                    <input type="text" class="form-control" id="type" placeholder="供应商类型">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="start_date" placeholder="时间"
-                           data-date-format="yyyy/mm/dd">
+                    <input type="text" class="form-control"  id="contact" placeholder="联系人">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="office" placeholder="工作地点">
+                    <input type="text" class="form-control" id="tel" placeholder="联系电话">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="extn" placeholder="编号">
+                    <input type="text" class="form-control" id="email" placeholder="邮件地址">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control"  id="cooperationTime" placeholder="合作时间"       data-date-format="yyyy/mm/dd">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control"  id="address" placeholder="地址">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control"  id="remark" placeholder="备注">
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info" id="initData">添加模拟数据</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="save">保存</button>
+                <button type="button" class="btn btn-primary" id="save" >保存</button>
             </div>
         </div>
     </div>
 </div>
 
 </body>
-</html>
 <!--定义操作列按钮模板-->
 <script id="tpl" type="text/x-handlebars-template">
     {{#each func}}
@@ -142,125 +149,60 @@
                     "t" +
                     "<'row'<'col-xs-6'i><'col-xs-6'p>>",
             initComplete: function () {
-                $("#mytool").append('<button id="datainit" type="button" class="btn btn-primary btn-sm">增加基础数据</button>&nbsp');
-                $("#mytool").append('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">添加</button>');
-                $("#datainit").on("click", initData);
+                $("#mytool").append('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >添加</button>');
             }
 
         });
 
-        $("#save").click(add);
-
-        $("#initData").click(initSingleData);
-
+        $("#save").click(save);
     });
-
+    
+    function save(){
+    	var _spId='sp001';
+    	edit(_spId);
+    }
+    
     /**
-     * 初始化基础数据
+     * 修改数据
+     * @param name
      */
-    function initData() {
-        var flag = confirm("本功能将添加数据到数据库，你确定要添加么？");
-        if (flag) {
-            $.get("objects.txt", function (data) {
-                var jsondata = JSON.parse(data);
-                $(jsondata.data).each(function (index, obj) {
-                    ajax(obj);
-                });
-            });
-        }
+    function edit(_spId) {
+    	
+    	var url="<%=path%>/system/sp/edit";
+    	var data={
+                spId: _spId,
+                name:$("#name").val(),
+                type:$("#type").val(),
+                contact:$("#contact").val(),
+                tel:$("#tel").val(),
+                email:$("#email").val(),
+                cooperationTime:$("#cooperationTime").val(),
+                address:$("#address").val(),
+                remark:$("#remark").val()
+            };
+		
+    	sendAjax(url,data,doSuccess);
     }
-
-    /**
-     * 初始化基础数据
-     */
-    function initSingleData() {
-        $("#name").val("http://dt.thxopen.com");
-        $("#position").val("ShiMen");
-        $("#salary").val("1");
-        $("#start_date").val("2015/04/01");
-        $("#office").val("Home");
-        $("#extn").val("001");
-    }
-
-    /**
-     * 清除
-     */
-    function clear() {
-        $("#name").val("").attr("disabled",false);
-        $("#position").val("");
-        $("#salary").val("");
-        $("#start_date").val("");
-        $("#office").val("");
-        $("#extn").val("");
-        editFlag = false;
-    }
-
-    /**
-     * 添加数据
-     **/
-    function add() {
-        var addJson = {
-            "name": $("#name").val(),
-            "position": $("#position").val(),
-            "salary": $("#salary").val(),
-            "start_date": $("#start_date").val(),
-            "office": $("#office").val(),
-            "extn": $("#extn").val()
-        };
-
-        ajax(addJson);
-    }
-
-    /**
-     *编辑方法
-     **/
-    function edit(name,position,salary,start_date,office,extn) {
-        console.log(name);
-        editFlag = true;
-        $("#myModalLabel").text("修改");
-        $("#name").val(name).attr("disabled",true);
-        $("#position").val(position);
-        $("#salary").val(salary);
-        $("#start_date").val(start_date);
-        $("#office").val(office);
-        $("#extn").val(extn);
-        $("#myModal").modal("show");
-    }
-
-    function ajax(obj) {
-        var url ="add.jsp" ;
-        if(editFlag){
-            url = "edit.jsp";
-        }
-        $.ajax({
-            url:url ,
-            data: {
-                "name": obj.name,
-                "position": obj.position,
-                "salary": obj.salary,
-                "start_date": obj.start_date,
-                "office": obj.office,
-                "extn": obj.extn
-            }, success: function (data) {
-                table.ajax.reload();
-                $("#myModal").modal("hide");
-                $("#myModalLabel").text("新增");
-                clear();
-                console.log("结果" + data);
-            }
-        });
-    }
-
-
+     
+    
+    
+    function doSuccess(data){
+    	 $("#myModal").modal('hide');
+    	 table.ajax.reload();
+         console.log( data.code);
+	}
+       
+    
+    
     /**
      * 删除数据
      * @param name
      */
-    function del(name) {
+    function del(spId) {
         $.ajax({
-            url: "del.jsp",
+            url: "<%=path%>/system/sp/del",
             data: {
-                "name": name
+                "spId": spId
             }, success: function (data) {
                 table.ajax.reload();
                 console.log("删除成功" + data);
@@ -268,3 +210,5 @@
         });
     }
 </script>
+
+</html>

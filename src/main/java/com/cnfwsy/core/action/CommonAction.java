@@ -12,19 +12,19 @@ import com.cnfwsy.core.instance.SytemInitInfo;
 
 /**
  * 
- * ´ËÀàÃèÊöµÄÊÇ£º
+ * æ­¤ç±»æè¿°çš„æ˜¯ï¼š
  * 
  * @author: zhangjh
- * @version: 2015Äê4ÔÂ30ÈÕ ÏÂÎç4:34:05
+ * @version: 2015å¹´4æœˆ30æ—¥ ä¸‹åˆ4:34:05
  */
 public class CommonAction<K, V, T> {
 
 	/**
 	 * 
-	 * ´Ë·½·¨ÃèÊöµÄÊÇ£º
+	 * æ­¤æ–¹æ³•æè¿°çš„æ˜¯ï¼š
 	 * 
 	 * @author: zhangjh
-	 * @version: 2015Äê4ÔÂ30ÈÕ ÏÂÎç4:34:11
+	 * @version: 2015å¹´4æœˆ30æ—¥ ä¸‹åˆ4:34:11
 	 */
 	public <K, V> Map<K, V> buildSearchJsonMap(List<T> results, int recordsTotal, int recordsFiltered, int draw) {
 		Map<String, Object> info = new HashMap<String, Object>();
@@ -36,10 +36,10 @@ public class CommonAction<K, V, T> {
 	}
 
 	/**
-	 * ½«Ò³ÃæµÄ·ÖÒ³ĞÅÏ¢´«µ½ºóÌ¨
+	 * å°†é¡µé¢çš„åˆ†é¡µä¿¡æ¯ä¼ åˆ°åå°
 	 * 
 	 * @param request
-	 *            HttpServletRequest¶ÔÏó
+	 *            HttpServletRequestå¯¹è±¡
 	 * @return
 	 */
 	protected DataTablesInfo convertToDataTableQrInfo(HttpServletRequest request) {

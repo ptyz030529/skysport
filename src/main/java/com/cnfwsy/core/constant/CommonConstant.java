@@ -1,10 +1,10 @@
 package com.cnfwsy.core.constant;
 
 /**
- * ¹«ÓÃ³£Á¿Àà
+ * å…¬ç”¨å¸¸é‡ç±»
  * 
  * @author: zhangjh
- * @version:2015Äê5ÔÂ6ÈÕ ÏÂÎç5:24:55
+ * @version:2015å¹´5æœˆ6æ—¥ ä¸‹åˆ5:24:55
  */
 public class CommonConstant implements CharConstant, NumberConstant,
 		DictionaryTypeConstant {

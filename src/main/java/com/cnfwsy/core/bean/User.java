@@ -2,10 +2,10 @@ package com.cnfwsy.core.bean;
 
 /**
  * 
- * ´ËÀàÃèÊöµÄÊÇ£º
+ * æ­¤ç±»æè¿°çš„æ˜¯ï¼š
  * 
  * @author: zhangjh
- * @version: 2015Äê4ÔÂ30ÈÕ ÉÏÎç9:34:03
+ * @version: 2015å¹´4æœˆ30æ—¥ ä¸Šåˆ9:34:03
  */
 public class User {
 	private int id;
@@ -53,5 +53,4 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-
 }

@@ -2,24 +2,29 @@ package com.cnfwsy.core.bean;
 
 /**
  * 
- * ´ËÀàÃèÊöµÄÊÇ£º
+ * æ­¤ç±»æè¿°çš„æ˜¯ï¼š
  * 
  * @author: zhangjh
- * @version: 2015Äê4ÔÂ29ÈÕ ÏÂÎç5:44:37
+ * @version: 2015å¹´4æœˆ29æ—¥ ä¸‹åˆ5:44:37
  */
 public class PageInfo {
 	/**
-	 * ¿ªÊ¼¼ÇÂ¼
+	 * å¼€å§‹è®°å½•
 	 */
 	private int start = 1;
 	/**
-	 * Ã¿Ò³¼ÇÂ¼Êı
+	 * æ¯é¡µè®°å½•æ•°
 	 */
 	private int limit = 20;
 	/**
-	 * Ò³ÃæÇëÇó´ÎÊı
+	 * é¡µé¢è¯·æ±‚æ¬¡æ•°
 	 */
 	private int draw;
+
+	/**
+	 * è®°å½•æ•°ï¼šç”¨äºæ•°æ®æ›´æ–°æ—¶ä¿å­˜è¿‡æ»¤æ¡ä»¶æŸ¥è¯¢å‡ºçš„è®°å½•æ•°
+	 */
+	private int filterCounts;
 
 	public int getStart() {
 		return start;
@@ -43,6 +48,14 @@ public class PageInfo {
 
 	public void setDraw(int draw) {
 		this.draw = draw;
+	}
+
+	public int getFilterCounts() {
+		return filterCounts;
+	}
+
+	public void setFilterCounts(int filterCounts) {
+		this.filterCounts = filterCounts;
 	}
 
 }

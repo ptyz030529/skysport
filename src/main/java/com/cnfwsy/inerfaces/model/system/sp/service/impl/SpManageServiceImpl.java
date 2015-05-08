@@ -13,10 +13,10 @@ import com.cnfwsy.inerfaces.model.system.sp.service.ISpManageService;
 
 /**
  * 
- * ´ËÀàÃèÊöµÄÊÇ£º
+ * æ­¤ç±»æè¿°çš„æ˜¯ï¼š
  * 
  * @author: zhangjh
- * @version: 2015Äê4ÔÂ29ÈÕ ÏÂÎç5:39:59
+ * @version: 2015å¹´4æœˆ29æ—¥ ä¸‹åˆ5:39:59
  */
 @Service("spManageService")
 public class SpManageServiceImpl implements ISpManageService {
@@ -25,12 +25,12 @@ public class SpManageServiceImpl implements ISpManageService {
 
 	@Override
 	public List<SpInfo> listSP(SpInfo spInfo) {
-		
+
 		return null;
 	}
 
 	/**
-	 * ²éÑ¯spinfoµÄ×Ü¼ÇÂ¼Êı
+	 * æŸ¥è¯¢spinfoçš„æ€»è®°å½•æ•°
 	 */
 	@Override
 	public int listSPInfosCounts() {
@@ -38,23 +38,23 @@ public class SpManageServiceImpl implements ISpManageService {
 	}
 
 	/**
-	 * °´Ìõ¼ş²éÑ¯spinfoµÄËùÓĞĞÅÏ¢
+	 * æŒ‰æ¡ä»¶æŸ¥è¯¢spinfoçš„æ‰€æœ‰ä¿¡æ¯
 	 */
 	@Override
 	public int listFilteredSPInfosCounts(DataTablesInfo dataTablesInfo) {
-		// // »ñÈ¡ÇëÇó´ÎÊı
+		// // è·å–è¯·æ±‚æ¬¡æ•°
 		// int draw = 0;
 		// draw = dataTablesInfo.getDraw();
-		// // Êı¾İÆğÊ¼Î»ÖÃ
+		// // æ•°æ®èµ·å§‹ä½ç½®
 		// int start = dataTablesInfo.getStart();
-		// // Êı¾İ³¤¶È
+		// // æ•°æ®é•¿åº¦
 		// int length = dataTablesInfo.getLength();
 
 		return spManageDao.listFilteredSPInfosCounts(dataTablesInfo);
 	}
 
 	/**
-	 * ²éÑ¯spinfoµÄËùÓĞĞÅÏ¢
+	 * æŸ¥è¯¢spinfoçš„æ‰€æœ‰ä¿¡æ¯
 	 */
 	@Override
 	public List<SpInfo> searchSP(DataTablesInfo dataTablesInfo) {
@@ -68,5 +68,16 @@ public class SpManageServiceImpl implements ISpManageService {
 	public void setSpManageDao(SpManageDao spManageDao) {
 		this.spManageDao = spManageDao;
 	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public void edit(SpInfo spInfo) {
+		spManageDao.updateSp(spInfo);
+	}
+	
+	
+	
 
 }

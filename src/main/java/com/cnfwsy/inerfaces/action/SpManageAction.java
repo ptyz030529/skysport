@@ -1,5 +1,6 @@
 package com.cnfwsy.inerfaces.action;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,10 +22,10 @@ import com.cnfwsy.inerfaces.model.system.sp.service.ISpManageService;
 
 /**
  * 
- * ´ËÀàÃèÊöµÄÊÇ£º
+ * æ­¤ç±»æè¿°çš„æ˜¯ï¼š
  * 
  * @author: zhangjh
- * @version: 2015Äê4ÔÂ29ÈÕ ÏÂÎç5:34:47
+ * @version: 2015å¹´4æœˆ29æ—¥ ä¸‹åˆ5:34:47
  */
 @Scope("prototype")
 @Controller
@@ -33,9 +34,9 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
 	@Resource(name = "spManageService")
 	private ISpManageService spManageService;
 	/**
-	 * ´Ë·½·¨ÃèÊöµÄÊÇ£ºÕ¹Ê¾listÒ³Ãæ	 * 
+	 * æ­¤æ–¹æ³•æè¿°çš„æ˜¯ï¼šå±•ç¤ºlisté¡µé¢	 * 
 	 * @author: zhangjh
-	 * @version: 2015Äê4ÔÂ29ÈÕ ÏÂÎç5:34:53
+	 * @version: 2015å¹´4æœˆ29æ—¥ ä¸‹åˆ5:34:53
 	 */
 	@RequestMapping(value = "/list")
 	@ResponseBody
@@ -44,9 +45,9 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
 		return mav;
 	}
 	/**
-	 * ´Ë·½·¨ÃèÊöµÄÊÇ£º
+	 * æ­¤æ–¹æ³•æè¿°çš„æ˜¯ï¼š
 	 * @author: zhangjh
-	 * @version: 2015Äê4ÔÂ29ÈÕ ÏÂÎç5:34:53
+	 * @version: 2015å¹´4æœˆ29æ—¥ ä¸‹åˆ5:34:53
 	 */
 	@RequestMapping(value = "/search")
 	@ResponseBody
@@ -56,7 +57,7 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
 		DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(request);
 		
 		
-		// ×Ü¼ÇÂ¼Êı
+		// æ€»è®°å½•æ•°
 		int recordsTotal = spManageService.listSPInfosCounts();
 		int recordsFiltered = recordsTotal;
 		if (!StringUtils.isBlank(dataTablesInfo.getSearchValue())) {
@@ -76,18 +77,21 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
 
 	/**
 	 * 
-	 * ´Ë·½·¨ÃèÊöµÄÊÇ£º
+	 * æ­¤æ–¹æ³•æè¿°çš„æ˜¯ï¼š
 	 * 
 	 * @author: zhangjh
-	 * @version: 2015Äê4ÔÂ29ÈÕ ÏÂÎç5:35:09
+	 * @version: 2015å¹´4æœˆ29æ—¥ ä¸‹åˆ5:35:09
 	 */
-	@RequestMapping(value = "/edit/{spId}")
+	@RequestMapping(value = "/edit")
 	@ResponseBody
-	public ModelAndView querySPInfo(SpInfo spInfo, HttpServletRequest request,
+	public Map<String, Object> edit(SpInfo spInfo, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
-		ModelAndView mav = new ModelAndView("/system/sp/edit");
-		return mav;
+		spManageService.edit(spInfo);
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("code", "0");
+		resultMap.put("message", "æ›´æ–°æˆåŠŸ");
+//		ModelAndView mav = new ModelAndView("/system/sp/edit");
+		return resultMap;
 	}
 
 }

@@ -22,7 +22,7 @@ import com.cnfwsy.test.model.TestModel;
 @RequestMapping("/test")
 public class TestController {
 	/**
-	 * 测试方法,HelloWord
+	 * 娴嬭瘯鏂规硶,HelloWord
 	 * 
 	 * @param request
 	 * @param response
@@ -34,11 +34,11 @@ public class TestController {
 	public ModelAndView getProducts(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		request.setAttribute("name", "张三");
+		request.setAttribute("name", "寮犱笁");
 		Map<String, Object> map = new HashMap<String, Object>();
 		TestModel pro = new TestModel();
 		pro.setPid("s101");
-		pro.setPname("张三");
+		pro.setPname("寮犱笁");
 		map.put("m1", "001");
 		map.put("pro", pro);
 
@@ -62,7 +62,7 @@ public class TestController {
 	public String getProductInfo(TestModel pro, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 
-		request.setAttribute("name", pro.getPid() + "喜欢" + pro.getPname());
+		request.setAttribute("name", pro.getPid() + "鍠滄" + pro.getPname());
 
 		return "test/list";
 

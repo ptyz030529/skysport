@@ -9,7 +9,7 @@ import com.cnfwsy.core.bean.Dictionary;
 /**
  * 
  * @author: zhangjh
- * @version:2015Äê5ÔÂ6ÈÕ ÏÂÎç4:07:33
+ * @version:2015å¹´5æœˆ6æ—¥ ä¸‹åˆ4:07:33
  */
 @Component("dictionaryMapper")
 public interface DictionaryMapper {

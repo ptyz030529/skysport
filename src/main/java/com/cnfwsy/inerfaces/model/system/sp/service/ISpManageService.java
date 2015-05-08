@@ -7,29 +7,38 @@ import com.cnfwsy.inerfaces.bean.SpInfo;
 
 /**
  * 
- * ´ËÀàÃèÊöµÄÊÇ£º
+ * æ­¤ç±»æè¿°çš„æ˜¯ï¼š
  * 
  * @author: zhangjh
- * @version: 2015Äê4ÔÂ29ÈÕ ÏÂÎç5:41:06
+ * @version: 2015å¹´4æœˆ29æ—¥ ä¸‹åˆ5:41:06
  */
 public interface ISpManageService {
 
 	List<SpInfo> listSP(SpInfo spInfo);
-
+	
+	/**
+	 * @return
+	 */
 	int listSPInfosCounts();
 
 	/**
-	 * 
+	 * è¿‡æ»¤æ¡ä»¶çš„è®°å½•æ•°
 	 * @param dataTablesInfo
-	 * @return
+	 * @return ç¬¦åˆæŸ¥è¯¢æ¡ä»¶çš„spè®°å½•æ•°
 	 */
 	int listFilteredSPInfosCounts(DataTablesInfo dataTablesInfo);
 
 	/**
 	 * 
 	 * @param dataTablesInfo
-	 * @return
+	 * @return 
 	 */
 	List<SpInfo> searchSP(DataTablesInfo dataTablesInfo);
+	
+	/**
+	 * 
+	 * @param spInfo
+	 */
+	void edit(SpInfo spInfo);
 
 }

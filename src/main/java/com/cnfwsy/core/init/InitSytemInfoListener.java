@@ -9,9 +9,9 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import com.cnfwsy.core.model.init.helper.SystemInitHelper;
 
 /**
- * Æô¶¯¼ÓÔØÊı¾İ×Ö¶ÎµÈĞÅÏ¢
+ * å¯åŠ¨åŠ è½½æ•°æ®å­—æ®µç­‰ä¿¡æ¯
  * @author: zhangjh
- * @version:2015Äê5ÔÂ6ÈÕ ÏÂÎç2:49:25
+ * @version:2015å¹´5æœˆ6æ—¥ ä¸‹åˆ2:49:25
  */
 public class InitSytemInfoListener implements ServletContextListener {
 
@@ -23,7 +23,7 @@ public class InitSytemInfoListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		// spring ÉÏÏÂÎÄ
+		// spring ä¸Šä¸‹æ–‡
 		ApplicationContext appContext = WebApplicationContextUtils.getWebApplicationContext(arg0.getServletContext());
 		SystemInitHelper.SINGLETONE.init(appContext);
 		
@@ -35,7 +35,7 @@ public class InitSytemInfoListener implements ServletContextListener {
 		
 		
 		/*
-		 * ServiceBean bean1=appContext.getBean("xxx"); ...ÒµÎñ·½·¨£¬¼ÓÔØÊı¾İ×ÖµäµÈ¡£
+		 * ServiceBean bean1=appContext.getBean("xxx"); ...ä¸šåŠ¡æ–¹æ³•ï¼ŒåŠ è½½æ•°æ®å­—å…¸ç­‰ã€‚
 		 */
 
 	}

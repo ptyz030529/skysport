@@ -13,7 +13,7 @@ import com.cnfwsy.core.model.init.service.ISystemInitService;
 /**
  * 
  * @author: zhangjh
- * @version:2015Äê5ÔÂ6ÈÕ ÏÂÎç4:08:46
+ * @version:2015å¹´5æœˆ6æ—¥ ä¸‹åˆ4:08:46
  */
 @Service("systemInitService")
 public class SystemInitServiceImpl implements ISystemInitService {

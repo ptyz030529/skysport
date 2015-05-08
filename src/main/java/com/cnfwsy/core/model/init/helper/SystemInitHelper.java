@@ -11,13 +11,13 @@ import com.cnfwsy.core.model.init.service.ISystemInitService;
 /**
  * 
  * @author: zhangjh
- * @version:2015Äê5ÔÂ6ÈÕ ÏÂÎç4:30:54
+ * @version:2015å¹´5æœˆ6æ—¥ ä¸‹åˆ4:30:54
  */
 public enum SystemInitHelper {
 	SINGLETONE;
 
 	public void init(ApplicationContext appContext) {
-		// ³õÊ¼»¯Êı¾İ×ÖµäĞÅÏ¢
+		// åˆå§‹åŒ–æ•°æ®å­—å…¸ä¿¡æ¯
 		initDictionary(appContext);
 	}
 

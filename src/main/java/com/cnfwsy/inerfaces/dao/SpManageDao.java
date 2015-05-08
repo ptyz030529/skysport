@@ -10,7 +10,7 @@ import com.cnfwsy.inerfaces.bean.SpInfo;
 /**
  * 
  * @author: zhangjh
- * @version:2015Äê5ÔÂ5ÈÕ ÏÂÎç5:43:26
+ * @version:2015å¹´5æœˆ5æ—¥ ä¸‹åˆ5:43:26
  */
 @Component("spManageDao")
 public interface SpManageDao {
@@ -22,26 +22,28 @@ public interface SpManageDao {
 	public List<SpInfo> querySpInfo(SpInfo spInfo);
 
 	/**
-	 * ²éÑ¯¹©Ó¦ÉÌµÄ×Ü¼ÇÂ¼Êı
+	 * æŸ¥è¯¢ä¾›åº”å•†çš„æ€»è®°å½•æ•°
 	 * 
-	 * @return ¹©Ó¦ÉÌµÄ×Ü¼ÇÂ¼Êı
+	 * @return ä¾›åº”å•†çš„æ€»è®°å½•æ•°
 	 */
 	public int listSPInfosCounts();
 
 	/**
-	 * ²éÑ¯º¬ÓĞ¹ıÂËÌõ¼şµÄ¹©Ó¦ÉÌµÄ×Ü¼ÇÂ¼Êı
+	 * æŸ¥è¯¢å«æœ‰è¿‡æ»¤æ¡ä»¶çš„ä¾›åº”å•†çš„æ€»è®°å½•æ•°
 	 * 
 	 * @param dataTablesInfo
 	 *            DataTablesInfo
-	 * @return º¬ÓĞ¹ıÂËÌõ¼şµÄ¹©Ó¦ÉÌµÄ×Ü¼ÇÂ¼Êı
+	 * @return å«æœ‰è¿‡æ»¤æ¡ä»¶çš„ä¾›åº”å•†çš„æ€»è®°å½•æ•°
 	 */
 	public int listFilteredSPInfosCounts(DataTablesInfo dataTablesInfo);
 
 	/**
-	 * °´ÕÕ¹ıÂËÌõ¼ş²éÑ¯¹©Ó¦ÉÌĞÅÏ¢
+	 * æŒ‰ç…§è¿‡æ»¤æ¡ä»¶æŸ¥è¯¢ä¾›åº”å•†ä¿¡æ¯
 	 * 
 	 * @param dataTablesInfo
-	 * @return ¹©Ó¦ÉÌĞÅÏ¢
+	 * @return ä¾›åº”å•†ä¿¡æ¯
 	 */
 	public List<SpInfo> searchSP(DataTablesInfo dataTablesInfo);
+
+	public void updateSp(SpInfo spInfo);
 }

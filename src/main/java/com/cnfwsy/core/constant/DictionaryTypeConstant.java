@@ -1,10 +1,10 @@
 package com.cnfwsy.core.constant;
 
 /**
- * Êı¾İ×ÖµäÀàĞÍ³£Á¿
+ * æ•°æ®å­—å…¸ç±»å‹å¸¸é‡
  * 
  * @author: zhangjh
- * @version:2015Äê5ÔÂ6ÈÕ ÏÂÎç5:23:05
+ * @version:2015å¹´5æœˆ6æ—¥ ä¸‹åˆ5:23:05
  */
 public interface DictionaryTypeConstant {
 	public static final String SP_TYPE = "sp_type";

@@ -13,28 +13,40 @@ import com.cnfwsy.core.bean.PageInfo;
 public class SpInfo extends PageInfo {
 	private int id;
 	/**
-	 * ¹©Ó¦ÉÌ±àºÅ
+	 * ä¾›åº”å•†ç¼–å·
 	 */
 	private String spId;
 	/**
-	 * ¹©Ó¦ÉÌÃû³Æ
+	 * ä¾›åº”å•†åç§°
 	 */
 	private String name;
 	/**
-	 * ¹©Ó¦ÉÌÀàĞÍ
+	 * ä¾›åº”å•†ç±»å‹
 	 */
 	private String type;
+	/**
+	 * è”ç³»äºº
+	 */
+	private String contact;
+	/**
+	 * è”ç³»ç”µè¯
+	 */
+	private String tel;
+	/**
+	 * é‚®ä»¶åœ°å€
+	 */
+	private String email;
 
 	/**
-	 * ºÏ×÷Ê±¼ä
+	 * åˆä½œæ—¶é—´
 	 */
 	private String cooperationTime;
 	/**
-	 * µØÖ·
+	 * åœ°å€
 	 */
 	private String address;
 	/**
-	 * ±¸×¢
+	 * å¤‡æ³¨
 	 */
 	private String remark;
 
@@ -92,6 +104,30 @@ public class SpInfo extends PageInfo {
 
 	public void setCooperationTime(String cooperationTime) {
 		this.cooperationTime = cooperationTime;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

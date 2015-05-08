@@ -4,10 +4,10 @@ import com.cnfwsy.core.model.login.service.IUserService;
 
 /**
  * 
- * ´ËÀàÃèÊöµÄÊÇ£º
+ * æ­¤ç±»æè¿°çš„æ˜¯ï¼š
  * 
  * @author: zhangjh
- * @version: 2015Äê4ÔÂ30ÈÕ ÉÏÎç9:38:22
+ * @version: 2015å¹´4æœˆ30æ—¥ ä¸Šåˆ9:38:22
  */
 public class UserServiceImpl implements IUserService {
 

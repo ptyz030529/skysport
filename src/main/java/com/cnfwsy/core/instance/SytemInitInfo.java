@@ -6,23 +6,22 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.cnfwsy.core.bean.Dictionary;
 import com.cnfwsy.core.constant.CommonConstant;
-import com.cnfwsy.core.constant.DictionaryTypeConstant;
 
 /**
- * ÏµÍ³³õÊ¼»¯Àà
+ * ç³»ç»Ÿåˆå§‹åŒ–ç±»
  * 
  * @author: zhangjh
- * @version:2015Äê5ÔÂ6ÈÕ ÏÂÎç3:45:15
+ * @version:2015å¹´5æœˆ6æ—¥ ä¸‹åˆ3:45:15
  */
 public enum SytemInitInfo {
 
 	/**
-	 * Êı¾İ×Öµäµ¥ÀıÀà
+	 * æ•°æ®å­—å…¸å•ä¾‹ç±»
 	 */
 	SINGLETONE;
 
 	/**
-	 * Êı¾İ×ÖµäĞÅÏ¢»º´æ
+	 * æ•°æ®å­—å…¸ä¿¡æ¯ç¼“å­˜
 	 */
 	private Map<String, Map<String, String>> dictionayMap = new ConcurrentHashMap<String, Map<String, String>>();
 
@@ -43,10 +42,10 @@ public enum SytemInitInfo {
 	}
 
 	/**
-	 * ³õÊ¼»¯Êı¾İ×Ö¶Î¼¯ºÏ
+	 * åˆå§‹åŒ–æ•°æ®å­—æ®µé›†åˆ
 	 * 
 	 * @param dictionary
-	 *            Êı¾İ×Ö¶Î¶ÔÏó
+	 *            æ•°æ®å­—æ®µå¯¹è±¡
 	 */
 	public void initDictionaryMap(Dictionary dictionary) {
 		if (dictionary != null) {
