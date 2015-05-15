@@ -19,12 +19,10 @@
 		</list> </property> </bean> -->
 
 	<!-- 对模型视图添加前后缀 -->
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/pages/" p:suffix=".jsp" />
 
-	<bean
-		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="order" value="1" />
 		<property name="favorParameter" value="false" />
 		<property name="ignoreAcceptHeader" value="true" />
@@ -38,8 +36,7 @@
 		<property name="viewResolvers">
 			<list>
 				<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
-				<bean
-					class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 					<property name="prefix" value="/pages/" />
 					<property name="suffix" value=".jsp" />
 				</bean>
@@ -49,8 +46,7 @@
 		<!-- 默认使用MappingJacksonJsonView生成jsonview -->
 		<property name="defaultViews">
 			<list>
-				<bean
-					class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+				<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 					<property name="extractValueFromSingleKeyModel" value="true" />
 				</bean>
 				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
@@ -62,13 +58,6 @@
 		</property>
 
 	</bean>
-
-
-
-
-
-
-
 
 
 </beans>
