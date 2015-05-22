@@ -5,16 +5,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>查询供应商信息</title>
-    <link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.css"/>
-    <script src="http://cdn.gbtags.com/datatables/1.10.5/js/jquery.js"></script>
-    <script src="http://cdn.gbtags.com/datatables/1.10.5/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" language="javascript"    src="http://cdn.datatables.net/plug-ins/28e7751dbec/integration/bootstrap/3/dataTables.bootstrap.js"></script>
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="<%=path%>/resources/js/date/bootstrap-datetimepicker.min.js"></script>
-    <script src="<%=path%>/resources/js/handlebars-v3.0.1.js"></script>
-	<script src="<%=path%>/resources/js/angular/angular-1.3.9.min.js"></script>
-	<script type="text/javascript" src="<%=path%>/resources/js/util.js"></script>
+    <jsp:include page="../../base/common.jsp"></jsp:include>
+    <jsp:include page="../../base/commonTable.jsp"></jsp:include>
     <!--<script type="text/javascript" src="/dt-page/extjs.js"></script>-->
 </head>
 <body>
@@ -47,43 +39,73 @@
                         aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">新增</h4>
             </div>
+            <form id="defaultForm" method="post" class="form-horizontal" >
             <div class="modal-body">
                 <div class="form-group">
-                    <input type="text" class="form-control"  id="spId" placeholder="供应商编号">
+                    <label class="col-lg-3 control-label">供应商编号</label>
+                    <div class="col-lg-7">
+                        <input type="text" class="form-control"  id="spId" name="spId" placeholder="供应商编号"/>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control"  id="name" placeholder="供应商名称">
+                    <label class="col-lg-3 control-label">供应商名称</label>
+                    <div class="col-lg-7">
+                    <input type="text" class="form-control"  id="name" name="name"  placeholder="供应商名称">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="type" placeholder="供应商类型">
+                    <label class="col-lg-3 control-label">供应商类型</label>
+                    <div class="col-lg-7">
+                    <input type="text" class="form-control" id="type" name="type" placeholder="供应商类型">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control"  id="contact" placeholder="联系人">
+                    <label class="col-lg-3 control-label">"联系人</label>
+                    <div class="col-lg-7">
+                    <input type="text" class="form-control"  id="contact" name="contact" placeholder="联系人">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="tel" placeholder="联系电话">
+
+                    <label class="col-lg-3 control-label">联系电话</label>
+                    <div class="col-lg-7">
+                    <input type="text" class="form-control" id="tel" name="tel" placeholder="联系电话">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="email" placeholder="邮件地址">
+                    <label class="col-lg-3 control-label">邮件地址</label>
+                    <div class="col-lg-7">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="邮件地址">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control"  id="cooperationTime" placeholder="合作时间"       data-date-format="yyyy/mm/dd">
+                    <label class="col-lg-3 control-label">合作时间</label>
+                    <div class="col-lg-7">
+                    <input type="text" class="form-control"  id="cooperationTime" name="cooperationTime" placeholder="合作时间"       data-date-format="yyyy/mm/dd">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control"  id="address" placeholder="地址">
+                    <label class="col-lg-3 control-label">地址</label>
+                    <div class="col-lg-7">
+                    <input type="text" class="form-control"  id="address" name="address" placeholder="地址">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control"  id="remark" placeholder="备注">
+                    <label class="col-lg-3 control-label">备注</label>
+                    <div class="col-lg-7">
+                    <input type="text" class="form-control"  id="remark" name="remark" placeholder="备注"/>
+                        </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary" id="save" >保存</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
-
+<jsp:include page="../../base/footCommon.jsp"></jsp:include>
 </body>
 <!--定义操作列按钮模板-->
 <script id="tpl" type="text/x-handlebars-template">
@@ -158,7 +180,8 @@
     });
     
     function save(){
-    	var _spId='sp001';
+        $('#defaultForm').bootstrapValidator('validate');
+    	var _spId=$("spId").val();
     	edit(_spId);
     }
     
@@ -209,6 +232,83 @@
             }
         });
     }
+
+
+    $(document).ready(function() {
+
+        $('#defaultForm').bootstrapValidator({
+//        live: 'disabled',
+                    message: 'This value is not valid',
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                        spId: {
+                            validators: {
+                                notEmpty: {
+                                    message: '供应商编号 is required and cannot be empty'
+                                }
+                            }
+                        },
+                        name: {
+                            validators: {
+                                notEmpty: {
+                                    message: '供应商名称  is required and cannot be empty'
+                                }
+                            }
+                        },
+                        type: {
+                            validators: {
+                                notEmpty: {
+                                    message: '供应商类型  is required and cannot be empty'
+                                }
+                            }
+                        },
+                        contact: {
+                            validators: {
+                                notEmpty: {
+                                    message: '联系人  is required and cannot be empty'
+                                }
+                            }
+                        },
+                        tel: {
+                            validators: {
+                                notEmpty: {
+                                    message: '联系电话  is required and cannot be empty'
+                                }
+                            }
+                        },
+                        email: {
+                            validators: {
+                                notEmpty: {
+                                    message: '邮件地址  is required and cannot be empty'
+                                }
+                            }
+                        },
+                        cooperationTime: {
+                            validators: {
+                                notEmpty: {
+                                    message: '合作时间  is required and cannot be empty'
+                                }
+                            }
+                        },
+                        address: {
+                            validators: {
+                                notEmpty: {
+                                    message: '地址  is required and cannot be empty'
+                                }
+                            }
+                        }
+
+                    }
+                }
+        );
+
+
+
+    });
 </script>
 
 </html>

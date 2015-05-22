@@ -2,6 +2,7 @@
 	pageEncoding="utf-8"%>
  <%@ include file="base/path.jsp"%>
  <jsp:include page="base/common.jsp"></jsp:include>
+<jsp:include page="base/ace.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 	<head>
