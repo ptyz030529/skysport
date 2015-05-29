@@ -2,4 +2,3 @@
 <%@ include file="../base/path.jsp"%>
 <script type="text/javascript" src="<%=path%>/resources/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src='<%=path%>/resources/js/dataTables.bootstrap.js'></script>
-<script type="text/javascript" src="<%=path%>/resources/js/handlebars-v3.0.1.js"></script>

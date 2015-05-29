@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cnfwsy.inerfaces.dao.SpManageDao">
+<mapper namespace="com.skysport.inerfaces.dao.SpManageDao">
 	<sql id="searchSPSql">
 		sp_id AS spId,
 		sp_name AS name,

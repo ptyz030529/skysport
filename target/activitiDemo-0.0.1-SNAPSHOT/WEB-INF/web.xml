@@ -50,7 +50,7 @@
 	</listener>
 	<!-- 数据字典等初始化 -->
 	<listener>
-		<listener-class>com.cnfwsy.core.init.InitSytemInfoListener</listener-class>
+		<listener-class>com.skysport.core.init.InitSytemInfoListener</listener-class>
 	</listener>
 
 	<!-- springMVC核心配置 -->

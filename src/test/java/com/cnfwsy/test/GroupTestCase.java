@@ -1,4 +1,4 @@
-package com.cnfwsy.test;
+package com.skysport.test;
 
 import java.util.List;
 
@@ -15,38 +15,38 @@ public class GroupTestCase {
 	@Before
 	public void startWork() {
 		System.out.println("=====startWork");
-		// ¼ÓÔØÅäÖÃÎÄ¼þactiviti.cfg.xml£¬´´½¨ÒýÇæ£¬Èç¹û³öÏÖnull£¬¶à°ëÊÇ¼ÓÔØÂ·¾¶²»ÊÇ¸ùÄ¿Â¼¡£
-		// »ñÈ¡ÅäÖÃÎÄ¼þºó£¬ÒýÇæ¿ªÊ¼´´½¨Êý¾Ý¿â¡£
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½activiti.cfg.xmlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nullï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¼ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½Ä¿Â¼ï¿½ï¿½
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¿ªÊ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿â¡£
 		engine = ProcessEngines.getDefaultProcessEngine();
 	}
 
 	@Test
 	public void createGroup() {
 		IdentityService identityService = engine.getIdentityService();
-		createGroup(identityService, "1", "¾­Àí×é", "typeManager");
+		createGroup(identityService, "1", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "typeManager");
 	}
 	
 	@Test
 	public void queryQuery() {
 		IdentityService identityService = engine.getIdentityService();
 		
-		// µ÷ÓÃlistPage·½·¨£¬´ÓË÷ÒýÎª2µÄ¼ÇÂ¼¿ªÊ¼£¬²éÑ¯3Ìõ¼ÇÂ¼
+		// ï¿½ï¿½ï¿½ï¿½listPageï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª2ï¿½Ä¼ï¿½Â¼ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ñ¯3ï¿½ï¿½ï¿½ï¿½Â¼
 		List<Group> datas = identityService.createGroupQuery().list();
 		
 		for (Group data : datas) {
 			System.out.println(data.getId() + "---" + data.getName() + " ");
 		}
 		
-		// ÆäËûÀàËÆ²éÑ¯·½·¨
-		identityService.createGroupQuery().listPage(1, 3);// ·ÖÒ³·µ»Ø²éÑ¯½á¹û
-		identityService.createGroupQuery().count();// ½á¹û×ÜÊý
-		identityService.createGroupQuery().groupName("managerA").singleResult();// ²éÑ¯µ½¶à¸öÊ±»áÅ×³öÒì³£
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
+		identityService.createGroupQuery().listPage(1, 3);// ï¿½ï¿½Ò³ï¿½ï¿½ï¿½Ø²ï¿½Ñ¯ï¿½ï¿½ï¿½
+		identityService.createGroupQuery().count();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		identityService.createGroupQuery().groupName("managerA").singleResult();// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½×³ï¿½ï¿½ì³£
 		identityService.createGroupQuery().groupNameLike("%managerA%").singleResult();//
 		
 		identityService.createGroupQuery().groupId("1").singleResult();//
 		identityService.createGroupQuery().groupType("typeA").singleResult();//
-		identityService.createGroupQuery().orderByGroupId().asc().list();// ½á¹ûÉýÐò
-		identityService.createGroupQuery().orderByGroupName().desc().list();// ½á¹û½µÐò
+		identityService.createGroupQuery().orderByGroupId().asc().list();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		identityService.createGroupQuery().orderByGroupName().desc().list();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 
 	@Test

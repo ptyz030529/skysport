@@ -1,4 +1,4 @@
-package com.cnfwsy.test;
+package com.skysport.test;
 
 import org.activiti.engine.IdentityService;
 import org.activiti.engine.ProcessEngine;
@@ -16,43 +16,43 @@ public class BaseTestCase {
 
 	@Before
 	public void startWork() {
-		// ¼ÓÔØÅäÖÃÎÄ¼şactiviti.cfg.xml£¬´´½¨ÒıÇæ£¬Èç¹û³öÏÖnull£¬¶à°ëÊÇ¼ÓÔØÂ·¾¶²»ÊÇ¸ùÄ¿Â¼¡£
-		// »ñÈ¡ÅäÖÃÎÄ¼şºó£¬ÒıÇæ¿ªÊ¼´´½¨Êı¾İ¿â¡£
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½activiti.cfg.xmlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nullï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¼ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½Ä¿Â¼ï¿½ï¿½
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¿ªÊ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿â¡£
 		engine = ProcessEngines.getDefaultProcessEngine();
 	}
 
 	@Test
 	public void t1() {
 
-		// »ñÈ¡Á÷³Ì´¢´æ·şÎñ×é¼ş
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ì´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		RepositoryService repositoryService = engine.getRepositoryService();
 
-		// »ñÈ¡ÔËĞĞÊ±·şÎñ×é¼ş
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		RuntimeService runtimeService = engine.getRuntimeService();
 
-		// »ñÈ¡Á÷³ÌÖĞµÄÈÎÎñTASK×é¼ş
+		// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½TASKï¿½ï¿½ï¿½
 		TaskService taskService = engine.getTaskService();
 
-		// ²¿ÊğÁ÷³Ì£¬Ö»ÒªÊÇ·ûºÏBPMN2¹æ·¶µÄXMLÎÄ¼ş£¬ÀíÂÛÉÏ¶¼¿ÉÒÔ±»ACTIVITI²¿Êğ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì£ï¿½Ö»Òªï¿½Ç·ï¿½ï¿½ï¿½BPMN2ï¿½æ·¶ï¿½ï¿½XMLï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ACTIVITIï¿½ï¿½ï¿½ï¿½
 		repositoryService.createDeployment()
 				.addClasspathResource("MYprocess.bpmn").deploy();
 
-		// ¿ªÆôÁ÷³Ì£¬myprocessÊÇÁ÷³ÌµÄID
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì£ï¿½myprocessï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½ID
 		runtimeService.startProcessInstanceByKey("myProcess");
 
-		// ÀûÓÃtaskservice½øĞĞÈÎÎñ²éÑ¯£¬²éÑ¯µÚÒ»¸öÈÎÎñ£¬²éÑ¯ºóÍê³É
+		// ï¿½ï¿½ï¿½ï¿½taskserviceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ñ£¬²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½
 		Task task = taskService.createTaskQuery().singleResult();
-		System.out.println("µÚÒ»¸öÁ÷³ÌÈÎÎñÍê³ÉÇ°£º" + task.getName());
+		System.out.println("ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½" + task.getName());
 		taskService.complete(task.getId());
 
-		// Íê³ÉµÚÒ»¸öÈÎÎñºóÔÙ´Î²éÑ¯£¬³öÏÖµÚ¶ş¸öÈÎÎñÃû³Æ£¬Íê³ÉµÚ¶ş¸öÈÎÎñ
+		// ï¿½ï¿½Éµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù´Î²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÚ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ÉµÚ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		task = taskService.createTaskQuery().singleResult();
-		System.out.println("µÚ¶ş¸öÁ÷³ÌÈÎÎñÍê³ÉÇ°£º" + task.getName());
+		System.out.println("ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½" + task.getName());
 		taskService.complete(task.getId());
 
-		// ÔÙ´Î²éÑ¯£¬TASKÊÇNULL
+		// ï¿½Ù´Î²ï¿½Ñ¯ï¿½ï¿½TASKï¿½ï¿½NULL
 		task = taskService.createTaskQuery().singleResult();
-		System.out.println("½áÊøºó" + task);
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + task);
 
 	}
 	
@@ -61,7 +61,7 @@ public class BaseTestCase {
 	@Test
 	public void createGroup() {
 		IdentityService identityService = engine.getIdentityService();
-		createGroup(identityService, "1", "¾­Àí×é", "typeManager");
+		createGroup(identityService, "1", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", "typeManager");
 
 	}
 	

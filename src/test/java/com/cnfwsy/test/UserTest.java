@@ -1,12 +1,12 @@
-package com.cnfwsy.test;
+package com.skysport.test;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.cnfwsy.core.bean.User;
-import com.cnfwsy.core.model.login.service.IUserService;
+import com.skysport.core.bean.User;
+import com.skysport.core.model.login.service.IUserService;
 
 public class UserTest {
 	IUserService userService;

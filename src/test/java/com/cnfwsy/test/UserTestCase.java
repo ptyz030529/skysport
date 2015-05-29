@@ -1,4 +1,4 @@
-package com.cnfwsy.test;
+package com.skysport.test;
 
 import java.util.List;
 
@@ -52,7 +52,7 @@ public class UserTestCase {
 	@Test
 	public void checkPwd() {
 		IdentityService identityService = engine.getIdentityService();
-		boolean result = identityService.checkPassword("1", "ÓÃ»§ÃÜÂë");
+		boolean result = identityService.checkPassword("1", "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½");
 		Assert.assertEquals(false, result);
 	}
 
@@ -61,11 +61,11 @@ public class UserTestCase {
 		IdentityService identityService = engine.getIdentityService();
 		RuntimeService runtimeService = engine.getRuntimeService();
 		HistoryService historyService = engine.getHistoryService();
-		// Á÷³Ì·¢ÆðÇ°ÉèÖÃ·¢ÆðÈË£¬¼ÇÂ¼ÔÚÁ÷³ÌÀúÊ·ÖÐ
+		// ï¿½ï¿½ï¿½Ì·ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê·ï¿½ï¿½
 		identityService.setAuthenticatedUserId("kitty");
-		// ¿ªÊ¼Á÷³Ì
-		runtimeService.startProcessInstanceByKey("XMLÖÐµÄID");
-		// ²éÑ¯Á÷³Ì·¢ÆðÈË
+		// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+		runtimeService.startProcessInstanceByKey("XMLï¿½Ðµï¿½ID");
+		// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ì·ï¿½ï¿½ï¿½ï¿½ï¿½
 		logger.info(historyService.createHistoricProcessInstanceQuery()
 				.startedBy("ketty").singleResult().getProcessDefinitionId());
 	}

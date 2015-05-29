@@ -20,6 +20,9 @@
             more: 'Wybierz maksymalnie %s opcji',
             between: 'Wybierz przynajmniej %s i maksymalnie %s opcji'
         },
+        color: {
+            'default': 'Wprowadź poprawny kolor w formacie'
+        },
         creditCard: {
             'default': 'Wprowadź poprawny numer karty kredytowej'
         },
@@ -30,7 +33,10 @@
             'default': 'Wprowadź poprawny numer CVV'
         },
         date: {
-            'default': 'Wprowadź poprawną datę'
+            'default': 'Wprowadź poprawną datę',
+            min: 'Wprowadź datę po %s',
+            max: 'Wprowadź datę przed  %s',
+            range: 'Wprowadź datę pomiędzy %s i %s'
         },
         different: {
             'default': 'Wprowadź inną wartość'
@@ -147,45 +153,47 @@
             }
         },
         id: {
-            'default': 'Wprowadź poprawnu numer identyfikacyjny',
+            'default': 'Wprowadź poprawny numer identyfikacyjny',
             countryNotSupported: 'Kod kraju %s nie jest obsługiwany',
-            country: 'Wprowadź poprawny %s numer identyfikacyjny',
+            country: 'Wprowadź poprawny numer identyfikacyjny w kraju %s',
             countries: {
-                BA: 'bośniacki',
-                BG: 'bułgarski',
-                BR: 'brazylijski',
-                CH: 'szwecki',
-                CL: 'czilijski',
-                CZ: 'czeski',
-                DK: 'duński',
-                EE: 'estoński',
-                ES: 'hiszpański',
-                FI: 'fiński',
-                HR: 'chorwacki',
-                IE: 'irlandzki',
-                IS: 'islandski',
-                LT: 'litewski',
-                LV: 'łotewski',
-                ME: 'czarnogórski',
-                MK: 'macedoński',
-                NL: 'holenderski',
-                RO: 'rumuński',
-                RS: 'serbski',
-                SE: 'szwedźki',
-                SI: 'słoweński',
-                SK: 'słowacki',
-                SM: 'san Marino',
-                ZA: 'południowo Afrykański'
+                BA: 'Bośnia i Hercegowina',
+                BG: 'Bułgaria',
+                BR: 'Brazylia',
+                CH: 'Szwajcaria',
+                CL: 'Chile',
+                CN: 'Chiny',
+                CZ: 'Czechy',
+                DK: 'Dania',
+                EE: 'Estonia',
+                ES: 'Hiszpania',
+                FI: 'Finlandia',
+                HR: 'Chorwacja',
+                IE: 'Irlandia',
+                IS: 'Islandia',
+                LT: 'Litwa',
+                LV: 'Łotwa',
+                ME: 'Czarnogóra',
+                MK: 'Macedonia',
+                NL: 'Holandia',
+                RO: 'Rumunia',
+                RS: 'Serbia',
+                SE: 'Szwecja',
+                SI: 'Słowenia',
+                SK: 'Słowacja',
+                SM: 'San Marino',
+                TH: 'Tajlandia',
+                ZA: 'Republika Południowej Afryki'
             }
         },
         identical: {
             'default': 'Wprowadź taką samą wartość'
         },
         imei: {
-            'default': 'Wprowadź poprawnu numer IMEI'
+            'default': 'Wprowadź poprawny numer IMEI'
         },
         imo: {
-            'default': 'Wprowadź poprawnu numer IMO'
+            'default': 'Wprowadź poprawny numer IMO'
         },
         integer: {
             'default': 'Wprowadź poprawną liczbę całkowitą'
@@ -196,7 +204,7 @@
             ipv6: 'Wprowadź poprawny adres IPv6'
         },
         isbn: {
-            'default': 'Wprowadź porpawny numer ISBN'
+            'default': 'Wprowadź poprawny numer ISBN'
         },
         isin: {
             'default': 'Wprowadź poprawny numer ISIN'
@@ -215,7 +223,7 @@
             'default': 'Wprowadź poprawny adres MAC'
         },
         meid: {
-            'default': 'Wprowadź porpawny numer MEID'
+            'default': 'Wprowadź poprawny numer MEID'
         },
         notEmpty: {
             'default': 'Wprowadź wartość, pole nie może być puste'
@@ -228,10 +236,22 @@
             countryNotSupported: 'Kod kraju %s nie jest wspierany',
             country: 'Wprowadź poprawny numer telefonu w kraju %s',
             countries: {
+                BR: 'Brazylia',
+                CN: 'Chiny',
+                CZ: 'Czechy',
+                DE: 'Niemcy',
+                DK: 'Dania',
                 ES: 'Hiszpania',
                 FR: 'Francja',
                 GB: 'Wielka Brytania',
-                US: 'USA'
+                MA: 'Maroko',
+                PK: 'Pakistan',
+                RO: 'Rumunia',
+                RU: 'Rosja',
+                SK: 'Słowacja',
+                TH: 'Tajlandia',
+                US: 'USA',
+                VE: 'Wenezuela'
             }
         },
         regexp: {
@@ -275,41 +295,45 @@
         vat: {
             'default': 'Wprowadź poprawny numer VAT',
             countryNotSupported: 'Kod kraju %s nie jest wsperany',
-            country: 'Wprowadź poprawny %s numer VAT',
+            country: 'Wprowadź poprawny numer VAT w kraju %s',
             countries: {
-                AT: 'austryjacki',
-                BE: 'belgijski',
-                BG: 'bułgarski',
-                CH: 'szwecki',
-                CY: 'cypryjski',
-                CZ: 'czeski',
-                DE: 'niemiecki',
-                DK: 'duński',
-                EE: 'estoński',
-                ES: 'hiszpański',
-                FI: 'fiński',
-                FR: 'francuski',
-                GB: 'brytyjski',
-                GR: 'grecki',
-                EL: 'grecki',
-                HU: 'węgierski',
-                HR: 'chorwacki',
-                IE: 'irlandzki',
-                IT: 'włoski',
-                LT: 'litewski',
-                LU: 'luksemburski',
-                LV: 'łoteweski',
-                MT: 'maltejski',
-                NL: 'holenderski',
-                NO: 'norweski',
-                PL: 'polski',
-                PT: 'portugalski',
-                RO: 'rumuński',
-                RU: 'rosyjski',
-                RS: 'serbski',
-                SE: 'szwedzki',
-                SI: 'słoweński',
-                SK: 'słowacki'
+                AT: 'Austria',
+                BE: 'Belgia',
+                BG: 'Bułgaria',
+                BR: 'Brazylia',
+                CH: 'Szwajcaria',
+                CY: 'Cypr',
+                CZ: 'Czechy',
+                DE: 'Niemcy',
+                DK: 'Dania',
+                EE: 'Estonia',
+                ES: 'Hiszpania',
+                FI: 'Finlandia',
+                FR: 'Francja',
+                GB: 'Wielka Brytania',
+                GR: 'Grecja',
+                EL: 'Grecja',
+                HU: 'Węgry',
+                HR: 'Chorwacja',
+                IE: 'Irlandia',
+                IS: 'Islandia',
+                IT: 'Włochy',
+                LT: 'Litwa',
+                LU: 'Luksemburg',
+                LV: 'Łotwa',
+                MT: 'Malta',
+                NL: 'Holandia',
+                NO: 'Norwegia',
+                PL: 'Polska',
+                PT: 'Portugalia',
+                RO: 'Rumunia',
+                RU: 'Rosja',
+                RS: 'Serbia',
+                SE: 'Szwecja',
+                SI: 'Słowenia',
+                SK: 'Słowacja',
+                VE: 'Wenezuela',
+                ZA: 'Republika Południowej Afryki'
             }
         },
         vin: {
@@ -318,16 +342,28 @@
         zipCode: {
             'default': 'Wprowadź poprawny kod pocztowy',
             countryNotSupported: 'Kod kraju %s nie jest obsługiwany',
-            country: 'Wprowadź poprawny %s kod pocztowy',
+            country: 'Wprowadź poprawny kod pocztowy w kraju %s',
             countries: {
-                CA: 'kanadyski',
-                DK: 'duński',
-                GB: 'brytyjski',
-                IT: 'włoski',
-                NL: 'holenderski',
-                SE: 'szwecki',
-                SG: 'singapurski',
-                US: 'w USA'
+                AT: 'Austria',
+                BR: 'Brazylia',
+                CA: 'Kanada',
+                CH: 'Szwajcaria',
+                CZ: 'Czechy',
+                DE: 'Niemcy',
+                DK: 'Dania',
+                FR: 'Francja',
+                GB: 'Wielka Brytania',
+                IE: 'Irlandia',
+                IT: 'Włochy',
+                MA: 'Maroko',
+                NL: 'Holandia',
+                PT: 'Portugalia',
+                RO: 'Rumunia',
+                RU: 'Rosja',
+                SE: 'Szwecja',
+                SG: 'Singapur',
+                SK: 'Słowacja',
+                US: 'USA'
             }
         }
     });
