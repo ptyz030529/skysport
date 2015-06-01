@@ -12,18 +12,23 @@
 		cooperation_time AS cooperationTime,
 		remark AS remark
 	</sql>
-	<insert id="insertSP" parameterType="SpInfo" keyProperty="id">
+	<select id="querySpInfo" resultType="SpInfo">
+			select
+				<include refid="searchSPSql"/>
+			FROM t_supplier
+			WHERE sp_id =#{spId}
+			limit 1
 
-	</insert>
+	</select>
 
 
 	<select id="listSPInfosCounts" resultType="Integer">
 		SELECT COUNT(*) FROM
-		t_supplier
+		t_supplier where del_flag=0
 	</select>
 
 	<select id="listFilteredSPInfosCounts" resultType="Integer">
-		SELECT COUNT(*) FROM t_supplier where 1=1
+		SELECT COUNT(*) FROM t_supplier where del_flag=0
 		<if test="searchValue !=null and searchValue != ''">
 			and (
 				sp_id like concat('%',#{searchValue},'%') or
@@ -41,7 +46,7 @@
 		SELECT
 		<include refid="searchSPSql" />
 		FROM t_supplier
-		WHERE 1=1
+		WHERE del_flag=0
 		<if test="searchValue!=null and searchValue != ''">
 			and (
 				sp_id like concat('%',#{searchValue},'%') or
@@ -60,7 +65,7 @@
 	</select>
 
 
-	<insert id="updateSp">
+	<!--<insert id="updateSp">
 		<selectKey keyProperty="filterCounts" resultType="int" order="BEFORE">
 			select count(*) from t_supplier WHERE sp_id =#{spId}
 		</selectKey>
@@ -82,9 +87,33 @@
 				values (#{spId},#{name},#{type},#{address},#{tel},#{contact},#{cooperationTime},#{remark})
 			</otherwise>
 		</choose>
+	</insert>-->
+
+
+	<update id="updateSp">
+		update t_supplier 	set
+		sp_name=#{name},
+		sp_kind=#{type},
+		sp_address=#{address},
+		sp_tel1=#{tel},
+		cooperation_time=#{cooperationTime},
+		remark=#{remark},
+		sp_contact=#{contact}
+		WHERE sp_id =#{spId}
+	</update>
+
+
+
+
+	<insert id="add">
+		insert into
+		t_supplier (sp_id,sp_name,sp_kind,sp_address,sp_tel1,sp_contact,cooperation_time,remark)
+		values (#{spId},#{name},#{type},#{address},#{tel},#{contact},#{cooperationTime},#{remark})
 	</insert>
 	
-	
-	
+	<update id="del">
+		update set  del_flag=1
+		WHERE sp_id =#{spId}
+	</update>
 
 </mapper>

@@ -87,7 +87,7 @@
                         var context =
                         {
                             func: [
-                                {"name": "修改", "fn": "edit(\'" + data.spId + "\')", "type": "primary"},
+                                {"name": "修改", "fn": "info(\'" + data.spId + "\')", "type": "primary"},
                                 {"name": "删除", "fn": "del(\'" + data.spId + "\')", "type": "danger"}
                             ]
                         };
@@ -119,6 +119,27 @@
 
         $("#save").click(save);
     });
+
+</script>
+
+<script type="text/javascript">
+    var spId="";
+    var info = function(_spId){
+        spId = _spId;
+        sendRestFulAjax("spinfo/"+_spId,null,'GET','json',doSuccess);
+    }
+
+    var doSuccess= function(_data){
+        var data = _data;
+        console.info(data);
+        var myTemplate = Handlebars.compile($("#info-template").html());
+        $('#defaultForm').html(myTemplate(data));
+    }
+
+    var del = function(spId){
+        sendRestFulAjax("del/"+spId,null,'DELETE','json',doSuccess);
+    }
+
 
 </script>
 </body>
