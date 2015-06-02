@@ -8,6 +8,7 @@
 		<title>翊凯-供应链管理系统</title>
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<link rel="shortcut icon" href="<%=path%>/resources/images/favicon.ico" type="image/x-icon">
 		<meta name="keywords" content="skysport,翊凯" />
 		<meta name="description" content="skysport,翊凯" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />

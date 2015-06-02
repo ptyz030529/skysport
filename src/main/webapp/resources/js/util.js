@@ -26,7 +26,7 @@ var sendRestFulAjax = function(_url ,_data,_type,_dataType,_doSuccess){
         url: _url,
         data:_data ,
         type:type,
-        dataType: dataType,
+        //dataType: dataType,
         success: sf,
         error:doNotSucess
     });
@@ -34,7 +34,7 @@ var sendRestFulAjax = function(_url ,_data,_type,_dataType,_doSuccess){
 
 /*bootbox.setLocale("zh_CN");*/
 var doNotSucess = function(XMLHttpRequest, textStatus, errorThrown){
-    bootbox.alert(XMLHttpRequest);
+    bootbox.alert("系统异常，本次操作失败！");
 }
 
 

@@ -7,8 +7,10 @@
 		sp_id AS spId,
 		sp_name AS name,
 		sp_kind AS type,
-		sp_address AS
-		address,
+		sp_address AS address,
+		sp_contact AS contact,
+		sp_tel1 AS tel,
+		email AS email,
 		cooperation_time AS cooperationTime,
 		remark AS remark
 	</sql>
@@ -96,6 +98,7 @@
 		sp_kind=#{type},
 		sp_address=#{address},
 		sp_tel1=#{tel},
+		email=#{email},
 		cooperation_time=#{cooperationTime},
 		remark=#{remark},
 		sp_contact=#{contact}
@@ -112,8 +115,9 @@
 	</insert>
 	
 	<update id="del">
-		update set  del_flag=1
-		WHERE sp_id =#{spId}
+		update t_supplier
+		set  del_flag=1
+		where sp_id =#{spId}
 	</update>
 
 </mapper>

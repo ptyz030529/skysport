@@ -1,7 +1,61 @@
+
+//var _spId="";
+var spId="";
+/**
+ * 查询信息
+ * @param _spId
+ */
+var info = function(_spId){
+    sendRestFulAjax("spinfo/"+_spId,null,'GET','json',_doSuccess_info);
+    spId = _spId;
+}
+/**
+ * 查询信息成功后，相关操作
+ * @param _data
+ * @private
+ */
+var _doSuccess_info= function(_data){
+    var data = _data;
+    console.info(data);
+
+    Object.keys(data).map(function(key){
+        $('#defaultForm input').filter(function(){
+            return key == this.name;
+        }).val(data[key]);
+    });
+    $("#myModal").modal("show");
+//        var myTemplate = Handlebars.compile($("#info-template").html());
+//        $('#defaultForm').html(myTemplate(data));
+}
+
+/**
+ * 删除信息
+ * @param _spId
+ */
+var del = function(_spId){
+    spId = _spId;
+    bootbox.confirm("确定删除？", doDel);
+}
+/**
+ *
+ * @param result
+ */
+var doDel = function(result){
+    if(result)  sendRestFulAjax("del/"+spId,null,'DELETE','json',_doSuccess_del);
+}
+/**
+ * 删除信息后的处理
+ * @private
+ */
+var  _doSuccess_del =function(){
+    table.ajax.reload();
+}
+
 /**
  * Created by zhangjh on 2015/5/27.
  */
-function save(){
+var save= function(){
+    //执行表单监听
     $('#defaultForm').bootstrapValidator('validate');
 }
 
@@ -9,63 +63,42 @@ function save(){
  * 修改数据
  * @param name
  */
-function edit(url,data) {
-
-    /* var url="edit";
-     var data={
-     spId: _spId,
-     name:$("#name").val(),
-     type:$("#type").val(),
-     contact:$("#contact").val(),
-     tel:$("#tel").val(),
-     email:$("#email").val(),
-     cooperationTime:$("#cooperationTime").val(),
-     address:$("#address").val(),
-     remark:$("#remark").val()
-     };*/
-    sendAjax(url,data,doSuccess);
+function edit(_url,_data,_type,_dataType) {
+    var data = _data+"&spId="+spId;
+    sendRestFulAjax(_url,data,_type,_dataType,_doSuccess_edit);
 }
 
-
-
-function doSuccess(data){
-
-    //$("#myModal").modal('hideModal');//移除模态框
-    //$("#myModal").modal('removeBackdrop');//移除模态框
+function _doSuccess_edit(data){
+    //遮罩层的数量
     var length = $(".modal-backdrop").length;
     for (var index = 0 ;index<length ;index ++){
-        $("#myModal").modal('hide');//移除模态框
+        $("#myModal").modal('hide');//移除模态框遮罩层
     }
     //$(".modal-backdrop").remove();//移除遮罩层
     //$('<div class="modal-backdrop"></div>').appendTo(document.body);
     table.ajax.reload();
     console.log( data.code);
-
+    spId=""; //将修改项的spid置为空
 }
 
 
-
-/**
- * 删除数据
- * @param name
- */
-function del(spId) {
-    $.ajax({
-        url: "<%=path%>/system/sp/del",
-        data: {
-            "spId": spId
-        }, success: function (data) {
-            table.ajax.reload();
-            console.log("删除成功" + data);
-        }
-    });
-}
+$('#resetBtn').click(function() {
+    $('#defaultForm').data('bootstrapValidator').resetForm(true);
+});
 
 
 $(document).ready(function() {
+    //modal显示式，重置Form
+    $('#myModal').on('shown.bs.modal', function (e) {
+        if (spId ==''){
+            $('#defaultForm').data('bootstrapValidator').resetForm(true);
+        }
+    });
 
+
+    //启动表单校验监听
     $('#defaultForm').bootstrapValidator({
-//        live: 'disabled',
+            //live: 'disabled',
             message: 'This value is not valid',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -142,7 +175,7 @@ $(document).ready(function() {
         }
     );
 })
-    .on('success.form.bv',function(e){
+.on('success.form.bv',function(e){ //表单校验成功，ajax提交数据
         // Prevent form submission
         e.preventDefault();
 
@@ -154,6 +187,13 @@ $(document).ready(function() {
 
         // Use Ajax to submit form data
         var url = $form.attr('action');
+        var type = "POST"
+        if(spId == ""){
+            url = "new";
+            type = "POST"
+        }
         var data = $form.serialize();
-        edit(url,data);
-    });
+        edit(url,data,type,"");
+
+});
+

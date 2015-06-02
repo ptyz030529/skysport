@@ -9,14 +9,13 @@
                             <h4 class="modal-title" id="myModalLabel">新增</h4>
                         </div>
                         <form id="defaultForm" method="post" class="form-horizontal" action="edit">
-                            <script id="info-template" type="text/x-handlebars-template">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label class="col-lg-3 control-label">供应商名称</label>
 
                                     <div class="col-lg-7">
                                         <input type="text" class="form-control" id="name" name="name"
-                                               placeholder="供应商名称" value="{{name}}">
+                                               placeholder="供应商名称">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -83,9 +82,8 @@
                                 <button type="button" class="btn btn-primary"   id="save">保存</button>
                                 <button type="button" class="btn btn-info" id="resetBtn">重置</button>
                             </div>
-                            </script>
                         </form>
                     </div>
                 </div>
             </div>
-<script type="text/javascript" src="<%=path%>/resources/system/sp-edit.js"/>
+<script type="text/javascript" src="<%=path%>/resources/system/sp.js"/>

@@ -1,6 +1,3 @@
-/**
- * Created by zhangjh on 2015/5/26.
- */
 var table;
 var editFlag = false;
 $(function () {
@@ -25,6 +22,7 @@ $(function () {
             {"data": "remark"},
             {"data": null}
         ],
+        order: [[ 0, "desc" ]],/*默认第一列倒序*/
         columnDefs: [
             {
                 targets: 6,
@@ -32,7 +30,7 @@ $(function () {
                     var context =
                     {
                         func: [
-                            {"name": "修改", "fn": "edit(\'" + data.spId + "\')", "type": "primary"},
+                            {"name": "修改", "fn": "info(\'" + data.spId + "\')", "type": "primary"},
                             {"name": "删除", "fn": "del(\'" + data.spId + "\')", "type": "danger"}
                         ]
                     };
@@ -45,7 +43,7 @@ $(function () {
         "language": {
             "lengthMenu": "_MENU_ 条记录每页",
             "zeroRecords": "没有找到记录",
-            "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+            "info": "第 _PAGE_ 页 ( 共 _PAGES_ 页 )",
             "infoEmpty": "无记录",
             "infoFiltered": "(从 _MAX_ 条记录过滤)",
             "paginate": {
@@ -57,7 +55,7 @@ $(function () {
         "t" +
         "<'row'<'col-xs-6'i><'col-xs-6'p>>",
         initComplete: function () {
-            $("#mytool").append('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >新增</button>');
+            $("#mytool").append('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >ADD</button>');
         }
 
     });

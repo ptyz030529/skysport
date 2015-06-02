@@ -81,9 +81,9 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
      * @author: zhangjh
      * @version: 2015年4月29日 下午5:35:09
      */
-    @RequestMapping(value = "/edit")
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(SpInfo spInfo, HttpServletRequest request,
+    public Map<String, Object> edit( SpInfo spInfo, HttpServletRequest request,
                                     HttpServletResponse response) throws Exception {
         spManageService.edit(spInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -130,8 +130,13 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
      * @return
      */
     @RequestMapping(value = "/del/{spId}", method = RequestMethod.DELETE)
-    public void del(@PathVariable String spId) {
+    @ResponseBody
+    public Map<String, Object>  del(@PathVariable String spId) {
         spManageService.del(spId);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("code", "0");
+        resultMap.put("message", "删除成功");
+        return resultMap;
     }
 
 
