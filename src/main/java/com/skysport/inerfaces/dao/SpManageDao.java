@@ -15,10 +15,10 @@ import java.util.List;
 public interface SpManageDao {
 	/**
 	 * 
-	 * @param spInfo
+	 * @param spId
 	 * @return
 	 */
-	public SpInfo querySpInfo(String spInfo);
+	public SpInfo querySpInfo(String spId);
 
 	/**
 	 * 查询供应商的总记录数

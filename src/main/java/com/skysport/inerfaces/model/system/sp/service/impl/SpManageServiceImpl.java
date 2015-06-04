@@ -21,11 +21,6 @@ public class SpManageServiceImpl implements ISpManageService {
     @Resource(name = "spManageDao")
     private SpManageDao spManageDao;
 
-    @Override
-    public List<SpInfo> listSP(SpInfo spInfo) {
-
-        return null;
-    }
 
     /**
      * 查询spinfo的总记录数

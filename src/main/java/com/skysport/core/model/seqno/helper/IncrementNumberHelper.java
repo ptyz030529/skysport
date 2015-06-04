@@ -1,7 +1,7 @@
 package com.skysport.core.model.seqno.helper;
 
 /**
- * Created by Administrator on 2015/6/1.
+ * Created by zhangjh on 2015/6/1.
  */
 public enum IncrementNumberHelper {
     SINGLETONE;

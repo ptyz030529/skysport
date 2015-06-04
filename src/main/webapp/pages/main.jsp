@@ -1180,7 +1180,7 @@
 
 									<ul class="submenu">
 										<li class="">
-											<a href="top-menu.html">
+											<a href="javascript:onclick('system/material/list')">
 												<i class="menu-icon fa fa-caret-right"></i>
 												物料列表
 											</a>
@@ -1220,68 +1220,68 @@
 											</ul>
 										</li>
 										<li>
-											<a href="javascript:onclick('system/material/list')">
-												物料信息
-											</a>
-										</li>
-										<li>
-											<a href="javascript:onclick('system/product/list')">
-												产品信息
-											</a>
-										</li>
-										<li>
 											<a href="javascript:onclick('system/customer/list')">
 												客户信息
 											</a>
 										</li>
 										<li>
-											<a href="javascript:onclick('system/department/list')">
-												部门信息
+											<a href="javascript:onclick('system/sector/list')">
+												区域信息
+											</a>
+										</li>
+										<li>
+											<a href="javascript:onclick('system/customer/list')">
+												系列信息
+											</a>
+										</li>
+										<li>
+											<a href="javascript:onclick('system/pantone/list')">
+												PANTONE
 											</a>
 										</li>
 										<li>
 											<a href="javascript:onclick('system/sp_kind/list')">
-												供应商类别
+												主颜色
 											</a>
 										</li>
 										<li>
 											<a href="javascript:onclick('system/product_kind/list')">
-												产品类型
+												品类级别
 											</a>
 										</li>
 										<li>
 											<a href="javascript:onclick('system/duty/list')">
-												职务级别
+												性别属性
 											</a>
 										</li>
 										<li>
 											<a href="javascript:onclick('system/employee/list')">
-												人员编码
+												材料类别
 											</a>
 										</li>
 										<li>
 											<a href="javascript:onclick('system/code/list')">
-												编码类别
+												材质分类
 											</a>
 										</li>
 										<li>
 											<a href="javascript:onclick('system/panton/list')">
-												产品大类/PANTON
+												品名信息
 											</a>
 										</li>
 										<li>
 											<a href="javascript:onclick('system/performance_parameter/list')">
-												物理性能参数
+												年份管理
 											</a>
 										</li>
 										<li>
 											<a href="javascript:onclick('system/oekotex/list')">
-												Oekotex要求
+												时间节点
 											</a>
 										</li>
 										<li>
 											<a href="javascript:onclick('system/technology/list')">
-												工艺
+												成衣厂
 											</a>
 										</li>
 										

@@ -1,9 +1,7 @@
 package com.skysport.core.action;
-
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.CommonConstant;
 import com.skysport.core.instance.DictionaryInfo;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +18,7 @@ public class CommonAction<K, V, T> {
 
 	/**
 	 * 
-	 * 此方法描述的是：
+	 * 此方法描述的是：返回datatables需要的数据
 	 * 
 	 * @author: zhangjh
 	 * @version: 2015年4月30日 下午4:34:11
@@ -43,19 +41,13 @@ public class CommonAction<K, V, T> {
 	 */
 	protected DataTablesInfo convertToDataTableQrInfo(HttpServletRequest request) {
 		DataTablesInfo dataTablesInfo = new DataTablesInfo();
-
 		int start = Integer.parseInt(request.getParameter("start"));
-
 		int length = Integer.parseInt(request.getParameter("length"));
-
 		int draw = Integer.parseInt(request.getParameter("draw"));
-
 		String orderColumn = request.getParameter("order[0][column]");
 		String pageColumnName = request.getParameter("columns[" + orderColumn + "][data]");
 		String tableColumnName = getRealTableColumnName(pageColumnName);
-
 		String orderDir = request.getParameter("order[0][dir]");
-
 		String searchValue = request.getParameter("search[value]");
 
 		dataTablesInfo.setStart(start);
@@ -65,7 +57,6 @@ public class CommonAction<K, V, T> {
 		dataTablesInfo.setSearchValue(searchValue);
 		dataTablesInfo.setStart(start);
 		dataTablesInfo.setDraw(draw);
-
 		return dataTablesInfo;
 	}
 

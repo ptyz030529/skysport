@@ -6,7 +6,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">新增</h4>
+                            <h4 class="modal-title" id="myModalLabel">新增/修改</h4>
                         </div>
                         <form id="defaultForm" method="post" class="form-horizontal" action="edit">
                             <div class="modal-body">

@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface ISpManageService {
 
-	List<SpInfo> listSP(SpInfo spInfo);
+
 	
 	/**
 	 * @return
