@@ -14,4 +14,6 @@ public interface TableKeyMapper {
     public int nextVal(@Param(value = "name") String name);
 
     public void nextVal(Map<String, Object> paramsMap);
+
+    void nextVal2(Map<String, Object> paramsMap);
 }

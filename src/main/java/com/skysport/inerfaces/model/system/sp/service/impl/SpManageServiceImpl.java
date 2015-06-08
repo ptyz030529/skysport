@@ -21,6 +21,9 @@ public class SpManageServiceImpl implements ISpManageService {
     @Resource(name = "spManageDao")
     private SpManageDao spManageDao;
 
+    public SpManageServiceImpl() {
+        System.out.println("spManageDao:"+spManageDao);
+    }
 
     /**
      * 查询spinfo的总记录数

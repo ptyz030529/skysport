@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>查询供应商信息</title>
+    <title>查询 PANTONE信息</title>
     <jsp:include page="../../base/common.jsp" flush="true"></jsp:include>
     <jsp:include page="../../base/commonTable.jsp" flush="true"></jsp:include>
     <link rel="stylesheet" href="<%=path%>/resources/css/page-header.css"/>
@@ -51,13 +51,6 @@
     <button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
     {{/each}}
 </script>
-<!--定义颜色列模板-->
-<script id="tpl2" type="text/x-handlebars-template">
-    {{#each func2}}
-        <span style="BACKGROUND:{{this.codeColor}}">              </span>
-    {{/each}}
-</script>
-
 <script type="text/javascript" src="<%=path%>/resources/system/pantone/pantone-list.js"></script>
 
 </body>

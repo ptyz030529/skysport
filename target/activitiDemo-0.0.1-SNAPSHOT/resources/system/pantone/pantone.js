@@ -107,67 +107,38 @@ $(document).ready(function() {
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                pantoneId: {
+                colorNo: {
                     validators: {
                         notEmpty: {
-                            message: '供应商编号 is required and cannot be empty'
-                        },
-                        regexp: {
-                            regexp: /^[a-zA-Z0-9_]+$/,
-                            message: '供应商名称 can only consist of alphabetical, number and underscore'
+                            message: '色号  is required and cannot be empty'
                         }
                     }
                 },
-                name: {
+                enName: {
                     validators: {
                         notEmpty: {
-                            message: '供应商名称  is required and cannot be empty'
+                            message: '英文名称  is required and cannot be empty'
                         }
                     }
                 },
-                type: {
+                zhName: {
                     validators: {
                         notEmpty: {
-                            message: '供应商类型  is required and cannot be empty'
+                            message: '中文名称  is required and cannot be empty'
                         }
                     }
                 },
-                contact: {
+                pageNo: {
                     validators: {
                         notEmpty: {
-                            message: '联系人  is required and cannot be empty'
+                            message: '页码  is required and cannot be empty'
                         }
                     }
                 },
-                tel: {
+                codeColor: {
                     validators: {
                         notEmpty: {
-                            message: '联系电话  is required and cannot be empty'
-                        }
-                    }
-                },
-                email: {
-                    validators: {
-                        notEmpty: {
-                            message: '邮件地址  is required and cannot be empty'
-                        }
-                    },
-                    regexp: {
-                        regexp: /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/,
-                        message: '邮件地址格式不正确'
-                    }
-                },
-                cooperationTime: {
-                    validators: {
-                        notEmpty: {
-                            message: '合作时间  is required and cannot be empty'
-                        }
-                    }
-                },
-                address: {
-                    validators: {
-                        notEmpty: {
-                            message: '地址  is required and cannot be empty'
+                            message: '颜色  is required and cannot be empty'
                         }
                     }
                 }

@@ -103,7 +103,7 @@ public class PantoneManageAction extends CommonAction<String, Object, PantoneInf
     public Map<String, Object> add(PantoneInfo pantoneInfo, HttpServletRequest request,
                                    HttpServletResponse repantoneonse) throws Exception {
         //设置ID
-        pantoneInfo.setPantoneId(CommonHelper.SINGLETONE.getFullSeqNo(TableNameConstant.Pantone_INFO, incrementNumber));
+        pantoneInfo.setPantoneId(CommonHelper.SINGLETONE.getFullSeqNo(TableNameConstant.PANTONE_INFO, incrementNumber));
         pantoneManageService.add(pantoneInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");

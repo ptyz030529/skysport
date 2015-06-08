@@ -15,7 +15,7 @@
 
                                     <div class="col-lg-7">
                                         <input type="text" class="form-control" id="colorNo" name="colorNo"
-                                               placeholder="供应商名称">
+                                               placeholder="色号">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -23,7 +23,7 @@
 
                                     <div class="col-lg-7">
                                         <input type="text" class="form-control" id="enName" name="enName"
-                                               placeholder="供应商类型">
+                                               placeholder="英文名称">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -31,7 +31,7 @@
 
                                     <div class="col-lg-7">
                                         <input type="text" class="form-control" id="zhName" name="zhName"
-                                               placeholder="联系人">
+                                               placeholder="中文名称">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -40,7 +40,7 @@
 
                                     <div class="col-lg-7">
                                         <input type="text" class="form-control" id="pageNo" name="pageNo"
-                                               placeholder="联系电话">
+                                               placeholder="页码">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -48,7 +48,7 @@
 
                                     <div class="col-lg-7">
                                         <input type="text" class="form-control" id="codeColor" name="codeColor"
-                                               placeholder="邮件地址">
+                                               placeholder="颜色">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -62,7 +62,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                <button type="button" class="btn btn-primary"   id="save">保存</button>
+                                <button type="button" class="btn btn-info"   id="save">保存</button>
                                 <button type="button" class="btn btn-info" id="resetBtn">重置</button>
                             </div>
                         </form>

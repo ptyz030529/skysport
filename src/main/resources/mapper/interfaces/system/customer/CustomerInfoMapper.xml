@@ -3,61 +3,62 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skysport.inerfaces.dao.CustomerManageDao">
-		<sql id="searchCustomerSql">
-		sp_id AS spId,
-		sp_name AS name,
-		sp_kind AS type,
-		sp_address AS address,
-		sp_contact AS contact,
-		sp_tel1 AS tel,
-		email AS email,
-		cooperation_time AS cooperationTime,
+	<sql id="searchInfoSql">
+		id AS id,
+		customer_id AS natrualkey,
+		email1 AS email,
+		email2 AS email2,
+		name AS name,
+		full_name AS fullName,
+		cor_time AS corTime,
+		address AS address,
+		contact AS contact,
+		tel AS tel,
+		phone AS phone,
+		skype_account AS skypeAccount,
+		del_flag AS delFlag,
+		update_time AS updateTime,
 		remark AS remark
 	</sql>
-	<select id="querySpInfo" resultType="SpInfo">
-			select
-				<include refid="searchCustomerSql"/>
-			FROM t_supplier
-			WHERE sp_id =#{spId}
-			limit 1
-
+	<select id="queryInfo" resultType="CustomerInfo">
+		select
+			<include refid="searchInfoSql"/>
+		FROM t_customer
+		WHERE customer_id =#{natrualkey}
+		limit 1
 	</select>
 
-
-	<select id="listSPInfosCounts" resultType="Integer">
+	<select id="listInfosCounts" resultType="Integer">
 		SELECT COUNT(*) FROM
-		t_supplier where del_flag=0
+		t_customer where del_flag=0
 	</select>
 
-	<select id="listFilteredSPInfosCounts" resultType="Integer">
-		SELECT COUNT(*) FROM t_supplier where del_flag=0
+	<select id="listFilteredInfosCounts" resultType="Integer">
+		SELECT COUNT(*) FROM t_customer where del_flag=0
 		<if test="searchValue !=null and searchValue != ''">
 			and (
-				sp_id like concat('%',#{searchValue},'%') or
-				sp_name	like concat('%',#{searchValue},'%') or
-				sp_kind like concat('%',#{searchValue},'%') or
-				sp_address like	concat('%',#{searchValue},'%') or
-				cooperation_time like concat('%',#{searchValue},'%') or
-				remark like concat('%',#{searchValue},'%')
+			name like concat('%',#{searchValue},'%') or
+			full_name	like concat('%',#{searchValue},'%') or
+			contact like concat('%',#{searchValue},'%') or
+			page_no like	concat('%',#{searchValue},'%') or
+			email1 like concat('%',#{searchValue},'%')
 			)
 		</if>
 
 	</select>
 
-	<select id="searchSP" resultType="SpInfo">
+	<select id="searchInfos" resultType="CustomerInfo">
 		SELECT
-		<include refid="searchCustomerSql" />
-		FROM t_supplier
+		<include refid="searchInfoSql" />
+		FROM t_customer
 		WHERE del_flag=0
 		<if test="searchValue!=null and searchValue != ''">
 			and (
-				sp_id like concat('%',#{searchValue},'%') or
-				sp_name	like concat('%',#{searchValue},'%') or
-				sp_kind like concat('%',#{searchValue},'%') or
-				sp_address like	concat('%',#{searchValue},'%') or
-				cooperation_time like concat('%',#{searchValue},'%') or
-				remark like concat('%',#{searchValue},'%')
-			)
+			name like concat('%',#{searchValue},'%') or
+			full_name	like concat('%',#{searchValue},'%') or
+			contact like concat('%',#{searchValue},'%') or
+			page_no like	concat('%',#{searchValue},'%') or
+			email1 like concat('%',#{searchValue},'%')
 		</if>
 		<if test="orderColumn!=null and orderColumn != ''">
 			ORDER BY ${orderColumn} ${orderDir}
@@ -66,58 +67,37 @@
 
 	</select>
 
-
-	<!--<insert id="updateSp">
-		<selectKey keyProperty="filterCounts" resultType="int" order="BEFORE">
-			select count(*) from t_supplier WHERE sp_id =#{spId}
-		</selectKey>
-		<choose>
-			<when test="filterCounts > 0 ">
-				update t_supplier 	set 
-					sp_name=#{name},
-					sp_kind=#{type},
-					sp_address=#{address},
-					sp_tel1=#{tel},
-					cooperation_time=#{cooperationTime},
-					remark=#{remark},
-					sp_contact=#{contact}
-				WHERE sp_id =#{spId}
-			</when>
-			<otherwise>
-				insert into	
-				t_supplier (sp_id,sp_name,sp_kind,sp_address,sp_tel1,sp_contact,cooperation_time,remark)
-				values (#{spId},#{name},#{type},#{address},#{tel},#{contact},#{cooperationTime},#{remark})
-			</otherwise>
-		</choose>
-	</insert>-->
-
-
-	<update id="updateSp">
-		update t_supplier 	set
-		sp_name=#{name},
-		sp_kind=#{type},
-		sp_address=#{address},
-		sp_tel1=#{tel},
-		email=#{email},
-		cooperation_time=#{cooperationTime},
-		remark=#{remark},
-		sp_contact=#{contact}
-		WHERE sp_id =#{spId}
+	<update id="updateInfo">
+		update t_customer 	set
+		email1=#{email},
+		email2=#{email2},
+		name=#{name},
+		full_name=#{fullName},
+		cor_time=#{corTime},
+		address=#{address},
+		contact=#{contact},
+		tel=#{tel},
+		phone=#{phone},
+		skype_account=#{skypeAccount},
+		remark=#{remark}
+		WHERE customer_id =#{natrualkey}
 	</update>
-
-
-
 
 	<insert id="add">
 		insert into
-		t_supplier (sp_id,sp_name,sp_kind,sp_address,sp_tel1,sp_contact,cooperation_time,remark)
-		values (#{spId},#{name},#{type},#{address},#{tel},#{contact},#{cooperationTime},#{remark})
+		t_customer (customer_id,email1,email2,name,full_name,cor_time,address,contact,tel,phone,skype_account,remark)
+		values (#{natrualkey},#{email},#{email2},#{name},#{fullName},#{corTime},#{address},#{contact},#{tel},#{phone},#{skypeAccount},#{remark})
 	</insert>
-	
+
 	<update id="del">
-		update t_supplier
+		update t_customer
 		set  del_flag=1
-		where sp_id =#{spId}
+		where customer_id =#{natrualkey}
 	</update>
+
+
+	<select id="queryCurrentSeqNo" resultType="String">
+		select case when  max(customer_id) is NULL then 0 else max(customer_id) end from t_customer
+	</select>
 
 </mapper>

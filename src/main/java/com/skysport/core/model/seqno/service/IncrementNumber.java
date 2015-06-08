@@ -8,5 +8,8 @@ public interface  IncrementNumber {
 
     public int reset();
 
+    int nextVal(String kind_name, String currentSeqNo);
+
+    int nextVal(String kind_name, int length, String currentSeqNo);
 }
 

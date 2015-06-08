@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.model.system.customer.service;
 
 import com.skysport.core.bean.DataTablesInfo;
-import com.skysport.inerfaces.bean.CutomerInfo;
+import com.skysport.inerfaces.bean.CustomerInfo;
 
 import java.util.List;
 
@@ -10,17 +10,37 @@ import java.util.List;
  */
 public interface ICustomerManageService {
 
-    int listCutomerInfosCounts();
+    /**
+     * @return
+     */
+    public int listInfosCounts();
 
-    int listFilteredCutomerInfosCounts(DataTablesInfo dataTablesInfo);
+    /**
+     * 过滤条件的记录数
+     *
+     * @param dataTablesInfo
+     * @return 符合查询条件的pantone记录数
+     */
+    public int listFilteredCustomerInfosCounts(DataTablesInfo dataTablesInfo);
 
-    List<CutomerInfo> searchCutomer(DataTablesInfo dataTablesInfo);
+    /**
+     * @param dataTablesInfo
+     * @return
+     */
+    public List<CustomerInfo> searchCustomerInfos(DataTablesInfo dataTablesInfo);
 
-    void edit(CutomerInfo cutomerInfo);
+    /**
+     * @param customerInfo
+     */
+    public void edit(CustomerInfo customerInfo);
 
-    void add(CutomerInfo cutomerInfo);
+    /**
+     * @param customerId
+     * @return 根据pantoneid找出供应商信息
+     */
+    public CustomerInfo queryCustomerInfoByCustomerId(String customerId);
 
-    CutomerInfo queryCutomerByCutomerId(String cutomerId);
+    public void add(CustomerInfo customerInfo);
 
-    void del(String cutomerId);
+    public void del(String customerId);
 }

@@ -1,17 +1,21 @@
 package com.skysport.inerfaces.action.system;
+
 import com.skysport.core.action.CommonAction;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.CutomerInfo;
+import com.skysport.inerfaces.bean.CustomerInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
 import com.skysport.inerfaces.helper.CommonHelper;
-import com.skysport.inerfaces.model.system.customer.service.ICustomerManageService;
+import com.skysport.inerfaces.model.system.common.service.ICommonService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,9 +27,14 @@ import java.util.Map;
  * 客户信息
  * Created by zhangjh on 2015/6/3.
  */
-public class CustomerAction extends CommonAction {
+@Scope("prototype")
+@Controller
+@RequestMapping("/system/customer")
+public class CustomerAction extends  CommonAction<String, Object, CustomerInfo>  {
+
     @Resource(name = "customerManageService")
-    private ICustomerManageService customerManageService;
+    private ICommonService customerManageService;
+
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;
 
@@ -38,7 +47,7 @@ public class CustomerAction extends CommonAction {
     @RequestMapping(value = "/list")
     @ResponseBody
     public ModelAndView search() throws Exception {
-        ModelAndView mav = new ModelAndView("/system/cutomer/list");
+        ModelAndView mav = new ModelAndView("/system/customer/list");
         return mav;
     }
 
@@ -56,16 +65,14 @@ public class CustomerAction extends CommonAction {
         // HashMap<String, String> paramMap = convertToMap(params);
         DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(request);
         // 总记录数
-        int recordsTotal = customerManageService.listCutomerInfosCounts();
+        int recordsTotal = customerManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
         if (!StringUtils.isBlank(dataTablesInfo.getSearchValue())) {
-            recordsFiltered = customerManageService
-                    .listFilteredCutomerInfosCounts(dataTablesInfo);
+            recordsFiltered = customerManageService.listFilteredInfosCounts(dataTablesInfo);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<CutomerInfo> cutomerInfos = customerManageService.searchCutomer(dataTablesInfo);
-        Map<String, Object> resultMap = buildSearchJsonMap(cutomerInfos,
-                recordsTotal, recordsFiltered, draw);
+        List<CustomerInfo> customerInfos = customerManageService.searchInfos(dataTablesInfo);
+        Map<String, Object> resultMap = buildSearchJsonMap(customerInfos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
     }
@@ -78,9 +85,9 @@ public class CustomerAction extends CommonAction {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(CutomerInfo cutomerInfo, HttpServletRequest request,
-                                    HttpServletResponse response) throws Exception {
-        customerManageService.edit(cutomerInfo);
+    public Map<String, Object> edit(CustomerInfo customerInfo, HttpServletRequest request,
+                                    HttpServletResponse respones) throws Exception {
+        customerManageService.edit(customerInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -96,11 +103,12 @@ public class CustomerAction extends CommonAction {
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(CutomerInfo cutomerInfo, HttpServletRequest request,
-                                   HttpServletResponse response) throws Exception {
+    public Map<String, Object> add(CustomerInfo customerInfo, HttpServletRequest request,
+                                   HttpServletResponse recustomeronse) throws Exception {
+        String currentNo =  customerManageService.queryCurrentSeqNo();
         //设置ID
-        cutomerInfo.setCutomerId(CommonHelper.SINGLETONE.getFullSeqNo(TableNameConstant.SP_INFO, incrementNumber));
-        customerManageService.add(cutomerInfo);
+        customerInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.CUSTOMER_INFO, currentNo,incrementNumber));
+        customerManageService.add(customerInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
@@ -109,30 +117,31 @@ public class CustomerAction extends CommonAction {
 
 
     /**
-     * @param cutomerId     供应商id
-     * @param request  请求信息
-     * @param response 返回信息
+     * @param natrualKey     供应商id
+     * @param request       请求信息
+     * @param recustomeronse 返回信息
      * @return 根据供应商id找出供应商详细信息
      */
-    @RequestMapping(value = "/cutomerinfo/{cutomerId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
-    public CutomerInfo querySpNo(@PathVariable String cutomerId, HttpServletRequest request, HttpServletResponse response) {
-        CutomerInfo cutomerInfo = customerManageService.queryCutomerByCutomerId(cutomerId);
-        return cutomerInfo;
+    public CustomerInfo queryCustomerNo(@PathVariable String natrualKey, HttpServletRequest request, HttpServletResponse recustomeronse) {
+        CustomerInfo customerInfo = (CustomerInfo) customerManageService.queryInfoByNatrualKey(natrualKey);
+        return customerInfo;
     }
 
     /**
-     * @param cutomerId
+     * @param natrualKey
      * @return
      */
-    @RequestMapping(value = "/del/{cutomerId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/del/{natrualKey}", method = RequestMethod.DELETE)
     @ResponseBody
-    public Map<String, Object> del(@PathVariable String cutomerId) {
-        customerManageService.del(cutomerId);
+    public Map<String, Object> del(@PathVariable String natrualKey) {
+        customerManageService.del(natrualKey);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "删除成功");
         return resultMap;
     }
+
 
 }

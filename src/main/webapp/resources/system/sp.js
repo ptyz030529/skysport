@@ -106,17 +106,6 @@ $(document).ready(function() {
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: {
-                spId: {
-                    validators: {
-                        notEmpty: {
-                            message: '供应商编号 is required and cannot be empty'
-                        },
-                        regexp: {
-                            regexp: /^[a-zA-Z0-9_]+$/,
-                            message: '供应商名称 can only consist of alphabetical, number and underscore'
-                        }
-                    }
-                },
                 name: {
                     validators: {
                         notEmpty: {

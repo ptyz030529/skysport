@@ -21,9 +21,18 @@ public enum CommonHelper {
      * @param incrementNumber IncrementNumber
      */
     public String getFullSeqNo(String kind_name, IncrementNumber incrementNumber) {
-        int currentSeqNo = incrementNumber.nextVal(kind_name);
+        int nextVal = incrementNumber.nextVal(kind_name);
         int length = Integer.parseInt(DictionaryInfo.SINGLETONE.getDictionaryValue(DictionaryTypeConstant.SEQ_NO_LENGTH, kind_name));
-        String fullSeqNo = IncrementNumberHelper.SINGLETONE.formatSeqNo(length, currentSeqNo);
+        String fullSeqNo = IncrementNumberHelper.SINGLETONE.formatSeqNo(length, nextVal);
         return fullSeqNo;
+    }
+
+    public String getNextSeqNo(String kind_name,String currentSeqNo, IncrementNumber incrementNumber){
+        String nextSeqNo = "";
+        int length = Integer.parseInt(DictionaryInfo.SINGLETONE.getDictionaryValue(DictionaryTypeConstant.SEQ_NO_LENGTH, kind_name));
+        int nextVal = incrementNumber.nextVal(kind_name,length,currentSeqNo);
+
+
+        return String.valueOf(nextVal);
     }
 }

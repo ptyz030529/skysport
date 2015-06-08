@@ -3,7 +3,7 @@ package com.skysport.inerfaces.bean;
 /**
  * Created by zhangjh on 2015/6/4.
  */
-public class PantoneInfo {
+public class PantoneInfo{
     private String id;
     private String pantoneId;
     private String colorNo;

@@ -1,54 +1,23 @@
 package com.skysport.inerfaces.model.system.customer.service.impl;
 
-import com.skysport.core.bean.DataTablesInfo;
-import com.skysport.inerfaces.bean.CutomerInfo;
+import com.skysport.inerfaces.bean.CustomerInfo;
 import com.skysport.inerfaces.dao.CustomerManageDao;
-import com.skysport.inerfaces.model.system.customer.service.ICustomerManageService;
+import com.skysport.inerfaces.model.system.common.service.impl.CommonServiceImpl;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
- *
  * Created by zhangjh on 2015/6/3.
  */
 @Service("customerManageService")
-public class CustomerManageServiceImpl implements ICustomerManageService {
+public class CustomerManageServiceImpl extends CommonServiceImpl<CustomerInfo> implements InitializingBean {
     @Resource(name = "customerManageDao")
-    private CustomerManageDao customerManageDao;
-    @Override
-    public int listCutomerInfosCounts() {
-        return customerManageDao.listCutomerInfosCounts();
-    }
+    private CustomerManageDao<CustomerInfo> customerManageDao;
 
     @Override
-    public int listFilteredCutomerInfosCounts(DataTablesInfo dataTablesInfo) {
-        return customerManageDao.listFilteredCutomerInfosCounts(dataTablesInfo);
-    }
-
-    @Override
-    public List<CutomerInfo> searchCutomer(DataTablesInfo dataTablesInfo) {
-        return customerManageDao.searchCutomer(dataTablesInfo);
-    }
-
-    @Override
-    public void edit(CutomerInfo cutomerInfo) {
-        customerManageDao.edit(cutomerInfo);
-    }
-
-    @Override
-    public void add(CutomerInfo cutomerInfo) {
-        customerManageDao.add(cutomerInfo);
-    }
-
-    @Override
-    public CutomerInfo queryCutomerByCutomerId(String cutomerId) {
-        return customerManageDao.queryCutomerByCutomerId(cutomerId);
-    }
-
-    @Override
-    public void del(String cutomerId) {
-        customerManageDao.del(cutomerId);
+    public void afterPropertiesSet() throws Exception {
+        commonDao = customerManageDao;
     }
 }

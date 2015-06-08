@@ -3,17 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.skysport.core.dao.TableKeyMapper">
-    <select id="nextVal"  parameterMap="paramMap" statementType="CALLABLE">
-      <!--  <![CDATA[
-            {call p_max_id(#{name,mode=IN,jdbcType=VARCHAR},#{@result,mode=OUT,jdbcType=INTEGER})}
-       ]]>-->
+    <select id="nextVal"  parameterMap="paramMap1" statementType="CALLABLE">
         call p_max_id(?,?)
     </select>
 
-    <parameterMap type="java.util.Map" id="paramMap">
+    <parameterMap type="java.util.Map" id="paramMap1">
         <parameter property="name" mode="IN" jdbcType="VARCHAR"/>
         <parameter property="result" mode="OUT" jdbcType="INTEGER"/>
     </parameterMap>
 
+    <select id="nextVal2"  parameterMap="paramMap2" statementType="CALLABLE">
+        call p_next_id(?,?,?,?)
+    </select>
+
+    <parameterMap type="java.util.Map" id="paramMap2">
+        <parameter property="kind_name" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="length" mode="IN" jdbcType="INTEGER"/>
+        <parameter property="currentSeqNo" mode="IN" jdbcType="VARCHAR"/>
+        <parameter property="result" mode="OUT" jdbcType="INTEGER"/>
+    </parameterMap>
 
 </mapper>
