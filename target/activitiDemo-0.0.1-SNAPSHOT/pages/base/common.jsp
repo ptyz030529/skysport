@@ -20,3 +20,10 @@
 <script type="text/javascript" src="<%=path%>/resources/js/util.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/handlebars-v3.0.1.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" >
+    $('.selectpicker').selectpicker();
+//    $('.selectpicker').selectpicker({
+//        style: 'btn-info',
+//        size: 4
+//    });
+ </script>
