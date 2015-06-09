@@ -1,5 +1,5 @@
 
-//var _pantoneId="";
+
 var pantoneId="";
 /**
  * 查询信息
@@ -96,6 +96,10 @@ $(document).ready(function() {
         }
     });
 
+    //关闭model则，将pantoneId置为空
+    $('#myModal').on('hidden.bs.modal', function (e) {
+        pantoneId='';
+    });
 
     //启动表单校验监听
     $('#defaultForm').bootstrapValidator({

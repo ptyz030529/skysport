@@ -37,12 +37,10 @@
                 <tbody></tbody>
                 <!-- tbody是必须的 -->
             </table>
-
-
-
         </div>
         <!-- Button trigger modal -->
     </div>
+
         <%@ include file="edit.jsp"%>
 </div>
 <jsp:include page="../../base/footCommon.jsp"></jsp:include>
@@ -52,8 +50,9 @@
     <button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
     {{/each}}
 </script>
-<script type="text/javascript" src="<%=path%>/resources/system/customer/customer-list.js"></script>
-
+<script type="text/javascript" src="<%=path%>/resources/system/customer/customer2.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/system/list.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/system/edit.js"></script>
 </body>
 
 

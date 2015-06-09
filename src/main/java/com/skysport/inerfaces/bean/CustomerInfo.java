@@ -1,8 +1,8 @@
 package com.skysport.inerfaces.bean;
-
 import com.skysport.core.bean.CommonBean;
 
 /**
+ * 客户信息
  * Created by zhangjh on 2015/6/3.
  */
 public class CustomerInfo extends CommonBean{
@@ -11,7 +11,6 @@ public class CustomerInfo extends CommonBean{
     private String customerId;
     private String email;
     private String email2;
-    private String name;
     private String fullName;
     private String corTime;
     private String address;
@@ -61,14 +60,6 @@ public class CustomerInfo extends CommonBean{
 
     public void setEmail2(String email2) {
         this.email2 = email2;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getFullName() {

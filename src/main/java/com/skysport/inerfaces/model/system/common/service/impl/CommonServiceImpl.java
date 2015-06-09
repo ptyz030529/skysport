@@ -1,5 +1,6 @@
 package com.skysport.inerfaces.model.system.common.service.impl;
 
+import com.skysport.core.bean.CommonBean;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.inerfaces.dao.CommonDao;
 import com.skysport.inerfaces.model.system.common.service.ICommonService;
@@ -11,6 +12,7 @@ import java.util.List;
  */
 public class CommonServiceImpl<T> implements ICommonService<T> {
     public CommonDao<T> commonDao;
+
     @Override
     public int listInfosCounts() {
         return commonDao.listInfosCounts();
@@ -49,5 +51,10 @@ public class CommonServiceImpl<T> implements ICommonService<T> {
     @Override
     public String queryCurrentSeqNo() {
         return commonDao.queryCurrentSeqNo();
+    }
+
+    @Override
+    public List<CommonBean> querySelectList() {
+        return commonDao.querySelectList();
     }
 }

@@ -1,5 +1,6 @@
 package com.skysport.inerfaces.model.system.common.service;
 
+import com.skysport.core.bean.CommonBean;
 import com.skysport.core.bean.DataTablesInfo;
 
 import java.util.List;
@@ -44,4 +45,6 @@ public interface ICommonService<T> {
     public void del(String natrualkey);
 
     String queryCurrentSeqNo();
+
+    List<CommonBean> querySelectList();
 }

@@ -9,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Dictionary" type="com.skysport.core.bean.Dictionary" />
 		<typeAlias alias="PantoneInfo" type="com.skysport.inerfaces.bean.PantoneInfo" />
 		<typeAlias alias="CustomerInfo" type="com.skysport.inerfaces.bean.CustomerInfo" />
+		<typeAlias alias="CommonBean" type="com.skysport.core.bean.CommonBean"/>
 	</typeAliases>
 
 	<!-- 映射map -->

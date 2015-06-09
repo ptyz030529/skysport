@@ -88,4 +88,3 @@
                     </div>
                 </div>
             </div>
-<script type="text/javascript" src="<%=path%>/resources/system/customer/customer.js"/>

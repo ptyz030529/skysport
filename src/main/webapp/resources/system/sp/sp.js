@@ -94,7 +94,10 @@ $(document).ready(function() {
             $('#defaultForm').data('bootstrapValidator').resetForm(true);
         }
     });
-
+    //关闭model则，将pantoneId置为空
+    $('#myModal').on('hidden.bs.modal', function (e) {
+        spId='';
+    });
 
     //启动表单校验监听
     $('#defaultForm').bootstrapValidator({

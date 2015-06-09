@@ -1,5 +1,6 @@
 package com.skysport.inerfaces.dao;
 
+import com.skysport.core.bean.CommonBean;
 import com.skysport.core.bean.DataTablesInfo;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface CommonDao<T> {
     public void del(String natrualKey);
 
     public String queryCurrentSeqNo();
+
+    List<CommonBean> querySelectList();
 }

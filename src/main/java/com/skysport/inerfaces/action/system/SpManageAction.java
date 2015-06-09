@@ -1,6 +1,7 @@
 package com.skysport.inerfaces.action.system;
 import com.skysport.core.action.CommonAction;
 import com.skysport.core.bean.DataTablesInfo;
+import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.SpInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -60,7 +61,7 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
     public Map<String, Object> search(HttpServletRequest request)
             throws Exception {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.SP_TABLE_COLUMN,request);
         // 总记录数
         int recordsTotal = spManageService.listSPInfosCounts();
         int recordsFiltered = recordsTotal;

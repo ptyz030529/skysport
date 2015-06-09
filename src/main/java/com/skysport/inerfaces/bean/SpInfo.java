@@ -5,9 +5,7 @@ import org.springframework.stereotype.Component;
 import com.skysport.core.bean.PageInfo;
 
 /**
- * 
- * @author zhangjh
- *
+ * 供应商信息
  */
 @Component("spInfo")
 public class SpInfo extends PageInfo {

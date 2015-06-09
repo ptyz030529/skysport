@@ -1,6 +1,7 @@
 package com.skysport.inerfaces.action.system;
 import com.skysport.core.action.CommonAction;
 import com.skysport.core.bean.DataTablesInfo;
+import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.PantoneInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -60,7 +61,7 @@ public class PantoneManageAction extends CommonAction<String, Object, PantoneInf
     public Map<String, Object> search(HttpServletRequest request)
             throws Exception {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.PANTONE_TABLE_COLUMN,request);
         // 总记录数
         int recordsTotal = pantoneManageService.listPantoneInfosCounts();
         int recordsFiltered = recordsTotal;

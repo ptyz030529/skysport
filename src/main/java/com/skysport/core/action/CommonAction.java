@@ -1,7 +1,7 @@
 package com.skysport.core.action;
 import com.skysport.core.bean.DataTablesInfo;
-import com.skysport.core.constant.CommonConstant;
 import com.skysport.core.instance.DictionaryInfo;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
@@ -39,14 +39,14 @@ public class CommonAction<K, V, T> {
 	 *            HttpServletRequest对象
 	 * @return
 	 */
-	protected DataTablesInfo convertToDataTableQrInfo(HttpServletRequest request) {
+	protected DataTablesInfo convertToDataTableQrInfo(String type,HttpServletRequest request) {
 		DataTablesInfo dataTablesInfo = new DataTablesInfo();
 		int start = Integer.parseInt(request.getParameter("start"));
 		int length = Integer.parseInt(request.getParameter("length"));
 		int draw = Integer.parseInt(request.getParameter("draw"));
 		String orderColumn = request.getParameter("order[0][column]");
 		String pageColumnName = request.getParameter("columns[" + orderColumn + "][data]");
-		String tableColumnName = getRealTableColumnName(pageColumnName);
+		String tableColumnName = getRealTableColumnName(type,pageColumnName);
 		String orderDir = request.getParameter("order[0][dir]");
 		String searchValue = request.getParameter("search[value]");
 
@@ -61,12 +61,12 @@ public class CommonAction<K, V, T> {
 	}
 
 	/**
-	 * 
-	 * @param pageColumnName
-	 * @return
+	 * @param type 数据字段的type类型
+	 * @param pageColumnName 请求中的参数名
+	 * @return 数据库的字段名
 	 */
-	private String getRealTableColumnName(String pageColumnName) {
-		String tableColumnName = DictionaryInfo.SINGLETONE.getDictionaryValue(CommonConstant.SP_TABLE, pageColumnName);
+	private String getRealTableColumnName(String type,String pageColumnName) {
+		String tableColumnName = DictionaryInfo.SINGLETONE.getDictionaryValue(type, pageColumnName);
 		return tableColumnName;
 	}
 

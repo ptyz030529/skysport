@@ -1,6 +1,7 @@
 package com.skysport.inerfaces.bean;
 
 /**
+ * Pantone色卡
  * Created by zhangjh on 2015/6/4.
  */
 public class PantoneInfo{
