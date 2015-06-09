@@ -53,7 +53,7 @@
     {{/each}}
 </script>
 
-<script type="text/javascript" src="<%=path%>/resources/system/sp-list.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/system/sp/sp-list.js"></script>
 
 </body>
 

@@ -86,4 +86,4 @@
                     </div>
                 </div>
             </div>
-<script type="text/javascript" src="<%=path%>/resources/system/sp.js"/>
+<script type="text/javascript" src="<%=path%>/resources/system/sp/sp.js"/>
