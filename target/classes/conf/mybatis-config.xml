@@ -5,11 +5,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<!-- 命名空间 -->
 	<typeAliases>
+		<typeAlias alias="CommonBean" type="com.skysport.core.bean.CommonBean"/>
 		<typeAlias alias="SpInfo" 	  type="com.skysport.inerfaces.bean.SpInfo" />
 		<typeAlias alias="Dictionary" type="com.skysport.core.bean.Dictionary" />
 		<typeAlias alias="PantoneInfo" type="com.skysport.inerfaces.bean.PantoneInfo" />
 		<typeAlias alias="CustomerInfo" type="com.skysport.inerfaces.bean.CustomerInfo" />
-		<typeAlias alias="CommonBean" type="com.skysport.core.bean.CommonBean"/>
+		<typeAlias alias="AreaInfo" type="com.skysport.inerfaces.bean.AreaInfo" />
 	</typeAliases>
 
 	<!-- 映射map -->

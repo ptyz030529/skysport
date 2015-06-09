@@ -1225,7 +1225,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="javascript:onclick('system/sector/list')">
+											<a href="javascript:onclick('system/area/list')">
 												区域信息
 											</a>
 										</li>

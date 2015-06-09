@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import java.util.List;
 
 /**
- * Created by Administrator on 2015/6/1.
+ * Created by zhangjh on 2015/6/1.
  */
 public enum DictionaryHelper {
     /**

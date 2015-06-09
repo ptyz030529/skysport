@@ -11,6 +11,7 @@ public interface DictionaryTypeConstant {
     public static final String SP_TABLE_COLUMN = "sp_table_column";
     public static final String PANTONE_TABLE_COLUMN = "pantone_table_column";
     public static final String CUSTOMER_TABLE_COLUMN = "customer_table_column";
+    public static final String AREA_TABLE_COLULMN ="area_table_column";
     public static final String SEQ_NO_LENGTH = "seqno_length";
 
 }
