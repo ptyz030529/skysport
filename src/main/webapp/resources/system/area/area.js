@@ -30,16 +30,7 @@ var fieldsDesc = function(){
                     message: '区域名称  is required and cannot be empty'
                 }
             }
-        },
-        customerName: {
-            validators: {
-                notEmpty: {
-                    message: '客户名称  is required and cannot be empty'
-                }
-            }
         }
     }
     return fieldsDesc;
 }
-
-

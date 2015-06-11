@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<META http-equiv=Content-Type content="text/html; charset=utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrap.min.css"	 />
+<link rel="stylesheet" href="../../../resources/css/dataTables.bootstrap.css"	 />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/jquery-ui-1.10.3.custom.min.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/chosen.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/datepicker.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrap-timepicker.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/colorpicker.css" />
+<link rel="stylesheet" type="text/css" href="../../../resources/css/bootstrapValidator.min.css"/>
+<link rel="stylesheet" type="text/css" href="../../../resources/css/select2.css"/>
+<script type="text/javascript" src='../../../resources/js/jquery-2.1.3.min.js'></script>
+<script type="text/javascript" src='../../../resources/js/bootbox.min.js'></script>
+<script type="text/javascript" src="../../../resources/js/ace-extra.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/select2.js"></script>
+<script type="text/javascript" src="../../../resources/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../../resources/js/date/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/util.js"></script>
+<script type="text/javascript" src="../../../resources/js/handlebars-v3.0.1.js"></script>	
+<script type="text/javascript" src="../../../resources/js/typeahead-bs2.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/jquery.easy-pie-chart.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/jquery.sparkline.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/flot/jquery.flot.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/flot/jquery.flot.pie.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/flot/jquery.flot.resize.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/ace-elements.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/ace.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/fuelux/fuelux.spinner.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/date-time/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/date-time/bootstrap-timepicker.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/date/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/date-time/moment.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/date-time/daterangepicker.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/bootstrap-colorpicker.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/jquery.knob.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/jquery.autosize.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/jquery.inputlimiter.1.3.1.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/jquery.maskedinput.min.js"></script>
+<script type="text/javascript" src="../../../resources/js/bootstrap-tag.min.js"></script>
+	</head>
+<body>
+
+<label class="col-xs-3 control-label">所属客户</label>
+<div class="col-xs-7">
+    <select class="js-data-example-ajax form-group col-xs-12">
+    </select>
+</div>
+</body>
+	
+</html>
+
+
+
+
+<script  type="text/javascript">
+var formatRepo =function (repo){
+    if (repo.loading) return repo.text;
+    var markup =  repo.name +'-'+repo.natrualkey;
+    return markup;
+}
+
+var formatRepoSelection =function (repo){
+    return     repo.name||repo.natrualkey;
+}
+
+$(function () {
+   $('.js-data-example-ajax').select2({
+        placeholder: 'Station not selected',
+        searchInputPlaceholder: 'Please, select station',
+        maximumSelectionLength: 1,
+        minimumInputLength: 1,
+        allowClear: true,
+        ajax: {
+            url: '../../../system/customer/select',
+            method: 'GET',
+            dataType: 'json',
+            quietMillis: 500,
+            data: function(params) {
+                return {
+                    name: params.term,
+                    limit: 10
+                }
+            },
+            processResults: function(_data) {
+                var data = _data.items;
+                $.each(data, function(index, value) {
+                    value.id = value.natrualkey;
+                    value.text = value.name;
+                });
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        templateResult: function(data) {
+            return data.name;
+        },
+        templateSelection: function(data) {
+            return data.name;
+        },
+        escapeMarkup: function(m) {return m;}
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+</script>

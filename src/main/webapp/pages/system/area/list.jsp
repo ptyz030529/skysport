@@ -15,7 +15,7 @@
     <div class="page-header">
         <h1>
             系统管理
-            <small><i class="icon-double-angle-right"></i> 客户信息</small>
+            <small><i class="icon-double-angle-right"></i> 区域信息</small>
         </h1>
     </div>
     <!-- PAGE CONTENT BEGINS -->
@@ -44,23 +44,15 @@
 <!--定义操作列按钮模板-->
 <script id="tpl" type="text/x-handlebars-template">
     {{#each func}}
-    <button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
-    {{/each}}
+<button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
+{{/each}}
 </script>
 <script type="text/javascript" src="<%=path%>/resources/system/area/area.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/system/list.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/system/edit.js"></script>
 <script type="text/javascript" >
 
-    $(function () {
-        sendRestFulAjax("<%=path%>/system/customer/select",null,'GET','json',_doSelectSuccess_info);
-    })
 
-    var _doSelectSuccess_info = function(data){
-        $(data).each(function () {
-            $("#customerId").append($("<option/>").text(this.name).attr("value",this.natrualkey));
-        });
-    }
 </script>
 </body>
 

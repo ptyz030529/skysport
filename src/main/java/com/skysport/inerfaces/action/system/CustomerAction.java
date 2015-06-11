@@ -147,9 +147,12 @@ public class CustomerAction extends  CommonAction<String, Object, CustomerInfo> 
 
     @RequestMapping(value = "/select", method = RequestMethod.GET)
     @ResponseBody
-    public List<CommonBean> querySelectList(){
+    public Map<String,Object> querySelectList(){
         List<CommonBean> commonBeans =     customerManageService.querySelectList();
-        return commonBeans;
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        resultMap.put("items",commonBeans);
+        resultMap.put("total_count",commonBeans.size());
+        return resultMap;
     }
 
 }
