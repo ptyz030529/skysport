@@ -31,7 +31,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/area")
-public class AreaAction  extends CommonAction<String, Object, AreaInfo> {
+public class AreaAction extends CommonAction<String, Object, AreaInfo> {
     @Resource(name = "areaManageService")
     private ICommonService areaManageService;
 
@@ -63,7 +63,7 @@ public class AreaAction  extends CommonAction<String, Object, AreaInfo> {
     public Map<String, Object> search(HttpServletRequest request)
             throws Exception {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.AREA_TABLE_COLULMN,request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.AREA_TABLE_COLULMN, request);
         // 总记录数
         int recordsTotal = areaManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -105,9 +105,9 @@ public class AreaAction  extends CommonAction<String, Object, AreaInfo> {
     @ResponseBody
     public Map<String, Object> add(AreaInfo areaInfo, HttpServletRequest request,
                                    HttpServletResponse reareaonse) throws Exception {
-        String currentNo =  areaManageService.queryCurrentSeqNo();
+        String currentNo = areaManageService.queryCurrentSeqNo();
         //设置ID
-        areaInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.CUSTOMER_INFO, currentNo,incrementNumber));
+        areaInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.CUSTOMER_INFO, currentNo, incrementNumber));
         areaManageService.add(areaInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -117,8 +117,8 @@ public class AreaAction  extends CommonAction<String, Object, AreaInfo> {
 
 
     /**
-     * @param natrualKey     供应商id
-     * @param request       请求信息
+     * @param natrualKey 供应商id
+     * @param request    请求信息
      * @param reareaonse 返回信息
      * @return 根据供应商id找出供应商详细信息
      */
@@ -145,10 +145,14 @@ public class AreaAction  extends CommonAction<String, Object, AreaInfo> {
 
     @RequestMapping(value = "/select", method = RequestMethod.GET)
     @ResponseBody
-    public List<CommonBean> querySelectList(){
-        List<CommonBean> commonBeans =     areaManageService.querySelectList();
-        return commonBeans;
+    public Map<String, Object> querySelectList(HttpServletRequest request) {
+        String name = request.getParameter("name");
+        List<CommonBean> commonBeans = areaManageService.querySelectList(name);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("items", commonBeans);
+        resultMap.put("total_count", commonBeans.size());
+        return resultMap;
     }
 
-    
+
 }

@@ -100,13 +100,13 @@
 		select case when  max(customer_id) is NULL then 0 else max(customer_id) end from t_customer
 	</select>
 
-	<!--客户信息下拉列表-->
+	<!--信息下拉列表-->
 	<select id="querySelectList" resultType="CommonBean">
 		select
 			customer_id AS natrualkey,
 			name AS name
 		from t_customer
-		where del_flag=0
+		where del_flag=0 and upper(name) like concat('%',#{name},'%')
 	</select>
 
 </mapper>

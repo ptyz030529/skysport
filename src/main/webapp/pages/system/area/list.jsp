@@ -50,10 +50,6 @@
 <script type="text/javascript" src="<%=path%>/resources/system/area/area.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/system/list.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/system/edit.js"></script>
-<script type="text/javascript" >
-
-
-</script>
 </body>
 
 

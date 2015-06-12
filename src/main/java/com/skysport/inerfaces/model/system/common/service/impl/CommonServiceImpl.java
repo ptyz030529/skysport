@@ -4,6 +4,7 @@ import com.skysport.core.bean.CommonBean;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.inerfaces.dao.CommonDao;
 import com.skysport.inerfaces.model.system.common.service.ICommonService;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class CommonServiceImpl<T> implements ICommonService<T> {
     }
 
     @Override
-    public List<CommonBean> querySelectList() {
-        return commonDao.querySelectList();
+    public List<CommonBean> querySelectList(@Param(value = "name") String name) {
+        return commonDao.querySelectList(name);
     }
 }

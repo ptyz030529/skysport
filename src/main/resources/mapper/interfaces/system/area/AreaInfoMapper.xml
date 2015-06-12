@@ -87,9 +87,9 @@
 	<select id="querySelectList" resultType="CommonBean">
 		select
 			area_id AS natrualkey,
-			name AS name
+			area_name AS name
 		from t_area
-		where del_flag=0
+		where del_flag=0 and name like concat('%',#{name},'%')
 	</select>
 
 </mapper>

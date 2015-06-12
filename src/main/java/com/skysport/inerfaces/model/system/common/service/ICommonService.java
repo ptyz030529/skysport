@@ -46,5 +46,5 @@ public interface ICommonService<T> {
 
     String queryCurrentSeqNo();
 
-    List<CommonBean> querySelectList();
+    List<CommonBean> querySelectList(String name);
 }

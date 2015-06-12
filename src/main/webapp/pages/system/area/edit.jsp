@@ -19,8 +19,7 @@
                     <div class="form-group">
                         <label class="col-xs-3 control-label">所属客户</label>
                         <div class="col-xs-7">
-                            <select class="js-data-example-ajax form-group col-xs-12">
-                            </select>
+                            <select class="js-data-example-ajax form-group col-xs-12" name="customerId"></select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -48,11 +47,9 @@
     }
 
     var formatRepoSelection =function (repo){
-        return     repo.name||repo.natrualkey;
+        return     repo.text||repo.id;
     }
-    var _id = function(data){
-        return data.natrualkey;
-    }
+
     $(function () {
         $('#myModal').on('shown.bs.modal', function (e) {
             $('.js-data-example-ajax').select2({
@@ -84,15 +81,10 @@
                     },
                     cache: true
                 },
-                templateResult: function(data) {
-                    return data.name;
-                },
-                templateSelection: function(data) {
-                    return data.name;
-                },
+                formatRepo: formatRepo,
+                templateSelection: formatRepoSelection,
                 escapeMarkup: function(m) {return m;}
             });
         });
     })
-
 </script>

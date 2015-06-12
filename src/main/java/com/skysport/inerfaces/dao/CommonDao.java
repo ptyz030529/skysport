@@ -26,5 +26,5 @@ public interface CommonDao<T> {
 
     public String queryCurrentSeqNo();
 
-    List<CommonBean> querySelectList();
+    List<CommonBean> querySelectList(String name);
 }
