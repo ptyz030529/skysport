@@ -11,6 +11,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="PantoneInfo" type="com.skysport.inerfaces.bean.PantoneInfo" />
 		<typeAlias alias="CustomerInfo" type="com.skysport.inerfaces.bean.CustomerInfo" />
 		<typeAlias alias="AreaInfo" type="com.skysport.inerfaces.bean.AreaInfo" />
+		<typeAlias alias="SeriesInfo" type="com.skysport.inerfaces.bean.SeriesInfo" />
+
 	</typeAliases>
 
 	<!-- 映射map -->

@@ -1230,7 +1230,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="javascript:onclick('system/customer/list')">
+											<a href="javascript:onclick('system/series/list')">
 												系列信息
 											</a>
 										</li>
