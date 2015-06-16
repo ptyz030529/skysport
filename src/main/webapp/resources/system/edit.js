@@ -24,6 +24,11 @@ var _doSuccess_info= function(_data){
         }).val(data[key]);
     });
 
+    //初始化下拉框
+    if( $.isFunction(window.initSelect) ){
+        initSelect(data);
+    }
+
     $("#myModal").modal("show");
 //        var myTemplate = Handlebars.compile($("#info-template").html());
 //        $('#defaultForm').html(myTemplate(data));
@@ -79,12 +84,23 @@ function _doSuccess_edit(data){
     //$('<div class="modal-backdrop"></div>').appendTo(document.body);
     table.ajax.reload();
     console.log( data.code);
-    natrualkey=""; //将修改项的spid置为空
+    natrualkey=""; //将修改项的natrualkey置为空
 }
 
-
+/**
+ * 重置表单
+ */
 $('#resetBtn').click(function() {
+    //重置添加的表单
     $('#defaultForm').data('bootstrapValidator').resetForm(true);
+    //重置select2
+    //初始化下拉框
+    if( $.isFunction(window.resetSelect) ){
+        window.resetSelect();
+    }
+    //清空remark
+    $('#remark').empty();
+
 });
 
 
@@ -95,7 +111,12 @@ $(document).ready(function() {
             $('#defaultForm').data('bootstrapValidator').resetForm(true);
         }
     });
-
+    //modal显示式，重置Form
+    $('#myModal').on('hidden.bs.modal', function (e) {
+        if (natrualkey ==''){
+            $('#defaultForm').data('bootstrapValidator').resetForm(true);
+        }
+    });
 
     //启动表单校验监听
     $('#defaultForm').bootstrapValidator({
@@ -106,7 +127,7 @@ $(document).ready(function() {
                 invalid: 'glyphicon glyphicon-remove',
                 validating: 'glyphicon glyphicon-refresh'
             },
-            fields: fieldsDesc
+            fields: fieldsDesc()
         }
     );
 })
@@ -131,4 +152,3 @@ $(document).ready(function() {
         edit(url,data,type,"");
 
     });
-

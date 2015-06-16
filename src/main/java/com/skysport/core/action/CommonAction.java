@@ -1,7 +1,6 @@
 package com.skysport.core.action;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.instance.DictionaryInfo;
-
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
@@ -17,11 +16,14 @@ import java.util.Map;
 public class CommonAction<K, V, T> {
 
 	/**
-	 * 
-	 * 此方法描述的是：返回datatables需要的数据
-	 * 
-	 * @author: zhangjh
-	 * @version: 2015年4月30日 下午4:34:11
+	 * 返回datatables需要的数据
+	 * @param results
+	 * @param recordsTotal
+	 * @param recordsFiltered
+	 * @param draw
+	 * @param <K>
+	 * @param <V>
+	 * @return
 	 */
 	public <K, V> Map<K, V> buildSearchJsonMap(List<T> results, int recordsTotal, int recordsFiltered, int draw) {
 		Map<String, Object> info = new HashMap<String, Object>();
@@ -34,9 +36,8 @@ public class CommonAction<K, V, T> {
 
 	/**
 	 * 将页面的分页信息传到后台
-	 * 
+	 * @param type
 	 * @param request
-	 *            HttpServletRequest对象
 	 * @return
 	 */
 	protected DataTablesInfo convertToDataTableQrInfo(String type,HttpServletRequest request) {

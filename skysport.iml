@@ -28,6 +28,7 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="commonJar" level="application" />
     <orderEntry type="library" name="Maven: org.activiti:activiti-engine:5.17.0" level="project" />
     <orderEntry type="library" name="Maven: org.activiti:activiti-bpmn-converter:5.17.0" level="project" />
     <orderEntry type="library" name="Maven: org.activiti:activiti-bpmn-model:5.17.0" level="project" />

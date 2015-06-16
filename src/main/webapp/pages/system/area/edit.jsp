@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label class="col-xs-3 control-label">所属客户</label>
                         <div class="col-xs-7">
-                            <select class="js-data-example-ajax form-group col-xs-12" name="customerId"></select>
+                            <select class="js-data-example-ajax form-group col-xs-12" name="customerId" id="customerId"></select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -86,5 +86,15 @@
                 escapeMarkup: function(m) {return m;}
             });
         });
+
+        $('#resetBtn').click(function() {
+            $('.js-data-example-ajax').select2({
+                allowClear: true,
+                placeholder: 'Customer not selected',
+                data: {}
+            });
+        });
+
+
     })
 </script>
