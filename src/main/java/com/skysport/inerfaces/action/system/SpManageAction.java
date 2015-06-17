@@ -1,5 +1,6 @@
 package com.skysport.inerfaces.action.system;
-import com.skysport.core.action.CommonAction;
+
+import com.skysport.core.action.TableListQueryAction;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
@@ -15,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 /**
  * 此类描述的是：运营商管理
  *
@@ -30,7 +33,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/sp")
-public class SpManageAction extends CommonAction<String, Object, SpInfo> {
+public class SpManageAction extends TableListQueryAction<String, Object, SpInfo> {
     @Resource(name = "spManageService")
     private ISpManageService spManageService;
     @Resource(name = "incrementNumber")
@@ -61,7 +64,7 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
     public Map<String, Object> search(HttpServletRequest request)
             throws Exception {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.SP_TABLE_COLUMN,request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.SP_TABLE_COLUMN, request);
         // 总记录数
         int recordsTotal = spManageService.listSPInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -84,7 +87,7 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit( SpInfo spInfo, HttpServletRequest request,
+    public Map<String, Object> edit(SpInfo spInfo, HttpServletRequest request,
                                     HttpServletResponse response) throws Exception {
         spManageService.edit(spInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -105,7 +108,7 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
     public Map<String, Object> add(SpInfo spInfo, HttpServletRequest request,
                                    HttpServletResponse response) throws Exception {
         //设置ID
-        spInfo.setSpId(CommonHelper.SINGLETONE.getFullSeqNo(TableNameConstant.SP_INFO,incrementNumber));
+        spInfo.setSpId(CommonHelper.SINGLETONE.getFullSeqNo(TableNameConstant.SP_INFO, incrementNumber));
         spManageService.add(spInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -133,7 +136,7 @@ public class SpManageAction extends CommonAction<String, Object, SpInfo> {
      */
     @RequestMapping(value = "/del/{spId}", method = RequestMethod.DELETE)
     @ResponseBody
-    public Map<String, Object>  del(@PathVariable String spId) {
+    public Map<String, Object> del(@PathVariable String spId) {
         spManageService.del(spId);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");

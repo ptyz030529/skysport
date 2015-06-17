@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system;
 
-import com.skysport.core.action.CommonAction;
+import com.skysport.core.action.TableListQueryAction;
 import com.skysport.core.bean.CommonBean;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
@@ -32,7 +32,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/customer")
-public class CustomerAction extends  CommonAction<String, Object, CustomerInfo>  {
+public class CustomerAction extends TableListQueryAction<String, Object, CustomerInfo> {
 
     @Resource(name = "customerManageService")
     private ICommonService customerManageService;
@@ -41,8 +41,7 @@ public class CustomerAction extends  CommonAction<String, Object, CustomerInfo> 
     private IncrementNumber incrementNumber;
 
     /**
-     * 此方法描述的是：展示list页面	 *
-     *
+     * 此方法描述的是：展示list页面
      * @author: zhangjh
      * @version: 2015年4月29日 下午5:34:53
      */
@@ -55,7 +54,7 @@ public class CustomerAction extends  CommonAction<String, Object, CustomerInfo> 
 
 
     /**
-     * 此方法描述的是：
+     * 此方法描述的是：查询数据集
      *
      * @author: zhangjh
      * @version: 2015年4月29日 下午5:34:53
@@ -80,7 +79,7 @@ public class CustomerAction extends  CommonAction<String, Object, CustomerInfo> 
     }
 
     /**
-     * 此方法描述的是：
+     * 此方法描述的是：编辑信息
      *
      * @author: zhangjh
      * @version: 2015年4月29日 下午5:35:09
@@ -98,15 +97,14 @@ public class CustomerAction extends  CommonAction<String, Object, CustomerInfo> 
 
 
     /**
-     * 此方法描述的是：
+     * 此方法描述的是：新增
      *
      * @author: zhangjh
      * @version: 2015年4月29日 下午5:35:09
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(CustomerInfo customerInfo, HttpServletRequest request,
-                                   HttpServletResponse recustomeronse) throws Exception {
+    public Map<String, Object> add(CustomerInfo customerInfo) throws Exception {
         String currentNo =  customerManageService.queryCurrentSeqNo();
         //设置ID
         customerInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.CUSTOMER_INFO, currentNo,incrementNumber));
@@ -119,21 +117,21 @@ public class CustomerAction extends  CommonAction<String, Object, CustomerInfo> 
 
 
     /**
-     * @param natrualKey     供应商id
-     * @param request       请求信息
-     * @param recustomeronse 返回信息
+     *
+     * @param natrualKey  供应商id
      * @return 根据供应商id找出供应商详细信息
      */
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
-    public CustomerInfo queryCustomerNo(@PathVariable String natrualKey, HttpServletRequest request, HttpServletResponse recustomeronse) {
+    public CustomerInfo queryCustomerNo(@PathVariable String natrualKey) {
         CustomerInfo customerInfo = (CustomerInfo) customerManageService.queryInfoByNatrualKey(natrualKey);
         return customerInfo;
     }
 
     /**
+     *
      * @param natrualKey
-     * @return
+     * @return 删除
      */
     @RequestMapping(value = "/del/{natrualKey}", method = RequestMethod.DELETE)
     @ResponseBody
@@ -145,6 +143,11 @@ public class CustomerAction extends  CommonAction<String, Object, CustomerInfo> 
         return resultMap;
     }
 
+    /**
+     *
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/select", method = RequestMethod.GET)
     @ResponseBody
     public Map<String,Object> querySelectList(HttpServletRequest request){

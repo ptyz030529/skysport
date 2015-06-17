@@ -55,10 +55,11 @@
 		<if test="searchValue!=null and searchValue != ''">
 			and (
 			name like concat('%',#{searchValue},'%') or
-			full_name	like concat('%',#{searchValue},'%') or
+			full_name like concat('%',#{searchValue},'%') or
 			contact like concat('%',#{searchValue},'%') or
-			page_no like	concat('%',#{searchValue},'%') or
+			page_no like concat('%',#{searchValue},'%') or
 			email1 like concat('%',#{searchValue},'%')
+			)
 		</if>
 		<if test="orderColumn!=null and orderColumn != ''">
 			ORDER BY ${orderColumn} ${orderDir}

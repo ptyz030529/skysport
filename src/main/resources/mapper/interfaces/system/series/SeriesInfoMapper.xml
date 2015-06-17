@@ -26,13 +26,15 @@
 	</select>
 
 	<select id="listFilteredInfosCounts" resultType="Integer">
-		SELECT COUNT(*) FROM t_series where del_flag=0
+		SELECT COUNT(*)
+		FROM t_series a,t_area b
+		WHERE a.del_flag=0 and a.area_id = b.area_id
 		<if test="searchValue !=null and searchValue != ''">
 			and (
-			series_name like concat('%',#{searchValue},'%') or
-			series_id	like concat('%',#{searchValue},'%') or
-			area_id like concat('%',#{searchValue},'%') or
-			remark like	concat('%',#{searchValue},'%')
+			a.series_name like concat('%',#{searchValue},'%') or
+			a.series_id	like concat('%',#{searchValue},'%') or
+			b.area_name like concat('%',#{searchValue},'%') or
+			a.remark like	concat('%',#{searchValue},'%')
 			)
 		</if>
 
@@ -45,10 +47,11 @@
 		WHERE a.del_flag=0 and a.area_id = b.area_id
 		<if test="searchValue!=null and searchValue != ''">
 			and (
-			series_name like concat('%',#{searchValue},'%') or
-			series_id	like concat('%',#{searchValue},'%') or
-			area_id like concat('%',#{searchValue},'%') or
-			remark like	concat('%',#{searchValue},'%')
+			a.series_name like concat('%',#{searchValue},'%') or
+			a.series_id like concat('%',#{searchValue},'%') or
+			b.area_name like concat('%',#{searchValue},'%') or
+			a.remark like concat('%',#{searchValue},'%')
+			)
 		</if>
 		<if test="orderColumn!=null and orderColumn != ''">
 			ORDER BY ${orderColumn} ${orderDir}

@@ -47,9 +47,10 @@
 		<if test="searchValue!=null and searchValue != ''">
 			and (
 			area_name like concat('%',#{searchValue},'%') or
-			area_id	like concat('%',#{searchValue},'%') or
+			area_id like concat('%',#{searchValue},'%') or
 			customer_id like concat('%',#{searchValue},'%') or
-			remark like	concat('%',#{searchValue},'%')
+			remark like concat('%',#{searchValue},'%')
+			)
 		</if>
 		<if test="orderColumn!=null and orderColumn != ''">
 			ORDER BY ${orderColumn} ${orderDir}

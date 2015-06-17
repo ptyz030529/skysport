@@ -1,5 +1,6 @@
 package com.skysport.inerfaces.action.system;
-import com.skysport.core.action.CommonAction;
+
+import com.skysport.core.action.TableListQueryAction;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
@@ -15,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +30,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/pantone")
-public class PantoneManageAction extends CommonAction<String, Object, PantoneInfo> {
+public class PantoneManageAction extends TableListQueryAction<String, Object, PantoneInfo> {
 
     @Resource(name = "pantoneManageService")
     private IPantoneManageService pantoneManageService;

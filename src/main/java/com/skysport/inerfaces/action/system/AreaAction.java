@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system;
 
-import com.skysport.core.action.CommonAction;
+import com.skysport.core.action.TableListQueryAction;
 import com.skysport.core.bean.CommonBean;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
@@ -31,7 +31,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/area")
-public class AreaAction extends CommonAction<String, Object, AreaInfo> {
+public class AreaAction extends TableListQueryAction<String, Object, AreaInfo> {
     @Resource(name = "areaManageService")
     private ICommonService areaManageService;
 
@@ -107,7 +107,7 @@ public class AreaAction extends CommonAction<String, Object, AreaInfo> {
                                    HttpServletResponse reareaonse) throws Exception {
         String currentNo = areaManageService.queryCurrentSeqNo();
         //设置ID
-        areaInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.CUSTOMER_INFO, currentNo, incrementNumber));
+        areaInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.AREA_INFO, currentNo, incrementNumber));
         areaManageService.add(areaInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");

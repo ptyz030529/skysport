@@ -99,7 +99,7 @@ $('#resetBtn').click(function() {
         window.resetSelect();
     }
     //清空remark
-    $('#remark').empty();
+    $('#remark').val("");
 
 });
 
