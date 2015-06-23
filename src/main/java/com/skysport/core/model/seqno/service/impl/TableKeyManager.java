@@ -39,12 +39,12 @@ public class TableKeyManager implements IncrementNumber {
     }
 
     @Override
-    public int nextVal(String kind_name, int length, String currentSeqNo) {
+    public String nextVal(String kind_name, int length, String currentSeqNo) {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("kind_name", kind_name);
         paramsMap.put("length", length);
         paramsMap.put("currentSeqNo", currentSeqNo);
         tableKeyMapper.nextVal2(paramsMap);
-        return (Integer) paramsMap.get("result");
+        return (String) paramsMap.get("result");
     }
 }

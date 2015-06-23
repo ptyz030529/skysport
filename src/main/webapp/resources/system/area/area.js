@@ -27,14 +27,14 @@ var fieldsDesc = function(){
         name: {
             validators: {
                 notEmpty: {
-                    message: '区域名称  is required and cannot be empty'
+                    message: '区域名称为必填项'
                 }
             }
         },
         customerId: {
             validators: {
                 notEmpty: {
-                    message: '客户名称  is required and cannot be empty'
+                    message: '客户名称为必填项'
                 }
             }
         }

@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 类描述的是：年份管理
  * Created by zhangjh on 2015/6/17.
  */
 @Scope("prototype")
@@ -32,8 +33,8 @@ import java.util.Map;
 @RequestMapping("/system/year_conf")
 public class YearConfManageAction extends TableListQueryAction<String, Object, YearConfInfo> {
 
-    @Resource(name = "yearConfManageDao")
-    private ICommonService yearConfManageDao;
+    @Resource(name = "yearConfManageService")
+    private ICommonService yearConfManageService;
 
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;
@@ -63,15 +64,15 @@ public class YearConfManageAction extends TableListQueryAction<String, Object, Y
     public Map<String, Object> search(HttpServletRequest request)
             throws Exception {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.MATERIAL_CLASSIC__TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.YEAR_CONF_TABLE_COLUMN, request);
         // 总记录数
-        int recordsTotal = yearConfManageDao.listInfosCounts();
+        int recordsTotal = yearConfManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
         if (!StringUtils.isBlank(dataTablesInfo.getSearchValue())) {
-            recordsFiltered = yearConfManageDao.listFilteredInfosCounts(dataTablesInfo);
+            recordsFiltered = yearConfManageService.listFilteredInfosCounts(dataTablesInfo);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<YearConfInfo> year_confInfos = yearConfManageDao.searchInfos(dataTablesInfo);
+        List<YearConfInfo> year_confInfos = yearConfManageService.searchInfos(dataTablesInfo);
         Map<String, Object> resultMap = buildSearchJsonMap(year_confInfos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
@@ -87,7 +88,7 @@ public class YearConfManageAction extends TableListQueryAction<String, Object, Y
     @ResponseBody
     public Map<String, Object> edit(YearConfInfo year_confInfo, HttpServletRequest request,
                                     HttpServletResponse respones) throws Exception {
-        yearConfManageDao.edit(year_confInfo);
+        yearConfManageService.edit(year_confInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -104,10 +105,10 @@ public class YearConfManageAction extends TableListQueryAction<String, Object, Y
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(YearConfInfo year_confInfo) throws Exception {
-        String currentNo = yearConfManageDao.queryCurrentSeqNo();
+        String currentNo = yearConfManageService.queryCurrentSeqNo();
         //设置ID
-        year_confInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.MATERIAL_CLASSIC_INFO, currentNo, incrementNumber));
-        yearConfManageDao.add(year_confInfo);
+        year_confInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.YEAR_CONF_INFO, currentNo, incrementNumber));
+        yearConfManageService.add(year_confInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
@@ -122,7 +123,7 @@ public class YearConfManageAction extends TableListQueryAction<String, Object, Y
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
     public YearConfInfo queryCustomerNo(@PathVariable String natrualKey) {
-        YearConfInfo year_confInfo = (YearConfInfo) yearConfManageDao.queryInfoByNatrualKey(natrualKey);
+        YearConfInfo year_confInfo = (YearConfInfo) yearConfManageService.queryInfoByNatrualKey(natrualKey);
         return year_confInfo;
     }
 
@@ -133,7 +134,7 @@ public class YearConfManageAction extends TableListQueryAction<String, Object, Y
     @RequestMapping(value = "/del/{natrualKey}", method = RequestMethod.DELETE)
     @ResponseBody
     public Map<String, Object> del(@PathVariable String natrualKey) {
-        yearConfManageDao.del(natrualKey);
+        yearConfManageService.del(natrualKey);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "删除成功");
@@ -148,7 +149,7 @@ public class YearConfManageAction extends TableListQueryAction<String, Object, Y
     @ResponseBody
     public Map<String, Object> querySelectList(HttpServletRequest request) {
         String name = request.getParameter("name");
-        List<CommonBean> commonBeans = yearConfManageDao.querySelectList(name);
+        List<CommonBean> commonBeans = yearConfManageService.querySelectList(name);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("items", commonBeans);
         resultMap.put("total_count", commonBeans.size());

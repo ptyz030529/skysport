@@ -48,6 +48,7 @@ var del = function(_natrualkey){
  */
 var doDel = function(result){
     if(result)  sendRestFulAjax("del/"+natrualkey,null,'DELETE','json',_doSuccess_del);
+    natrualkey=""; //将修改项的natrualkey置为空
 }
 /**
  * 删除信息后的处理
@@ -111,11 +112,10 @@ $(document).ready(function() {
             $('#defaultForm').data('bootstrapValidator').resetForm(true);
         }
     });
-    //modal显示式，重置Form
+    //modal关闭时，重置Form
     $('#myModal').on('hidden.bs.modal', function (e) {
-        if (natrualkey ==''){
             $('#defaultForm').data('bootstrapValidator').resetForm(true);
-        }
+            natrualkey=""; //将修改项的natrualkey置为空
     });
 
     //启动表单校验监听

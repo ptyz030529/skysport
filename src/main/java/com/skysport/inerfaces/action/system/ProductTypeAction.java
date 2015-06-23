@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 类描述的是：品名
  * Created by zhangjh on 2015/6/9.
  */
 @Scope("prototype")
@@ -34,8 +35,8 @@ import java.util.Map;
 public class ProductTypeAction extends TableListQueryAction<String, Object, ProductTypeInfo> {
 
 
-    @Resource(name = "materialClassicManageDao")
-    private ICommonService materialClassicManageDao;
+    @Resource(name = "productTypeManageService")
+    private ICommonService productTypeManageService;
 
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;
@@ -65,15 +66,15 @@ public class ProductTypeAction extends TableListQueryAction<String, Object, Prod
     public Map<String, Object> search(HttpServletRequest request)
             throws Exception {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.MATERIAL_CLASSIC__TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.PRODUCT_TYPE_TABLE_COLUMN, request);
         // 总记录数
-        int recordsTotal = materialClassicManageDao.listInfosCounts();
+        int recordsTotal = productTypeManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
         if (!StringUtils.isBlank(dataTablesInfo.getSearchValue())) {
-            recordsFiltered = materialClassicManageDao.listFilteredInfosCounts(dataTablesInfo);
+            recordsFiltered = productTypeManageService.listFilteredInfosCounts(dataTablesInfo);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<ProductTypeInfo> product_typeInfos = materialClassicManageDao.searchInfos(dataTablesInfo);
+        List<ProductTypeInfo> product_typeInfos = productTypeManageService.searchInfos(dataTablesInfo);
         Map<String, Object> resultMap = buildSearchJsonMap(product_typeInfos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
@@ -89,7 +90,7 @@ public class ProductTypeAction extends TableListQueryAction<String, Object, Prod
     @ResponseBody
     public Map<String, Object> edit(ProductTypeInfo product_typeInfo, HttpServletRequest request,
                                     HttpServletResponse respones) throws Exception {
-        materialClassicManageDao.edit(product_typeInfo);
+        productTypeManageService.edit(product_typeInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -106,10 +107,10 @@ public class ProductTypeAction extends TableListQueryAction<String, Object, Prod
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(ProductTypeInfo product_typeInfo) throws Exception {
-        String currentNo = materialClassicManageDao.queryCurrentSeqNo();
+        String currentNo = productTypeManageService.queryCurrentSeqNo();
         //设置ID
-        product_typeInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.MATERIAL_CLASSIC_INFO, currentNo, incrementNumber));
-        materialClassicManageDao.add(product_typeInfo);
+        product_typeInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.PRODUCT_TYPE_INFO, currentNo, incrementNumber));
+        productTypeManageService.add(product_typeInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
@@ -124,7 +125,7 @@ public class ProductTypeAction extends TableListQueryAction<String, Object, Prod
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
     public ProductTypeInfo queryCustomerNo(@PathVariable String natrualKey) {
-        ProductTypeInfo product_typeInfo = (ProductTypeInfo) materialClassicManageDao.queryInfoByNatrualKey(natrualKey);
+        ProductTypeInfo product_typeInfo = (ProductTypeInfo) productTypeManageService.queryInfoByNatrualKey(natrualKey);
         return product_typeInfo;
     }
 
@@ -135,7 +136,7 @@ public class ProductTypeAction extends TableListQueryAction<String, Object, Prod
     @RequestMapping(value = "/del/{natrualKey}", method = RequestMethod.DELETE)
     @ResponseBody
     public Map<String, Object> del(@PathVariable String natrualKey) {
-        materialClassicManageDao.del(natrualKey);
+        productTypeManageService.del(natrualKey);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "删除成功");
@@ -150,7 +151,7 @@ public class ProductTypeAction extends TableListQueryAction<String, Object, Prod
     @ResponseBody
     public Map<String, Object> querySelectList(HttpServletRequest request) {
         String name = request.getParameter("name");
-        List<CommonBean> commonBeans = materialClassicManageDao.querySelectList(name);
+        List<CommonBean> commonBeans = productTypeManageService.querySelectList(name);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("items", commonBeans);
         resultMap.put("total_count", commonBeans.size());

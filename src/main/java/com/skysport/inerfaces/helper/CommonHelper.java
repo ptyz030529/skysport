@@ -28,11 +28,8 @@ public enum CommonHelper {
     }
 
     public String getNextSeqNo(String kind_name,String currentSeqNo, IncrementNumber incrementNumber){
-        String nextSeqNo = "";
         int length = Integer.parseInt(DictionaryInfo.SINGLETONE.getDictionaryValue(DictionaryTypeConstant.SEQ_NO_LENGTH, kind_name));
-        int nextVal = incrementNumber.nextVal(kind_name,length,currentSeqNo);
-
-
-        return String.valueOf(nextVal);
+        String nextVal = incrementNumber.nextVal(kind_name, length, currentSeqNo);
+        return nextVal;
     }
 }

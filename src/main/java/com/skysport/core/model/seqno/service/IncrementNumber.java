@@ -10,6 +10,6 @@ public interface  IncrementNumber {
 
     int nextVal(String kind_name, String currentSeqNo);
 
-    int nextVal(String kind_name, int length, String currentSeqNo);
+    String nextVal(String kind_name, int length, String currentSeqNo);
 }
 

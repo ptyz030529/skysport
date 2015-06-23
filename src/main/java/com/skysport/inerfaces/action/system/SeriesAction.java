@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 类描述的是：系列
  * Created by zhangjh on 2015/6/9.
  */
 @Scope("prototype")
@@ -103,11 +104,10 @@ public class SeriesAction extends TableListQueryAction<String, Object, SeriesInf
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(SeriesInfo seriesInfo, HttpServletRequest request,
-                                   HttpServletResponse reseriesonse) throws Exception {
+    public Map<String, Object> add(SeriesInfo seriesInfo) throws Exception {
         String currentNo = seriesManageService.queryCurrentSeqNo();
         //设置ID
-        seriesInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.CUSTOMER_INFO, currentNo, incrementNumber));
+        seriesInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.SERIES_INFO, currentNo, incrementNumber));
         seriesManageService.add(seriesInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");

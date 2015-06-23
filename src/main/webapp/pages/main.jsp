@@ -1211,13 +1211,11 @@
 											<a href="javascript:onclick('system/sp/list')">
 												供应商信息
 											</a>
-											<ul class="submenu">
-												<li>
-													<a href="#">
-														供应商基础资料
-													</a>
-												</li>
-											</ul>
+										</li>
+										<li>
+											<a href="javascript:onclick('system/factory/list')">
+												成衣厂
+											</a>
 										</li>
 										<li>
 											<a href="javascript:onclick('system/customer/list')">
@@ -1240,50 +1238,48 @@
 											</a>
 										</li>
 										<li>
-											<a href="javascript:onclick('system/sp_kind/list')">
-												主颜色
-											</a>
-										</li>
-										<li>
 											<a href="javascript:onclick('system/product_kind/list')">
 												品类级别
 											</a>
 										</li>
 										<li>
-											<a href="javascript:onclick('system/duty/list')">
+											<a href="javascript:onclick('system/sex/list')">
 												性别属性
 											</a>
 										</li>
 										<li>
-											<a href="javascript:onclick('system/employee/list')">
+											<a href="javascript:onclick('system/material_type/list')">
 												材料类别
 											</a>
 										</li>
 										<li>
-											<a href="javascript:onclick('system/code/list')">
+											<a href="javascript:onclick('system/material_classic/list')">
 												材质分类
 											</a>
 										</li>
 										<li>
-											<a href="javascript:onclick('system/panton/list')">
+											<a href="javascript:onclick('system/product_type/list')">
 												品名信息
 											</a>
 										</li>
 										<li>
-											<a href="javascript:onclick('system/performance_parameter/list')">
+											<a href="javascript:onclick('system/sp_kind/list')">
+												主颜色
+											</a>
+										</li>
+									<%--	<li>
+											<a href="javascript:onclick('system/year_conf/list')">
 												年份管理
 											</a>
 										</li>
+--%>
+
 										<li>
-											<a href="javascript:onclick('system/oekotex/list')">
+											<a href="#<%--javascript:onclick('system/time_conf/list')--%>">
 												时间节点
 											</a>
 										</li>
-										<li>
-											<a href="javascript:onclick('system/technology/list')">
-												成衣厂
-											</a>
-										</li>
+
 										
 							</ul>			
 							

@@ -114,35 +114,35 @@ $(document).ready(function() {
                 colorNo: {
                     validators: {
                         notEmpty: {
-                            message: '色号  is required and cannot be empty'
+                            message: '色号为必填项'
                         }
                     }
                 },
                 enName: {
                     validators: {
                         notEmpty: {
-                            message: '英文名称  is required and cannot be empty'
+                            message: '英文名称为必填项'
                         }
                     }
                 },
                 zhName: {
                     validators: {
                         notEmpty: {
-                            message: '中文名称  is required and cannot be empty'
+                            message: '中文名称为必填项'
                         }
                     }
                 },
                 pageNo: {
                     validators: {
                         notEmpty: {
-                            message: '页码  is required and cannot be empty'
+                            message: '页码为必填项'
                         }
                     }
                 },
                 codeColor: {
                     validators: {
                         notEmpty: {
-                            message: '颜色  is required and cannot be empty'
+                            message: '颜色为必填项'
                         }
                     }
                 }

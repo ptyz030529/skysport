@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 类描述的是：成衣厂管理
  * Created by zhangjh on 2015/6/17.
  */
 @Scope("prototype")
@@ -34,8 +35,8 @@ import java.util.Map;
 public class FactoryManageAction extends TableListQueryAction<String, Object, FactoryInfo> {
 
 
-    @Resource(name = "factoryManageDao")
-    private ICommonService factoryManageDao;
+    @Resource(name = "factoryManageService")
+    private ICommonService factoryManageService;
 
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;
@@ -65,15 +66,15 @@ public class FactoryManageAction extends TableListQueryAction<String, Object, Fa
     public Map<String, Object> search(HttpServletRequest request)
             throws Exception {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.MATERIAL_CLASSIC__TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.FACTORY_TABLE_COLUMN, request);
         // 总记录数
-        int recordsTotal = factoryManageDao.listInfosCounts();
+        int recordsTotal = factoryManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
         if (!StringUtils.isBlank(dataTablesInfo.getSearchValue())) {
-            recordsFiltered = factoryManageDao.listFilteredInfosCounts(dataTablesInfo);
+            recordsFiltered = factoryManageService.listFilteredInfosCounts(dataTablesInfo);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<FactoryInfo> factoryInfos = factoryManageDao.searchInfos(dataTablesInfo);
+        List<FactoryInfo> factoryInfos = factoryManageService.searchInfos(dataTablesInfo);
         Map<String, Object> resultMap = buildSearchJsonMap(factoryInfos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
@@ -89,7 +90,7 @@ public class FactoryManageAction extends TableListQueryAction<String, Object, Fa
     @ResponseBody
     public Map<String, Object> edit(FactoryInfo factoryInfo, HttpServletRequest request,
                                     HttpServletResponse respones) throws Exception {
-        factoryManageDao.edit(factoryInfo);
+        factoryManageService.edit(factoryInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -106,10 +107,10 @@ public class FactoryManageAction extends TableListQueryAction<String, Object, Fa
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(FactoryInfo factoryInfo) throws Exception {
-        String currentNo = factoryManageDao.queryCurrentSeqNo();
+        String currentNo = factoryManageService.queryCurrentSeqNo();
         //设置ID
-        factoryInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.MATERIAL_CLASSIC_INFO, currentNo, incrementNumber));
-        factoryManageDao.add(factoryInfo);
+        factoryInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.FACTORY_INFO, currentNo, incrementNumber));
+        factoryManageService.add(factoryInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
@@ -124,7 +125,7 @@ public class FactoryManageAction extends TableListQueryAction<String, Object, Fa
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
     public FactoryInfo queryCustomerNo(@PathVariable String natrualKey) {
-        FactoryInfo factoryInfo = (FactoryInfo) factoryManageDao.queryInfoByNatrualKey(natrualKey);
+        FactoryInfo factoryInfo = (FactoryInfo) factoryManageService.queryInfoByNatrualKey(natrualKey);
         return factoryInfo;
     }
 
@@ -135,7 +136,7 @@ public class FactoryManageAction extends TableListQueryAction<String, Object, Fa
     @RequestMapping(value = "/del/{natrualKey}", method = RequestMethod.DELETE)
     @ResponseBody
     public Map<String, Object> del(@PathVariable String natrualKey) {
-        factoryManageDao.del(natrualKey);
+        factoryManageService.del(natrualKey);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "删除成功");
@@ -150,7 +151,7 @@ public class FactoryManageAction extends TableListQueryAction<String, Object, Fa
     @ResponseBody
     public Map<String, Object> querySelectList(HttpServletRequest request) {
         String name = request.getParameter("name");
-        List<CommonBean> commonBeans = factoryManageDao.querySelectList(name);
+        List<CommonBean> commonBeans = factoryManageService.querySelectList(name);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("items", commonBeans);
         resultMap.put("total_count", commonBeans.size());

@@ -27,28 +27,28 @@ var fieldsDesc = function(){
         name: {
             validators: {
                 notEmpty: {
-                    message: '客户名称  is required and cannot be empty'
+                    message: '客户名称为必填项'
                 }
             }
         },
         fullName: {
             validators: {
                 notEmpty: {
-                    message: '客户全称  is required and cannot be empty'
+                    message: '客户全称为必填项'
                 }
             }
         },
         email: {
             validators: {
                 notEmpty: {
-                    message: '邮箱  is required and cannot be empty'
+                    message: '邮箱为必填项'
                 }
             }
         },
         corTime: {
             validators: {
                 notEmpty: {
-                    message: '合作时间  is required and cannot be empty'
+                    message: '合作时间为必填项'
                 },
                 date: {
                     format: 'YYYY-MM-DD',
@@ -59,7 +59,7 @@ var fieldsDesc = function(){
         address: {
             validators: {
                 notEmpty: {
-                    message: '地址  is required and cannot be empty'
+                    message: '地址为必填项'
                 }
             }
         }
@@ -67,14 +67,14 @@ var fieldsDesc = function(){
         contact: {
             validators: {
                 notEmpty: {
-                    message: '联系人  is required and cannot be empty'
+                    message: '联系人为必填项'
                 }
             }
         },
         tel: {
             validators: {
                 notEmpty: {
-                    message: '联系电话  is required and cannot be empty'
+                    message: '联系电话为必填项'
                 }
             }
         }

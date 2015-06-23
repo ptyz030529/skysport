@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 客户信息
+ * 类描述的是：客户信息
  * Created by zhangjh on 2015/6/3.
  */
 @Scope("prototype")

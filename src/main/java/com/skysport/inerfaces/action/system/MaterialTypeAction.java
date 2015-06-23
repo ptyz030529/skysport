@@ -5,7 +5,7 @@ import com.skysport.core.bean.CommonBean;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.MaterialClassicInfo;
+import com.skysport.inerfaces.bean.MaterialTypeInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
 import com.skysport.inerfaces.helper.CommonHelper;
 import com.skysport.inerfaces.model.system.common.service.ICommonService;
@@ -26,16 +26,17 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 类描述的是：材料类别
  * Created by zhangjh on 2015/6/17.
  */
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/material_type")
-public class MaterialTypeAction extends TableListQueryAction<String, Object, MaterialClassicInfo> {
+public class MaterialTypeAction extends TableListQueryAction<String, Object, MaterialTypeInfo> {
 
 
-    @Resource(name = "materialClassicManageDao")
-    private ICommonService materialClassicManageDao;
+    @Resource(name = "materialTypeManageService")
+    private ICommonService materialTypeManageService;
 
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;
@@ -49,7 +50,7 @@ public class MaterialTypeAction extends TableListQueryAction<String, Object, Mat
     @RequestMapping(value = "/list")
     @ResponseBody
     public ModelAndView search() throws Exception {
-        ModelAndView mav = new ModelAndView("/system/material_classic/list");
+        ModelAndView mav = new ModelAndView("/system/material_type/list");
         return mav;
     }
 
@@ -65,16 +66,16 @@ public class MaterialTypeAction extends TableListQueryAction<String, Object, Mat
     public Map<String, Object> search(HttpServletRequest request)
             throws Exception {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.MATERIAL_CLASSIC__TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.MATERIAL_TYPE_TABLE_COLUMN, request);
         // 总记录数
-        int recordsTotal = materialClassicManageDao.listInfosCounts();
+        int recordsTotal = materialTypeManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
         if (!StringUtils.isBlank(dataTablesInfo.getSearchValue())) {
-            recordsFiltered = materialClassicManageDao.listFilteredInfosCounts(dataTablesInfo);
+            recordsFiltered = materialTypeManageService.listFilteredInfosCounts(dataTablesInfo);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<MaterialClassicInfo> material_classicInfos = materialClassicManageDao.searchInfos(dataTablesInfo);
-        Map<String, Object> resultMap = buildSearchJsonMap(material_classicInfos, recordsTotal, recordsFiltered, draw);
+        List<MaterialTypeInfo> material_typeInfos = materialTypeManageService.searchInfos(dataTablesInfo);
+        Map<String, Object> resultMap = buildSearchJsonMap(material_typeInfos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
     }
@@ -87,9 +88,9 @@ public class MaterialTypeAction extends TableListQueryAction<String, Object, Mat
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(MaterialClassicInfo material_classicInfo, HttpServletRequest request,
+    public Map<String, Object> edit(MaterialTypeInfo material_typeInfo, HttpServletRequest request,
                                     HttpServletResponse respones) throws Exception {
-        materialClassicManageDao.edit(material_classicInfo);
+        materialTypeManageService.edit(material_typeInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -105,11 +106,11 @@ public class MaterialTypeAction extends TableListQueryAction<String, Object, Mat
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(MaterialClassicInfo material_classicInfo) throws Exception {
-        String currentNo = materialClassicManageDao.queryCurrentSeqNo();
+    public Map<String, Object> add(MaterialTypeInfo material_typeInfo) throws Exception {
+        String currentNo = materialTypeManageService.queryCurrentSeqNo();
         //设置ID
-        material_classicInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.MATERIAL_CLASSIC_INFO, currentNo, incrementNumber));
-        materialClassicManageDao.add(material_classicInfo);
+        material_typeInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.MATERIAL_TYPE_INFO, currentNo, incrementNumber));
+        materialTypeManageService.add(material_typeInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
@@ -123,9 +124,9 @@ public class MaterialTypeAction extends TableListQueryAction<String, Object, Mat
      */
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
-    public MaterialClassicInfo queryCustomerNo(@PathVariable String natrualKey) {
-        MaterialClassicInfo material_classicInfo = (MaterialClassicInfo) materialClassicManageDao.queryInfoByNatrualKey(natrualKey);
-        return material_classicInfo;
+    public MaterialTypeInfo queryCustomerNo(@PathVariable String natrualKey) {
+        MaterialTypeInfo material_typeInfo = (MaterialTypeInfo) materialTypeManageService.queryInfoByNatrualKey(natrualKey);
+        return material_typeInfo;
     }
 
     /**
@@ -135,7 +136,7 @@ public class MaterialTypeAction extends TableListQueryAction<String, Object, Mat
     @RequestMapping(value = "/del/{natrualKey}", method = RequestMethod.DELETE)
     @ResponseBody
     public Map<String, Object> del(@PathVariable String natrualKey) {
-        materialClassicManageDao.del(natrualKey);
+        materialTypeManageService.del(natrualKey);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "删除成功");
@@ -150,7 +151,7 @@ public class MaterialTypeAction extends TableListQueryAction<String, Object, Mat
     @ResponseBody
     public Map<String, Object> querySelectList(HttpServletRequest request) {
         String name = request.getParameter("name");
-        List<CommonBean> commonBeans = materialClassicManageDao.querySelectList(name);
+        List<CommonBean> commonBeans = materialTypeManageService.querySelectList(name);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("items", commonBeans);
         resultMap.put("total_count", commonBeans.size());

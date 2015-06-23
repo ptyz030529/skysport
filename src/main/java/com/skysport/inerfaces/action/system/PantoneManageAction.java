@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 类描述的是：PANTONE管理
  * Created by zhangjh on 2015/6/4.
  */
 @Scope("prototype")

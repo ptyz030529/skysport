@@ -14,14 +14,14 @@ public interface DictionaryTypeConstant {
     public static final String AREA_TABLE_COLULMN = "area_table_column";
     public static final String SEQ_NO_LENGTH = "seqno_length";
 
-    public static final String SERIES_TABLE_COLULMN = "series__table_column";
-    public static final String YEAR_CONF__TABLE_COLUMN = "year_conf__table_column";
-    public static final String SEX__TABLE_COLUMN = "sex__table_column";
-    public static final String PRODUCT_TYPE__TABLE_COLUMN = "product_type__table_column";
-    public static final String MATERIAL_TYPE__TABLE_COLUMN = "material_type__table_column";
-    public static final String MATERIAL_CLASSIC__TABLE_COLUMN = "material_classic__table_column";
+    public static final String SERIES_TABLE_COLULMN = "series_table_column";
+    public static final String YEAR_CONF_TABLE_COLUMN = "year_conf_table_column";
+    public static final String SEX_TABLE_COLUMN = "sex_table_column";
+    public static final String PRODUCT_TYPE_TABLE_COLUMN = "product_type_table_column";
+    public static final String MATERIAL_TYPE_TABLE_COLUMN = "material_type_table_column";
+    public static final String MATERIAL_CLASSIC_TABLE_COLUMN = "material_classic_table_column";
 
-    public static final String FACTORY__TABLE_COLUMN = "factory__table_column";
+    public static final String FACTORY_TABLE_COLUMN = "factory_table_column";
 
 
 

@@ -112,35 +112,35 @@ $(document).ready(function() {
                 name: {
                     validators: {
                         notEmpty: {
-                            message: '供应商名称  is required and cannot be empty'
+                            message: '供应商名称为必填项'
                         }
                     }
                 },
                 type: {
                     validators: {
                         notEmpty: {
-                            message: '供应商类型  is required and cannot be empty'
+                            message: '供应商类型为必填项'
                         }
                     }
                 },
                 contact: {
                     validators: {
                         notEmpty: {
-                            message: '联系人  is required and cannot be empty'
+                            message: '联系人为必填项'
                         }
                     }
                 },
                 tel: {
                     validators: {
                         notEmpty: {
-                            message: '联系电话  is required and cannot be empty'
+                            message: '联系电话为必填项'
                         }
                     }
                 },
                 email: {
                     validators: {
                         notEmpty: {
-                            message: '邮件地址  is required and cannot be empty'
+                            message: '邮件地址为必填项'
                         }
                     },
                     regexp: {
@@ -151,14 +151,14 @@ $(document).ready(function() {
                 cooperationTime: {
                     validators: {
                         notEmpty: {
-                            message: '合作时间  is required and cannot be empty'
+                            message: '合作时间为必填项'
                         }
                     }
                 },
                 address: {
                     validators: {
                         notEmpty: {
-                            message: '地址  is required and cannot be empty'
+                            message: '地址为必填项'
                         }
                     }
                 }

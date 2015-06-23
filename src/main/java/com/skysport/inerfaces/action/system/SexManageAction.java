@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 类描述的是：性别属性
  * Created by zhangjh on 2015/6/17.
  */
 @Scope("prototype")
@@ -34,8 +35,8 @@ import java.util.Map;
 public class SexManageAction extends TableListQueryAction<String, Object, SexInfo> {
 
 
-    @Resource(name = "sexManageDao")
-    private ICommonService sexManageDao;
+    @Resource(name = "sexManageService")
+    private ICommonService sexManageService;
 
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;
@@ -65,15 +66,15 @@ public class SexManageAction extends TableListQueryAction<String, Object, SexInf
     public Map<String, Object> search(HttpServletRequest request)
             throws Exception {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.MATERIAL_CLASSIC__TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.SEX_TABLE_COLUMN, request);
         // 总记录数
-        int recordsTotal = sexManageDao.listInfosCounts();
+        int recordsTotal = sexManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
         if (!StringUtils.isBlank(dataTablesInfo.getSearchValue())) {
-            recordsFiltered = sexManageDao.listFilteredInfosCounts(dataTablesInfo);
+            recordsFiltered = sexManageService.listFilteredInfosCounts(dataTablesInfo);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<SexInfo> sexInfos = sexManageDao.searchInfos(dataTablesInfo);
+        List<SexInfo> sexInfos = sexManageService.searchInfos(dataTablesInfo);
         Map<String, Object> resultMap = buildSearchJsonMap(sexInfos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
@@ -89,7 +90,7 @@ public class SexManageAction extends TableListQueryAction<String, Object, SexInf
     @ResponseBody
     public Map<String, Object> edit(SexInfo sexInfo, HttpServletRequest request,
                                     HttpServletResponse respones) throws Exception {
-        sexManageDao.edit(sexInfo);
+        sexManageService.edit(sexInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -106,10 +107,10 @@ public class SexManageAction extends TableListQueryAction<String, Object, SexInf
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(SexInfo sexInfo) throws Exception {
-        String currentNo = sexManageDao.queryCurrentSeqNo();
+        String currentNo = sexManageService.queryCurrentSeqNo();
         //设置ID
         sexInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.SEX_INFO, currentNo, incrementNumber));
-        sexManageDao.add(sexInfo);
+        sexManageService.add(sexInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
@@ -124,7 +125,7 @@ public class SexManageAction extends TableListQueryAction<String, Object, SexInf
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
     public SexInfo queryCustomerNo(@PathVariable String natrualKey) {
-        SexInfo sexInfo = (SexInfo) sexManageDao.queryInfoByNatrualKey(natrualKey);
+        SexInfo sexInfo = (SexInfo) sexManageService.queryInfoByNatrualKey(natrualKey);
         return sexInfo;
     }
 
@@ -135,7 +136,7 @@ public class SexManageAction extends TableListQueryAction<String, Object, SexInf
     @RequestMapping(value = "/del/{natrualKey}", method = RequestMethod.DELETE)
     @ResponseBody
     public Map<String, Object> del(@PathVariable String natrualKey) {
-        sexManageDao.del(natrualKey);
+        sexManageService.del(natrualKey);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "删除成功");
@@ -150,7 +151,7 @@ public class SexManageAction extends TableListQueryAction<String, Object, SexInf
     @ResponseBody
     public Map<String, Object> querySelectList(HttpServletRequest request) {
         String name = request.getParameter("name");
-        List<CommonBean> commonBeans = sexManageDao.querySelectList(name);
+        List<CommonBean> commonBeans = sexManageService.querySelectList(name);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("items", commonBeans);
         resultMap.put("total_count", commonBeans.size());

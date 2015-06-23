@@ -20,7 +20,7 @@
         <parameter property="kind_name" mode="IN" jdbcType="VARCHAR"/>
         <parameter property="length" mode="IN" jdbcType="INTEGER"/>
         <parameter property="currentSeqNo" mode="IN" jdbcType="VARCHAR"/>
-        <parameter property="result" mode="OUT" jdbcType="INTEGER"/>
+        <parameter property="result" mode="OUT" jdbcType="VARCHAR"/>
     </parameterMap>
 
 </mapper>
