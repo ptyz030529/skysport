@@ -13,18 +13,21 @@ public interface DictionaryTypeConstant {
     public static final String CUSTOMER_TABLE_COLUMN = "customer_table_column";
     public static final String AREA_TABLE_COLULMN = "area_table_column";
     public static final String SEQ_NO_LENGTH = "seqno_length";
-
     public static final String SERIES_TABLE_COLULMN = "series_table_column";
     public static final String YEAR_CONF_TABLE_COLUMN = "year_conf_table_column";
     public static final String SEX_TABLE_COLUMN = "sex_table_column";
     public static final String PRODUCT_TYPE_TABLE_COLUMN = "product_type_table_column";
     public static final String MATERIAL_TYPE_TABLE_COLUMN = "material_type_table_column";
     public static final String MATERIAL_CLASSIC_TABLE_COLUMN = "material_classic_table_column";
-
     public static final String FACTORY_TABLE_COLUMN = "factory_table_column";
-
-
-
-
+    public static final String SPECIFICATION_TABLE_COLUMN = "specification_table_column";
+    public static final String BLC_TABLE_COLUMN = "blc_table_column";
+    public static final String COMC_TABLE_COLUMN = "comc_table_column";
+    public static final String DYE_TABLE_COLUMN = "dye_table_column";
+    public static final String FINISH_TABLE_COLUMN = "finish_table_column";
+    public static final String MOMC_TABLE_COLUMN = "momc_table_column";
+    public static final String MT_TABLE_COLUMN = "mt_table_column";
+    public static final String WVP_TABLE_COLUMN = "wvp_table_column";
+    public static final String WBLC_TABLE_COLUMN = "wblc_table_column";
 
 }

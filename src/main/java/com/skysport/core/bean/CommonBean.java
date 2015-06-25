@@ -4,8 +4,15 @@ package com.skysport.core.bean;
  * Created by zhangjh on 2015/6/8.
  */
 public class CommonBean {
+    /**
+     * 主键
+     */
     private String natrualkey;
+    /**
+     * 名称
+     */
     private String name;
+
 
     public String getNatrualkey() {
         return natrualkey;

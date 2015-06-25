@@ -1182,15 +1182,6 @@
 										<li class="">
 											<a href="javascript:onclick('system/material/list')">
 												<i class="menu-icon fa fa-caret-right"></i>
-												物料列表
-											</a>
-
-											<b class="arrow"></b>
-										</li>
-
-										<li class="">
-											<a href="two-menu-1.html">
-												<i class="menu-icon fa fa-caret-right"></i>
 												物料信息
 											</a>
 
@@ -1198,9 +1189,66 @@
 										</li>
 
 										<li class="">
-											<a href="two-menu-2.html">
+											<a href="javascript:onclick('system/material/specification/list')">
 												<i class="menu-icon fa fa-caret-right"></i>
-												物料新建
+												纱支和密度
+											</a>
+											<b class="arrow"></b>
+										</li>
+
+										<li class="">
+											<a href="javascript:onclick('system/material/dye/list')">
+												<i class="menu-icon fa fa-caret-right"></i>
+												染色方式
+											</a>
+											<b class="arrow"></b>
+										</li>
+										<li class="">
+											<a href="javascript:onclick('system/material/finish/list')">
+												<i class="menu-icon fa fa-caret-right"></i>
+												后整理
+											</a>
+											<b class="arrow"></b>
+										</li>
+										<li class="">
+											<a href="javascript:onclick('system/material/blc/list')">
+												<i class="menu-icon fa fa-caret-right"></i>
+												复合或涂层
+											</a>
+											<b class="arrow"></b>
+										</li>
+										<li class="">
+											<a href="javascript:onclick('system/material/momc/list')">
+												<i class="menu-icon fa fa-caret-right"></i>
+												膜或涂层的材质
+											</a>
+											<b class="arrow"></b>
+										</li>
+										<li class="">
+											<a href="javascript:onclick('system/material/comoc/list')">
+												<i class="menu-icon fa fa-caret-right"></i>
+												膜或涂层的颜色
+											</a>
+											<b class="arrow"></b>
+										</li>
+										<li class="">
+											<a href="javascript:onclick('system/material/wvp/list')">
+												<i class="menu-icon fa fa-caret-right"></i>
+												透湿程度
+											</a>
+											<b class="arrow"></b>
+										</li>
+										<li class="">
+											<a href="javascript:onclick('system/material/mt/list')">
+												<i class="menu-icon fa fa-caret-right"></i>
+												膜的厚度
+											</a>
+											<b class="arrow"></b>
+										</li>
+										<li class="">
+											<a href="javascript:onclick('system/material/wblc/list')">
+												<i class="menu-icon fa fa-caret-right"></i>
+												贴膜或涂层工艺
 											</a>
 											<b class="arrow"></b>
 										</li>

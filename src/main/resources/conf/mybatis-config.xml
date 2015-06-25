@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration 
-PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- 命名空间 -->
-	<typeAliases>
-		<typeAlias alias="CommonBean"   type="com.skysport.core.bean.CommonBean"/>
-		<typeAlias alias="SpInfo" 	    type="com.skysport.inerfaces.bean.SpInfo" />
-		<typeAlias alias="Dictionary"   type="com.skysport.core.bean.Dictionary" />
-		<typeAlias alias="PantoneInfo"  type="com.skysport.inerfaces.bean.PantoneInfo" />
-		<typeAlias alias="CustomerInfo" type="com.skysport.inerfaces.bean.CustomerInfo" />
-		<typeAlias alias="AreaInfo"     type="com.skysport.inerfaces.bean.AreaInfo" />
-		<typeAlias alias="SeriesInfo"   type="com.skysport.inerfaces.bean.SeriesInfo" />
-		<typeAlias alias="FactoryInfo"  type="com.skysport.inerfaces.bean.FactoryInfo" />
-		<typeAlias alias="MaterialClassicInfo" type="com.skysport.inerfaces.bean.MaterialClassicInfo" />
-		<typeAlias alias="MaterialTypeInfo"    type="com.skysport.inerfaces.bean.MaterialTypeInfo" />
-		<typeAlias alias="ProductTypeInfo"     type="com.skysport.inerfaces.bean.ProductTypeInfo" />
-		<typeAlias alias="SexInfo"             type="com.skysport.inerfaces.bean.SexInfo" />
-		<typeAlias alias="YearConfInfo"        type="com.skysport.inerfaces.bean.YearConfInfo" />
-	</typeAliases>
+    <!-- 命名空间 -->
+    <typeAliases>
+        <typeAlias alias="CommonBean" type="com.skysport.core.bean.CommonBean"/>
+        <typeAlias alias="SpInfo" type="com.skysport.inerfaces.bean.SpInfo"/>
+        <typeAlias alias="Dictionary" type="com.skysport.core.bean.Dictionary"/>
+        <typeAlias alias="PantoneInfo" type="com.skysport.inerfaces.bean.PantoneInfo"/>
+        <typeAlias alias="CustomerInfo" type="com.skysport.inerfaces.bean.CustomerInfo"/>
+        <typeAlias alias="AreaInfo" type="com.skysport.inerfaces.bean.AreaInfo"/>
+        <typeAlias alias="SeriesInfo" type="com.skysport.inerfaces.bean.SeriesInfo"/>
+        <typeAlias alias="FactoryInfo" type="com.skysport.inerfaces.bean.FactoryInfo"/>
+        <typeAlias alias="MaterialClassicInfo" type="com.skysport.inerfaces.bean.MaterialClassicInfo"/>
+        <typeAlias alias="MaterialTypeInfo" type="com.skysport.inerfaces.bean.MaterialTypeInfo"/>
+        <typeAlias alias="ProductTypeInfo" type="com.skysport.inerfaces.bean.ProductTypeInfo"/>
+        <typeAlias alias="SexInfo" type="com.skysport.inerfaces.bean.SexInfo"/>
+        <typeAlias alias="YearConfInfo" type="com.skysport.inerfaces.bean.YearConfInfo"/>
+        <typeAlias alias="DyeInfo" type="com.skysport.inerfaces.bean.material.DyeInfo"/>
+        <!--物料-->
+        <typeAlias alias="BondingLaminationCoatingInfo" type="com.skysport.inerfaces.bean.material.BondingLaminationCoatingInfo"/>
+        <typeAlias alias="ColorOfMembraneCoatingInfo" type="com.skysport.inerfaces.bean.material.ColorOfMembraneCoatingInfo"/>
+        <typeAlias alias="FinishInfo" type="com.skysport.inerfaces.bean.material.FinishInfo"/>
+        <typeAlias alias="MaterialOfMembraneCoatingInfo" type="com.skysport.inerfaces.bean.material.MaterialOfMembraneCoatingInfo"/>
+        <typeAlias alias="MembraneThicknessInfo" type="com.skysport.inerfaces.bean.material.MembraneThicknessInfo"/>
+        <typeAlias alias="SpecificationInfo" type="com.skysport.inerfaces.bean.material.SpecificationInfo"/>
+        <typeAlias alias="WaterVapourPermeabilityInfo" type="com.skysport.inerfaces.bean.material.WaterVapourPermeabilityInfo"/>
+        <typeAlias alias="WorkmanshipOfBondingLaminatingCoatingInfo" type="com.skysport.inerfaces.bean.material.WorkmanshipOfBondingLaminatingCoatingInfo"/>
 
-	<!-- 映射map -->
-	<mappers>
-	</mappers>
+
+
+
+    </typeAliases>
+
+    <!-- 映射map -->
+    <mappers>
+    </mappers>
 </configuration>
