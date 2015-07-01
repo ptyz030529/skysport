@@ -30,4 +30,6 @@ public interface DictionaryTypeConstant {
     public static final String WVP_TABLE_COLUMN = "wvp_table_column";
     public static final String WBLC_TABLE_COLUMN = "wblc_table_column";
 
+    public static final String FABRICS_TABLE_COLUMN = "fabrics_table_column";
+
 }

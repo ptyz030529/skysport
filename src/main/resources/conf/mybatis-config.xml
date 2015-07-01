@@ -28,7 +28,7 @@
         <typeAlias alias="SpecificationInfo" type="com.skysport.inerfaces.bean.material.SpecificationInfo"/>
         <typeAlias alias="WaterVapourPermeabilityInfo" type="com.skysport.inerfaces.bean.material.WaterVapourPermeabilityInfo"/>
         <typeAlias alias="WorkmanshipOfBondingLaminatingCoatingInfo" type="com.skysport.inerfaces.bean.material.WorkmanshipOfBondingLaminatingCoatingInfo"/>
-
+        <typeAlias alias="FabricsInfo" type="com.skysport.inerfaces.bean.FabricsInfo"/>
 
 
 

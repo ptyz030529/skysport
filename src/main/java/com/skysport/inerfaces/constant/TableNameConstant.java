@@ -26,5 +26,5 @@ public interface TableNameConstant {
     public static final String WVP_INFO = "t_water_vapour_permeability";
     public static final String WBLC_INFO = "t_workmanship_blc";
 
-
+    public static final String FABRICS_INFO = "t_fabrics";
 }

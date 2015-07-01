@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 @Service("customerManageService")
 public class CustomerManageServiceImpl extends CommonServiceImpl<CustomerInfo> implements InitializingBean {
     @Resource(name = "customerManageDao")
-    private CustomerManageDao<CustomerInfo> customerManageDao;
+    private CustomerManageDao customerManageDao;
 
     @Override
     public void afterPropertiesSet() throws Exception {

@@ -1,11 +1,11 @@
-package com.skysport.inerfaces.action.system.material;
+package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.TableListQueryAction;
 import com.skysport.core.bean.CommonBean;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.material.BondingLaminationCoatingInfo;
+import com.skysport.inerfaces.bean.FabricsInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
 import com.skysport.inerfaces.helper.CommonHelper;
 import com.skysport.inerfaces.model.system.common.service.ICommonService;
@@ -20,21 +20,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * 类说明:复合或涂层
- * Created by zhangjh on 2015/6/25.
+ * 类描述的是：区域管理
+ * Created by zhangjh on 2015/6/9.
  */
 @Scope("prototype")
 @Controller
-@RequestMapping("/system/material/blc")
-public class BondingLaminationCoatingAction extends TableListQueryAction<String, Object, BondingLaminationCoatingInfo> {
-    @Resource(name = "bondingLaminationCoatingService")
-    private ICommonService bondingLaminationCoatingService;
+@RequestMapping("/system/fabrics")
+public class FabricsAction extends TableListQueryAction<String, Object, FabricsInfo> {
+    @Resource(name = "fabricsManageService")
+    private ICommonService fabricsManageService;
 
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;
@@ -48,7 +47,7 @@ public class BondingLaminationCoatingAction extends TableListQueryAction<String,
     @RequestMapping(value = "/list")
     @ResponseBody
     public ModelAndView search() throws Exception {
-        ModelAndView mav = new ModelAndView("/system/material/blc/list");
+        ModelAndView mav = new ModelAndView("/system/fabrics/list");
         return mav;
     }
 
@@ -63,17 +62,16 @@ public class BondingLaminationCoatingAction extends TableListQueryAction<String,
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request)
             throws Exception {
-        // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.BLC_TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.FABRICS_TABLE_COLUMN, request);
         // 总记录数
-        int recordsTotal = bondingLaminationCoatingService.listInfosCounts();
+        int recordsTotal = fabricsManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
         if (!StringUtils.isBlank(dataTablesInfo.getSearchValue())) {
-            recordsFiltered = bondingLaminationCoatingService.listFilteredInfosCounts(dataTablesInfo);
+            recordsFiltered = fabricsManageService.listFilteredInfosCounts(dataTablesInfo);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<BondingLaminationCoatingInfo> areaInfos = bondingLaminationCoatingService.searchInfos(dataTablesInfo);
-        Map<String, Object> resultMap = buildSearchJsonMap(areaInfos, recordsTotal, recordsFiltered, draw);
+        List<FabricsInfo> fabricsInfos = fabricsManageService.searchInfos(dataTablesInfo);
+        Map<String, Object> resultMap = buildSearchJsonMap(fabricsInfos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
     }
@@ -86,9 +84,8 @@ public class BondingLaminationCoatingAction extends TableListQueryAction<String,
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(BondingLaminationCoatingInfo areaInfo, HttpServletRequest request,
-                                    HttpServletResponse respones) throws Exception {
-        bondingLaminationCoatingService.edit(areaInfo);
+    public Map<String, Object> edit(FabricsInfo fabricsInfo) throws Exception {
+        fabricsManageService.edit(fabricsInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -104,12 +101,11 @@ public class BondingLaminationCoatingAction extends TableListQueryAction<String,
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(BondingLaminationCoatingInfo areaInfo, HttpServletRequest request,
-                                   HttpServletResponse reareaonse) throws Exception {
-        String currentNo = bondingLaminationCoatingService.queryCurrentSeqNo();
+    public Map<String, Object> add(FabricsInfo fabricsInfo) throws Exception {
+        String currentNo = fabricsManageService.queryCurrentSeqNo();
         //设置ID
-        areaInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.BLC_INFO, currentNo, incrementNumber));
-        bondingLaminationCoatingService.add(areaInfo);
+        fabricsInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.FABRICS_INFO, currentNo, incrementNumber));
+        fabricsManageService.add(fabricsInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
@@ -119,15 +115,13 @@ public class BondingLaminationCoatingAction extends TableListQueryAction<String,
 
     /**
      * @param natrualKey 供应商id
-     * @param request    请求信息
-     * @param reareaonse 返回信息
      * @return 根据供应商id找出供应商详细信息
      */
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
-    public BondingLaminationCoatingInfo queryCustomerNo(@PathVariable String natrualKey, HttpServletRequest request, HttpServletResponse reareaonse) {
-        BondingLaminationCoatingInfo areaInfo = (BondingLaminationCoatingInfo) bondingLaminationCoatingService.queryInfoByNatrualKey(natrualKey);
-        return areaInfo;
+    public FabricsInfo queryCustomerNo(@PathVariable String natrualKey) {
+        FabricsInfo fabricsInfo = (FabricsInfo) fabricsManageService.queryInfoByNatrualKey(natrualKey);
+        return fabricsInfo;
     }
 
     /**
@@ -137,7 +131,7 @@ public class BondingLaminationCoatingAction extends TableListQueryAction<String,
     @RequestMapping(value = "/del/{natrualKey}", method = RequestMethod.DELETE)
     @ResponseBody
     public Map<String, Object> del(@PathVariable String natrualKey) {
-        bondingLaminationCoatingService.del(natrualKey);
+        fabricsManageService.del(natrualKey);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "删除成功");
@@ -148,10 +142,12 @@ public class BondingLaminationCoatingAction extends TableListQueryAction<String,
     @ResponseBody
     public Map<String, Object> querySelectList(HttpServletRequest request) {
         String name = request.getParameter("name");
-        List<CommonBean> commonBeans = bondingLaminationCoatingService.querySelectList(name);
+        List<CommonBean> commonBeans = fabricsManageService.querySelectList(name);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("items", commonBeans);
         resultMap.put("total_count", commonBeans.size());
         return resultMap;
     }
+
+
 }

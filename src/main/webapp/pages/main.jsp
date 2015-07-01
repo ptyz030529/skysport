@@ -478,7 +478,7 @@
 										</li>
 
 										<li class="">
-											<a href="two-menu-2.html">
+											<a href="javascript:onclick('development/bom/bom-add')">
 												<i class="menu-icon fa fa-caret-right"></i>
 												BOM新建
 											</a>
@@ -1180,9 +1180,9 @@
 
 									<ul class="submenu">
 										<li class="">
-											<a href="javascript:onclick('system/material/list')">
+											<a href="javascript:onclick('system/fabrics/list')">
 												<i class="menu-icon fa fa-caret-right"></i>
-												物料信息
+												面料信息
 											</a>
 
 											<b class="arrow"></b>
