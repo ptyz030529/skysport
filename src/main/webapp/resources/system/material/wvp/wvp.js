@@ -16,6 +16,7 @@ var columnsName = function () {
 }
 
 
+
 /**
  * 新增/修改校验字段描述
  * @returns {{name: {validators: {notEmpty: {message: string}}}}}

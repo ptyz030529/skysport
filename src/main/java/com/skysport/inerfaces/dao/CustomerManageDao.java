@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.dao;
 
-import com.skysport.inerfaces.bean.CustomerInfo;
+import com.skysport.inerfaces.bean.system.CustomerInfo;
 import org.springframework.stereotype.Component;
 
 /**

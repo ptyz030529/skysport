@@ -146,32 +146,34 @@
                 <div id="fabricsInfo">
                     <h3 class="header smaller lighter blue">
                         面料
-                        <%--<small>+</small>--%> <img src="<%=path%>/resources/images/add.png" alt="增加面料" id="imgAddFabric">
+                        <%--<small>+</small>--%> <img src="<%=path%>/resources/images/add.png" alt="增加面料"   id="imgAddFabric">
                     </h3>
                     <%--<div class="hr hr32 hr-dotted"></div>--%>
                 </div>
-
-                <h3 class="header smaller lighter blue">
-                    辅料
-                    <small>+</small>
-                </h3>
-
-                <h3 class="header smaller lighter blue">
-                    包装材料
-                    <small>+</small>
-                </h3>
-
-                <h3 class="header smaller lighter blue">
-                    成衣厂
-                    <small>+</small>
-                </h3>
-
+                <div id="accessoriesInfo">
+                    <h3 class="header smaller lighter blue">
+                        辅料
+                        <%--<small>+</small>--%><img src="<%=path%>/resources/images/add.png" alt="增加辅料"   id="imgAddAccessories">
+                    </h3>
+                </div>
+                <div id="packageMaterialsInfo">
+                    <h3 class="header smaller lighter blue">
+                        包装材料
+                        <%--<small>+</small>--%><img src="<%=path%>/resources/images/add.png" alt="增加包装材料"   id="imgAddPackageMaterials">
+                    </h3>
+                </div>
+                <div id="factoryInfo">
+                    <h3 class="header smaller lighter blue">
+                        成衣厂
+                        <%--<small>+</small>--%><img src="<%=path%>/resources/images/add.png" alt="增加成衣厂"    id="imgAddFacotry">
+                    </h3>
+                </div>
             </form>
 
         </div>
         <!-- Button trigger modal -->
     </div>
-        <%@ include file="../../system/material/material-list.jsp"%>
+    <%@ include file="../../system/material/bom-material-list.jsp" %>
 </div>
 <jsp:include page="../../base/footCommon.jsp"></jsp:include>
 <jsp:include page="../../base/aceFoot.jsp"></jsp:include>
@@ -225,7 +227,8 @@
                 <div class="col-sm-9">
                     <input type="text" id="{{productTypeId}}" name="productTypeId"
                            placeholder="供应商" class="col-xs-10 col-sm-5"/> <img
-                        src="<%=path%>/resources/images/search.png" alt="查找物料" data-toggle="modal" data-target="#materialListModal" />
+                        src="<%=path%>/resources/images/search.png" alt="查找物料" data-toggle="modal"
+                        data-target="#materialListModal"/>
                 </div>
             </div>
             <div class="form-group">
@@ -355,43 +358,43 @@
 //            $(this).toggle(300);
 //        });
 
-        $("#imgAddFabric").click(function(){
-           $("#bomDescDetail").hide(300);
-           var size = $("div[id^=fabricTitle]").length;
-           var nextIdNum= size +1;
-           var data ={
-               "fabric":[
-                   {
-                       "fabricDivId":"fabricDivId"+nextIdNum,
-                       "fabricTitleId":"fabricTitleId"+nextIdNum,
-                       "fabricTitleName":"面料"+nextIdNum,
-                       "fabricDetailId":"fabricDetailId"+nextIdNum,
-                       "materialTypeId":"materialTypeId"+nextIdNum,
-                       "spId":"spId"+nextIdNum,
-                       "yearCode":"yearCode"+nextIdNum,
-                       "classicId":"classicId"+nextIdNum,
-                       "productTypeId":"productTypeId"+nextIdNum,
-                       "specificationId":"specificationId"+nextIdNum,
-                       "dyeId":"dyeId"+nextIdNum,
-                       "finishId":"finishId"+nextIdNum,
-                       "blcId":"blcId"+nextIdNum,
-                       "mcId":"mcId"+nextIdNum,
-                       "comcId":"comcId"+nextIdNum,
-                       "wvpId":"wvpId"+nextIdNum,
-                       "mtId":"mtId"+nextIdNum,
-                       "woblcid":"woblcid"+nextIdNum
+        $("#imgAddFabric").click(function () {
+            $("#bomDescDetail").hide(300);
+            var size = $("div[id^=fabricTitle]").length;
+            var nextIdNum = size + 1;
+            var data = {
+                "fabric": [
+                    {
+                        "fabricDivId": "fabricDivId" + nextIdNum,
+                        "fabricTitleId": "fabricTitleId" + nextIdNum,
+                        "fabricTitleName": "面料" + nextIdNum,
+                        "fabricDetailId": "fabricDetailId" + nextIdNum,
+                        "materialTypeId": "materialTypeId" + nextIdNum,
+                        "spId": "spId" + nextIdNum,
+                        "yearCode": "yearCode" + nextIdNum,
+                        "classicId": "classicId" + nextIdNum,
+                        "productTypeId": "productTypeId" + nextIdNum,
+                        "specificationId": "specificationId" + nextIdNum,
+                        "dyeId": "dyeId" + nextIdNum,
+                        "finishId": "finishId" + nextIdNum,
+                        "blcId": "blcId" + nextIdNum,
+                        "mcId": "mcId" + nextIdNum,
+                        "comcId": "comcId" + nextIdNum,
+                        "wvpId": "wvpId" + nextIdNum,
+                        "mtId": "mtId" + nextIdNum,
+                        "woblcid": "woblcid" + nextIdNum
 
-                   }
+                    }
 
-               ]
-           };
+                ]
+            };
 
             var myTemplate = Handlebars.compile($("#fabric-template").html());
             $("#fabricsInfo").append(myTemplate(data));
 
             //添加隐藏和显示事件
-            $("#fabricTitleId"+nextIdNum).click(function () {
-                $("#fabricDetailId"+nextIdNum).toggle(300);
+            $("#fabricTitleId" + nextIdNum).click(function () {
+                $("#fabricDetailId" + nextIdNum).toggle(300);
             });
 
 

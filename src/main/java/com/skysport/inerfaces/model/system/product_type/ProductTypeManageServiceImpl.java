@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.product_type;
 
-import com.skysport.inerfaces.bean.ProductTypeInfo;
+import com.skysport.inerfaces.bean.system.ProductTypeInfo;
 import com.skysport.inerfaces.dao.ProductTypeManageDao;
 import com.skysport.inerfaces.model.system.common.service.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;

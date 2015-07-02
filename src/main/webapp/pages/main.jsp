@@ -1381,7 +1381,7 @@
 					</script>
 				</div>
 				<div class="main-content">
-					<iframe  id="mainIframe" src="pages/content.jsp"  width="100%"    onLoad="iFrameHeight()"></iframe>
+					<iframe  id="mainIframe" src="pages/content.jsp"  width="100%" ></iframe>
 				</div><!-- /.main-content -->
 
 			    <jsp:include page="base/foot.jsp"></jsp:include>
@@ -1400,9 +1400,13 @@
 			function onclick(frameSrc){
 				$('iframe').attr("src", frameSrc);
 			}
-			function iFrameHeight() { 
-				$("#mainIframe").height($(window.frames["mainIframe"]).contents().height());
-			} 
+
+			$(function(){
+//				//等待iframe加载完成，才
+				$("#mainIframe").load(function(){
+					$("#mainIframe").height($(window.frames["mainIframe"]).contents().height());
+				});
+			});
 		</script>
 </body>
 </html>

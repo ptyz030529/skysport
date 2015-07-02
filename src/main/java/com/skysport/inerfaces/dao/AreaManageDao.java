@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.dao;
 
-import com.skysport.inerfaces.bean.AreaInfo;
+import com.skysport.inerfaces.bean.system.AreaInfo;
 import org.springframework.stereotype.Component;
 
 /**

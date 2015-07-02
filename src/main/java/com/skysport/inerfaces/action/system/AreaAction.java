@@ -1,11 +1,11 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.CommonBean;
+import com.skysport.core.bean.SelectItem;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.AreaInfo;
+import com.skysport.inerfaces.bean.system.AreaInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
 import com.skysport.inerfaces.helper.CommonHelper;
 import com.skysport.inerfaces.model.system.common.service.ICommonService;
@@ -72,8 +72,8 @@ public class AreaAction extends TableListQueryAction<String, Object, AreaInfo> {
             recordsFiltered = areaManageService.listFilteredInfosCounts(dataTablesInfo);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<AreaInfo> areaInfos = areaManageService.searchInfos(dataTablesInfo);
-        Map<String, Object> resultMap = buildSearchJsonMap(areaInfos, recordsTotal, recordsFiltered, draw);
+        List<AreaInfo> infos = areaManageService.searchInfos(dataTablesInfo);
+        Map<String, Object> resultMap = buildSearchJsonMap(infos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
     }
@@ -148,7 +148,7 @@ public class AreaAction extends TableListQueryAction<String, Object, AreaInfo> {
     @ResponseBody
     public Map<String, Object> querySelectList(HttpServletRequest request) {
         String name = request.getParameter("name");
-        List<CommonBean> commonBeans = areaManageService.querySelectList(name);
+        List<SelectItem> commonBeans = areaManageService.querySelectList(name);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("items", commonBeans);
         resultMap.put("total_count", commonBeans.size());

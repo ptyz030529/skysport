@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.factory;
 
-import com.skysport.inerfaces.bean.FactoryInfo;
+import com.skysport.inerfaces.bean.system.FactoryInfo;
 import com.skysport.inerfaces.dao.FactoryManageDao;
 import com.skysport.inerfaces.model.system.common.service.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;

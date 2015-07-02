@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.model.system.sp.service;
 
 import com.skysport.core.bean.DataTablesInfo;
-import com.skysport.inerfaces.bean.SpInfo;
+import com.skysport.inerfaces.bean.system.SpInfo;
 
 import java.util.List;
 

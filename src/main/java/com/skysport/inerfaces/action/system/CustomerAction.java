@@ -1,11 +1,11 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.CommonBean;
+import com.skysport.core.bean.SelectItem;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.CustomerInfo;
+import com.skysport.inerfaces.bean.system.CustomerInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
 import com.skysport.inerfaces.helper.CommonHelper;
 import com.skysport.inerfaces.model.system.common.service.ICommonService;
@@ -152,7 +152,7 @@ public class CustomerAction extends TableListQueryAction<String, Object, Custome
     @ResponseBody
     public Map<String,Object> querySelectList(HttpServletRequest request){
         String name = request.getParameter("name");
-        List<CommonBean> commonBeans =     customerManageService.querySelectList(name);
+        List<SelectItem> commonBeans =     customerManageService.querySelectList(name);
         Map<String,Object> resultMap = new HashMap<String,Object>();
         resultMap.put("items",commonBeans);
         resultMap.put("total_count",commonBeans.size());

@@ -1,17 +1,39 @@
 package com.skysport.inerfaces.bean.material;
 
-import com.skysport.core.bean.CommonBean;
+import com.skysport.core.bean.SelectItem;
 
 /**
  * 类说明:后整理（所添加的功能性助剂）
  * Created by zhangjh on 2015/6/25.
  */
-public class FinishInfo extends CommonBean {
+public class FinishInfo extends SelectItem {
     private String id;
     private String finishId;
     private String finishName;
     private int levelId;
+    private int delFlag;
+    private String updateTime;
     private String remark;
+
+    @Override
+    public int getDelFlag() {
+        return delFlag;
+    }
+
+    @Override
+    public void setDelFlag(int delFlag) {
+        this.delFlag = delFlag;
+    }
+
+    @Override
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    @Override
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public String getRemark() {
         return remark;

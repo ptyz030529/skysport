@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.dao;
 
 import com.skysport.core.bean.DataTablesInfo;
-import com.skysport.inerfaces.bean.SpInfo;
+import com.skysport.inerfaces.bean.system.SpInfo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

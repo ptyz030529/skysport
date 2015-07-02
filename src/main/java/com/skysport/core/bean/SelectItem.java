@@ -1,18 +1,12 @@
 package com.skysport.core.bean;
 
 /**
+ * 下拉列表
  * Created by zhangjh on 2015/6/8.
  */
-public class CommonBean {
-    /**
-     * 主键
-     */
+public abstract class SelectItem implements CommonVo {
     private String natrualkey;
-    /**
-     * 名称
-     */
     private String name;
-
 
     public String getNatrualkey() {
         return natrualkey;

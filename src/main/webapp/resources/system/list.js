@@ -5,6 +5,11 @@ var table;
 var editFlag = false;
 $(function () {
 
+    var modalID = "myModal";
+    if (typeof(clientModalID) != "undefined") {
+        modalID=clientModalID;
+    }
+    console.log("modalID:"+modalID);
     $('#start_date').datetimepicker();
 
     var tpl = $("#tpl").html();
@@ -51,7 +56,7 @@ $(function () {
         "t" +
         "<'row'<'col-xs-6'i><'col-xs-6'p>>",
         initComplete: function () {
-            $("#mytool").append('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >ADD</button>');
+            $("#mytool").append('<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#'+modalID+'">ADD</button>');
         }
 
     });

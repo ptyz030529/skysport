@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.dao;
 
-import com.skysport.core.bean.CommonBean;
+import com.skysport.core.bean.SelectItem;
 import com.skysport.core.bean.DataTablesInfo;
 
 import java.util.List;
@@ -26,5 +26,5 @@ public interface CommonDao<T> {
 
     public String queryCurrentSeqNo();
 
-    List<CommonBean> querySelectList(String name);
+    List<SelectItem> querySelectList(String name);
 }

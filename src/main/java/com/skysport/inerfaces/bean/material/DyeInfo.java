@@ -1,12 +1,12 @@
 package com.skysport.inerfaces.bean.material;
 
-import com.skysport.core.bean.CommonBean;
+import com.skysport.core.bean.SelectItem;
 
 /**
  * 类说明:染色工艺（匹染、色织等）
  * Created by zhangjh on 2015/6/23.
  */
-public class DyeInfo extends CommonBean {
+public class DyeInfo extends SelectItem {
     /**
      * id
      */
@@ -20,7 +20,29 @@ public class DyeInfo extends CommonBean {
      */
     private String dyeName;
     private int levelId;
+    private int delFlag;
+    private String updateTime;
     private String remark;
+
+    @Override
+    public int getDelFlag() {
+        return delFlag;
+    }
+
+    @Override
+    public void setDelFlag(int delFlag) {
+        this.delFlag = delFlag;
+    }
+
+    @Override
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    @Override
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public String getRemark() {
         return remark;

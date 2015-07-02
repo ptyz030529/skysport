@@ -1,6 +1,5 @@
 package com.skysport.core.instance;
 
-import com.skysport.core.bean.Dictionary;
 import com.skysport.core.constant.CommonConstant;
 
 import java.util.HashMap;
@@ -47,7 +46,7 @@ public enum DictionaryInfo {
 	 * @param dictionary
 	 *            数据字段对象
 	 */
-	public void initDictionaryMap(Dictionary dictionary) {
+	public void initDictionaryMap(com.skysport.core.bean.DictionaryInfo dictionary) {
 		if (dictionary != null) {
 			String type = dictionary.getType();
 			String keyName = dictionary.getKeyName();

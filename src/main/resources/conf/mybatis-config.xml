@@ -5,19 +5,19 @@
 <configuration>
     <!-- 命名空间 -->
     <typeAliases>
-        <typeAlias alias="CommonBean" type="com.skysport.core.bean.CommonBean"/>
-        <typeAlias alias="SpInfo" type="com.skysport.inerfaces.bean.SpInfo"/>
-        <typeAlias alias="Dictionary" type="com.skysport.core.bean.Dictionary"/>
-        <typeAlias alias="PantoneInfo" type="com.skysport.inerfaces.bean.PantoneInfo"/>
-        <typeAlias alias="CustomerInfo" type="com.skysport.inerfaces.bean.CustomerInfo"/>
-        <typeAlias alias="AreaInfo" type="com.skysport.inerfaces.bean.AreaInfo"/>
-        <typeAlias alias="SeriesInfo" type="com.skysport.inerfaces.bean.SeriesInfo"/>
-        <typeAlias alias="FactoryInfo" type="com.skysport.inerfaces.bean.FactoryInfo"/>
-        <typeAlias alias="MaterialClassicInfo" type="com.skysport.inerfaces.bean.MaterialClassicInfo"/>
-        <typeAlias alias="MaterialTypeInfo" type="com.skysport.inerfaces.bean.MaterialTypeInfo"/>
-        <typeAlias alias="ProductTypeInfo" type="com.skysport.inerfaces.bean.ProductTypeInfo"/>
-        <typeAlias alias="SexInfo" type="com.skysport.inerfaces.bean.SexInfo"/>
-        <typeAlias alias="YearConfInfo" type="com.skysport.inerfaces.bean.YearConfInfo"/>
+        <typeAlias alias="CommonBean" type="com.skysport.core.bean.SelectItem"/>
+        <typeAlias alias="SpInfo" type="com.skysport.inerfaces.bean.system.SpInfo"/>
+        <typeAlias alias="Dictionary" type="com.skysport.core.bean.DictionaryInfo"/>
+        <typeAlias alias="PantoneInfo" type="com.skysport.inerfaces.bean.system.PantoneInfo"/>
+        <typeAlias alias="CustomerInfo" type="com.skysport.inerfaces.bean.system.CustomerInfo"/>
+        <typeAlias alias="AreaInfo" type="com.skysport.inerfaces.bean.system.AreaInfo"/>
+        <typeAlias alias="SeriesInfo" type="com.skysport.inerfaces.bean.system.SeriesInfo"/>
+        <typeAlias alias="FactoryInfo" type="com.skysport.inerfaces.bean.system.FactoryInfo"/>
+        <typeAlias alias="MaterialClassicInfo" type="com.skysport.inerfaces.bean.system.MaterialClassicInfo"/>
+        <typeAlias alias="MaterialTypeInfo" type="com.skysport.inerfaces.bean.system.MaterialTypeInfo"/>
+        <typeAlias alias="ProductTypeInfo" type="com.skysport.inerfaces.bean.system.ProductTypeInfo"/>
+        <typeAlias alias="SexInfo" type="com.skysport.inerfaces.bean.system.SexInfo"/>
+        <typeAlias alias="YearConfInfo" type="com.skysport.inerfaces.bean.system.YearConfInfo"/>
         <typeAlias alias="DyeInfo" type="com.skysport.inerfaces.bean.material.DyeInfo"/>
         <!--物料-->
         <typeAlias alias="BondingLaminationCoatingInfo" type="com.skysport.inerfaces.bean.material.BondingLaminationCoatingInfo"/>
@@ -29,12 +29,16 @@
         <typeAlias alias="WaterVapourPermeabilityInfo" type="com.skysport.inerfaces.bean.material.WaterVapourPermeabilityInfo"/>
         <typeAlias alias="WorkmanshipOfBondingLaminatingCoatingInfo" type="com.skysport.inerfaces.bean.material.WorkmanshipOfBondingLaminatingCoatingInfo"/>
         <typeAlias alias="FabricsInfo" type="com.skysport.inerfaces.bean.FabricsInfo"/>
+        <typeAlias  alias="CategoryInfo" type="com.skysport.inerfaces.bean.system.CategoryInfo"/>
+        <typeAlias  alias="MaterialPositionInfo" type="com.skysport.inerfaces.bean.system.MaterialPositionInfo"/>
+        <typeAlias  alias="MaterialUnitInfo" type="com.skysport.inerfaces.bean.system.MaterialUnitInfo"/>
+
 
 
 
     </typeAliases>
 
-    <!-- 映射map -->
+    <!-- 映射map-->
     <mappers>
     </mappers>
 </configuration>

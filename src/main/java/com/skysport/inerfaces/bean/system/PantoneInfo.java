@@ -1,4 +1,4 @@
-package com.skysport.inerfaces.bean;
+package com.skysport.inerfaces.bean.system;
 
 /**
  * Pantone色卡
@@ -14,7 +14,7 @@ public class PantoneInfo{
     private String pageNo;
     private String codeColor;
     private String rgb;
-    private String delFlag;
+    private int delFlag;
     private String remark;
 
     public String getPantoneId() {
@@ -81,11 +81,11 @@ public class PantoneInfo{
         this.rgb = rgb;
     }
 
-    public String getDelFlag() {
+    public int getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(String delFlag) {
+    public void setDelFlag(int delFlag) {
         this.delFlag = delFlag;
     }
 

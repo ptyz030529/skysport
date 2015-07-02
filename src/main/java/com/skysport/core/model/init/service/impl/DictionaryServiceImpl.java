@@ -1,6 +1,6 @@
 package com.skysport.core.model.init.service.impl;
 
-import com.skysport.core.bean.Dictionary;
+import com.skysport.core.bean.DictionaryInfo;
 import com.skysport.core.dao.DictionaryMapper;
 import com.skysport.core.model.init.service.IDictionaryService;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class DictionaryServiceImpl implements IDictionaryService {
     private DictionaryMapper dictionaryMapper;
 
     @Override
-    public List<Dictionary> queryAllDictionaries() {
+    public List<DictionaryInfo> queryAllDictionaries() {
         return dictionaryMapper.searchDictionary();
     }
 

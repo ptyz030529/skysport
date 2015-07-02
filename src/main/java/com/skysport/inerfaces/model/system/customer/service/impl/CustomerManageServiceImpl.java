@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.customer.service.impl;
 
-import com.skysport.inerfaces.bean.CustomerInfo;
+import com.skysport.inerfaces.bean.system.CustomerInfo;
 import com.skysport.inerfaces.dao.CustomerManageDao;
 import com.skysport.inerfaces.model.system.common.service.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;

@@ -4,7 +4,7 @@ import com.skysport.core.action.TableListQueryAction;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.SpInfo;
+import com.skysport.inerfaces.bean.system.SpInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
 import com.skysport.inerfaces.helper.CommonHelper;
 import com.skysport.inerfaces.model.system.sp.service.ISpManageService;

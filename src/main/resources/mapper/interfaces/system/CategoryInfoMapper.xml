@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skysport.inerfaces.dao.CategoryManageMapper">
+    <sql id="searchInfoSql">
+		id AS id,
+		category_id AS positionId,
+		category_name AS positionName,
+		level_id AS levelId,
+		remark AS remark,
+		updateTime AS updateTime
+	</sql>
+    <select id="queryInfo" resultType="CategoryInfo">
+        select
+        <include refid="searchInfoSql"/>
+        FROM t_category
+        WHERE pantone_id =#{pantoneId}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+		SELECT COUNT(*) FROM
+		t_category where del_flag=0
+	</select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*) FROM t_category where del_flag=0
+        <if test="searchValue !=null and searchValue != ''">
+            and (
+            category_id like concat('%',#{searchValue},'%') or
+            category_name like concat('%',#{searchValue},'%') or
+            level_id like concat('%',#{searchValue},'%') or
+            remark like concat('%',#{searchValue},'%') or
+            )
+        </if>
+
+    </select>
+
+    <select id="searchInfos" resultType="CategoryInfo">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM t_category
+        WHERE del_flag=0
+        <if test="searchValue!=null and searchValue != ''">
+            and (
+            category_id like concat('%',#{searchValue},'%') or
+            category_name like concat('%',#{searchValue},'%') or
+            level_id like concat('%',#{searchValue},'%') or
+            remark like concat('%',#{searchValue},'%') or
+            )
+        </if>
+        <if test="orderColumn!=null and orderColumn != ''">
+            ORDER BY ${orderColumn} ${orderDir}
+        </if>
+        limit #{start} ,#{length}
+
+    </select>
+
+    <update id="updateInfo">
+		update t_category 	set
+		category_name=#{positionId},
+		level_id = #{levelId},
+		remark=#{remark}
+		WHERE pantone_id =#{positionId}
+	</update>
+
+    <insert id="add">
+		insert into
+		t_category (category_id,category_name,level_id,remark)
+		values (#{positionId},#{positionName},#{levelId},#{remark})
+	</insert>
+
+    <update id="del">
+		update t_category
+		set  del_flag=1
+		where category_id =#{positionId}
+	</update>
+
+</mapper>

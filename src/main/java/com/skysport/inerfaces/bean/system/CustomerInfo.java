@@ -1,11 +1,12 @@
-package com.skysport.inerfaces.bean;
-import com.skysport.core.bean.CommonBean;
+package com.skysport.inerfaces.bean.system;
+
+import com.skysport.core.bean.SelectItem;
 
 /**
  * 客户信息
  * Created by zhangjh on 2015/6/3.
  */
-public class CustomerInfo extends CommonBean{
+public class CustomerInfo extends SelectItem {
 
     private String id;
     private String customerId;
@@ -18,7 +19,7 @@ public class CustomerInfo extends CommonBean{
     private String tel;
     private String phone;
     private String skypeAccount;
-    private String delFlag;
+    private int delFlag;
     private String updateTime;
     private String remark;
 
@@ -110,11 +111,11 @@ public class CustomerInfo extends CommonBean{
         this.skypeAccount = skypeAccount;
     }
 
-    public String getDelFlag() {
+    public int getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(String delFlag) {
+    public void setDelFlag(int delFlag) {
         this.delFlag = delFlag;
     }
 

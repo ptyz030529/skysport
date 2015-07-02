@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.dao;
 import com.skysport.core.bean.DataTablesInfo;
-import com.skysport.inerfaces.bean.PantoneInfo;
+import com.skysport.inerfaces.bean.system.PantoneInfo;
 import org.springframework.stereotype.Component;
 import java.util.List;
 

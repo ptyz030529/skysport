@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.action.system.material;
 
 import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.CommonBean;
+import com.skysport.core.bean.SelectItem;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
@@ -72,8 +72,8 @@ public class MaterialOfMembraneCoatingAction extends TableListQueryAction<String
             recordsFiltered = materialOfMembraneCoatingService.listFilteredInfosCounts(dataTablesInfo);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<MaterialOfMembraneCoatingInfo> areaInfos = materialOfMembraneCoatingService.searchInfos(dataTablesInfo);
-        Map<String, Object> resultMap = buildSearchJsonMap(areaInfos, recordsTotal, recordsFiltered, draw);
+        List<MaterialOfMembraneCoatingInfo> infos = materialOfMembraneCoatingService.searchInfos(dataTablesInfo);
+        Map<String, Object> resultMap = buildSearchJsonMap(infos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
     }
@@ -148,7 +148,7 @@ public class MaterialOfMembraneCoatingAction extends TableListQueryAction<String
     @ResponseBody
     public Map<String, Object> querySelectList(HttpServletRequest request) {
         String name = request.getParameter("name");
-        List<CommonBean> commonBeans = materialOfMembraneCoatingService.querySelectList(name);
+        List<SelectItem> commonBeans = materialOfMembraneCoatingService.querySelectList(name);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("items", commonBeans);
         resultMap.put("total_count", commonBeans.size());

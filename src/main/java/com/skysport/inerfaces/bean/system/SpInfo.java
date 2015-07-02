@@ -1,4 +1,4 @@
-package com.skysport.inerfaces.bean;
+package com.skysport.inerfaces.bean.system;
 
 import org.springframework.stereotype.Component;
 

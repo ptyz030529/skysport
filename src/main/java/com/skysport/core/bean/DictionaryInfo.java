@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component("dictionary")
-public class Dictionary {
+public class DictionaryInfo {
 	private int id;
 	private String type;
 	private String keyName;

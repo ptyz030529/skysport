@@ -1151,7 +1151,7 @@ if (typeof jQuery === 'undefined') {
     })
 
     var $modal_dialog = $(this.$element[0]).find('.modal-dialog');
-    var m_top = ( $(document).height() - $modal_dialog.height() )/2;
+    var m_top = ( $(document).height() - $modal_dialog.height() )/2.5;
     $modal_dialog.css({'margin': m_top + 'px auto'});
 
   }

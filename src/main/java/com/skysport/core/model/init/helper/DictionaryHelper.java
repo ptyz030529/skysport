@@ -1,7 +1,6 @@
 package com.skysport.core.model.init.helper;
 
-import com.skysport.core.bean.Dictionary;
-import com.skysport.core.instance.DictionaryInfo;
+import com.skysport.core.bean.DictionaryInfo;
 import com.skysport.core.model.init.service.IDictionaryService;
 import org.springframework.context.ApplicationContext;
 
@@ -21,14 +20,14 @@ public enum DictionaryHelper {
      */
     public void initDictionary(ApplicationContext appContext) {
         IDictionaryService service = (IDictionaryService) appContext.getBean("dictionaryService");
-        List<Dictionary> dictionaries = service.queryAllDictionaries();
+        List<DictionaryInfo> dictionaries = service.queryAllDictionaries();
         initDictionaryMap(dictionaries);
     }
 
-    public void initDictionaryMap(List<Dictionary> dictionaries) {
+    public void initDictionaryMap(List<DictionaryInfo> dictionaries) {
         for (int index = 0; index < dictionaries.size(); index++) {
-            Dictionary dictionary = dictionaries.get(index);
-            DictionaryInfo.SINGLETONE.initDictionaryMap(dictionary);
+            DictionaryInfo dictionary = dictionaries.get(index);
+            com.skysport.core.instance.DictionaryInfo.SINGLETONE.initDictionaryMap(dictionary);
         }
 
     }

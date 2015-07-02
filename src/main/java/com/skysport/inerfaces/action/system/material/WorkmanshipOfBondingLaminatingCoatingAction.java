@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system.material;
 import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.CommonBean;
+import com.skysport.core.bean.SelectItem;
 import com.skysport.core.bean.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
@@ -71,8 +71,8 @@ public class WorkmanshipOfBondingLaminatingCoatingAction extends TableListQueryA
             recordsFiltered = workmanshipOfBondingLaminatingCoatingService.listFilteredInfosCounts(dataTablesInfo);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<WorkmanshipOfBondingLaminatingCoatingInfo> areaInfos = workmanshipOfBondingLaminatingCoatingService.searchInfos(dataTablesInfo);
-        Map<String, Object> resultMap = buildSearchJsonMap(areaInfos, recordsTotal, recordsFiltered, draw);
+        List<WorkmanshipOfBondingLaminatingCoatingInfo> infos = workmanshipOfBondingLaminatingCoatingService.searchInfos(dataTablesInfo);
+        Map<String, Object> resultMap = buildSearchJsonMap(infos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
     }
@@ -147,7 +147,7 @@ public class WorkmanshipOfBondingLaminatingCoatingAction extends TableListQueryA
     @ResponseBody
     public Map<String, Object> querySelectList(HttpServletRequest request) {
         String name = request.getParameter("name");
-        List<CommonBean> commonBeans = workmanshipOfBondingLaminatingCoatingService.querySelectList(name);
+        List<SelectItem> commonBeans = workmanshipOfBondingLaminatingCoatingService.querySelectList(name);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("items", commonBeans);
         resultMap.put("total_count", commonBeans.size());

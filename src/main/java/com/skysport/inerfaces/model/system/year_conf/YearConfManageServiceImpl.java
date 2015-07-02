@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.year_conf;
 
-import com.skysport.inerfaces.bean.YearConfInfo;
+import com.skysport.inerfaces.bean.system.YearConfInfo;
 import com.skysport.inerfaces.dao.YearConfManageDao;
 import com.skysport.inerfaces.model.system.common.service.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
