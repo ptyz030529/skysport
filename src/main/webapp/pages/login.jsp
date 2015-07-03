@@ -28,9 +28,9 @@
     <form action="<%=path%>/login" method="post">
 
         <input type="text" name="username" class="username"
-               placeholder="用户名">
+               placeholder="用户名" value="admin">
         <input type="password" name="password"
-                                         class="password" placeholder="密码">
+               class="password" placeholder="密码" value="admin">
         <button type="submit">登录</button>
         <div class="error">
             <span>+</span>

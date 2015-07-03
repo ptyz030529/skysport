@@ -31,5 +31,9 @@ public interface DictionaryTypeConstant {
     public static final String WBLC_TABLE_COLUMN = "wblc_table_column";
 
     public static final String FABRICS_TABLE_COLUMN = "fabrics_table_column";
+    public static final String CATEGORY_TABLE_COLUMN ="category_table_column";
+    public static final String MATERIAL_POSITION_TABLE_COLUMN = "material_position_table_column";
+    public static final String MATERIAL_UNIT_TABLE_COLUMN  ="material_unit_table_column";
+
 
 }

@@ -5,17 +5,17 @@
 <mapper namespace="com.skysport.inerfaces.dao.CategoryManageMapper">
     <sql id="searchInfoSql">
 		id AS id,
-		category_id AS positionId,
-		category_name AS positionName,
+		category_id AS natrualkey,
+		category_name AS name,
 		level_id AS levelId,
 		remark AS remark,
-		updateTime AS updateTime
+		update_time AS updateTime
 	</sql>
     <select id="queryInfo" resultType="CategoryInfo">
         select
         <include refid="searchInfoSql"/>
         FROM t_category
-        WHERE pantone_id =#{pantoneId}
+        WHERE category_id =#{natrualkey}
         limit 1
     </select>
 
@@ -31,7 +31,7 @@
             category_id like concat('%',#{searchValue},'%') or
             category_name like concat('%',#{searchValue},'%') or
             level_id like concat('%',#{searchValue},'%') or
-            remark like concat('%',#{searchValue},'%') or
+            remark like concat('%',#{searchValue},'%')
             )
         </if>
 
@@ -47,7 +47,7 @@
             category_id like concat('%',#{searchValue},'%') or
             category_name like concat('%',#{searchValue},'%') or
             level_id like concat('%',#{searchValue},'%') or
-            remark like concat('%',#{searchValue},'%') or
+            remark like concat('%',#{searchValue},'%')
             )
         </if>
         <if test="orderColumn!=null and orderColumn != ''">
@@ -59,22 +59,35 @@
 
     <update id="updateInfo">
 		update t_category 	set
-		category_name=#{positionId},
+		category_name=#{name},
 		level_id = #{levelId},
 		remark=#{remark}
-		WHERE pantone_id =#{positionId}
+		WHERE category_id =#{natrualkey}
 	</update>
 
     <insert id="add">
 		insert into
 		t_category (category_id,category_name,level_id,remark)
-		values (#{positionId},#{positionName},#{levelId},#{remark})
+		values (#{natrualkey},#{name},#{levelId},#{remark})
 	</insert>
 
     <update id="del">
 		update t_category
 		set  del_flag=1
-		where category_id =#{positionId}
+		where category_id =#{natrualkey}
 	</update>
+
+    <select id="queryCurrentSeqNo" resultType="String">
+        select case when  max(category_id) is NULL then 0 else max(category_id) end from t_category
+    </select>
+
+    <!--信息下拉列表-->
+    <select id="querySelectList" resultType="CommonBean">
+        select
+        category_id AS natrualkey,
+        category_name AS name
+        from t_category
+        where del_flag=0 and level_id=#{levelId} and upper(category_name) like concat('%',#{name},'%')
+    </select>
 
 </mapper>

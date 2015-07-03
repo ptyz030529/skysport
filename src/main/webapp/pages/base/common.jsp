@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="<%=path%>/resources/css/bootstrapValidator.min.css"/>
 <link rel="stylesheet" type="text/css" href="<%=path%>/resources/css/select2.css"/>
 <link rel="stylesheet" type="text/css" href="<%=path%>/resources/css/bootstrap-switch.css"/>
+<link rel="stylesheet" type="text/css" href="<%=path%>/resources/css/bootstrap-select.css"/>
 <script type="text/javascript" src='<%=path%>/resources/js/jquery-2.1.3.min.js'></script>
 <script type="text/javascript" src='<%=path%>/resources/js/bootbox.min.js'></script>
 <script type="text/javascript" src="<%=path%>/resources/js/ace-extra.min.js"></script>
@@ -22,6 +23,7 @@
 <script type="text/javascript" src="<%=path%>/resources/js/bootstrap-switch.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/util.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/handlebars-v3.0.1.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/js/bootstrap-select.js "  ></script>
 <script type="text/javascript">
 //  $('select').select2();
 </script>
