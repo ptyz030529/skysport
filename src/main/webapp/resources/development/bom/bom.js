@@ -3,24 +3,30 @@
  */
 var fabricArr = [];
 $(document).ready(function () {
-    //第一步，页面加载时，加载所有数据/分步加载数据
 
-    $("div[id^=fabricDetail]").hide(); //页面加载时，面料全部隐藏
+    $("#bomDescDetail").hide();
+
+    //第一步，页面加载时，加载所有数据/分步加载数据
+    $("div[id^=fabricAllInfoId]").hide(); //页面加载时，面料全部隐藏
 
     $("#bomDescTitle").click(function () {
         $("#bomDescDetail").toggle(300);
     });
 
+    //点击添加面料
     $("#imgAddFabric").click(function () {
-        $("#bomDescDetail").hide(300);
-        var size = $("div[id^=fabricTitle]").length;
+
+        $("div[id^=fabricAllInfoId]").hide(); //页面加载时，面料全部隐藏
+
+        var size = $("div[id^=fabricAllInfoId]").length;
         var nextIdNum = size + 1;
         var data = {
             "fabric": [
                 {
                     "fabricDivId": "fabricDivId" + nextIdNum,
                     "fabricTitleId": "fabricTitleId" + nextIdNum,
-                    "fabricTitleName": "面料" + nextIdNum,
+                    "fabricTitleName": "面料_" + nextIdNum,
+                    "fabricAllInfoId": "fabricAllInfoId" + nextIdNum,
                     "fabricDetailId": "fabricDetailId" + nextIdNum,
                     "materialTypeId": "materialTypeId" + nextIdNum,
                     "spId": "spId" + nextIdNum,
@@ -37,6 +43,7 @@ $(document).ready(function () {
                     "mtId": "mtId" + nextIdNum,
                     "woblcid": "woblcid" + nextIdNum
 
+
                 }
 
             ]
@@ -47,8 +54,10 @@ $(document).ready(function () {
 
         //添加隐藏和显示事件
         $("#fabricTitleId" + nextIdNum).click(function () {
-            $("#fabricDetailId" + nextIdNum).toggle(300);
-        });
+            $(this).toggle(300);
+            $(this).parent().siblings().fadeOut(300);//隐藏其他面料
+            //$("#fabricAllInfoId" + nextIdNum).toggle(300);
+        })
 
     });
 
