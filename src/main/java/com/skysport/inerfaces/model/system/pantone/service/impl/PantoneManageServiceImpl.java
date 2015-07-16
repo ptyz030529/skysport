@@ -1,8 +1,9 @@
 package com.skysport.inerfaces.model.system.pantone.service.impl;
 
-import com.skysport.core.bean.DataTablesInfo;
+import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
 import com.skysport.inerfaces.bean.system.PantoneInfo;
-import com.skysport.inerfaces.dao.PantoneManageDao;
+import com.skysport.inerfaces.mapper.PantoneManageDao;
 import com.skysport.inerfaces.model.system.pantone.service.IPantoneManageService;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +51,10 @@ public class PantoneManageServiceImpl implements IPantoneManageService {
     @Override
     public void del(String pantoneId) {
         pantoneManageDao.del(pantoneId);
+    }
+
+    @Override
+    public List<SelectItem> querySelectList(String name) {
+        return pantoneManageDao.querySelectList(name);
     }
 }

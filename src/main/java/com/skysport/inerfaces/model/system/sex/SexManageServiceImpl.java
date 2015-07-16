@@ -1,13 +1,11 @@
 package com.skysport.inerfaces.model.system.sex;
 
 import com.skysport.inerfaces.bean.system.SexInfo;
-import com.skysport.inerfaces.dao.SexManageDao;
-import com.skysport.inerfaces.model.system.common.service.impl.CommonServiceImpl;
+import com.skysport.inerfaces.mapper.SexManageDao;
+import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
-
 /**
  * Created by zhangjh on 2015/6/9.
  */

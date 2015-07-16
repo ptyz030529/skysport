@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ include file="base/path.jsp" %>
-<jsp:include page="base/common.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" class="no-js">
 <head>
@@ -11,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="<%=path%>/resources/images/favicon.ico" type="image/x-icon">
-
     <!-- CSS -->
+    <link rel="shortcut icon" href="<%=path%>/resources/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="<%=path%>/resources/css/bootstrap.css"	 />
     <link rel="stylesheet" href="<%=path%>/resources/css/reset.css">
     <link rel="stylesheet" href="<%=path%>/resources/css/supersized.css">
     <link rel="stylesheet" href="<%=path%>/resources/css/style.css">

@@ -16,7 +16,7 @@ var info = function(_pantoneId){
  */
 var _doSuccess_info= function(_data){
     var data = _data;
-    console.info(data);
+
 
     Object.keys(data).map(function(key){
         $('#defaultForm input').filter(function(){

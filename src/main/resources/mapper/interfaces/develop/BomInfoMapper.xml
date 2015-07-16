@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.skysport.inerfaces.mapper.BomManageMapper">
+    <sql id="searchInfoSql">
+		a.id AS id,
+		a.project_id AS projectId,
+		a.bom_id AS natrualkey,
+		a.bom_name AS name,
+		a.customer_id AS customerId,
+		a.area_id AS areaId,
+		a.series_id AS seriesId,
+		a.collectionNum AS collectionNum,
+		a.main_color AS mainColor,
+		a.fabrics_end_date AS fabricsEndDate,
+		a.accessories_end_date AS accessoriesEndDate,
+		a.preoffer_date AS preOfferDate,
+		a.cloth_received_date AS clothReceivedDate,
+		a.offer_amount AS offerAmount,
+		a.del_flag AS delFlag,
+		a.update_time AS updateTime,
+		a.remark AS remark
+	</sql>
+
+    <select id="queryInfo" resultType="BomInfo">
+        select
+        <include refid="searchInfoSql"/>
+        FROM t_bominfo a
+        WHERE a.bom_id =#{natrualkey}
+        limit 1
+    </select>
+
+    <select id="listInfosCounts" resultType="Integer">
+		SELECT COUNT(*) FROM
+		t_bominfo where del_flag=0
+	</select>
+
+    <select id="listFilteredInfosCounts" resultType="Integer">
+        SELECT COUNT(*) FROM t_bominfo where del_flag=0
+        <if test="searchValue !=null and searchValue != ''">
+            and (
+            bom_name like concat('%',#{searchValue},'%') or
+            bom_id like concat('%',#{searchValue},'%') or
+            customer_id like concat('%',#{searchValue},'%') or
+            remark like concat('%',#{searchValue},'%')
+            )
+        </if>
+    </select>
+
+
+    <select id="searchInfos" resultType="BomInfo">
+        SELECT
+        <include refid="searchInfoSql"/>
+        FROM t_bominfo a
+        WHERE a.del_flag=0
+        <if test="searchValue!=null and searchValue != ''">
+            and (
+            bom_name like concat('%',#{searchValue},'%') or
+            bom_id like concat('%',#{searchValue},'%') or
+            customer_id like concat('%',#{searchValue},'%') or
+            remark like concat('%',#{searchValue},'%')
+            )
+        </if>
+        <if test="orderColumn!=null and orderColumn != ''">
+            ORDER BY ${orderColumn} ${orderDir}
+        </if>
+        limit #{start} ,#{length}
+
+    </select>
+
+    <update id="updateInfo">
+		update t_bominfo 	set
+		bom_name=#{name},
+		customer_id=#{customerId},
+		area_id =#{areaId},
+		series_id =#{seriesId},
+		collectionNum =#{collectionNum},
+		main_color =#{mainColor},
+		fabrics_end_date =#{fabricsEndDate},
+		accessories_end_date =#{accessoriesEndDate},
+		preoffer_date =#{preOfferDate},
+		cloth_received_date =#{clothReceivedDate},
+		offer_amount =#{offerAmount},
+		remark=#{remark}
+		WHERE bom_id =#{natrualkey}
+	</update>
+
+    <insert id="add">
+		insert into
+		t_bominfo (project_id,bom_id,bom_name,customer_id,area_id,series_id,collectionNum,main_color,fabrics_end_date,accessories_end_date,preoffer_date,cloth_received_date,offer_amount,del_flag,update_time,remark)
+		values (#{projectId},#{natrualkey},#{name},#{customerId},#{areaId},#{seriesId},#{collectionNum},#{mainColor},#{fabricsEndDate},#{accessoriesEndDate},#{preOfferDate},#{clothReceivedDate},#{offerAmount},#{delFlag},#{updateTime},#{remark})
+	</insert>
+
+    <update id="del">
+		update t_bominfo
+		set  del_flag=1
+		where bom_id =#{natrualkey}
+	</update>
+
+
+    <select id="queryCurrentSeqNo" resultType="String">
+		select case when  max(bom_id) is NULL then 0 else max(bom_id) end from t_bominfo
+	</select>
+
+    <!--信息下拉列表-->
+    <select id="querySelectList" resultType="CommonBean">
+		select
+			bom_id AS natrualkey,
+			bom_name AS name
+		from t_bominfo
+		where del_flag=0 and bom_name like concat('%',#{name},'%')
+	</select>
+
+</mapper>

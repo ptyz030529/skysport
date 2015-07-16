@@ -46,7 +46,7 @@ public enum DictionaryInfo {
 	 * @param dictionary
 	 *            数据字段对象
 	 */
-	public void initDictionaryMap(com.skysport.core.bean.DictionaryInfo dictionary) {
+	public void initDictionaryMap(com.skysport.core.bean.system.DictionaryInfo dictionary) {
 		if (dictionary != null) {
 			String type = dictionary.getType();
 			String keyName = dictionary.getKeyName();

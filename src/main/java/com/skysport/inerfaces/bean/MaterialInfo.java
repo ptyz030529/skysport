@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.bean;
 
-import com.skysport.core.bean.SelectItem;
+import com.skysport.core.bean.system.SelectItem;
 
 /**
  * 物料信息

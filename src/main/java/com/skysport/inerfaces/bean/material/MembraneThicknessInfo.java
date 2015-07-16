@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.bean.material;
 
-import com.skysport.core.bean.SelectItem;
+import com.skysport.core.bean.system.SelectItem;
 
 /**
  * 类说明:膜的厚度（以mm为单位，0.012mm、0.015mm、0.018mm，等等）

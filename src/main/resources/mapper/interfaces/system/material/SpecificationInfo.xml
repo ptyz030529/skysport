@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.skysport.inerfaces.dao.material.SpecificationDao">
+<mapper namespace="com.skysport.inerfaces.mapper.material.SpecificationDao">
     <sql id="searchInfoSql">
 		id AS id,
 		specfication_id AS natrualkey,
@@ -83,7 +83,10 @@
 			specfication_id AS natrualkey,
 			specfication_name AS name
 		from t_specfication
-		where del_flag=0 and upper(specfication_name) like concat('%',#{name},'%')
+		where del_flag=0
+        <if test="name!=null and name != ''">
+            and upper(specfication_name) like concat('%',#{name},'%')
+        </if>
 	</select>
     
 

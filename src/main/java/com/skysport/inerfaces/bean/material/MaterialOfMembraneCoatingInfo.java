@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.bean.material;
 
-import com.skysport.core.bean.SelectItem;
+import com.skysport.core.bean.system.SelectItem;
 
 /**
  * 类说明:膜或涂层的材质（PU膜、TPU膜、PTE膜、PTFE膜、PU涂层、PA涂层，等等）

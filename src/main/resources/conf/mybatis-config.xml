@@ -5,9 +5,9 @@
 <configuration>
     <!-- 命名空间 -->
     <typeAliases>
-        <typeAlias alias="CommonBean" type="com.skysport.core.bean.SelectItem"/>
+        <typeAlias alias="CommonBean" type="com.skysport.core.bean.system.SelectItem2"/>
         <typeAlias alias="SpInfo" type="com.skysport.inerfaces.bean.system.SpInfo"/>
-        <typeAlias alias="Dictionary" type="com.skysport.core.bean.DictionaryInfo"/>
+        <typeAlias alias="Dictionary" type="com.skysport.core.bean.system.DictionaryInfo"/>
         <typeAlias alias="PantoneInfo" type="com.skysport.inerfaces.bean.system.PantoneInfo"/>
         <typeAlias alias="CustomerInfo" type="com.skysport.inerfaces.bean.system.CustomerInfo"/>
         <typeAlias alias="AreaInfo" type="com.skysport.inerfaces.bean.system.AreaInfo"/>
@@ -29,11 +29,15 @@
         <typeAlias alias="WaterVapourPermeabilityInfo" type="com.skysport.inerfaces.bean.material.WaterVapourPermeabilityInfo"/>
         <typeAlias alias="WorkmanshipOfBondingLaminatingCoatingInfo" type="com.skysport.inerfaces.bean.material.WorkmanshipOfBondingLaminatingCoatingInfo"/>
         <typeAlias alias="FabricsInfo" type="com.skysport.inerfaces.bean.FabricsInfo"/>
-        <typeAlias  alias="CategoryInfo" type="com.skysport.inerfaces.bean.system.CategoryInfo"/>
-        <typeAlias  alias="MaterialPositionInfo" type="com.skysport.inerfaces.bean.system.MaterialPositionInfo"/>
-        <typeAlias  alias="MaterialUnitInfo" type="com.skysport.inerfaces.bean.system.MaterialUnitInfo"/>
-
-
+        <typeAlias alias="CategoryInfo" type="com.skysport.inerfaces.bean.system.CategoryInfo"/>
+        <typeAlias alias="MaterialPositionInfo" type="com.skysport.inerfaces.bean.system.MaterialPositionInfo"/>
+        <typeAlias alias="MaterialUnitInfo" type="com.skysport.inerfaces.bean.system.MaterialUnitInfo"/>
+        <!--DEVELOP 开发-->
+        <typeAlias alias="BomInfo" type="com.skysport.inerfaces.bean.BomInfo"/>
+        <typeAlias alias="ProjectBomInfo" type="com.skysport.inerfaces.bean.ProjectBomInfo"/>
+        <typeAlias alias="ProjectInfo" type="com.skysport.inerfaces.bean.ProjectInfo"/>
+        <typeAlias alias="ProjectQueryForm" type="com.skysport.inerfaces.form.develop.ProjectQueryForm"/>
+        <typeAlias alias="BomQueryForm" type="com.skysport.inerfaces.form.develop.BomQueryForm"/>
 
 
     </typeAliases>

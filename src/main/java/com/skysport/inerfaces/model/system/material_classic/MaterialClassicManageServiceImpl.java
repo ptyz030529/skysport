@@ -1,8 +1,8 @@
 package com.skysport.inerfaces.model.system.material_classic;
 
 import com.skysport.inerfaces.bean.system.MaterialClassicInfo;
-import com.skysport.inerfaces.dao.MaterialClassicManageDao;
-import com.skysport.inerfaces.model.system.common.service.impl.CommonServiceImpl;
+import com.skysport.inerfaces.mapper.MaterialClassicManageDao;
+import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 

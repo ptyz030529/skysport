@@ -1,8 +1,8 @@
 package com.skysport.inerfaces.model.system.material.impl;
 
 import com.skysport.inerfaces.bean.material.SpecificationInfo;
-import com.skysport.inerfaces.dao.material.SpecificationDao;
-import com.skysport.inerfaces.model.system.common.service.impl.CommonServiceImpl;
+import com.skysport.inerfaces.mapper.material.SpecificationDao;
+import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 import javax.annotation.Resource;

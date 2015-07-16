@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.bean.material;
 
-import com.skysport.core.bean.SelectItem;
+import com.skysport.core.bean.system.SelectItem;
 
 /**
  * 类说明:后整理（所添加的功能性助剂）

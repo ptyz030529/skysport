@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.skysport.inerfaces.dao.CategoryManageMapper">
+<mapper namespace="com.skysport.inerfaces.mapper.CategoryManageMapper">
     <sql id="searchInfoSql">
 		id AS id,
 		category_id AS natrualkey,
@@ -87,7 +87,19 @@
         category_id AS natrualkey,
         category_name AS name
         from t_category
-        where del_flag=0 and level_id=#{levelId} and upper(category_name) like concat('%',#{name},'%')
+        where del_flag=0 and level_id=#{levelId}
+        <if test="name!=null and name!=''">
+            and upper(category_name) like concat('%',#{name},'%')
+        </if>
+    </select>
+
+    <!--信息下拉列表-->
+    <select id="querySelectListByLevelId" resultType="CommonBean">
+        select
+        category_id AS natrualkey,
+        category_name AS name
+        from t_category
+        where del_flag=0 and level_id=#{levelId}
     </select>
 
 </mapper>

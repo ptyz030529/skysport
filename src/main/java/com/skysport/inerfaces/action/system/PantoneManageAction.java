@@ -1,12 +1,12 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.DataTablesInfo;
+import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.PantoneInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.CommonHelper;
+import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.system.pantone.service.IPantoneManageService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
@@ -107,7 +107,7 @@ public class PantoneManageAction extends TableListQueryAction<String, Object, Pa
     public Map<String, Object> add(PantoneInfo pantoneInfo, HttpServletRequest request,
                                    HttpServletResponse repantoneonse) throws Exception {
         //设置ID
-        pantoneInfo.setPantoneId(CommonHelper.SINGLETONE.getFullSeqNo(TableNameConstant.PANTONE_INFO, incrementNumber));
+        pantoneInfo.setPantoneId(BuildSeqNoHelper.SINGLETONE.getFullSeqNo(TableNameConstant.PANTONE_INFO, incrementNumber));
         pantoneManageService.add(pantoneInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -117,10 +117,10 @@ public class PantoneManageAction extends TableListQueryAction<String, Object, Pa
 
 
     /**
-     * @param pantoneId     供应商id
+     * @param pantoneId     主键id
      * @param request       请求信息
      * @param repantoneonse 返回信息
-     * @return 根据供应商id找出供应商详细信息
+     * @return 根据主键id找出详细信息
      */
     @RequestMapping(value = "/info/{pantoneId}", method = RequestMethod.GET)
     @ResponseBody

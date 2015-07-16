@@ -1,8 +1,8 @@
 package com.skysport.inerfaces.model.system.material_type;
 
 import com.skysport.inerfaces.bean.system.MaterialTypeInfo;
-import com.skysport.inerfaces.dao.MaterialTypeManageDao;
-import com.skysport.inerfaces.model.system.common.service.impl.CommonServiceImpl;
+import com.skysport.inerfaces.mapper.MaterialTypeManageDao;
+import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 

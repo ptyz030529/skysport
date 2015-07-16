@@ -1,12 +1,12 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.DataTablesInfo;
+import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.SpInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.CommonHelper;
+import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.system.sp.service.ISpManageService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
@@ -108,7 +108,7 @@ public class SpManageAction extends TableListQueryAction<String, Object, SpInfo>
     public Map<String, Object> add(SpInfo spInfo, HttpServletRequest request,
                                    HttpServletResponse response) throws Exception {
         //设置ID
-        spInfo.setSpId(CommonHelper.SINGLETONE.getFullSeqNo(TableNameConstant.SP_INFO, incrementNumber));
+        spInfo.setSpId(BuildSeqNoHelper.SINGLETONE.getFullSeqNo(TableNameConstant.SP_INFO, incrementNumber));
         spManageService.add(spInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -118,10 +118,10 @@ public class SpManageAction extends TableListQueryAction<String, Object, SpInfo>
 
 
     /**
-     * @param spId     供应商id
+     * @param spId     主键id
      * @param request  请求信息
      * @param response 返回信息
-     * @return 根据供应商id找出供应商详细信息
+     * @return 根据主键id找出详细信息
      */
     @RequestMapping(value = "/spinfo/{spId}", method = RequestMethod.GET)
     @ResponseBody

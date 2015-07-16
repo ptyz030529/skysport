@@ -1,0 +1,119 @@
+package com.skysport.core.model.validate;
+
+import com.skysport.core.exception.CnfwsyException;
+import org.apache.ibatis.binding.MapperMethod;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.junit.Before;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.security.Signature;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 类说明:参数统一校验类
+ * Created by zhangjh on 2015/7/13.
+ */
+@Component
+@Aspect
+public class ControllerValidate {
+    private Logger logger = LogManager.getLogger(getClass());
+
+    private static Map<String, ParamsValidate> validateMap = new HashMap<String, ParamsValidate>();
+
+    @Before(value = "execution(@com.hy.controller.base.ParamsValidate public * com.hy.controller.*.*(..))")
+    public void validate(JoinPoint joinPoint) throws IOException {
+        HttpServletRequest request = null;
+        Object[] args = joinPoint.getArgs();
+        if (args != null) {
+            for (Object object : args) {
+                if (object instanceof HttpServletRequest) {
+                    request = (HttpServletRequest) object;//获取请求对象
+                    break;
+                }
+            }
+        }
+        if (request != null) {
+            //获取校验对象
+            Signature sign = joinPoint.getSignature();
+            String LongStr = sign.toLongString();
+            ParamsValidate paramsValidate = validateMap.get(LongStr);
+            if (paramsValidate == null) {
+                MapperMethod.MethodSignature msign = (MapperMethod.MethodSignature) sign;
+                Method method = msign.getMethod();
+                paramsValidate = method.getAnnotation(ParamsValidate.class);
+                validateMap.put(LongStr, paramsValidate);
+            }
+            if (paramsValidate != null) {
+                //开始校验
+                HttpSession session = request.getSession();
+                if (paramsValidate.iCode()) {//校验验证码
+                    Object code = session.getAttribute(IdentifyingCode.ICODE);
+                    String icode = request.getParameter(IdentifyingCode.ICODE.toLowerCase());
+                    if (icode == null || code == null || !icode.equalsIgnoreCase((String) code)) {
+                        Object count = session.getAttribute(IdentifyingCode.ICODE + "_count");//验证码比较次数
+                        int c = 1;
+                        String errorMsg = "验证码错误";
+                        if (count instanceof Integer) {
+                            c = (Integer) count;
+                            if (c < 5) {
+                                session.setAttribute(IdentifyingCode.ICODE + "_count", ++c);
+                            } else {//验证码比较 5次及以上
+                                session.removeAttribute(IdentifyingCode.ICODE);
+                                session.removeAttribute(IdentifyingCode.ICODE + "_count");
+                                errorMsg = "验证码错误，请刷新验证码后再输入！";
+                            }
+                        } else {
+                            session.setAttribute(IdentifyingCode.ICODE + "_count", c);
+                        }
+                        throw new CnfwsyException("VERIFICATION CODE ERROR", errorMsg);
+                    } else {
+                        session.removeAttribute(IdentifyingCode.ICODE);
+                        session.removeAttribute(IdentifyingCode.ICODE + "_count");
+                    }
+                }
+                if (paramsValidate.postToken()) {//校验重复提交
+                    String postToken = request.getParameter("postToken");
+                    if (postToken == null || !postToken.equals(session.getAttribute(BaseController.POST_TOKEN))) {
+                        throw new CnfwsyException("REPEAT SUBMIT", "请勿重复提交");
+                    } else {
+                        session.setAttribute(BaseController.POST_TOKEN, BaseUtil.getRandomStr(32));
+                    }
+                }
+
+                ParamValidate[] pvs = paramsValidate.value();
+                if (pvs != null) {
+                    for (ParamValidate pv : pvs) {
+                        String name = pv.name();
+                        String errorMsg = pv.errorMsg();
+                        String value = request.getParameter(name);
+                        String sp = request.getServletPath();
+                        if (value != null) {
+                            String regex = pv.regex();
+                            if (!"".equals(regex)) {//需要正则验证
+                                if (!value.matches(regex)) {
+                                    logger.warn(sp + "参数格式错误" + name + "=" + value);
+                                    throw new CnfwsyException("PARAMETER FORMAT ERROR", "".equals(errorMsg) ? ("参数格式错误" + name + "=" + value) : errorMsg);
+                                }
+                            }
+                        } else if (pv.required()) {
+                            logger.warn(sp + "缺少必要参数：" + name);
+                            throw new CnfwsyException("MISSING PARAMETER", "".equals(errorMsg) ? ("缺少必要参数：" + name) : errorMsg);
+                        }
+                    }
+                } else {
+                    logger.warn("ParamValidate is empty");
+                }
+            } else {
+                logger.warn("Failed to get request ParamsValidate");
+            }
+        } else {
+            logger.warn("ControllerValidate.validate Failed to get request");
+        }
+    }
+}

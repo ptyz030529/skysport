@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.bean.material;
 
-import com.skysport.core.bean.SelectItem;
+import com.skysport.core.bean.system.SelectItem;
 
 /**
  * 类说明:透湿程度（高透、中透、低透、不透气）

@@ -44,8 +44,8 @@
 <!--定义操作列按钮模板-->
 <script id="tpl" type="text/x-handlebars-template">
     {{#each func}}
-<button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
-{{/each}}
+        <button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
+    {{/each}}
 </script>
 <script type="text/javascript" src="<%=path%>/resources/system/area/area.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/system/list.js"></script>

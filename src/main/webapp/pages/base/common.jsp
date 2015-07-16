@@ -23,7 +23,9 @@
 <script type="text/javascript" src="<%=path%>/resources/js/bootstrap-switch.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/util.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/handlebars-v3.0.1.js"></script>
-<script type="text/javascript" src="<%=path%>/resources/js/bootstrap-select.js "  ></script>
+<script type="text/javascript" src="<%=path%>/resources/js/bootstrap-select.js"  ></script>
+<script type="text/javascript" src="<%=path%>/resources/js/jquery.cookie.js"  ></script>
 <script type="text/javascript">
-//  $('select').select2();
+    var path = "<%=path%>";
+    $.cookie('path',path);
 </script>

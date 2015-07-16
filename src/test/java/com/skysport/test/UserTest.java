@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.skysport.core.bean.User;
+import com.skysport.core.bean.permission.User;
 import com.skysport.core.model.login.service.IUserService;
 
 public class UserTest {

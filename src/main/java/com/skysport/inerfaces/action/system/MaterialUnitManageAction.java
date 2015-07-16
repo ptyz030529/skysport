@@ -1,15 +1,17 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.DataTablesInfo;
-import com.skysport.core.bean.SelectItem;
+import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.MaterialUnitInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.CommonHelper;
-import com.skysport.inerfaces.model.system.common.service.ICommonService;
+import com.skysport.inerfaces.helper.BuildSeqNoHelper;
+import com.skysport.inerfaces.model.common.ICommonService;
+import com.skysport.inerfaces.model.system.material.impl.helper.MaterialUnitServiceHelper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -85,11 +88,14 @@ public class MaterialUnitManageAction extends TableListQueryAction<String, Objec
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(MaterialUnitInfo info) throws Exception {
+    public Map<String, Object> edit(MaterialUnitInfo info, HttpServletRequest request) throws Exception {
         materialUnitService.edit(info);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
+        ApplicationContext appContext = (ApplicationContext) RequestContextUtils.getWebApplicationContext(request).getServletContext();
+        // 用量单位列表
+        MaterialUnitServiceHelper.SINGLETONE.refreshSelect(appContext);
         return resultMap;
     }
 
@@ -102,21 +108,24 @@ public class MaterialUnitManageAction extends TableListQueryAction<String, Objec
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(MaterialUnitInfo info) throws Exception {
+    public Map<String, Object> add(MaterialUnitInfo info, HttpServletRequest request) throws Exception {
         String currentNo = materialUnitService.queryCurrentSeqNo();
         //设置ID
-        info.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.T_MATERIAL_UNIT_INFO, currentNo, incrementNumber));
+        info.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.T_MATERIAL_UNIT_INFO, currentNo, incrementNumber));
         materialUnitService.add(info);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
+        ApplicationContext appContext = (ApplicationContext) RequestContextUtils.getWebApplicationContext(request).getServletContext();
+        // 用量单位列表
+        MaterialUnitServiceHelper.SINGLETONE.refreshSelect(appContext);
         return resultMap;
     }
 
 
     /**
-     * @param natrualKey 供应商id
-     * @return 根据供应商id找出供应商详细信息
+     * @param natrualKey 主键id
+     * @return 根据主键id找出详细信息
      */
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody

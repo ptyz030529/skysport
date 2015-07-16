@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.bean.material;
 
-import com.skysport.core.bean.SelectItem;
+import com.skysport.core.bean.system.SelectItem;
 
 /**
  * 类说明:贴膜或涂层工艺（离型纸转移贴膜、干法涂层、湿法涂层，等等）

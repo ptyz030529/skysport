@@ -1,15 +1,17 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.SelectItem;
-import com.skysport.core.bean.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.AreaInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.CommonHelper;
-import com.skysport.inerfaces.model.system.common.service.ICommonService;
+import com.skysport.inerfaces.helper.BuildSeqNoHelper;
+import com.skysport.inerfaces.model.system.area.helper.AreaManageServiceHelper;
+import com.skysport.inerfaces.model.common.ICommonService;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -92,6 +95,8 @@ public class AreaAction extends TableListQueryAction<String, Object, AreaInfo> {
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        AreaManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         return resultMap;
     }
 
@@ -108,7 +113,7 @@ public class AreaAction extends TableListQueryAction<String, Object, AreaInfo> {
                                    HttpServletResponse reareaonse) throws Exception {
         String currentNo = areaManageService.queryCurrentSeqNo();
         //设置ID
-        areaInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.AREA_INFO, currentNo, incrementNumber));
+        areaInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.AREA_INFO, currentNo, incrementNumber));
         areaManageService.add(areaInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -118,10 +123,10 @@ public class AreaAction extends TableListQueryAction<String, Object, AreaInfo> {
 
 
     /**
-     * @param natrualKey 供应商id
+     * @param natrualKey 主键id
      * @param request    请求信息
      * @param reareaonse 返回信息
-     * @return 根据供应商id找出供应商详细信息
+     * @return 根据主键id找出详细信息
      */
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody

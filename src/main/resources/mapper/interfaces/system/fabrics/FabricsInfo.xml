@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.skysport.inerfaces.dao.FabricsManageDao">
+<mapper namespace="com.skysport.inerfaces.mapper.FabricsManageDao">
     <sql id="searchInfoSql">
         id AS id,
         fabrics_id AS natrualkey,
@@ -23,7 +23,7 @@
     </sql>
     <select id="queryInfo" resultType="FabricsInfo">
         select
-              <include refid="searchInfoSql"/>
+        <include refid="searchInfoSql"/>
         FROM t_fabrics
         WHERE fabrics_id =#{natrualkey}
         limit 1
@@ -46,7 +46,7 @@
 
     <select id="searchInfos" resultType="FabricsInfo">
         SELECT
-            <include refid="searchInfoSql" />
+        <include refid="searchInfoSql"/>
         FROM t_fabrics
         WHERE del_flag=0
         <if test="searchValue!=null and searchValue != ''">
@@ -102,10 +102,13 @@
     <!--信息下拉列表-->
     <select id="querySelectList" resultType="CommonBean">
         select
-            fabrics_id AS natrualkey,
-            fabrics_name AS name
+        fabrics_id AS natrualkey,
+        fabrics_name AS name
         from t_fabrics
-        where del_flag=0 and upper(fabricsName) like concat('%',#{factoryName},'%')
+        where del_flag=0
+        <if test="name!=null and name!=''">
+            and upper(fabricsName) like concat('%',#{factoryName},'%')
+        </if>
     </select>
 
 </mapper>

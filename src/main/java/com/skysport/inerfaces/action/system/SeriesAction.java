@@ -1,14 +1,14 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.SelectItem;
-import com.skysport.core.bean.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.SeriesInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.CommonHelper;
-import com.skysport.inerfaces.model.system.common.service.ICommonService;
+import com.skysport.inerfaces.helper.BuildSeqNoHelper;
+import com.skysport.inerfaces.model.common.ICommonService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -107,7 +107,7 @@ public class SeriesAction extends TableListQueryAction<String, Object, SeriesInf
     public Map<String, Object> add(SeriesInfo seriesInfo) throws Exception {
         String currentNo = seriesManageService.queryCurrentSeqNo();
         //设置ID
-        seriesInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.SERIES_INFO, currentNo, incrementNumber));
+        seriesInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.SERIES_INFO, currentNo, incrementNumber));
         seriesManageService.add(seriesInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -117,10 +117,10 @@ public class SeriesAction extends TableListQueryAction<String, Object, SeriesInf
 
 
     /**
-     * @param natrualKey   供应商id
+     * @param natrualKey   主键id
      * @param request      请求信息
      * @param reseriesonse 返回信息
-     * @return 根据供应商id找出供应商详细信息
+     * @return 根据主键id找出详细信息
      */
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody

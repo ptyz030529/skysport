@@ -1,16 +1,14 @@
 package com.skysport.inerfaces.bean;
 
-import com.skysport.core.bean.SelectItem;
+import com.skysport.core.bean.system.SelectItem;
 
 /**
- * 类说明:
+ * 类说明:项目信息
  * Created by zhangjh on 2015/7/2.
  */
 public class ProjectInfo extends SelectItem {
     private String id;
-    private String remark;
-    private String updateTime;
-    private int delFlag;
+    private String seqNo;
     private String projectId;
     private String projectName;
     private String yearCode;
@@ -20,6 +18,11 @@ public class ProjectInfo extends SelectItem {
     private String creater;
     private String createTime;
     private String version;
+
+    private String remark;
+    private String updateTime;
+    private int delFlag;
+
     /**
      * 推销样交期
      */
@@ -27,11 +30,11 @@ public class ProjectInfo extends SelectItem {
     /**
      * 是否需要打色样
      */
-    private int isNeedSwatch;
+    private Integer isNeedSwatch=1;
     /**
      * 是否需要预报价
      */
-    private int isNeedPreOffer;
+    private Integer isNeedPreOffer=1;
     /**
      * 需要预报价的时间
      */
@@ -44,6 +47,14 @@ public class ProjectInfo extends SelectItem {
      * 文件位置
      */
     private String fileLocation;
+
+    public String getSeqNo() {
+        return seqNo;
+    }
+
+    public void setSeqNo(String seqNo) {
+        this.seqNo = seqNo;
+    }
 
     @Override
     public String getId() {
@@ -165,19 +176,19 @@ public class ProjectInfo extends SelectItem {
         this.sampleDelivery = sampleDelivery;
     }
 
-    public int getIsNeedSwatch() {
+    public Integer getIsNeedSwatch() {
         return isNeedSwatch;
     }
 
-    public void setIsNeedSwatch(int isNeedSwatch) {
+    public void setIsNeedSwatch(Integer isNeedSwatch) {
         this.isNeedSwatch = isNeedSwatch;
     }
 
-    public int getIsNeedPreOffer() {
+    public Integer getIsNeedPreOffer() {
         return isNeedPreOffer;
     }
 
-    public void setIsNeedPreOffer(int isNeedPreOffer) {
+    public void setIsNeedPreOffer(Integer isNeedPreOffer) {
         this.isNeedPreOffer = isNeedPreOffer;
     }
 

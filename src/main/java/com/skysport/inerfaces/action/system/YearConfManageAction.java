@@ -1,14 +1,14 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.SelectItem;
-import com.skysport.core.bean.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.YearConfInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.CommonHelper;
-import com.skysport.inerfaces.model.system.common.service.ICommonService;
+import com.skysport.inerfaces.helper.BuildSeqNoHelper;
+import com.skysport.inerfaces.model.common.ICommonService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -107,7 +107,7 @@ public class YearConfManageAction extends TableListQueryAction<String, Object, Y
     public Map<String, Object> add(YearConfInfo year_confInfo) throws Exception {
         String currentNo = yearConfManageService.queryCurrentSeqNo();
         //设置ID
-        year_confInfo.setNatrualkey(CommonHelper.SINGLETONE.getNextSeqNo(TableNameConstant.YEAR_CONF_INFO, currentNo, incrementNumber));
+        year_confInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.YEAR_CONF_INFO, currentNo, incrementNumber));
         yearConfManageService.add(year_confInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -117,8 +117,8 @@ public class YearConfManageAction extends TableListQueryAction<String, Object, Y
 
 
     /**
-     * @param natrualKey 供应商id
-     * @return 根据供应商id找出供应商详细信息
+     * @param natrualKey 主键id
+     * @return 根据主键id找出详细信息
      */
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody

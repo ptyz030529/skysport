@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.skysport.inerfaces.dao.SeriesManageDao">
+<mapper namespace="com.skysport.inerfaces.mapper.SeriesManageDao">
 	<sql id="searchInfoSql">
 		a.id AS id,
 		a.series_id AS natrualkey,
@@ -87,7 +87,14 @@
 
 	<!--信息下拉列表-->
 	<select id="querySelectList" resultType="CommonBean">
-
+		select
+		series_id AS natrualkey,
+		series_name AS name
+		from t_series
+		where del_flag=0
+		<if test="name!=null and name != ''">
+			and upper(series_name) like concat('%',#{name},'%')
+		</if>
 	</select>
 
 </mapper>

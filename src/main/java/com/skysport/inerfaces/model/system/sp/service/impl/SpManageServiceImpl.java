@@ -1,8 +1,9 @@
 package com.skysport.inerfaces.model.system.sp.service.impl;
 
-import com.skysport.core.bean.DataTablesInfo;
+import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
 import com.skysport.inerfaces.bean.system.SpInfo;
-import com.skysport.inerfaces.dao.SpManageDao;
+import com.skysport.inerfaces.mapper.SpManageDao;
 import com.skysport.inerfaces.model.system.sp.service.ISpManageService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class SpManageServiceImpl implements ISpManageService {
     private SpManageDao spManageDao;
 
     public SpManageServiceImpl() {
-        System.out.println("spManageDao:"+spManageDao);
+        System.out.println("spManageDao:" + spManageDao);
     }
 
     /**
@@ -80,12 +81,17 @@ public class SpManageServiceImpl implements ISpManageService {
 
     @Override
     public void add(SpInfo spInfo) {
-         spManageDao.add(spInfo);
+        spManageDao.add(spInfo);
     }
 
     @Override
     public void del(String spId) {
         spManageDao.del(spId);
+    }
+
+    @Override
+    public List<SelectItem> querySelectList(String name) {
+        return spManageDao.querySelectList(name);
     }
 
 

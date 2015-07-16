@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.skysport.inerfaces.dao.FactoryManageDao">
+<mapper namespace="com.skysport.inerfaces.mapper.FactoryManageDao">
     <sql id="searchInfoSql">
         id AS id,
         factory_id AS natrualkey,
@@ -21,7 +21,7 @@
     </sql>
     <select id="queryInfo" resultType="FactoryInfo">
         select
-              <include refid="searchInfoSql"/>
+        <include refid="searchInfoSql"/>
         FROM t_factory
         WHERE factory_id =#{natrualkey}
         limit 1
@@ -37,7 +37,7 @@
             and (
             factory_name like concat('%',#{searchValue},'%') or
             factory_contact like concat('%',#{searchValue},'%') or
-            email like	concat('%',#{searchValue},'%') or
+            email like concat('%',#{searchValue},'%') or
             remark like concat('%',#{searchValue},'%')
             )
         </if>
@@ -45,15 +45,15 @@
 
     <select id="searchInfos" resultType="FactoryInfo">
         SELECT
-            <include refid="searchInfoSql" />
+        <include refid="searchInfoSql"/>
         FROM t_factory
         WHERE del_flag=0
         <if test="searchValue!=null and searchValue != ''">
             and (
-                factory_name like concat('%',#{searchValue},'%') or
-                factory_contact like concat('%',#{searchValue},'%') or
-                email like	concat('%',#{searchValue},'%') or
-                remark like concat('%',#{searchValue},'%')
+            factory_name like concat('%',#{searchValue},'%') or
+            factory_contact like concat('%',#{searchValue},'%') or
+            email like concat('%',#{searchValue},'%') or
+            remark like concat('%',#{searchValue},'%')
             )
         </if>
         <if test="orderColumn!=null and orderColumn != ''">
@@ -97,10 +97,13 @@
     <!--信息下拉列表-->
     <select id="querySelectList" resultType="CommonBean">
         select
-            factory_id AS natrualkey,
-            factory_name AS name
+        factory_id AS natrualkey,
+        factory_name AS name
         from t_factory
-        where del_flag=0 and upper(factory_name) like concat('%',#{factoryName},'%')
+        where del_flag=0
+        <if test="name!=null and name!=''">
+            and upper(factory_name) like concat('%',#{name},'%')
+        </if>
     </select>
 
 </mapper>

@@ -1,6 +1,6 @@
 package com.skysport.core.dao;
 
-import com.skysport.core.bean.DictionaryInfo;
+import com.skysport.core.bean.system.DictionaryInfo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

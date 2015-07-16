@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.bean.material;
 
-import com.skysport.core.bean.SelectItem;
+import com.skysport.core.bean.system.SelectItem;
 
 /**
  * 类说明:是否复合或涂层（区别单布还是复合面料，若中间有膜或有涂层，则有下面8-12各级）

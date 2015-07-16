@@ -36,4 +36,9 @@ public interface DictionaryTypeConstant {
     public static final String MATERIAL_UNIT_TABLE_COLUMN  ="material_unit_table_column";
 
 
+    public static final String BOM_TABLE_COLULMN = "bom_table_colulmn";
+    public static final String PROJECT_TABLE_COLULMN = "project_table_colulmn";
+
+
+
 }

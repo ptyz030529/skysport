@@ -1124,7 +1124,7 @@ pre.prettyprint {
   -webkit-box-shadow: none;
   box-shadow: none;
   min-height: 45px;
-  background: #438eb9;
+  background: #463E5A;/*#438eb9;*/
 }
 .navbar .navbar-text,
 .navbar .navbar-link {
@@ -5346,7 +5346,7 @@ body.mob-safari .sidebar.sidebar-fixed {
   color: #FFF !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-image: none !important;
-  border: 5px solid #FFF;
+  /*border: 5px solid #FFF;*/
   border-radius: 0;
   box-shadow: none !important;
   -webkit-transition: background-color 0.15s, border-color 0.15s, opacity 0.15s;
@@ -18846,7 +18846,7 @@ input.typeahead.scrollable ~ .tt-dropdown-menu {
   vertical-align: middle;
   background-color: #FFF;
   border: 1px solid #d5d5d5;
-  width: 206px;
+  /*width: 206px;*/
 }
 .tags:hover {
   border-color: #b5b5b5;
@@ -18879,7 +18879,7 @@ input.typeahead.scrollable ~ .tt-dropdown-menu {
   font-weight: normal;
   vertical-align: baseline;
   white-space: nowrap;
-  background-color: #91b8d0;
+  background-color:#4C9458;/* #91b8d0;*/
   color: #FFF;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
   padding: 4px 22px 5px 9px;

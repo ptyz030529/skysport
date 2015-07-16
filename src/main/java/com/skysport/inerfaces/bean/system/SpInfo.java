@@ -2,7 +2,7 @@ package com.skysport.inerfaces.bean.system;
 
 import org.springframework.stereotype.Component;
 
-import com.skysport.core.bean.PageInfo;
+import com.skysport.core.bean.query.PageInfo;
 
 /**
  * 供应商信息

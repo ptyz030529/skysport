@@ -1,6 +1,6 @@
 package com.skysport.core.model.init.service;
 
-import com.skysport.core.bean.DictionaryInfo;
+import com.skysport.core.bean.system.DictionaryInfo;
 
 import java.util.List;
 

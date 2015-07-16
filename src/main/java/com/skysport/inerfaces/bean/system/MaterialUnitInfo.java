@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.bean.system;
 
-import com.skysport.core.bean.SelectItem;
+import com.skysport.core.bean.system.SelectItem;
 
 /**
  * 类说明:物料单位

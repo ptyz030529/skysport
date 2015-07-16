@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.skysport.inerfaces.dao.MaterialTypeManageDao">
+<mapper namespace="com.skysport.inerfaces.mapper.MaterialTypeManageDao">
     <sql id="searchInfoSql">
         id AS id,
         material_type_id AS natrualkey,
@@ -87,10 +87,13 @@
     <!--信息下拉列表-->
     <select id="querySelectList" resultType="CommonBean">
         select
-        material_type_id AS natrualkey,
-        material_type_name AS name
+          material_type_id AS natrualkey,
+          material_type_name AS name
         from t_material_type
-        where del_flag=0 and upper(material_type_name) like concat('%',#{name},'%')
+        where del_flag=0
+        <if test="name!=null and name != ''">
+            and upper(material_type_name) like concat('%',#{name},'%')
+        </if>
     </select>
 
 </mapper>

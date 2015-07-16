@@ -16,7 +16,7 @@ var info = function(_natrualkey){
  */
 var _doSuccess_info= function(_data){
     var data = _data;
-    console.info(data);
+
 
     Object.keys(data).map(function(key){
         $('#defaultForm input').filter(function(){
@@ -128,27 +128,25 @@ $(document).ready(function() {
                 validating: 'glyphicon glyphicon-refresh'
             },
             fields: fieldsDesc()
-        }
-    );
-})
-    .on('success.form.bv',function(e){ //表单校验成功，ajax提交数据
-        // Prevent form submission
-        e.preventDefault();
+        }).on('success.form.bv',function(e){ //表单校验成功，ajax提交数据
+            // Prevent form submission
+            e.preventDefault();
 
-        // Get the form instance
-        var $form = $(e.target);
+            // Get the form instance
+            var $form = $(e.target);
 
-        // Get the BootstrapValidator instance
-        var bv = $form.data('bootstrapValidator');
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
 
-        // Use Ajax to submit form data
-        var url = $form.attr('action');
-        var type = "POST"
-        if(natrualkey == ""){
-            url = "new";
-            type = "POST"
-        }
-        var data = $form.serialize();
-        edit(url,data,type,"");
+            // Use Ajax to submit form data
+            var url = $form.attr('action');
+            var type = "POST"
+            if(natrualkey == ""){
+                url = "new";
+                type = "POST"
+            }
+            var data = $form.serialize();
+            edit(url,data,type,"");
 
     });
+})

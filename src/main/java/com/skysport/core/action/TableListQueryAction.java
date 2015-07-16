@@ -1,6 +1,6 @@
 package com.skysport.core.action;
 
-import com.skysport.core.bean.DataTablesInfo;
+import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.instance.DictionaryInfo;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +14,7 @@ import java.util.Map;
  * @author: zhangjh
  * @version: 2015年4月30日 下午4:34:05
  */
-public class TableListQueryAction<K, V, T> {
+public class TableListQueryAction<K, V, T> extends BaseController<T> {
 
 	/**
 	 * 返回datatables需要的数据

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.skysport.core.bean.User;
+import com.skysport.core.bean.permission.User;
 
 
 @Scope("prototype")

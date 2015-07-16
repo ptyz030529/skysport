@@ -31,4 +31,5 @@ public interface TableNameConstant {
     public static final String T_CATEGORY_INFO = "t_category";
     public static final String T_MATERIAL_POSITION_INFO = "t_material_position";
     public static final String T_MATERIAL_UNIT_INFO = "t_material_unit";
+    public static final String T_PROJECT_INFO = "t_project";
 }
