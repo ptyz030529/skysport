@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.model.common;
 
-import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem2;
 
 import java.util.List;
 
@@ -46,5 +46,5 @@ public interface ICommonService<T> {
 
     String queryCurrentSeqNo();
 
-    List<SelectItem> querySelectList(String name);
+    List<SelectItem2> querySelectList(String name);
 }

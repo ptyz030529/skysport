@@ -1,7 +1,8 @@
 package com.skysport.inerfaces.model.develop.bom.impl;
 
-import com.skysport.inerfaces.mapper.BomManageMapper;
+import com.skysport.inerfaces.bean.BomInfo;
 import com.skysport.inerfaces.form.develop.BomQueryForm;
+import com.skysport.inerfaces.mapper.BomManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
 import org.springframework.beans.factory.InitializingBean;
@@ -15,10 +16,10 @@ import java.util.List;
  * Created by zhangjh on 2015/7/13.
  */
 @Service("bomManageService")
-public class BomManageServiceImpl<T> extends CommonServiceImpl<T> implements IBomManageService<T>, InitializingBean {
+public class BomManageServiceImpl extends CommonServiceImpl<BomInfo> implements IBomManageService, InitializingBean {
 
     @Resource(name = "bomManageMapper")
-    private BomManageMapper<T> bomManageMapper;
+    private BomManageMapper bomManageMapper;
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -31,7 +32,7 @@ public class BomManageServiceImpl<T> extends CommonServiceImpl<T> implements IBo
     }
 
     @Override
-    public List<T> searchInfos(BomQueryForm bomQueryForm) {
+    public List<BomInfo> searchInfos(BomQueryForm bomQueryForm) {
         return commonDao.searchInfos(bomQueryForm);
     }
 

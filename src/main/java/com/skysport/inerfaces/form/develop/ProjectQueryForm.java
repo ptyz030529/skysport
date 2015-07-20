@@ -7,11 +7,20 @@ import com.skysport.inerfaces.bean.ProjectBomInfo;
  * 类说明:项目查询表单
  * Created by zhangjh on 2015/7/13.
  */
-public class ProjectQueryForm extends DataTablesInfo{
+public class ProjectQueryForm {
 
     private ProjectBomInfo projectBomInfo;
+    private DataTablesInfo dataTablesInfo;
     private String startDate;
     private String endDate;
+
+    public DataTablesInfo getDataTablesInfo() {
+        return dataTablesInfo;
+    }
+
+    public void setDataTablesInfo(DataTablesInfo dataTablesInfo) {
+        this.dataTablesInfo = dataTablesInfo;
+    }
 
     public ProjectBomInfo getProjectBomInfo() {
         return projectBomInfo;

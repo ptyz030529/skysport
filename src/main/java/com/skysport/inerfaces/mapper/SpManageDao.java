@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.mapper;
 
 import com.skysport.core.bean.query.DataTablesInfo;
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.inerfaces.bean.system.SpInfo;
 import org.springframework.stereotype.Component;
 
@@ -51,5 +51,5 @@ public interface SpManageDao {
 
 	public void del(String spId);
 
-	public List<SelectItem> querySelectList(String name);
+	public List<SelectItem2> querySelectList(String name);
 }

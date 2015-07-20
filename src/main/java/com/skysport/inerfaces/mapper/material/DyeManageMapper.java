@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component;
  * Created by zhangjh on 2015/6/25.
  */
 @Component("dyeDao")
-public interface DyeDao extends CommonDao<DyeInfo> {
+public interface DyeManageMapper extends CommonDao<DyeInfo> {
 
 }

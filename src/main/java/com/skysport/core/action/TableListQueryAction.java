@@ -44,6 +44,7 @@ public class TableListQueryAction<K, V, T> extends BaseController<T> {
 	 * @return 数据表格信息
 	 */
 	public DataTablesInfo convertToDataTableQrInfo(String type, HttpServletRequest request) {
+
 		DataTablesInfo dataTablesInfo = new DataTablesInfo();
 		int start = Integer.parseInt(request.getParameter("start"));
 		int length = Integer.parseInt(request.getParameter("length"));

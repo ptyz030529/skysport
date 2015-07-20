@@ -23,7 +23,7 @@ import java.util.List;
 public class MainColorAction {
 
     @Resource(name = "mainColorService")
-    private IMainColorService<MainColor> mainColorService;
+    private IMainColorService mainColorService;
 
     @RequestMapping(value = "/info/{projectId}", method = RequestMethod.GET)
     @ResponseBody

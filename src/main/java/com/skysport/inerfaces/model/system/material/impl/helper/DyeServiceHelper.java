@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.material.impl.helper;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
 import com.skysport.inerfaces.model.system.material.impl.DyeServiceImpl;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +16,7 @@ public enum DyeServiceHelper {
 
     public void refreshSelect(ApplicationContext appContext) {
         DyeServiceImpl dyeService = (DyeServiceImpl) appContext.getBean("dyeService");
-        List<SelectItem> dyeItems = dyeService.querySelectList(null);
+        List<SelectItem2> dyeItems = dyeService.querySelectList(null);
         SystemBaseInfo.SINGLETONE.pushBom("dyeItems", dyeItems);
     }
 }

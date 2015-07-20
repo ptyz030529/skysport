@@ -4,8 +4,7 @@
     <!-- #section:basics/footer -->
     <div class="footer-content">
 						<span class="bigger-120">
-							<span class="blue bolder"> &copy;&nbsp;翊凯&nbsp; </span>
-							 &copy; 2013-2014
+							 <span class="blue bolder"> Copyright&copy; 2013-2015&nbsp;&nbsp;广州翊凯贸易有限公司所有&nbsp; </span>
 						</span>
 
       &nbsp; &nbsp;

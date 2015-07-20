@@ -45,6 +45,7 @@
                         <h5 class="header smaller lighter blue">
                             项目基本信息
                             <small></small>
+                            <input type="hidden" name="natrualkey" id="natrualkey" value="${natrualkey}"/>
                         </h5>
                     </div>
                     <div id="projectDescDetail">
@@ -87,7 +88,7 @@
 
                         </div>
 
-                        <div class="form-group">
+                        <%--<div class="form-group">
 
                             <label class="col-xs-2  control-label"
                                    for="name"> 名称 </label>
@@ -106,7 +107,7 @@
                                        placeholder="版本号" class="col-xs-10 col-sm-12"/>
                             </div>
 
-                        </div>
+                        </div>--%>
 
 
                         <div class="form-group">
@@ -176,11 +177,11 @@
 
                         <div class="form-group">
                             <label class="col-xs-2  control-label"
-                                   for="mainColorIds"> 色组 </label>
+                                   for="mainColorNames"> 色组 </label>
 
                             <div class="col-xs-3">
                                 <!-- #section:plugins/input.tag-input -->
-                                    <input type="text" class="tags col-xs-12 col-sm-12" name="mainColorIds" id="mainColorIds"  placeholder="输入色组 ..." />
+                                    <input type="text" class="tags col-xs-12 col-sm-12" name="mainColorNames" id="mainColorNames"  placeholder="输入色组 ..." />
                                 <!-- /section:plugins/input.tag-input -->
                             </div>
 
@@ -206,7 +207,7 @@
                         <label class="col-xs-2  control-label"
                                for="fileLocation"> 附件上传 </label>
                         <div class="col-xs-10">
-                            <input id="fileLocation" class="file" type="file" multiple data-preview-file-type="any" data-upload-url="#" data-preview-file-icon="">
+                            <input id="fileLocation" class="file" type="file" name="fileLocation" multiple data-preview-file-type="any" data-upload-url="#" data-preview-file-icon="">
                         </div>
 
                     </div>
@@ -226,7 +227,13 @@
 <jsp:include page="../../base/footCommon.jsp"></jsp:include>
 <jsp:include page="../../base/aceFoot.jsp"></jsp:include>
 </body>
-
+<script>
+    $("#fileLocation").fileinput({
+        uploadUrl:  path + "/development/project/fileUpload", // server upload action
+        uploadAsync: true,
+        maxFileCount: 5
+    });
+</script>
 
 </html>
 <script type="text/javascript" src="<%=path%>/resources/development/project/project-add.js"></script>

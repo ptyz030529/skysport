@@ -8,5 +8,5 @@ public class SystemInfoConstant {
     public static final String CATEGORY_A_LEVEL = "1";//一级品类
     public static final String CATEGORY_B_LEVEL = "2";//一级品类
 
-    public static final int PROJECT_SEQ_NO_LENGTH =3;
+    public static final int PROJECT_SEQ_NO_LENGTH =4;
 }

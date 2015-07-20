@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.mapper;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.inerfaces.bean.system.CategoryInfo;
 import org.springframework.stereotype.Component;
 
@@ -17,5 +17,5 @@ public interface CategoryManageMapper extends CommonDao<CategoryInfo> {
      *
      * @param levelId 级别的品类
      */
-    List<SelectItem> querySelectListByLevelId(String levelId);
+    List<SelectItem2> querySelectListByLevelId(String levelId);
 }

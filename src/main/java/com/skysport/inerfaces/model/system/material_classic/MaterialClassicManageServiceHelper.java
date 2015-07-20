@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.material_classic;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
 import org.springframework.context.ApplicationContext;
 
@@ -16,7 +16,7 @@ public enum MaterialClassicManageServiceHelper {
 
     public void refreshSelect(ApplicationContext appContext) {
         MaterialClassicManageServiceImpl materialClassicManageService = (MaterialClassicManageServiceImpl) appContext.getBean("materialClassicManageService");
-        List<SelectItem> materialClassicItems = materialClassicManageService.querySelectList(null);
+        List<SelectItem2> materialClassicItems = materialClassicManageService.querySelectList(null);
         SystemBaseInfo.SINGLETONE.pushBom("materialClassicItems", materialClassicItems);
     }
 

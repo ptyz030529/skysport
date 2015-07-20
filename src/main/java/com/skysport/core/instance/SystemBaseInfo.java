@@ -1,6 +1,7 @@
 package com.skysport.core.instance;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
+import com.skysport.core.constant.CharConstant;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,34 +13,51 @@ import java.util.Map;
  */
 public enum SystemBaseInfo {
     SINGLETONE;
-    private Map<String, List<SelectItem>> bomBuildInfoMaps = new HashMap<String, List<SelectItem>>();
-    private Map<String, List<SelectItem>> projectBuildInfoMaps = new HashMap<String, List<SelectItem>>();
+    private Map<String, List<SelectItem2>> bomBuildInfoMaps = new HashMap<String, List<SelectItem2>>();
+    private Map<String, List<SelectItem2>> projectBuildInfoMaps = new HashMap<String, List<SelectItem2>>();
 
-    public void pushBom(String key, List<SelectItem> values) {
+    public void pushBom(String key, List<SelectItem2> values) {
         bomBuildInfoMaps.put(key, values);
     }
 
 
-    public List<SelectItem> popBom(String key) {
+    public List<SelectItem2> popBom(String key) {
         return bomBuildInfoMaps.get(key);
     }
 
-    public Map<String, List<SelectItem>> rtnBomInfoMap() {
+    public Map<String, List<SelectItem2>> rtnBomInfoMap() {
         return bomBuildInfoMaps;
     }
 
-    public void pushProject(String key, List<SelectItem> values) {
+    public void pushProject(String key, List<SelectItem2> values) {
         projectBuildInfoMaps.put(key, values);
     }
 
 
-    public List<SelectItem> popProject(String key) {
+    public List<SelectItem2> popProject(String key) {
         return projectBuildInfoMaps.get(key);
     }
 
-    public Map<String, List<SelectItem>> rtnProjectInfoMap() {
+    public Map<String, List<SelectItem2>> rtnProjectInfoMap() {
         return projectBuildInfoMaps;
     }
 
+    /**
+     * 根据id，找到对应的下拉列表
+     *
+     * @param items
+     * @param id
+     * @return
+     */
+    public String getName(List<SelectItem2> items, String id) {
+        String name = CharConstant.EMPTY;
+        for (SelectItem2 item : items) {
+            if (id.equals(item.getNatrualkey())) {
+                name = item.getName();
+                break;
+            }
+        }
+        return name;
+    }
 
 }

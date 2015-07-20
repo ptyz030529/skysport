@@ -1,6 +1,5 @@
 package com.skysport.inerfaces.model.develop.bom.helper;
 
-import com.skysport.inerfaces.bean.BomInfo;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
 import com.skysport.inerfaces.form.develop.BomQueryForm;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
@@ -31,7 +30,7 @@ public class BomManageHelper {
      * @param bomManageService BomManageService
      * @param info             项目信息
      */
-    public static void autoCreateBomInfoAndSave(IBomManageService<BomInfo> bomManageService, ProjectBomInfo info) {
+    public static void autoCreateBomInfoAndSave(IBomManageService bomManageService, ProjectBomInfo info) {
 
     }
 }

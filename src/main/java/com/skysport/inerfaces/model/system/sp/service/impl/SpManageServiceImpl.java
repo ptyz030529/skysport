@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.model.system.sp.service.impl;
 
 import com.skysport.core.bean.query.DataTablesInfo;
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.inerfaces.bean.system.SpInfo;
 import com.skysport.inerfaces.mapper.SpManageDao;
 import com.skysport.inerfaces.model.system.sp.service.ISpManageService;
@@ -90,7 +90,7 @@ public class SpManageServiceImpl implements ISpManageService {
     }
 
     @Override
-    public List<SelectItem> querySelectList(String name) {
+    public List<SelectItem2> querySelectList(String name) {
         return spManageDao.querySelectList(name);
     }
 

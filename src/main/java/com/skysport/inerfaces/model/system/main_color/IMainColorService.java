@@ -1,15 +1,20 @@
 package com.skysport.inerfaces.model.system.main_color;
 
+import com.skysport.inerfaces.bean.system.MainColor;
+
 import java.util.List;
 
 /**
  * 类说明:
  * Created by zhangjh on 2015/7/15.
  */
-public interface IMainColorService<T> {
-    public List<T> queryMainColorList(String projectId);
+public interface IMainColorService {
+    public List<MainColor> queryMainColorList(String projectId);
 
-    public void add(List<T> mainColorList);
+    public void add(List<MainColor> mainColorList);
+
+    void delete(String natrualkey);
+
 
 
 }

@@ -1,13 +1,10 @@
 package com.skysport.inerfaces.bean.system;
 
-import org.springframework.stereotype.Component;
-
 import com.skysport.core.bean.query.PageInfo;
 
 /**
  * 供应商信息
  */
-@Component("spInfo")
 public class SpInfo extends PageInfo {
 	private int id;
 	/**

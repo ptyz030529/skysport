@@ -39,7 +39,7 @@
         <typeAlias alias="ProjectQueryForm" type="com.skysport.inerfaces.form.develop.ProjectQueryForm"/>
         <typeAlias alias="BomQueryForm" type="com.skysport.inerfaces.form.develop.BomQueryForm"/>
 
-
+        <typeAlias alias="MainColor" type="com.skysport.inerfaces.bean.system.MainColor"/>
     </typeAliases>
 
     <!-- 映射map-->

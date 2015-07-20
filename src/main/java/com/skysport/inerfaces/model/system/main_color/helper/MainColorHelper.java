@@ -29,8 +29,8 @@ public enum MainColorHelper {
             String[] mainColorArr = mainColors.split(CharConstant.COMMA);
             for (int index = 0; index < mainColorArr.length; index++) {
                 MainColor mainColor = new MainColor();
-                mainColor.setProjectId(info.getProjectId());
-                mainColor.setProjectName(info.getProjectName());
+                mainColor.setProjectId(info.getNatrualkey());
+                mainColor.setProjectName(info.getName());
                 mainColor.setMainColorName(mainColorArr[index]);
                 emptyList.add(mainColor);
             }

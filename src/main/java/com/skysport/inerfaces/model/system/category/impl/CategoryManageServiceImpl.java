@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.category.impl;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.inerfaces.bean.system.CategoryInfo;
 import com.skysport.inerfaces.mapper.CategoryManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
@@ -26,7 +26,7 @@ public class CategoryManageServiceImpl extends CommonServiceImpl<CategoryInfo> i
 
 
     @Override
-    public List<SelectItem> querySelectListByLevelId(String levelId) {
+    public List<SelectItem2> querySelectListByLevelId(String levelId) {
         return categoryManageMapper.querySelectListByLevelId(levelId);
     }
 

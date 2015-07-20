@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.category;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
 import com.skysport.inerfaces.constant.SystemInfoConstant;
 import com.skysport.inerfaces.model.system.category.impl.CategoryManageServiceImpl;
@@ -17,8 +17,8 @@ public enum CategoryManageServiceHelper {
 
     public void refreshSelect(ApplicationContext appContext) {
         CategoryManageServiceImpl categoryManageService = (CategoryManageServiceImpl) appContext.getBean("categoryManageService");
-        List<SelectItem> categoryAItems = categoryManageService.querySelectListByLevelId(SystemInfoConstant.CATEGORY_A_LEVEL);
-        List<SelectItem> categoryBItems = categoryManageService.querySelectListByLevelId(SystemInfoConstant.CATEGORY_B_LEVEL);
+        List<SelectItem2> categoryAItems = categoryManageService.querySelectListByLevelId(SystemInfoConstant.CATEGORY_A_LEVEL);
+        List<SelectItem2> categoryBItems = categoryManageService.querySelectListByLevelId(SystemInfoConstant.CATEGORY_B_LEVEL);
         SystemBaseInfo.SINGLETONE.pushProject("categoryAItems", categoryAItems);
         SystemBaseInfo.SINGLETONE.pushProject("categoryBItems", categoryBItems);
     }

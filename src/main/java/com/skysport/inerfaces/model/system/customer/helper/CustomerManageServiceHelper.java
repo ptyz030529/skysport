@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.customer.helper;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
 import com.skysport.inerfaces.model.system.customer.service.impl.CustomerManageServiceImpl;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +16,7 @@ public enum CustomerManageServiceHelper {
 
     public void refreshSelect(ApplicationContext appContext) {
         CustomerManageServiceImpl customerManageService = (CustomerManageServiceImpl) appContext.getBean("customerManageService");
-        List<SelectItem> customerItems = customerManageService.querySelectList(null);
+        List<SelectItem2> customerItems = customerManageService.querySelectList(null);
         SystemBaseInfo.SINGLETONE.pushBom("customerItems", customerItems);
         SystemBaseInfo.SINGLETONE.pushProject("customerItems", customerItems);
     }

@@ -1,4 +1,4 @@
-package com.skysport.core.dao;
+package com.skysport.core.mapper;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;

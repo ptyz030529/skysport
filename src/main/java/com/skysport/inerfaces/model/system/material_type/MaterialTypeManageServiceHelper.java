@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.material_type;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
 import org.springframework.context.ApplicationContext;
 
@@ -16,7 +16,7 @@ public enum MaterialTypeManageServiceHelper {
     public void refreshSelect(ApplicationContext appContext) {
         //材料类别
         MaterialTypeManageServiceImpl materialTypeManageService = (MaterialTypeManageServiceImpl) appContext.getBean("materialTypeManageService");
-        List<SelectItem>  materialTypeItems = materialTypeManageService.querySelectList(null);
+        List<SelectItem2>  materialTypeItems = materialTypeManageService.querySelectList(null);
         SystemBaseInfo.SINGLETONE.pushBom("materialTypeItems", materialTypeItems);
     }
 }

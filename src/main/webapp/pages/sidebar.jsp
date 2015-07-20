@@ -189,12 +189,7 @@
             </ul>
 
         </li>
-        <li class="active">
-            <a href="#">
 
-                <span class="menu-text"> 市场部 </span>
-            </a>
-        </li>
         <li>
             <a href="#" class="dropdown-toggle">
 
@@ -221,7 +216,7 @@
                             <b class="arrow"></b>
                         </li>
                         <li class="">
-                            <a href="javascript:onclick('<%=path%>/development/project/add')">
+                            <a href="javascript:onclick('<%=path%>/development/project/add/null')">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 项目新建
                             </a>
@@ -740,7 +735,12 @@
                 </li>
             </ul>
         </li>
+        <li class="active">
+            <a href="#">
 
+                <span class="menu-text"> 市场部 </span>
+            </a>
+        </li>
         <li>
             <a href="#" class="dropdown-toggle">
 

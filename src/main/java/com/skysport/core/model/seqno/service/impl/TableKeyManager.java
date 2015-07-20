@@ -1,6 +1,6 @@
 package com.skysport.core.model.seqno.service.impl;
 
-import com.skysport.core.dao.TableKeyMapper;
+import com.skysport.core.mapper.TableKeyMapper;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.skysport.core.dao;
+package com.skysport.core.mapper;
 
 import com.skysport.core.bean.system.DictionaryInfo;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.product_type;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
 import org.springframework.context.ApplicationContext;
 
@@ -15,7 +15,7 @@ public enum ProductTypeManageServiceHelper {
 
     public void refreshSelect(ApplicationContext appContext) {
         ProductTypeManageServiceImpl productTypeManageService = (ProductTypeManageServiceImpl) appContext.getBean("productTypeManageService");
-        List<SelectItem> productTypeItems = productTypeManageService.querySelectList(null);
+        List<SelectItem2> productTypeItems = productTypeManageService.querySelectList(null);
         SystemBaseInfo.SINGLETONE.pushBom("productTypeItems", productTypeItems);
     }
 }

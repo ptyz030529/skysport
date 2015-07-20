@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.sex;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
 import org.springframework.context.ApplicationContext;
 
@@ -14,7 +14,7 @@ public enum SexManageServiceHelper {
     SINGLETONE;
     public void refreshSelect(ApplicationContext appContext) {
         SexManageServiceImpl sexManageService = (SexManageServiceImpl) appContext.getBean("sexManageService");
-        List<SelectItem> sexItems = sexManageService.querySelectList(null);
+        List<SelectItem2> sexItems = sexManageService.querySelectList(null);
         SystemBaseInfo.SINGLETONE.pushProject("sexItems", sexItems);
     }
 }

@@ -1,5 +1,6 @@
 package com.skysport.inerfaces.model.system.main_color.impl;
 
+import com.skysport.inerfaces.bean.system.MainColor;
 import com.skysport.inerfaces.mapper.MainColorManageMapper;
 import com.skysport.inerfaces.model.system.main_color.IMainColorService;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,10 @@ import java.util.List;
  * Created by zhangjh on 2015/7/15.
  */
 @Service("mainColorService")
-public class MainColorServiceImpl<T> implements IMainColorService<T> {
+public class MainColorServiceImpl implements IMainColorService {
     @Resource(name = "mainColorManageMapper")
     private MainColorManageMapper mainColorManageMapper;
+
     /**
      * 根据项目id查询出所有主颜色
      *
@@ -22,7 +24,7 @@ public class MainColorServiceImpl<T> implements IMainColorService<T> {
      * @return
      */
     @Override
-    public List<T> queryMainColorList(String projectId) {
+    public List<MainColor> queryMainColorList(String projectId) {
         return mainColorManageMapper.queryMainColorList(projectId);
     }
 
@@ -32,7 +34,15 @@ public class MainColorServiceImpl<T> implements IMainColorService<T> {
      * @param mainColorList
      */
     @Override
-    public void add(List<T> mainColorList) {
+    public void add(List<MainColor> mainColorList) {
         mainColorManageMapper.add(mainColorList);
+    }
+
+    /**
+     * @param natrualkey 项目id
+     */
+    @Override
+    public void delete(String natrualkey) {
+        mainColorManageMapper.delete(natrualkey);
     }
 }

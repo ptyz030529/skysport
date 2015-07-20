@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.material.impl.helper;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
 import com.skysport.inerfaces.model.system.material.impl.SpecificationServiceImpl;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +16,7 @@ public enum SpecificationServiceHelper {
 
     public void refreshSelect(ApplicationContext appContext) {
         SpecificationServiceImpl specificationService = (SpecificationServiceImpl) appContext.getBean("specificationService");
-        List<SelectItem> specficationItems = specificationService.querySelectList(null);
+        List<SelectItem2> specficationItems = specificationService.querySelectList(null);
         SystemBaseInfo.SINGLETONE.pushBom("specficationItems", specficationItems);
     }
 }

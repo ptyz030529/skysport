@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.material.impl.helper;
 
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
 import com.skysport.inerfaces.model.system.material.impl.MaterialOfMembraneCoatingServiceImpl;
 import org.springframework.context.ApplicationContext;
@@ -15,7 +15,7 @@ public enum MaterialOfMembraneCoatingServicHelper {
     SINGLETONE;
     public void refreshSelect(ApplicationContext appContext) {
         MaterialOfMembraneCoatingServiceImpl materialOfMembraneCoatingService = (MaterialOfMembraneCoatingServiceImpl) appContext.getBean("materialOfMembraneCoatingService");
-        List<SelectItem> momcItems = materialOfMembraneCoatingService.querySelectList(null);
+        List<SelectItem2> momcItems = materialOfMembraneCoatingService.querySelectList(null);
         SystemBaseInfo.SINGLETONE.pushBom("momcItems", momcItems);
     }
 }
