@@ -236,27 +236,9 @@
 
                     <ul class="submenu">
                         <li class="">
-                            <a href="top-menu.html">
+                            <a href="javascript:onclick('<%=path%>/development/bom/list')">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 BOM列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                BOM信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="javascript:onclick('development/bom/bom-add')">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                BOM新建
                             </a>
 
                             <b class="arrow"></b>

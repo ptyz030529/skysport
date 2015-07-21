@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta charset="utf-8"/>
-  <title>查询项目信息</title>
+  <title>查询BOM信息</title>
   <jsp:include page="../../base/common.jsp" flush="true"></jsp:include>
   <jsp:include page="../../base/commonTable.jsp" flush="true"></jsp:include>
   <link rel="stylesheet" href="<%=path%>/resources/css/page-header.css"/>
@@ -16,7 +16,7 @@
   <div class="page-header">
     <h1>
       开发
-      <small><i class="icon-double-angle-right"></i> 项目列表信息</small>
+      <small><i class="icon-double-angle-right"></i> BOM列表信息</small>
     </h1>
   </div>
   <!-- PAGE CONTENT BEGINS -->
@@ -26,13 +26,11 @@
         <thead>
         <tr>
           <th>项目编号</th>
-          <th>项目名称</th>
-          <th>客户</th>
-          <th>区域</th>
-          <th>系列</th>
-          <th>推销样交期</th>
-          <th>创建人</th>
-          <th>项目创建时间</th>
+          <th>BOM编号</th>
+          <th>BOM名称</th>
+          <th>主颜色</th>
+          <th>性别属性</th>
+          <th>订单数量</th>
           <th>备注</th>
           <th>操作</th>
         </tr>
@@ -55,7 +53,7 @@
   {{/each}}
 </script>
 
-<script type="text/javascript" src="<%=path%>/resources/development/project/project-list.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/development/bom/bom-list.js"></script>
 
 </body>
 

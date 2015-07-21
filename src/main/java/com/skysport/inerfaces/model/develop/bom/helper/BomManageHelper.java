@@ -1,6 +1,8 @@
 package com.skysport.inerfaces.model.develop.bom.helper;
 
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.constant.CharConstant;
+import com.skysport.core.instance.SystemBaseInfo;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.BomInfo;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
@@ -83,5 +85,20 @@ public class BomManageHelper {
 
     public static String buildKindName(String projectId, String categoryAid, String categoryBid) {
         return new StringBuilder().append(projectId).append(categoryAid).append(categoryBid).toString();
+    }
+
+    public static void turnIdToName(List<BomInfo> infos) {
+        if (null != infos && !infos.isEmpty()) {
+            for (BomInfo bomInfo : infos) {
+                bomInfo.setSexId(getSexName(bomInfo));
+            }
+        }
+
+    }
+
+    private static String getSexName(BomInfo bomInfo) {
+        List<SelectItem2> items = SystemBaseInfo.SINGLETONE.popProject("sexItems");
+        String id = bomInfo.getSexId();
+        return SystemBaseInfo.SINGLETONE.getName(items, id);
     }
 }

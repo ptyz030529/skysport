@@ -10,6 +10,7 @@
 		a.bom_name AS name,
 		a.customer_id AS customerId,
 		a.area_id AS areaId,
+		a.sex_id AS sexId,
 		a.series_id AS seriesId,
 		a.collectionNum AS collectionNum,
 		a.main_color AS mainColor,
@@ -40,12 +41,13 @@
 
     <select id="listFilteredInfosCounts" resultType="Integer">
         SELECT COUNT(*) FROM t_bominfo where del_flag=0
-        <if test="searchValue !=null and searchValue != ''">
+		<if test="bomInfo.projectId !=null and bomInfo.projectId != ''">
+				and project_id like concat('%',#{bomInfo.projectId},'%')
+		</if>
+		<if test="dataTablesInfo.searchValue !=null and dataTablesInfo.searchValue != ''">
             and (
-            bom_name like concat('%',#{searchValue},'%') or
-            bom_id like concat('%',#{searchValue},'%') or
-            customer_id like concat('%',#{searchValue},'%') or
-            remark like concat('%',#{searchValue},'%')
+            bom_name like concat('%',#{dataTablesInfo.searchValue},'%') or
+            remark like concat('%',#{dataTablesInfo.searchValue},'%')
             )
         </if>
     </select>
@@ -56,18 +58,19 @@
         <include refid="searchInfoSql"/>
         FROM t_bominfo a
         WHERE a.del_flag=0
-        <if test="searchValue!=null and searchValue != ''">
-            and (
-            bom_name like concat('%',#{searchValue},'%') or
-            bom_id like concat('%',#{searchValue},'%') or
-            customer_id like concat('%',#{searchValue},'%') or
-            remark like concat('%',#{searchValue},'%')
-            )
+		<if test="bomInfo.projectId !=null and bomInfo.projectId != ''">
+			and project_id like concat('%',#{bomInfo.projectId},'%')
+		</if>
+		<if test="dataTablesInfo.searchValue !=null and dataTablesInfo.searchValue != ''">
+			and (
+			bom_name like concat('%',#{dataTablesInfo.searchValue},'%') or
+			remark like concat('%',#{dataTablesInfo.searchValue},'%')
+			)
+		</if>
+        <if test="dataTablesInfo.orderColumn!=null and dataTablesInfo.orderColumn != ''">
+            ORDER BY  ${dataTablesInfo.orderColumn} ${dataTablesInfo.orderDir}
         </if>
-        <if test="orderColumn!=null and orderColumn != ''">
-            ORDER BY ${orderColumn} ${orderDir}
-        </if>
-        limit #{start} ,#{length}
+        limit #{dataTablesInfo.start} ,#{dataTablesInfo.length}
 
     </select>
 

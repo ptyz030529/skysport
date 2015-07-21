@@ -1,7 +1,8 @@
+/**
+ * Created by zhangjh on 2015/7/16.
+ */
 (function () {
-    /**
-     * Created by zhangjh on 2015/7/16.
-     */
+    "use strict";
     /**
      * 列表展示内容
      * @returns {*[]}
@@ -128,7 +129,7 @@
                 .text(item["name"])
                 .appendTo($("#yearCode"));
         });
-        $("#yearCode").val(yearCode == undefined?'-1':yearCode);
+        $("#yearCode").val(yearCode == undefined?'':yearCode);
 
         //客户
         var yearCodeItems = data["customerItems"];
@@ -140,7 +141,7 @@
                 .text(item["name"])
                 .appendTo($("#customerId"));
         });
-        $("#customerId").val(customerId == undefined?'-1':customerId);
+        $("#customerId").val(customerId == undefined?'':customerId);
 
         //区域
         var areaItems = data["areaItems"];
@@ -152,7 +153,7 @@
                 .text(item["name"])
                 .appendTo($("#areaId"));
         });
-        $("#areaId").val(areaId == undefined?'-1':areaId);
+        $("#areaId").val(areaId == undefined?'':areaId);
 
         //系列
         var seriesItems = data["seriesItems"];
@@ -164,7 +165,7 @@
                 .text(item["name"])
                 .appendTo($("#seriesId"));
         });
-        $("#seriesId").val(seriesId == undefined?'-1':seriesId);
+        $("#seriesId").val(seriesId == undefined?'':seriesId);
     }
     $.editProject = editProject;
 }());

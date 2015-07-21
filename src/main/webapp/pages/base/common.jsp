@@ -21,7 +21,6 @@
 <script type="text/javascript" src="<%=path%>/resources/js/select2.full.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/bootstrap.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/date/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="<%=path%>/resources/js/bootstrap-switch.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/util.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/handlebars-v3.0.1.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/js/bootstrap-select.js"></script>

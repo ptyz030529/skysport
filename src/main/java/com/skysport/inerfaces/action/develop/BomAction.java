@@ -12,6 +12,7 @@ import com.skysport.inerfaces.model.system.fabrics.IFabricsService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,6 +38,18 @@ public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
     @Resource(name = "bomManageService")
     private IBomManageService bomManageService;
 
+    /**
+     * 此方法描述的是：展示list页面	 *
+     *
+     * @author: zhangjh
+     * @version: 2015年4月29日 下午5:34:53
+     */
+    @RequestMapping(value = "/list")
+    @ResponseBody
+    public ModelAndView search() throws Exception {
+        ModelAndView mav = new ModelAndView("/development/bom/bom-list");
+        return mav;
+    }
 
     /**
      * 此方法描述的是：展示list页面	 *
@@ -46,10 +59,25 @@ public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
      */
     @RequestMapping(value = "/bom-add")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView add() throws Exception {
         ModelAndView mav = new ModelAndView("/development/bom/bom-add");
         return mav;
     }
+
+    /**
+     * 此方法描述的是：展示add页面
+     *
+     * @author: zhangjh
+     * @version: 2015年4月29日 下午5:34:53
+     */
+    @RequestMapping(value = "/add/{natrualKey}", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView add(@PathVariable String natrualKey) throws Exception {
+        ModelAndView mav = new ModelAndView("/development/bom/bom-add");
+        mav.addObject("natrualkey", natrualKey);
+        return mav;
+    }
+
 
     /**
      * 此方法描述的是：
@@ -61,10 +89,9 @@ public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request) {
         //组件queryFory的参数
-        BomQueryForm bomQueryForm = (BomQueryForm) convertToDataTableQrInfo(DictionaryTypeConstant.BOM_TABLE_COLULMN, request);
+        BomQueryForm bomQueryForm = new BomQueryForm();
         bomQueryForm.setDataTablesInfo(convertToDataTableQrInfo(DictionaryTypeConstant.PROJECT_TABLE_COLULMN, request));
         BomInfo bomInfo = new BomInfo();
-        bomInfo.setProjectId(request.getParameter("projectId"));
         bomQueryForm.setBomInfo(bomInfo);
         BomManageHelper.buildBomQueryForm(bomQueryForm, request);
 
@@ -72,14 +99,14 @@ public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
         int recordsTotal = bomManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
 
-        if (!StringUtils.isBlank(bomQueryForm.getSearchValue())) {
+        if (!StringUtils.isBlank(bomQueryForm.getDataTablesInfo().getSearchValue())) {
             recordsFiltered = bomManageService.listFilteredInfosCounts(bomQueryForm);
         }
 
         int draw = Integer.parseInt(request.getParameter("draw"));
 
         List<BomInfo> infos = bomManageService.searchInfos(bomQueryForm);
-
+        BomManageHelper.turnIdToName(infos);
         Map<String, Object> resultMap = buildSearchJsonMap(infos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;

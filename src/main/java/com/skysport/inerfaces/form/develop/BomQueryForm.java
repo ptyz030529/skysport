@@ -9,7 +9,7 @@ import com.skysport.inerfaces.bean.BomInfo;
  *
  * Created by zhangjh on 2015/7/13.
  */
-public class BomQueryForm extends DataTablesInfo {
+public class BomQueryForm{
     private DataTablesInfo dataTablesInfo;
     private BomInfo bomInfo;
     private String starDate;

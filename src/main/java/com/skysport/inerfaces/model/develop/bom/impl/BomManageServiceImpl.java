@@ -28,12 +28,12 @@ public class BomManageServiceImpl extends CommonServiceImpl<BomInfo> implements 
 
     @Override
     public int listFilteredInfosCounts(BomQueryForm bomQueryForm) {
-        return commonDao.listFilteredInfosCounts(bomQueryForm);
+        return bomManageMapper.listFilteredInfosCounts(bomQueryForm);
     }
 
     @Override
     public List<BomInfo> searchInfos(BomQueryForm bomQueryForm) {
-        return commonDao.searchInfos(bomQueryForm);
+        return bomManageMapper.searchInfos(bomQueryForm);
     }
 
 }
