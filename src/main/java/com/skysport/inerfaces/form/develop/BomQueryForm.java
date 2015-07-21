@@ -10,6 +10,7 @@ import com.skysport.inerfaces.bean.BomInfo;
  * Created by zhangjh on 2015/7/13.
  */
 public class BomQueryForm extends DataTablesInfo {
+    private DataTablesInfo dataTablesInfo;
     private BomInfo bomInfo;
     private String starDate;
     private String endDate;
@@ -36,5 +37,16 @@ public class BomQueryForm extends DataTablesInfo {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public DataTablesInfo getDataTablesInfo() {
+        return dataTablesInfo;
+    }
+
+    public void setDataTablesInfo(DataTablesInfo dataTablesInfo) {
+        this.dataTablesInfo = dataTablesInfo;
+    }
+
+    public BomQueryForm() {
     }
 }

@@ -1,7 +1,6 @@
 package com.skysport.inerfaces.mapper;
 
 import com.skysport.inerfaces.bean.FabricsInfo;
-import com.skysport.inerfaces.bean.MaterialInfo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,9 +11,7 @@ import java.util.List;
  */
 @Component("fabricsManageDao")
 public interface FabricsManageDao extends CommonDao<FabricsInfo> {
-    void addBatch(List<MaterialInfo> fabricItems);
+    List<FabricsInfo> queryFabricByBomId(String bomId);
 
-    List<MaterialInfo> queryFabricByBomId(String bomId);
-
-    void updateBatch(List<MaterialInfo> fabricItems);
+    void updateBatch(List<FabricsInfo> fabricItems);
 }

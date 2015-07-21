@@ -1,9 +1,9 @@
 package com.skysport.inerfaces.action.develop;
+
 import com.skysport.core.action.TableListQueryAction;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.resp.BaseRespHelper;
 import com.skysport.inerfaces.bean.BomInfo;
-import com.skysport.inerfaces.bean.FabricsInfo;
 import com.skysport.inerfaces.bean.ProjectInfo;
 import com.skysport.inerfaces.form.develop.BomQueryForm;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
@@ -32,7 +32,7 @@ import java.util.Map;
 public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
 
     @Resource(name = "fabricsManageService")
-    private IFabricsService<FabricsInfo> fabricsManageService;
+    private IFabricsService fabricsManageService;
 
     @Resource(name = "bomManageService")
     private IBomManageService bomManageService;
@@ -62,12 +62,15 @@ public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
     public Map<String, Object> search(HttpServletRequest request) {
         //组件queryFory的参数
         BomQueryForm bomQueryForm = (BomQueryForm) convertToDataTableQrInfo(DictionaryTypeConstant.BOM_TABLE_COLULMN, request);
+        bomQueryForm.setDataTablesInfo(convertToDataTableQrInfo(DictionaryTypeConstant.PROJECT_TABLE_COLULMN, request));
+        BomInfo bomInfo = new BomInfo();
+        bomInfo.setProjectId(request.getParameter("projectId"));
+        bomQueryForm.setBomInfo(bomInfo);
         BomManageHelper.buildBomQueryForm(bomQueryForm, request);
 
         // 总记录数
         int recordsTotal = bomManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
-
 
         if (!StringUtils.isBlank(bomQueryForm.getSearchValue())) {
             recordsFiltered = bomManageService.listFilteredInfosCounts(bomQueryForm);
@@ -77,13 +80,10 @@ public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
 
         List<BomInfo> infos = bomManageService.searchInfos(bomQueryForm);
 
-        //进一步组装有用的信息
-        buildLastInfos(infos);
-
-
         Map<String, Object> resultMap = buildSearchJsonMap(infos, recordsTotal, recordsFiltered, draw);
 
         return resultMap;
+
     }
 
     /**
@@ -94,7 +94,6 @@ public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
     private void buildLastInfos(List<BomInfo> infos) {
         if (null == infos || infos.isEmpty()) return;
         List<ProjectInfo> projectInfos = null;
-
     }
 
 
@@ -108,7 +107,8 @@ public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
 
 
         //保存BOM信息
-        BomInfo exitBom = (BomInfo) bomManageService.queryInfoByNatrualKey(info.getNatrualkey());
+        BomInfo exitBom = bomManageService.queryInfoByNatrualKey(info.getNatrualkey());
+
         if (null == exitBom) {
             bomManageService.add(info);
         } else {
@@ -116,7 +116,6 @@ public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
         }
 
         //后台删除前台已删除的面料
-
 
         fabricsManageService.addBatch(info.getFabricItems());
         //保存面料信息(先删除所有面料，再新增所有面料)

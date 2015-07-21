@@ -100,8 +100,17 @@ public class ProjectAction extends TableListQueryAction<String, Object, ProjectB
                 }
             }
         }
-        Map<String, Object> resultMap = new HashMap<String,Object>();
-
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+//        String[] initialPreview = new String[1];
+//        initialPreview[0] = "<img src='/resources/images/desert.jpg' class='file-preview-image' alt='Desert' title='Desert'>";
+//        resultMap.put("initialPreview", initialPreview);
+//        PreviewConfig initialPreviewConfig = new PreviewConfig();
+//        initialPreviewConfig.setCaption("desert.jpg");
+//        initialPreviewConfig.setExtra(new Extra(100));
+//        initialPreviewConfig.setKey("100");
+//        initialPreviewConfig.setUrl("http://localhost/avatar/delete");
+//        initialPreviewConfig.setWidth("120px");
+//        resultMap.put("initialPreviewConfig", initialPreviewConfig);
         // 重定向
         return resultMap;
     }
@@ -182,7 +191,7 @@ public class ProjectAction extends TableListQueryAction<String, Object, ProjectB
 
 
         //生成BOM信息并保存
-        BomManageHelper.autoCreateBomInfoAndSave(bomManageService, info);
+        BomManageHelper.autoCreateBomInfoAndSave(bomManageService, incrementNumber, info);
 
 
         Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -200,7 +209,7 @@ public class ProjectAction extends TableListQueryAction<String, Object, ProjectB
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
     public ProjectBomInfo queryCustomerNo(@PathVariable String natrualKey) {
-        ProjectBomInfo info = (ProjectBomInfo) projectManageService.queryInfoByNatrualKey(natrualKey);
+        ProjectBomInfo info = projectManageService.queryInfoByNatrualKey(natrualKey);
         return info;
     }
 

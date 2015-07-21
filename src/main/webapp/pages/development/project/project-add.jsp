@@ -9,8 +9,11 @@
     <jsp:include page="../../base/commonTable.jsp" flush="true"></jsp:include>
     <jsp:include page="../../base/headResources.jsp"></jsp:include>
     <jsp:include page="../../base/upload.jsp"></jsp:include>
-    <script language="javascript" type="text/javascript"     src="<%=path%>/resources/My97DatePicker/WdatePicker.js"></script>
+    <script language="javascript" type="text/javascript"
+            src="<%=path%>/resources/My97DatePicker/WdatePicker.js"></script>
+    <script language="javascript" type="text/javascript"    src="<%=path%>/resources/js/bootstrap-multiselect.js"></script>
     <link rel="stylesheet" href="<%=path%>/resources/css/page-header.css"/>
+    <link rel="stylesheet" href="<%=path%>/resources/css/bootstrap-multiselect.css"/>
 </head>
 <body>
 <div class="breadcrumbs" id="breadcrumbs">
@@ -158,12 +161,12 @@
                         <%-- <!-- #section:custom/extra.hr -->
                      <div class="hr hr32 hr-dotted"></div>--%>
                         <div class="form-group">
-                            <label class="col-xs-2  control-label" for="sexIds"> 性别属性 </label>
-
+                            <label class="col-xs-2  control-label" for="sexIds">性别属性</label>
                             <div class="col-xs-3">
-                                <select class="col-xs-12" data-style="btn-info" id="sexIds" name="sexIds"
-                                        placeholder="性别属性">
+                                <!-- #section:plugins/input.multiselect -->
+                                <select id="sexIds" multiple="multiple" >
                                 </select>
+                                <!-- /section:plugins/input.multiselect -->
                             </div>
                             <label class="col-xs-2  control-label"
                                    for="collectionNumber"> 款式数量 </label>
@@ -181,7 +184,8 @@
 
                             <div class="col-xs-3">
                                 <!-- #section:plugins/input.tag-input -->
-                                    <input type="text" class="tags col-xs-12 col-sm-12" name="mainColorNames" id="mainColorNames"  placeholder="输入色组 ..." />
+                                <input type="text" class="tags col-xs-12 col-sm-12" name="mainColorNames"
+                                       id="mainColorNames" placeholder="输入色组 ..."/>
                                 <!-- /section:plugins/input.tag-input -->
                             </div>
 
@@ -193,6 +197,7 @@
                     <h5 class="header smaller lighter blue">
                         附件信息
                     </h5>
+
                     <div class="form-group">
 
                         <label class="col-xs-2  control-label"
@@ -206,8 +211,10 @@
                     <div class="form-group">
                         <label class="col-xs-2  control-label"
                                for="fileLocation"> 附件上传 </label>
+
                         <div class="col-xs-10">
-                            <input id="fileLocation" class="file" type="file" name="fileLocation" multiple data-preview-file-type="any" data-upload-url="#" data-preview-file-icon="">
+                            <input id="fileLocation" class="file" type="file" name="fileLocation" multiple
+                                   data-preview-file-type="any" data-upload-url="#" data-preview-file-icon="">
                         </div>
 
                     </div>
@@ -215,7 +222,8 @@
 
                 <div id="projectBtnInfo">
                     <div class="col-xs-offset-6 col-xs-9">
-                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.saveProject()">保存</button>
+                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.saveProject()">保存
+                        </button>
                     </div>
                 </div>
             </form>
@@ -229,7 +237,7 @@
 </body>
 <script>
     $("#fileLocation").fileinput({
-        uploadUrl:  path + "/development/project/fileUpload", // server upload action
+        uploadUrl: path + "/development/project/fileUpload", // server upload action
         uploadAsync: true,
         maxFileCount: 5
     });

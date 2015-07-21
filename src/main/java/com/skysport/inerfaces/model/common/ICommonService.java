@@ -47,4 +47,6 @@ public interface ICommonService<T> {
     String queryCurrentSeqNo();
 
     List<SelectItem2> querySelectList(String name);
+
+    void addBatch(List<T> bomInfos);
 }

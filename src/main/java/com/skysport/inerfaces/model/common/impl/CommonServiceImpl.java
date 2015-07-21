@@ -58,4 +58,9 @@ public class CommonServiceImpl<T> implements ICommonService<T> {
     public List<SelectItem2> querySelectList(@Param(value = "name") String name) {
         return commonDao.querySelectList(name);
     }
+
+    @Override
+    public void addBatch(List<T> infos) {
+        commonDao.addBatch(infos);
+    }
 }

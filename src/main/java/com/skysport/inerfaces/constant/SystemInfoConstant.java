@@ -9,4 +9,5 @@ public class SystemInfoConstant {
     public static final String CATEGORY_B_LEVEL = "2";//一级品类
 
     public static final int PROJECT_SEQ_NO_LENGTH =4;
+    public static final int BOM_SEQ_NO_LENGTH =4;
 }

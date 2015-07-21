@@ -31,6 +31,8 @@
         limit 1
     </select>
 
+
+
     <select id="listInfosCounts" resultType="Integer">
 		SELECT COUNT(*) FROM
 		t_bominfo where del_flag=0
@@ -86,10 +88,19 @@
 		WHERE bom_id =#{natrualkey}
 	</update>
 
+	<insert id="addBatch"  parameterType="list">
+		insert into
+			t_bominfo (project_id,bom_id,bom_name,customer_id,area_id,sex_id,series_id,collectionNum,main_color,fabrics_end_date,accessories_end_date,preoffer_date,cloth_received_date,offer_amount)
+		values
+		<foreach collection="list" item="item" index="index" separator="," >
+			(#{item.projectId},#{item.natrualkey},#{item.name},#{item.customerId},#{item.areaId},#{item.sexId},#{item.seriesId},#{item.collectionNum},#{item.mainColor},#{item.fabricsEndDate},#{item.accessoriesEndDate},#{item.preOfferDate},#{item.clothReceivedDate},#{item.offerAmount})
+		</foreach>
+	</insert>
+
     <insert id="add">
 		insert into
-		t_bominfo (project_id,bom_id,bom_name,customer_id,area_id,series_id,collectionNum,main_color,fabrics_end_date,accessories_end_date,preoffer_date,cloth_received_date,offer_amount,del_flag,update_time,remark)
-		values (#{projectId},#{natrualkey},#{name},#{customerId},#{areaId},#{seriesId},#{collectionNum},#{mainColor},#{fabricsEndDate},#{accessoriesEndDate},#{preOfferDate},#{clothReceivedDate},#{offerAmount},#{delFlag},#{updateTime},#{remark})
+		t_bominfo (project_id,bom_id,bom_name,customer_id,area_id,sex_id,series_id,collectionNum,main_color,fabrics_end_date,accessories_end_date,preoffer_date,cloth_received_date,offer_amount)
+		values (#{projectId},#{natrualkey},#{name},#{customerId},#{areaId},#{sexId},#{seriesId},#{collectionNum},#{mainColor},#{fabricsEndDate},#{accessoriesEndDate},#{preOfferDate},#{clothReceivedDate},#{offerAmount}})
 	</insert>
 
     <update id="del">

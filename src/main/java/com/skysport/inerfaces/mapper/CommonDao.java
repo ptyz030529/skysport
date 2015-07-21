@@ -26,5 +26,7 @@ public interface CommonDao<T> {
 
     public String queryCurrentSeqNo();
 
-    List<SelectItem2> querySelectList(String name);
+    public List<SelectItem2> querySelectList(String name);
+
+    public void addBatch(List<T> infos);
 }
