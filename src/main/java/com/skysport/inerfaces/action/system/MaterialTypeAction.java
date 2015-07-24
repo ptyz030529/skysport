@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system;
 
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.constant.DictionaryTypeConstant;
@@ -35,7 +35,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/material_type")
-public class MaterialTypeAction extends TableListQueryAction<String, Object, MaterialTypeInfo> {
+public class MaterialTypeAction extends BaseAction<String, Object, MaterialTypeInfo> {
 
 
     @Resource(name = "materialTypeManageService")

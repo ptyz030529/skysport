@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system.material;
 
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
@@ -32,7 +32,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/material/mt")
-public class MembraneThicknessAction extends TableListQueryAction<String, Object, MembraneThicknessInfo> {
+public class MembraneThicknessAction extends BaseAction<String, Object, MembraneThicknessInfo> {
     @Resource(name = "membraneThicknessService")
     private ICommonService membraneThicknessService;
 

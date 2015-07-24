@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system;
 
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
@@ -32,7 +32,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/customer")
-public class CustomerAction extends TableListQueryAction<String, Object, CustomerInfo> {
+public class CustomerAction extends BaseAction<String, Object, CustomerInfo> {
 
     @Resource(name = "customerManageService")
     private ICommonService customerManageService;

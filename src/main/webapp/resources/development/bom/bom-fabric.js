@@ -160,7 +160,7 @@
             bom.fabricItems[id - 1].showFlag = true;//是否显示
         }
         bom.fabricItems[id - 1].currenId = id;//当前序号
-        sendRestFulAjax(path + "/development/bom/saveFabricFun", jsonObj, 'GET', 'json', function (data) {
+        $.sendRestFulAjax(path + "/development/bom/saveFabricFun", jsonObj, 'GET', 'json', function (data) {
             _doFabricSuccess_info(data, id);
         });
     }
@@ -197,7 +197,7 @@
 
 
     var reloadBomSelect = function(id){
-        sendRestFulAjax(path + "/system/baseinfo/bom_select", null, 'GET', 'json', function (data) {
+        $.sendRestFulAjax(path + "/system/baseinfo/bom_select", null, 'GET', 'json', function (data) {
             _doFabricSuccess_info(data, id);
         });
     }
@@ -208,7 +208,7 @@
 
         //if ($.cookie('systemBaseMaps') == undefined) {
         //    //第一次初始化下拉列表，存放到cookies中
-        //    sendRestFulAjax(path + "/system/baseinfo/bom_select", null, 'GET', 'json', function (data) {
+        //    $.sendRestFulAjax(path + "/system/baseinfo/bom_select", null, 'GET', 'json', function (data) {
         //        _doFabricSuccess_info(data, id);
         //    });
         //}

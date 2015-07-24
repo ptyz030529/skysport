@@ -18,6 +18,10 @@ public class MaterialUnitDosage implements CommonVo {
     private String unitId;
     private String unitAmout;
 
+    public MaterialUnitDosage() {
+        super();
+    }
+
     @Override
     public String getId() {
         return id;

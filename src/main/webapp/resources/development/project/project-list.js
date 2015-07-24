@@ -111,7 +111,7 @@
 
     //第一次初始化下拉列表 & 添加下拉列表监听事件
     var reloadDetailSelectData = function () {
-        sendRestFulAjax(path + "/system/baseinfo/project_select", null, 'GET', 'json', initSelect);
+        $.sendRestFulAjax(path + "/system/baseinfo/project_select", null, 'GET', 'json', initSelect);
     }
 
 

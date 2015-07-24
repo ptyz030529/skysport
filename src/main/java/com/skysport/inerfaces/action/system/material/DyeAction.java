@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system.material;
 
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
@@ -32,7 +32,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/material/dye")
-public class DyeAction extends TableListQueryAction<String, Object, DyeInfo> {
+public class DyeAction extends BaseAction<String, Object, DyeInfo> {
     @Resource(name = "dyeService")
     private ICommonService dyeService;
 

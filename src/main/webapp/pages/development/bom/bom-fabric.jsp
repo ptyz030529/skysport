@@ -46,7 +46,7 @@
                         <label class="col-xs-2  control-label" for="{{spId}}"> 供应商 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{spId}}" name="spId" placeholder="供应商">
+                            <select class="col-xs-12" data-style="btn-info" id="{{spId}}" name="fabricsInfo.spId" placeholder="供应商">
                                 <option value="1" selected>供应商</option>
                             </select>
                         </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <label class="col-xs-2  control-label" for="{{yearCode}}"> 年份 </label>
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{yearCode}}" name="yearCode"
+                            <select class="col-xs-12" data-style="btn-info" id="{{yearCode}}" name="fabricsInfo.yearCode"
                                     placeholder="年份">
                                 <option value="1" selected>年份</option>
                             </select>
@@ -64,7 +64,7 @@
                         <label class="col-xs-2  control-label" for="{{classicId}}"> 材质 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{classicId}}" name="classicId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{classicId}}" name="fabricsInfo.classicId"
                                     placeholder="材质">
                                 <option value="1" selected>材质</option>
                             </select>
@@ -75,7 +75,7 @@
                         <label class="col-xs-2  control-label" for="{{pantoneId}}"> 颜色 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{pantoneId}}" name="pantoneId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{pantoneId}}" name="fabricsInfo.pantoneId"
                                     placeholder="颜色">
                                 <option value="1" selected>颜色</option>
                             </select>
@@ -83,7 +83,7 @@
                         <label class="col-xs-2  control-label" for="{{productTypeId}}"> 品名 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{productTypeId}}" name="productTypeId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{productTypeId}}" name="fabricsInfo.productTypeId"
                                     placeholder="品名">
                                 <option value="1" selected>品名</option>
                             </select>
@@ -95,14 +95,14 @@
 
                         <div class="col-xs-3">
                             <select class="col-xs-12" data-style="btn-info" id="{{specificationId}}"
-                                    name="specificationId" placeholder="纱支密度">
+                                    name="fabricsDetailInfo.specificationId" placeholder="纱支密度">
                                 <option value="1" selected>纱支密度</option>
                             </select>
                         </div>
                         <label class="col-xs-2 control-label" for="{{dyeId}}"> 染色方式 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{dyeId}}" name="dyeId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{dyeId}}" name="fabricsDetailInfo.dyeId"
                                     placeholder="染色方式">
                                 <option value="1" selected>染色方式</option>
                             </select>
@@ -113,7 +113,7 @@
                         <label class="col-xs-2  control-label" for="{{finishId}}"> 后整理 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{finishId}}" name="finishId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{finishId}}" name="fabricsDetailInfo.finishId"
                                     placeholder="后整理">
                                 <option value="1" selected>后整理</option>
                             </select>
@@ -121,7 +121,7 @@
                         <label class="col-xs-2  control-label" for="{{blcId}}"> 复合或涂层 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{blcId}}" name="blcId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{blcId}}" name="fabricsDetailInfo.blcId"
                                     placeholder="复合或涂层">
                                 <option value="1" selected>复合或涂层</option>
                             </select>
@@ -132,7 +132,7 @@
                         <label class="col-xs-2  control-label" for="{{mcId}}"> 膜或涂层材质 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{mcId}}" name="mcId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{mcId}}" name="fabricsDetailInfo.mcId"
                                     placeholder="膜或涂层材质">
                                 <option value="1" selected>膜或涂层材质</option>
                             </select>
@@ -140,7 +140,7 @@
                         <label class="col-xs-2  control-label" for="{{comcId}}"> 膜或涂层颜色 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{comcId}}" name="comcId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{comcId}}" name="fabricsDetailInfo.comcId"
                                     placeholder="膜或涂层颜色">
                                 <option value="1" selected>膜或涂层颜色</option>
                             </select>
@@ -151,7 +151,7 @@
                         <label class="col-xs-2  control-label" for="{{wvpId}}"> 透湿程度 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{wvpId}}" name="wvpId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{wvpId}}" name="fabricsDetailInfo.wvpId"
                                     placeholder="透湿程度">
                                 <option value="1" selected>透湿程度</option>
                             </select>
@@ -159,7 +159,7 @@
                         <label class="col-xs-2  control-label" for="{{mtId}}"> 膜的厚度 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{mtId}}" name="mtId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{mtId}}" name="fabricsDetailInfo.mtId"
                                     placeholder="膜的厚度">
                                 <option value="1" selected>膜的厚度</option>
                             </select>
@@ -170,7 +170,7 @@
                         <label class="col-xs-2  control-label" for="{{woblcid}}"> 贴膜或涂层工艺 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{woblcid}}" name="woblcid"
+                            <select class="col-xs-12" data-style="btn-info" id="{{woblcid}}" name="fabricsDetailInfo.woblcid"
                                     placeholder="贴膜或涂层工艺">
                                 <option value="1" selected>贴膜或涂层工艺</option>
                             </select>
@@ -191,13 +191,13 @@
                         <label class="col-xs-2  control-label" for="{{unitId}}"> 用量单位 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{unitId}}" name="unitId"
+                            <select class="col-xs-12" data-style="btn-info" id="{{unitId}}" name="materialUnitDosage.unitId"
                                     placeholder="用量单位">
                             </select>
                         </div>
                         <label class="col-xs-2  control-label" for="{{positionId}}"> 物料位置 </label>
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{positionId}}" name="positionId"    placeholder="物料位置">
+                            <select class="col-xs-12" data-style="btn-info" id="{{positionId}}" name="fabricsInfo.positionId"    placeholder="物料位置">
                             </select>
                         </div>
 
@@ -207,7 +207,7 @@
                         <label class="col-xs-2  control-label"
                                for="{{unitAmount}}"> 用量 </label>
                         <div class="col-xs-3">
-                            <input type="text" id="{{unitAmount}}" name="unitAmount"
+                            <input type="text" id="{{unitAmount}}" name="materialUnitDosage.unitAmount"
                                    placeholder="用量" class="col-xs-10 col-sm-12"/>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
                                for="{{orderCount}}"> 尺码总数量 </label>
 
                         <div class="col-xs-3">
-                            <input type="text" id="{{orderCount}}" name="orderCount"
+                            <input type="text" id="{{orderCount}}" name="materialSpInfo.orderCount"
                                    placeholder="尺码总数量" class="col-xs-10 col-sm-12"/>
                         </div>
 
@@ -235,7 +235,7 @@
                                for="{{attritionRate}}"> 损耗率 </label>
 
                         <div class="col-xs-3">
-                            <input type="text" id="{{attritionRate}}" name="attritionRate"
+                            <input type="text" id="{{attritionRate}}" name="materialSpInfo.attritionRate"
                                    placeholder="损耗率" class="col-xs-10 col-sm-12"/>
                         </div>
 
@@ -246,7 +246,7 @@
                                for="{{unitPrice}}"> 单价 </label>
 
                         <div class="col-xs-3">
-                            <input type="text" id="{{unitPrice}}" name="unitPrice"
+                            <input type="text" id="{{unitPrice}}" name="materialSpInfo.unitPrice"
                                    placeholder="单价" class="col-xs-10 col-sm-12"/>
                         </div>
 
@@ -254,7 +254,7 @@
                                for="{{totalAmount}}"> 尺码总数量 </label>
 
                         <div class="col-xs-3">
-                            <input type="text" id="{{totalAmount}}" name="totalAmount"
+                            <input type="text" id="{{totalAmount}}" name="materialSpInfo.totalAmount"
                                    placeholder="尺码总数量" class="col-xs-10 col-sm-12"/>
                         </div>
                     </div>
@@ -264,7 +264,7 @@
                                for="{{totalPrice}}"> 总价 </label>
 
                         <div class="col-xs-3">
-                            <input type="text" id="{{totalPrice}}" name="totalPrice"
+                            <input type="text" id="{{totalPrice}}" name="materialSpInfo.totalPrice"
                                    placeholder="总价" class="col-xs-10 col-sm-12"/>
                         </div>
                     </div>

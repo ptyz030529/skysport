@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system;
 
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
@@ -31,7 +31,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/fabrics")
-public class FabricsAction extends TableListQueryAction<String, Object, FabricsInfo> {
+public class FabricsAction extends BaseAction<String, Object, FabricsInfo> {
     @Resource(name = "fabricsManageService")
     private ICommonService fabricsManageService;
 

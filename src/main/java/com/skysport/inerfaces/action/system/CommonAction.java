@@ -1,8 +1,8 @@
 package com.skysport.inerfaces.action.system;
 
-import com.skysport.core.action.TableListQueryAction;
-import com.skysport.core.bean.system.SelectItem;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.SexInfo;
@@ -32,7 +32,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/sex")
-public class SexManageAction extends TableListQueryAction<String, Object, SexInfo> {
+public class CommonAction extends BaseAction<String, Object, SexInfo> {
 
 
     @Resource(name = "sexManageService")

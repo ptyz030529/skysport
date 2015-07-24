@@ -15,4 +15,9 @@ public interface IBomManageService extends ICommonService<BomInfo> {
     public int listFilteredInfosCounts(BomQueryForm bomQueryForm);
 
     public List<BomInfo> searchInfos(BomQueryForm bomQueryForm);
+
+    /**
+     * @param bomInfo
+     */
+    public void edit(BomInfo bomInfo);
 }

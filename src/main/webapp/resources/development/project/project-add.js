@@ -11,7 +11,7 @@
 
     //第一次初始化下拉列表
     var reloadDetailSelectData = function () {
-        sendRestFulAjax(path + "/system/baseinfo/project_select", null, 'GET', 'json', initSelectCallBack);
+        $.sendRestFulAjax(path + "/system/baseinfo/project_select", null, 'GET', 'json', initSelectCallBack);
     }
 
     /**
@@ -57,7 +57,7 @@
     var initOther = function () {
         var natrualkey = $("#natrualkey").val();
         if (natrualkey != '') {
-            sendRestFulAjax(path + "/development/project/info/" + natrualkey, null, 'GET', 'json', initFormFields);
+            $.sendRestFulAjax(path + "/development/project/info/" + natrualkey, null, 'GET', 'json', initFormFields);
         }
 
     }
@@ -224,7 +224,7 @@
         }
 
         var sexIds = $("#sexIds").val();
-        sendRestFulAjax(url, formDataStr + "&sexIds=" + sexIds, 'POST', 'json', function () {
+        $.sendRestFulAjax(url, formDataStr + "&sexIds=" + sexIds, 'POST', 'json', function () {
             window.location.href = path + "/development/project/list";
         });
     }

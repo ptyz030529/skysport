@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system;
 
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
@@ -31,7 +31,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/pantone")
-public class PantoneManageAction extends TableListQueryAction<String, Object, PantoneInfo> {
+public class PantoneManageAction extends BaseAction<String, Object, PantoneInfo> {
 
     @Resource(name = "pantoneManageService")
     private IPantoneManageService pantoneManageService;

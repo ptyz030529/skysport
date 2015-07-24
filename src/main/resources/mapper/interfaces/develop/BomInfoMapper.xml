@@ -76,12 +76,12 @@
 
     <update id="updateInfo">
 		update t_bominfo 	set
-		bom_name=#{name},
+		/*bom_name=#{name},
 		customer_id=#{customerId},
 		area_id =#{areaId},
 		series_id =#{seriesId},
+		main_color =#{mainColor},*/
 		collectionNum =#{collectionNum},
-		main_color =#{mainColor},
 		fabrics_end_date =#{fabricsEndDate},
 		accessories_end_date =#{accessoriesEndDate},
 		preoffer_date =#{preOfferDate},
@@ -111,6 +111,25 @@
 		set  del_flag=1
 		where bom_id =#{natrualkey}
 	</update>
+
+	<update id="delDetail">
+		update t_fabrics_detail
+		set  del_flag=1
+		where bom_id =#{natrualkey}
+	</update>
+
+	<update id="delDosage">
+		update t_material_unit_dosage
+		set  del_flag=1
+		where material_id =#{natrualkey}
+	</update>
+
+	<update id="delSp">
+		update t_material_spinfo
+		set  del_flag=1
+		where material_id =#{natrualkey}
+	</update>
+
 
 
     <select id="queryCurrentSeqNo" resultType="String">

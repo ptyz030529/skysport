@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system.material;
 
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
@@ -32,7 +32,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/material/wvp")
-public class WaterVapourPermeabilityAction extends TableListQueryAction<String, Object, WaterVapourPermeabilityInfo> {
+public class WaterVapourPermeabilityAction extends BaseAction<String, Object, WaterVapourPermeabilityInfo> {
     @Resource(name = "waterVapourPermeabilityService")
     private ICommonService waterVapourPermeabilityService;
 

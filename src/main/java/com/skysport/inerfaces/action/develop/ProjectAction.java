@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.develop;
 
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
@@ -34,7 +34,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/development/project")
-public class ProjectAction extends TableListQueryAction<String, Object, ProjectBomInfo> {
+public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
     Logger log = Logger.getLogger(ProjectAction.class);
     @Resource(name = "projectManageService")
     private IProjectManageService projectManageService;

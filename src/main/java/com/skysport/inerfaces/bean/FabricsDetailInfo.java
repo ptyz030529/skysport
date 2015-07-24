@@ -23,6 +23,10 @@ public class FabricsDetailInfo implements CommonVo {
     private String mtId;
     private String woblcId;
 
+    public FabricsDetailInfo() {
+        super();
+    }
+
     @Override
     public String getId() {
         return id;

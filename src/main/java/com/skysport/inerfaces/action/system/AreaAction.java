@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system;
 
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
@@ -35,7 +35,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/area")
-public class AreaAction extends TableListQueryAction<String, Object, AreaInfo> {
+public class AreaAction extends BaseAction<String, Object, AreaInfo> {
     @Resource(name = "areaManageService")
     private ICommonService areaManageService;
 

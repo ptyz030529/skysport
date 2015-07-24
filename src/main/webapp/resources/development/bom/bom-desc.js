@@ -5,15 +5,14 @@
 (function () {
     "use strict";
 
-
     $(function () {
-
 
         //初始化下拉列表
         reloadDescSelectData();
 
         initDescFileds();
 
+        //国际化
         i18nDesc();
 
     })
@@ -21,11 +20,11 @@
 
     function i18nDesc() {
         jQuery.i18n.properties({
-            name : 'bom-add', //资源文件名称
-            path : path+'/resources/js/i18n/app/', //资源文件路径
-            mode : 'map', //用Map的方式使用资源文件中的值
+            name: 'bom-add', //资源文件名称
+            path: path + '/resources/js/i18n/app/', //资源文件路径
+            mode: 'map', //用Map的方式使用资源文件中的值
             //language : 'zh',
-            callback : function() {//加载成功后设置显示内容
+            callback: function () {//加载成功后设置显示内容
                 $('#customerLableId').html($.i18n.prop('CUSTOMER'));
                 $('#saveBtnId').html($.i18n.prop('SAVA BTN'));
                 $('#commitBtnId').html($.i18n.prop('SUBMIT BTN'));
@@ -36,9 +35,9 @@
 
     //赋初始值
     function initDescFileds() {
-        var natrualkey =$("#natrualkey").val();
-        if(natrualkey != '' && natrualkey !='null'){
-            sendRestFulAjax(path + "/development/bom/info/"+natrualkey, null, 'GET', 'json', function(_data){
+        var natrualkey = $("#natrualkey").val();
+        if (natrualkey != '' && natrualkey != 'null') {
+            $.sendRestFulAjax(path + "/development/bom/info/" + natrualkey, null, 'GET', 'json', function (_data) {
                 Object.keys(_data).map(function (key) {
                     $('#bomDescDetail input').filter(function () {
                         return key == this.name;
@@ -52,7 +51,7 @@
 
     //第一次初始化下拉列表 & 添加下拉列表监听事件
     var reloadDescSelectData = function () {
-        sendRestFulAjax(path + "/system/baseinfo/project_select", null, 'GET', 'json', initDescSelect);
+        $.sendRestFulAjax(path + "/system/baseinfo/project_select", null, 'GET', 'json', initDescSelect);
     }
 
     function initDescSelect(_data) {
@@ -90,7 +89,6 @@
                 .text(item["name"])
                 .appendTo($("#seriesId"));
         });
-
 
 
     }

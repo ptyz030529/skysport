@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system;
 
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
@@ -33,7 +33,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/sp")
-public class SpManageAction extends TableListQueryAction<String, Object, SpInfo> {
+public class SpManageAction extends BaseAction<String, Object, SpInfo> {
     @Resource(name = "spManageService")
     private ISpManageService spManageService;
     @Resource(name = "incrementNumber")

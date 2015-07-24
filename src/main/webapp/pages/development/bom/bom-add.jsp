@@ -189,10 +189,10 @@
                 <div id="bomBtnInfo">
 
                     <div class="col-xs-offset-4 col-xs-2">
-                        <button type="button" class="btn btn-info btn-md" onclick="javascript:saveBom()" id="saveBtnId">保存</button>
+                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.bomSave()" id="saveBtnId">保存</button>
                     </div>
                     <div class="col-xs-2">
-                        <button type="button" class="btn btn-info btn-md" onclick="javascript:saveBom()" id="commitBtnId">提交</button>
+                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.bomSubmit()" id="commitBtnId">提交</button>
                     </div>
                 </div>
             </form>
@@ -209,5 +209,6 @@
 
 
 </html>
+<script type="text/javascript" src="<%=path%>/resources/development/bom/bom-add.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/development/bom/bom-desc.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/development/bom/bom-fabric.js"></script>

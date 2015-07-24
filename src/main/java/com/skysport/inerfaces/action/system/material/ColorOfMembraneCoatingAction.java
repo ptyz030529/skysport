@@ -1,5 +1,5 @@
 package com.skysport.inerfaces.action.system.material;
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryTypeConstant;
@@ -30,7 +30,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/system/material/comoc")
-public class ColorOfMembraneCoatingAction   extends TableListQueryAction<String, Object, ColorOfMembraneCoatingInfo> {
+public class ColorOfMembraneCoatingAction   extends BaseAction<String, Object, ColorOfMembraneCoatingInfo> {
     @Resource(name = "colorOfMembraneCoatingService")
     private ICommonService colorOfMembraneCoatingService;
 

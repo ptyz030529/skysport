@@ -1,5 +1,5 @@
 package com.skysport.inerfaces.action.develop;
-import com.skysport.core.action.TableListQueryAction;
+import com.skysport.core.action.BaseAction;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.MaterialInfo;
 import com.skysport.inerfaces.model.system.material.IMaterialManageService;
@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 @Scope("prototype")
 @Controller
 @RequestMapping("/development/material")
-public class MaterialManageAction extends TableListQueryAction<String, Object, MaterialInfo> {
+public class MaterialManageAction extends BaseAction<String, Object, MaterialInfo> {
     @Resource(name = "materialManageService")
     private IMaterialManageService materialManageService;
 

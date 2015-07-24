@@ -13,5 +13,17 @@ import java.util.List;
 public interface FabricsManageDao extends CommonDao<FabricsInfo> {
     List<FabricsInfo> queryFabricByBomId(String bomId);
 
-    void updateBatch(List<FabricsInfo> fabricItems);
+
+    void delDetail(String natrualkey);
+
+
+    void delSp(String natrualkey);
+
+    void addDetailBatch(List<FabricsInfo> fabricItems);
+
+    void addDosageBatch(List<FabricsInfo> fabricItems);
+
+    void addSpBatch(List<FabricsInfo> fabricItems);
+
+    void delDosage(String natrualkey);
 }

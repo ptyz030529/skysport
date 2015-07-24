@@ -19,6 +19,10 @@ public class MaterialSpInfo implements CommonVo {
     private Float totalAmount;
     private Float totalPrice;
 
+    public MaterialSpInfo() {
+        super();
+    }
+
     @Override
     public String getId() {
         return id;
