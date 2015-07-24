@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>404</title>
+<title>405</title>
 </head>
 <body>
-    404 PAGE NOT FOUND
+
 </body>
 </html>

@@ -157,5 +157,15 @@ public class BomAction extends TableListQueryAction<String, Object, BomInfo> {
         return rtnMap;
     }
 
+    /**
+     * @param natrualKey 主键id
+     * @return 根据主键id找出详细信息
+     */
+    @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
+    @ResponseBody
+    public BomInfo queryCustomerNo(@PathVariable String natrualKey) {
+        BomInfo info = bomManageService.queryInfoByNatrualKey(natrualKey);
+        return info;
+    }
 
 }

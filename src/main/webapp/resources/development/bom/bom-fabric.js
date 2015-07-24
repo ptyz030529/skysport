@@ -233,6 +233,7 @@
         //材料类别
         var materialTypeIdItems = data["materialTypeItems"];
         $("#materialTypeId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#materialTypeId"+ idNum));
         $.each(materialTypeIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -243,6 +244,7 @@
         //供应商
         var spItems = data["spItems"];
         $("#spId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#spId"+ idNum));
         $.each(spItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -253,6 +255,7 @@
         //年份
         var yearCodeItems = data["yearItems"];
         $("#yearCode" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#yearCode"+ idNum));
         $.each(yearCodeItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -263,6 +266,7 @@
         //材质列表
         var classicIdItems = data["materialClassicItems"];
         $("#classicId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#classicId"+ idNum));
         $.each(classicIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -274,6 +278,7 @@
         //品名列表
         var productTypeIdItems = data["productTypeItems"];
         $("#productTypeId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#productTypeId"+ idNum));
         $.each(productTypeIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -285,6 +290,7 @@
         //纱支密度列表
         var specificationIdItems = data["specficationItems"];
         $("#specificationId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#specificationId"+ idNum));
         $.each(specificationIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -295,6 +301,7 @@
         //染色方式列表
         var dyeIdItems = data["dyeItems"];
         $("#dyeId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#dyeId"+ idNum));
         $.each(dyeIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -305,6 +312,7 @@
         //后整理列表
         var finishIdItems = data["finishItems"];
         $("#finishId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#finishId"+ idNum));
         $.each(finishIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -315,6 +323,7 @@
         //复合或涂层列表
         var blcIdItems = data["blcItems"];
         $("#blcId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#blcId"+ idNum));
         $.each(blcIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -325,6 +334,7 @@
         //膜或涂层的材质列表
         var mcIdItems = data["momcItems"];
         $("#mcId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#mcId"+ idNum));
         $.each(mcIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -335,6 +345,7 @@
         //膜或涂层的颜色列表
         var comcIdItems = data["comocItems"];
         $("#comcId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#comcId"+ idNum));
         $.each(comcIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -345,6 +356,7 @@
         //透湿程度列表
         var wvpIdItems = data["wvpItems"];
         $("#wvpId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#wvpId"+ idNum));
         $.each(wvpIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -355,6 +367,7 @@
         //膜的厚度列表
         var mtIdItems = data["mtItems"];
         $("#mtId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#mtId"+ idNum));
         $.each(mtIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -365,6 +378,7 @@
         // 贴膜或涂层工艺列表
         var woblcidItems = data["wblcItems"];
         $("#woblcid" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#woblcid"+ idNum));
         $.each(woblcidItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -375,6 +389,7 @@
         // 物料位置列表
         var positionIdItems = data["positionItems"];
         $("#positionId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#positionId"+ idNum));
         $.each(positionIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
@@ -385,6 +400,7 @@
         // 用量单位列表
         var unitIdItems = data["unitItems"];
         $("#unitId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#unitId"+ idNum));
         $.each(unitIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])

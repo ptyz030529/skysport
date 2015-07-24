@@ -24,12 +24,5 @@ window.jQuery || document.write("<script src='<%=path%>/resources/js/jquery1x.js
 <!--[if lte IE 8]>
 <script src="<%=path%>/resources/js/excanvas.js"></script>
 <![endif]-->
-<script src="<%=path%>/resources/js/jquery-ui.custom.js"></script>
-<script src="<%=path%>/resources/js/jquery.ui.touch-punch.js"></script>
-<script src="<%=path%>/resources/js/jquery.easypiechart.js"></script>
-<script src="<%=path%>/resources/js/jquery.sparkline.js"></script>
-<script src="<%=path%>/resources/js/flot/jquery.flot.js"></script>
-<script src="<%=path%>/resources/js/flot/jquery.flot.pie.js"></script>
-<script src="<%=path%>/resources/js/flot/jquery.flot.resize.js"></script>
 
 <jsp:include page="aceFoot.jsp" flush="true"/>

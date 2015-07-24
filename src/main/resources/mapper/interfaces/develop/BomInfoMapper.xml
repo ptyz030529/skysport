@@ -26,7 +26,7 @@
 
     <select id="queryInfo" resultType="BomInfo">
         select
-        <include refid="searchInfoSql"/>
+        	<include refid="searchInfoSql"/>
         FROM t_bominfo a
         WHERE a.bom_id =#{natrualkey}
         limit 1
