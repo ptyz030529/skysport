@@ -2,11 +2,12 @@
  * Bom描述信息
  * Created by zhangjh on 2015/7/23.
  */
-(function () {
+(function ($) {
     "use strict";
-
-    $(function () {
-
+    $.extend({
+        initDesc: initDesc
+    })
+    function initDesc(){
         //初始化下拉列表
         reloadDescSelectData();
 
@@ -14,8 +15,13 @@
 
         //国际化
         i18nDesc();
+    }
 
-    })
+    //$(function () {
+    //
+    //
+    //
+    //})
 
 
     function i18nDesc() {
@@ -94,4 +100,4 @@
     }
 
 
-}());
+}(jQuery));

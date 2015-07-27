@@ -23,6 +23,10 @@
             <label class="col-xs-1 control-label no-padding-right blue ">
                 <span class="glyphicon glyphicon-floppy-disk" id="{{fabricFloppyDiskId}}" onclick="javascript:saveFabric(this,'{{currenId}}')"></span>
             </label>
+            <label class="col-xs-1 control-label no-padding-right blue ">
+                <%--<span class="glyphicons glyphicons-more-items" id="{{fabricCopyId}}" onclick="javascript:copyFabric(this,'{{currenId}}')"></span>--%>
+                <span class="glyphicons glyphicons-more-items" id="{{fabricCopyId}}" onclick="javascript:copyFabric(this,'{{currenId}}')"></span>
+            </label>
         </div>
         <form id="{{fabricFormId}}" method="post" class="form-horizontal" action="edit">
             <div id="{{fabricAllInfoId}}" class="bom-info">

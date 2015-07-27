@@ -1,6 +1,8 @@
 package com.skysport.inerfaces.model.system.fabrics;
 
+import com.skysport.inerfaces.bean.BomInfo;
 import com.skysport.inerfaces.bean.FabricsInfo;
+import com.skysport.inerfaces.bean.join.FabricsJoinInfo;
 import com.skysport.inerfaces.model.common.ICommonService;
 
 import java.util.List;
@@ -17,12 +19,15 @@ public interface IFabricsService extends ICommonService<FabricsInfo> {
      * @param bomId bomId
      * @return 查询
      */
-    public List<FabricsInfo> queryFabricByBomId(String bomId);
+    List<FabricsInfo> queryFabricByBomId(String bomId);
+
+    List<FabricsInfo> queryFabricList(String natrualKey);
+
 
     /**
      * 批量修改
      *
      * @param fabricItems
      */
-    public void updateBatch(List<FabricsInfo> fabricItems);
+    void updateBatch(List<FabricsJoinInfo> fabricItems,BomInfo bomInfo);
 }

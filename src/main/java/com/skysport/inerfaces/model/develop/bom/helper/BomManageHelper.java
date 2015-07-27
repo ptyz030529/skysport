@@ -6,7 +6,7 @@ import com.skysport.core.instance.SystemBaseInfo;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.BomInfo;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
-import com.skysport.inerfaces.constant.SystemInfoConstant;
+import com.skysport.inerfaces.constant.ApplicationConstant;
 import com.skysport.inerfaces.form.develop.BomQueryForm;
 import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
@@ -53,7 +53,7 @@ public class BomManageHelper {
             for (String sexId : sexIds) {
                 BomInfo bomInfo = new BomInfo();
                 String kind_name = buildKindName(info);
-                String seqNo = BuildSeqNoHelper.SINGLETONE.getFullSeqNo(kind_name, incrementNumber, SystemInfoConstant.BOM_SEQ_NO_LENGTH);
+                String seqNo = BuildSeqNoHelper.SINGLETONE.getFullSeqNo(kind_name, incrementNumber, ApplicationConstant.BOM_SEQ_NO_LENGTH);
                 //年份+客户+地域+系列+NNN
                 String bomId = kind_name + seqNo;
 

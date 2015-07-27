@@ -20,4 +20,5 @@ public interface IBomManageService extends ICommonService<BomInfo> {
      * @param bomInfo
      */
     public void edit(BomInfo bomInfo);
+
 }

@@ -1,8 +1,19 @@
 /**
  * Created by zhangjh on 2015/7/10.
  */
-(function () {
+(function ($) {
     "use strict";
+    $.extend({
+        initFabric :initFabric
+    });
+
+    function initFabric(fabricItems){
+
+        for(var index =0 ;index<fabricItems.length;index++){
+            addFabric();
+        }
+    }
+
     /**
      * 启动表单校验监听
      * @param _id 当前表单序号
@@ -84,6 +95,12 @@
     //删除面料
     function deleteFraicById(index) {
         bom.fabricItems.splice(index - 1, 1);
+    }
+
+    function copyFabric(index){
+        if(bom.fabricItems[index] == undefined || $.trim(bom.fabricItems[index]) == ''){
+            bootbox.alert("请先保存面料_"+index);
+        }
     }
 
     var deleteFun = function (id) {
@@ -647,6 +664,6 @@
     window.refreshFabricSelect = refreshFabricSelect;
     window.trashFabricSelect = trashFabricSelect;
     window.showOrHideFabric = showOrHideFabric;
+    window.copyFabric = copyFabric;
 
-
-}());
+}(jQuery));

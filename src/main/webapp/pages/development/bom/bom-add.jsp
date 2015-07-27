@@ -11,6 +11,7 @@
     <script language="javascript" type="text/javascript"
             src="<%=path%>/resources/My97DatePicker/WdatePicker.js"></script>
     <link rel="stylesheet" href="<%=path%>/resources/css/page-header.css"/>
+    <link rel="stylesheet" href="<%=path%>/resources/css/font-awesome.min.css"/>
 </head>
 <body>
 <div class="breadcrumbs" id="breadcrumbs">
@@ -55,7 +56,7 @@
 
                                 <div class="col-xs-3">
                                     <select class="col-xs-12" data-style="btn-info" id="customerId" name="customerId"
-                                            placeholder="客户">
+                                            placeholder="客户" disabled="disabled">
                                         <option value="1" selected>客户</option>
                                     </select>
                                 </div>
@@ -63,7 +64,7 @@
 
                                 <div class="col-xs-3">
                                     <select class="col-xs-12" data-style="btn-info" id="areaId" name="areaId"
-                                            placeholder="区域">
+                                            placeholder="区域" disabled="disabled">
                                         <option value="1" selected>区域</option>
                                     </select>
                                 </div>
@@ -78,7 +79,7 @@
 
                                 <div class="col-xs-3">
                                     <select class="col-xs-12" data-style="btn-info" id="seriesId" name="seriesId"
-                                            placeholder="系列">
+                                            placeholder="系列" disabled="disabled">
                                         <option value="1" selected>系列</option>
                                     </select>
                                 </div>
@@ -88,7 +89,7 @@
 
                                 <div class="col-xs-3">
                                     <input type="text" id="collectionNum" name="collectionNum"
-                                           placeholder="款式" class="col-xs-10 col-sm-12"/>
+                                           placeholder="款式" class="col-xs-10 col-sm-12" disabled="disabled"/>
                                 </div>
 
                             </div>
@@ -100,7 +101,7 @@
 
                                 <div class="col-xs-3">
                                     <input type="text" id="mainColor" name="mainColor"
-                                           placeholder="主颜色" class="col-xs-10 col-sm-12"/>
+                                           placeholder="主颜色" class="col-xs-10 col-sm-12" disabled="disabled"/>
                                 </div>
 
 

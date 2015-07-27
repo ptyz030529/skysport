@@ -114,44 +114,13 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(@RequestBody BomInfo info) throws Exception {
+        info.setBomId(info.getNatrualkey());
         bomManageService.edit(info);
         Map resultMap = rtnSuccessResultMap(MSG_UPDATE_SUCCESS);
         return resultMap;
     }
 
 
-//    /**
-//     * @param info BomInfo
-//     * @return
-//     */
-//    @RequestMapping(value = "/save", method = RequestMethod.POST)
-//    @ResponseBody
-//    public Map<String, Object> saveBom(BomInfo info) {
-//
-//
-//        //保存BOM信息
-//        BomInfo exitBom = bomManageService.queryInfoByNatrualKey(info.getNatrualkey());
-//
-//        if (null == exitBom) {
-//            bomManageService.add(info);
-//        } else {
-//            bomManageService.edit(info);
-//        }
-//
-//        //后台删除前台已删除的面料
-//
-//        fabricsManageService.addBatch(info.getFabricItems());
-//        //保存面料信息(先删除所有面料，再新增所有面料)
-//
-//
-//        //保存 辅料信息
-//
-//
-//        //保存成衣厂信息
-//        Map<String, Object> rtnMap = buildCallBackMap(BaseRespHelper.SINGLETONE.dealSucess(), null);
-//
-//        return rtnMap;
-//    }
 
     /**
      * @param natrualKey 主键id

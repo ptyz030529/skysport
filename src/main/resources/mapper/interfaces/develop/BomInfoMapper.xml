@@ -26,12 +26,11 @@
 
     <select id="queryInfo" resultType="BomInfo">
         select
-        	<include refid="searchInfoSql"/>
+        <include refid="searchInfoSql"/>
         FROM t_bominfo a
         WHERE a.bom_id =#{natrualkey}
         limit 1
     </select>
-
 
 
     <select id="listInfosCounts" resultType="Integer">
@@ -41,10 +40,10 @@
 
     <select id="listFilteredInfosCounts" resultType="Integer">
         SELECT COUNT(*) FROM t_bominfo where del_flag=0
-		<if test="bomInfo.projectId !=null and bomInfo.projectId != ''">
-				and project_id like concat('%',#{bomInfo.projectId},'%')
-		</if>
-		<if test="dataTablesInfo.searchValue !=null and dataTablesInfo.searchValue != ''">
+        <if test="bomInfo.projectId !=null and bomInfo.projectId != ''">
+            and project_id like concat('%',#{bomInfo.projectId},'%')
+        </if>
+        <if test="dataTablesInfo.searchValue !=null and dataTablesInfo.searchValue != ''">
             and (
             bom_name like concat('%',#{dataTablesInfo.searchValue},'%') or
             remark like concat('%',#{dataTablesInfo.searchValue},'%')
@@ -58,17 +57,17 @@
         <include refid="searchInfoSql"/>
         FROM t_bominfo a
         WHERE a.del_flag=0
-		<if test="bomInfo.projectId !=null and bomInfo.projectId != ''">
-			and project_id like concat('%',#{bomInfo.projectId},'%')
-		</if>
-		<if test="dataTablesInfo.searchValue !=null and dataTablesInfo.searchValue != ''">
-			and (
-			bom_name like concat('%',#{dataTablesInfo.searchValue},'%') or
-			remark like concat('%',#{dataTablesInfo.searchValue},'%')
-			)
-		</if>
+        <if test="bomInfo.projectId !=null and bomInfo.projectId != ''">
+            and project_id like concat('%',#{bomInfo.projectId},'%')
+        </if>
+        <if test="dataTablesInfo.searchValue !=null and dataTablesInfo.searchValue != ''">
+            and (
+            bom_name like concat('%',#{dataTablesInfo.searchValue},'%') or
+            remark like concat('%',#{dataTablesInfo.searchValue},'%')
+            )
+        </if>
         <if test="dataTablesInfo.orderColumn!=null and dataTablesInfo.orderColumn != ''">
-            ORDER BY  ${dataTablesInfo.orderColumn} ${dataTablesInfo.orderDir}
+            ORDER BY ${dataTablesInfo.orderColumn} ${dataTablesInfo.orderDir}
         </if>
         limit #{dataTablesInfo.start} ,#{dataTablesInfo.length}
 
@@ -76,11 +75,6 @@
 
     <update id="updateInfo">
 		update t_bominfo 	set
-		/*bom_name=#{name},
-		customer_id=#{customerId},
-		area_id =#{areaId},
-		series_id =#{seriesId},
-		main_color =#{mainColor},*/
 		collectionNum =#{collectionNum},
 		fabrics_end_date =#{fabricsEndDate},
 		accessories_end_date =#{accessoriesEndDate},
@@ -91,14 +85,14 @@
 		WHERE bom_id =#{natrualkey}
 	</update>
 
-	<insert id="addBatch"  parameterType="list">
-		insert into
-			t_bominfo (project_id,bom_id,bom_name,customer_id,area_id,sex_id,series_id,collectionNum,main_color,fabrics_end_date,accessories_end_date,preoffer_date,cloth_received_date,offer_amount)
-		values
-		<foreach collection="list" item="item" index="index" separator="," >
-			(#{item.projectId},#{item.natrualkey},#{item.name},#{item.customerId},#{item.areaId},#{item.sexId},#{item.seriesId},#{item.collectionNum},#{item.mainColor},#{item.fabricsEndDate},#{item.accessoriesEndDate},#{item.preOfferDate},#{item.clothReceivedDate},#{item.offerAmount})
-		</foreach>
-	</insert>
+    <insert id="addBatch" parameterType="list">
+        insert into
+        t_bominfo (project_id,bom_id,bom_name,customer_id,area_id,sex_id,series_id,collectionNum,main_color,fabrics_end_date,accessories_end_date,preoffer_date,cloth_received_date,offer_amount)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.projectId},#{item.natrualkey},#{item.name},#{item.customerId},#{item.areaId},#{item.sexId},#{item.seriesId},#{item.collectionNum},#{item.mainColor},#{item.fabricsEndDate},#{item.accessoriesEndDate},#{item.preOfferDate},#{item.clothReceivedDate},#{item.offerAmount})
+        </foreach>
+    </insert>
 
     <insert id="add">
 		insert into
@@ -112,24 +106,23 @@
 		where bom_id =#{natrualkey}
 	</update>
 
-	<update id="delDetail">
+    <update id="delDetail">
 		update t_fabrics_detail
 		set  del_flag=1
 		where bom_id =#{natrualkey}
 	</update>
 
-	<update id="delDosage">
+    <update id="delDosage">
 		update t_material_unit_dosage
 		set  del_flag=1
 		where material_id =#{natrualkey}
 	</update>
 
-	<update id="delSp">
+    <update id="delSp">
 		update t_material_spinfo
 		set  del_flag=1
 		where material_id =#{natrualkey}
 	</update>
-
 
 
     <select id="queryCurrentSeqNo" resultType="String">

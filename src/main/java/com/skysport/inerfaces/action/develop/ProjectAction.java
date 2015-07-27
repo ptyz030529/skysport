@@ -5,7 +5,7 @@ import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.constant.DictionaryTypeConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
-import com.skysport.inerfaces.constant.SystemInfoConstant;
+import com.skysport.inerfaces.constant.ApplicationConstant;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
 import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
@@ -178,7 +178,7 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
 
 
         String kind_name = ProjectManageHelper.buildKindName(info);
-        String seqNo = BuildSeqNoHelper.SINGLETONE.getFullSeqNo(kind_name, incrementNumber, SystemInfoConstant.PROJECT_SEQ_NO_LENGTH);
+        String seqNo = BuildSeqNoHelper.SINGLETONE.getFullSeqNo(kind_name, incrementNumber, ApplicationConstant.PROJECT_SEQ_NO_LENGTH);
         //年份+客户+地域+系列+NNN
         String projectId = kind_name + seqNo;
 
