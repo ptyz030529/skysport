@@ -6,7 +6,7 @@ var spId="";
  * @param _spId
  */
 var info = function(_spId){
-    sendRestFulAjax("spinfo/"+_spId,null,'GET','json',_doSuccess_info);
+    $.sendRestFulAjax("spinfo/"+_spId,null,'GET','json',_doSuccess_info);
     spId = _spId;
 }
 /**
@@ -41,7 +41,7 @@ var del = function(_spId){
  * @param result
  */
 var doDel = function(result){
-    if(result)  sendRestFulAjax("del/"+spId,null,'DELETE','json',_doSuccess_del);
+    if(result)  $.sendRestFulAjax("del/"+spId,null,'DELETE','json',_doSuccess_del);
 }
 /**
  * 删除信息后的处理
@@ -65,7 +65,7 @@ var save= function(){
  */
 function edit(_url,_data,_type,_dataType) {
     var data = _data+"&spId="+spId;
-    sendRestFulAjax(_url,data,_type,_dataType,_doSuccess_edit);
+    $.sendRestFulAjax(_url,data,_type,_dataType,_doSuccess_edit);
 }
 
 function _doSuccess_edit(data){

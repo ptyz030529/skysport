@@ -6,7 +6,7 @@ var natrualkey="";
  * @param _natrualkey
  */
 var info = function(_natrualkey){
-    sendRestFulAjax("info/"+_natrualkey,null,'GET','json',_doSuccess_info);
+    $.sendRestFulAjax("info/"+_natrualkey,null,'GET','json',_doSuccess_info);
     natrualkey = _natrualkey;
 }
 /**
@@ -42,7 +42,7 @@ var del = function(_natrualkey){
  * @param result
  */
 var doDel = function(result){
-    if(result)  sendRestFulAjax("del/"+natrualkey,null,'DELETE','json',_doSuccess_del);
+    if(result)  $.sendRestFulAjax("del/"+natrualkey,null,'DELETE','json',_doSuccess_del);
 }
 /**
  * 删除信息后的处理
@@ -66,7 +66,7 @@ var save= function(){
  */
 function edit(_url,_data,_type,_dataType) {
     var data = _data+"&natrualkey="+natrualkey;
-    sendRestFulAjax(_url,data,_type,_dataType,_doSuccess_edit);
+    $.sendRestFulAjax(_url,data,_type,_dataType,_doSuccess_edit);
 }
 
 function _doSuccess_edit(data){

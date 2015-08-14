@@ -2,111 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8e4a18d3-bacf-44ab-b1e1-766cdafd0a57" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\work\project\skysport\.settings\org.eclipse.jdt.core.prefs" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\.settings\org.eclipse.m2e.core.prefs" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\.settings\org.eclipse.wst.common.component" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\.settings\org.eclipse.wst.common.project.facet.core.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\.settings\org.eclipse.wst.validation.prefs" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\java\com\skysport\core\dao\DictionaryMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\java\com\skysport\core\dao\TableKeyMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\java\com\skysport\inerfaces\mapper\material\DyeDao.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\development\product_require_list\edit.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\development\product_require_list\list.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\development\proof_require\edit.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\development\proof_require\list.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\area\1.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\area\2.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\code\edit.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\code\list.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\department\edit.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\department\list.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\department\package.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\duty\edit.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\duty\list.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\performance_parameter\edit.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\performance_parameter\list.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\product\edit.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\product\list.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\product\package.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\product_kind\edit.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\product_kind\list.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\product_kind\package.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\sp_kind\edit.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\sp_kind\list.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\technology\edit.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\work\project\skysport\src\main\webapp\pages\system\technology\list.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/area/helper/AreaManageServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/area/helper/AreaManageServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/bom/helper/BomManageHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/bom/helper/BomManageHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/BomManageMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/BomManageMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/bom/impl/BomManageServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/bom/impl/BomManageServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/BondingLaminationCoatingServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/BondingLaminationCoatingServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/CategoryManageMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/CategoryManageMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/category/CategoryManageServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/category/CategoryManageServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/category/impl/CategoryManageServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/category/impl/CategoryManageServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/ColorOfMembraneCoatingServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/ColorOfMembraneCoatingServiceHelper.java" />
+      <change type="DELETED" beforePath="D:\work\project\skysport\.settings\org.eclipse.core.resources.prefs" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/CommonDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/CommonDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/common/impl/CommonServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/common/impl/CommonServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/customer/helper/CustomerManageServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/customer/helper/CustomerManageServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/core/instance/DictionaryInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/core/instance/DictionaryInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/interfaces/other/DictionaryMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/interfaces/other/DictionaryMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/core/model/init/service/impl/DictionaryServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/core/model/init/service/impl/DictionaryServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/interfaces/system/material/DyeInfo.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/interfaces/system/material/DyeInfo.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/DyeServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/DyeServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/DyeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/DyeServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/fabrics/impl/FabricsServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/fabrics/impl/FabricsServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/factory/FactoryManageServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/factory/FactoryManageServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/FinishServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/FinishServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/bom/IBomManageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/bom/IBomManageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/category/ICategoryManageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/category/ICategoryManageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/common/ICommonService.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/common/ICommonService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/main_color/IMainColorService.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/main_color/IMainColorService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/project/service/IProjectManageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/project/service/IProjectManageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/sp/service/ISpManageService.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/sp/service/ISpManageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/action/system/MainColorAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/action/system/MainColorAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/main_color/helper/MainColorHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/main_color/helper/MainColorHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/MainColorManageMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/MainColorManageMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/main_color/impl/MainColorServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/main_color/impl/MainColorServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material_classic/MaterialClassicManageServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material_classic/MaterialClassicManageServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/MaterialOfMembraneCoatingServicHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/MaterialOfMembraneCoatingServicHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/MaterialPositionServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/MaterialPositionServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material_type/MaterialTypeManageServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material_type/MaterialTypeManageServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/MaterialUnitServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/MaterialUnitServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/MembraneThicknessServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/MembraneThicknessServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/product_type/ProductTypeManageServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/product_type/ProductTypeManageServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/action/develop/ProjectAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/action/develop/ProjectAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/project/helper/ProjectManageHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/project/helper/ProjectManageHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/ProjectManageMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/ProjectManageMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/interfaces/develop/ProjectManageMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/interfaces/develop/ProjectManageMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/project/service/impl/ProjectManageServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/develop/project/service/impl/ProjectManageServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/form/develop/ProjectQueryForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/form/develop/ProjectQueryForm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/series/SeriesManageServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/series/SeriesManageServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/sex/SexManageServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/sex/SexManageServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/bean/system/SpInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/bean/system/SpInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/sp/helper/SpInfoHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/sp/helper/SpInfoHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/SpManageDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/SpManageDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/sp/service/impl/SpManageServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/sp/service/impl/SpManageServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/SpecificationServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/SpecificationServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/core/instance/SystemBaseInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/core/instance/SystemBaseInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/action/system/SystemBaseInfoController.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/action/system/SystemBaseInfoController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/constant/SystemInfoConstant.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/constant/SystemInfoConstant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/core/model/seqno/service/impl/TableKeyManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/core/model/seqno/service/impl/TableKeyManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/interfaces/other/TableKeyMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/interfaces/other/TableKeyMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/core/action/TableListQueryAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/core/action/TableListQueryAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/WaterVapourPermeabilityServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/WaterVapourPermeabilityServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/WorkmanshipOfBondingLaminatingCoatingServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material/impl/helper/WorkmanshipOfBondingLaminatingCoatingServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/year_conf/YearConfManageServiceHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/year_conf/YearConfManageServiceHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/base/common.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/pages/base/common.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/base/foot.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/pages/base/foot.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/mybatis-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/conf/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/page-header.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/page-header.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/bean/FabricsInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/bean/FabricsInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/interfaces/system/fabrics/FabricsInfo.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/interfaces/system/fabrics/FabricsInfo.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/bean/join/FabricsJoinInfo.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/bean/join/FabricsJoinInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/fabrics/impl/FabricsServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/fabrics/impl/FabricsServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/MaterialTypeManageDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/mapper/MaterialTypeManageDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material_type/MaterialTypeManageServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/model/system/material_type/MaterialTypeManageServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/bean/MaterialUnitDosage.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/bean/MaterialUnitDosage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/action/system/MaterialUnitManageAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/skysport/inerfaces/action/system/MaterialUnitManageAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/ace.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/ace.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/activiti.cfg.xml" afterPath="$PROJECT_DIR$/src/main/resources/activiti.cfg.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/development/bom/bom-add.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/development/bom/bom-add.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/development/bom/bom-desc.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/development/bom/bom-desc.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/development/bom/bom-fabric.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/development/bom/bom-fabric.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/development/bom/bom-fabric.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/pages/development/bom/bom-fabric.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/development/bom/bom-list.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/development/bom/bom-list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/content.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/pages/content.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/system/customer/customer.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/system/customer/customer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/system/edit.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/system/edit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/jdbc.properties" afterPath="$PROJECT_DIR$/src/main/resources/conf/jdbc.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/system/pantone/pantone.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/system/pantone/pantone.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/development/project/project-add.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/development/project/project-add.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/development/project/project-add.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/pages/development/project/project-add.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/pages/sidebar.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/pages/sidebar.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/skysport.iml" afterPath="$PROJECT_DIR$/skysport.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/spring-mvc.xml" afterPath="$PROJECT_DIR$/src/main/resources/conf/spring-mvc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/spring-mybatis.xml" afterPath="$PROJECT_DIR$/src/main/resources/conf/spring-mybatis.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/spring.xml" afterPath="$PROJECT_DIR$/src/main/resources/conf/spring.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/system/sp/sp.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/system/sp/sp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="activitiDemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -266,7 +189,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
+    <option name="width" value="1932" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -292,6 +215,9 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -304,9 +230,6 @@
       </pane>
       <pane id="Scope">
         <subPane subId="Project Files" />
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
       </pane>
       <pane id="Scratches" />
     </panes>
@@ -772,14 +695,15 @@
       <workItem from="1432258876237" duration="6781000" />
       <workItem from="1432265923433" duration="16000" />
       <workItem from="1437370067554" duration="44000" />
+      <workItem from="1438314197248" duration="41000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7731000" />
+    <option name="totallyTimeSpent" value="7772000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -791,7 +715,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2015625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2013889" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />

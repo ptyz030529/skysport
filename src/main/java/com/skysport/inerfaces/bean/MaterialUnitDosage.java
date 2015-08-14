@@ -16,7 +16,7 @@ public class MaterialUnitDosage implements CommonVo {
     private String bomId;
     private String materialId;
     private String unitId;
-    private String unitAmout;
+    private String unitAmount;
 
     public MaterialUnitDosage() {
         super();
@@ -94,11 +94,11 @@ public class MaterialUnitDosage implements CommonVo {
         this.unitId = unitId;
     }
 
-    public String getUnitAmout() {
-        return unitAmout;
+    public String getUnitAmount() {
+        return unitAmount;
     }
 
-    public void setUnitAmout(String unitAmout) {
-        this.unitAmout = unitAmout;
+    public void setUnitAmount(String unitAmount) {
+        this.unitAmount = unitAmount;
     }
 }

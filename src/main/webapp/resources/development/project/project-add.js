@@ -213,7 +213,7 @@
         project.collectionNumber = '';
 
         var formDataStr = $("#projectForm").serialize();
-        //var formDataJson = strToJson(formDataStr);
+        //var formDataJson = $.strToJson(formDataStr);
 
         var natrualkey = $("#natrualkey").val();
         var url;

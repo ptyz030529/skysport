@@ -6,7 +6,6 @@
 (function ($) {
     $.bominfo = {};
     var saveUrl = path + "/development/bom/edit";
-    var infoUrl = path + "/development/bom/info/";
     var listUrl = path + "/development/bom/list";
     $.extend({bomSave: bomSave, bomSubmit: bomSubmit});
     $(function () {
@@ -16,7 +15,10 @@
     function initBom() {
         //初始化秒速信息
         var natrualkey = $("#natrualkey").val();
-        $.initDesc(natrualkey);
+        $.initDesc(function(_data){
+            $.initFabric(_data.fabrics);
+        });
+
     }
 
 
@@ -34,30 +36,34 @@
             fabricsInfo.positionId = $("#positionId" + index).val();
             fabricsInfo.materialTypeId = $("#materialTypeId" + index).val();
             fabricsInfo.nameNum = index;
+            fabricsInfo.fabricId = $("#fabricId" + index).val();
             var fabricsDetailInfo = {};//面料描述信息
             fabricsDetailInfo.specificationId = $("#specificationId" + index).val();
             fabricsDetailInfo.dyeId = $("#dyeId" + index).val();
             fabricsDetailInfo.finishId = $("#finishId" + index).val();
             fabricsDetailInfo.blcId = $("#blcId" + index).val();
-            fabricsDetailInfo.mcId = $("#mcId" + index).val();
-            fabricsDetailInfo.comcId = $("#comcId" + index).val();
+            fabricsDetailInfo.momcId = $("#momcId" + index).val();
+            fabricsDetailInfo.comocId = $("#comocId" + index).val();
             fabricsDetailInfo.wvpId = $("#wvpId" + index).val();
             fabricsDetailInfo.mtId = $("#mtId" + index).val();
-            fabricsDetailInfo.woblcid = $("#woblcid" + index).val();
+            fabricsDetailInfo.woblcId = $("#woblcId" + index).val();
+            fabricsDetailInfo.fabricId =  fabricsInfo.fabricId;
             var materialSpInfo = {};//面料用量信息
             materialSpInfo.orderCount = $("#orderCount" + index).val();
             materialSpInfo.attritionRate = $("#attritionRate" + index).val();
             materialSpInfo.unitPrice = $("#unitPrice" + index).val();
             materialSpInfo.totalAmount = $("#totalAmount" + index).val();
             materialSpInfo.totalPrice = $("#totalPrice" + index).val();
+            materialSpInfo.fabricId =  fabricsInfo.fabricId;
             var materialUnitDosage = {};//面料单位用量
             materialUnitDosage.unitId = $("#unitId" + index).val();
             materialUnitDosage.unitAmount = $("#unitAmount" + index).val();
+            materialUnitDosage.fabricId =  fabricsInfo.fabricId;
 
 
             fabricItem.fabricsInfo = fabricsInfo;
             fabricItem.fabricsDetailInfo = fabricsDetailInfo;
-            fabricItem.materialSpInfo = fabricsInfo;
+            fabricItem.materialSpInfo = materialSpInfo;
             fabricItem.materialUnitDosage = materialUnitDosage;
             fabricItems.push(fabricItem);
         }

@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 @Service("materialTypeManageService")
 public class MaterialTypeManageServiceImpl extends CommonServiceImpl<MaterialTypeInfo> implements InitializingBean {
     @Resource(name = "materialTypeManageDao")
-    private MaterialTypeManageDao<MaterialTypeInfo> materialTypeManageDao;
+    private MaterialTypeManageDao materialTypeManageDao;
 
     @Override
     public void afterPropertiesSet() throws Exception {

@@ -9,7 +9,7 @@
     <ul class="nav nav-list">
         <li>
             <a href="javascript:onclick('<%=path%>/system/sp/list')" class="dropdown-toggle">
-                <span class="menu-text"> 基础信息 </span>
+                <span class="menu-text"> 基础资料 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <ul class="submenu">

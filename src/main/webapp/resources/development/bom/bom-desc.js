@@ -4,14 +4,21 @@
  */
 (function ($) {
     "use strict";
+    var infoUrl = path + "/development/bom/info/";
+    var projectSelectUrl = path + "/system/baseinfo/project_select";
+
     $.extend({
         initDesc: initDesc
     })
-    function initDesc(){
+
+    /**
+     * 初始化描述信息
+     */
+    function initDesc(callback) {
         //初始化下拉列表
         reloadDescSelectData();
 
-        initDescFileds();
+        initDescFileds(callback);
 
         //国际化
         i18nDesc();
@@ -40,10 +47,11 @@
 
 
     //赋初始值
-    function initDescFileds() {
+    function initDescFileds(callback) {
         var natrualkey = $("#natrualkey").val();
         if (natrualkey != '' && natrualkey != 'null') {
-            $.sendRestFulAjax(path + "/development/bom/info/" + natrualkey, null, 'GET', 'json', function (_data) {
+            $.sendRestFulAjax(infoUrl + natrualkey, null, 'GET', 'json', function (_data) {
+
                 Object.keys(_data).map(function (key) {
                     $('#bomDescDetail input').filter(function () {
                         return key == this.name;
@@ -51,13 +59,14 @@
                     $("#" + key).val(_data[key]);
                 });
 
+                callback(_data);
             });
         }
     }
 
     //第一次初始化下拉列表 & 添加下拉列表监听事件
     var reloadDescSelectData = function () {
-        $.sendRestFulAjax(path + "/system/baseinfo/project_select", null, 'GET', 'json', initDescSelect);
+        $.sendRestFulAjax(projectSelectUrl, null, 'GET', 'json', initDescSelect);
     }
 
     function initDescSelect(_data) {

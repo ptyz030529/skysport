@@ -47,51 +47,52 @@ public class FabricsServiceImpl extends CommonServiceImpl<FabricsInfo> implement
     @Override
     public void updateBatch(List<FabricsJoinInfo> fabricItems, BomInfo bomInfo) {
 
-        if (null == fabricItems || fabricItems.isEmpty()) {
-            return;
-        }
+//        if (null == fabricItems || fabricItems.isEmpty()) {
+//            return;
+//        }
 
         //找出被删除的面料id，并删除
         String bomId = StringUtils.isBlank(bomInfo.getNatrualkey()) ? bomInfo.getBomId() : bomInfo.getNatrualkey();
         deleteFabircsByIds(fabricItems, bomId);
-        //面料id存在，修改；面料id不存在则新增
-        for (FabricsJoinInfo fabricsJoinInfo : fabricItems) {
-            String fabricsId = fabricsJoinInfo.getNatrualkey();
-            //有id，更新
-            if (StringUtils.isNotBlank(fabricsId)) {
-                fabricsManageDao.updateInfo(fabricsJoinInfo.getFabricsInfo());
-                fabricsManageDao.updateDetail(fabricsJoinInfo.getFabricsDetailInfo());
-                fabricsManageDao.updateDosage(fabricsJoinInfo.getMaterialUnitDosage());
-                fabricsManageDao.updateSp(fabricsJoinInfo.getMaterialSpInfo());
-            }
-            //无id，新增
-            else {
-                String kind_name = buildKindName(bomInfo, fabricsJoinInfo);
-                String seqNo = BuildSeqNoHelper.SINGLETONE.getFullSeqNo(kind_name, incrementNumber, ApplicationConstant.MATERIAL_SEQ_NO_LENGTH);
-                //年份+客户+地域+系列+NNN
-                fabricsId = kind_name + seqNo;
-                setFabricId(fabricsJoinInfo, fabricsId, bomId);
-                fabricsManageDao.add(fabricsJoinInfo.getFabricsInfo());
-                //新增面料详细
-                fabricsManageDao.addDetail(fabricsJoinInfo.getFabricsDetailInfo());
-                //新增面料用量
-                fabricsManageDao.addDosage(fabricsJoinInfo.getMaterialUnitDosage());
-                //新增面料供应商信息
-                fabricsManageDao.addSp(fabricsJoinInfo.getMaterialSpInfo());
+        if (null != fabricItems) {
+            //面料id存在，修改；面料id不存在则新增
+            for (FabricsJoinInfo fabricsJoinInfo : fabricItems) {
+                String fabricId = fabricsJoinInfo.getFabricsInfo().getFabricId();
+                //有id，更新
+                if (StringUtils.isNotBlank(fabricId)) {
+                    fabricsManageDao.updateInfo(fabricsJoinInfo.getFabricsInfo());
+                    fabricsManageDao.updateDetail(fabricsJoinInfo.getFabricsDetailInfo());
+                    fabricsManageDao.updateDosage(fabricsJoinInfo.getMaterialUnitDosage());
+                    fabricsManageDao.updateSp(fabricsJoinInfo.getMaterialSpInfo());
+                }
+                //无id，新增
+                else {
+                    String kind_name = buildKindName(bomInfo, fabricsJoinInfo);
+                    String seqNo = BuildSeqNoHelper.SINGLETONE.getFullSeqNo(kind_name, incrementNumber, ApplicationConstant.MATERIAL_SEQ_NO_LENGTH);
+                    //年份+客户+地域+系列+NNN
+                    fabricId = kind_name + seqNo;
+                    setFabricId(fabricsJoinInfo, fabricId, bomId);
+                    fabricsManageDao.add(fabricsJoinInfo.getFabricsInfo());
+                    //新增面料详细
+                    fabricsManageDao.addDetail(fabricsJoinInfo.getFabricsDetailInfo());
+                    //新增面料用量
+                    fabricsManageDao.addDosage(fabricsJoinInfo.getMaterialUnitDosage());
+                    //新增面料供应商信息
+                    fabricsManageDao.addSp(fabricsJoinInfo.getMaterialSpInfo());
+                }
             }
         }
 
-
     }
 
-    private void setFabricId(FabricsJoinInfo fabricsJoinInfo, String fabricsId, String bomId) {
+    private void setFabricId(FabricsJoinInfo fabricsJoinInfo, String fabricId, String bomId) {
 
-        fabricsJoinInfo.getFabricsInfo().setFabricsId(fabricsId);
-        fabricsJoinInfo.getFabricsInfo().setNatrualkey(fabricsId);
+        fabricsJoinInfo.getFabricsInfo().setFabricId(fabricId);
+        fabricsJoinInfo.getFabricsInfo().setNatrualkey(fabricId);
         fabricsJoinInfo.getFabricsInfo().setBomId(bomId);
-        fabricsJoinInfo.getFabricsDetailInfo().setFabricId(fabricsId);
-        fabricsJoinInfo.getMaterialUnitDosage().setMaterialId(fabricsId);
-        fabricsJoinInfo.getMaterialSpInfo().setMaterialId(fabricsId);
+        fabricsJoinInfo.getFabricsDetailInfo().setFabricId(fabricId);
+        fabricsJoinInfo.getMaterialUnitDosage().setMaterialId(fabricId);
+        fabricsJoinInfo.getMaterialSpInfo().setMaterialId(fabricId);
     }
 
     /**
@@ -130,9 +131,11 @@ public class FabricsServiceImpl extends CommonServiceImpl<FabricsInfo> implement
 
     private List<String> buildNeedSaveFabricId(List<FabricsJoinInfo> fabricItems) {
         List<String> needToSaveFabricId = new ArrayList<String>();
-        for (FabricsJoinInfo fabricsJoinInfo : fabricItems) {
-            String fabricsId = fabricsJoinInfo.getFabricsInfo().getNatrualkey();
-            needToSaveFabricId.add(fabricsId);
+        if (null != fabricItems) {
+            for (FabricsJoinInfo fabricsJoinInfo : fabricItems) {
+                String fabricId = fabricsJoinInfo.getFabricsInfo().getFabricId();
+                needToSaveFabricId.add(fabricId);
+            }
         }
         return needToSaveFabricId;
     }

@@ -8,9 +8,8 @@
     });
 
     function initFabric(fabricItems){
-
         for(var index =0 ;index<fabricItems.length;index++){
-            addFabric();
+            addFabric(fabricItems[index]);
         }
     }
 
@@ -35,9 +34,32 @@
     }
 
     /**
+     * 初始化面料nextIdNum的表单信息
+     * @param nextIdNum 面料序号
+     * @param _fabricInfo 面料表单值
+     */
+    function initFabricFields(nextIdNum, _fabricInfo) {
+
+        //保存值
+        var fabricInfo = $.extend({},_fabricInfo);
+        bom.fabricItems.push(fabricInfo);
+
+        //初始化赋值
+        Object.keys(_fabricInfo).map(function (key) {
+            //下拉框
+            $("#" + key + nextIdNum).val(_fabricInfo[key]);
+        });
+
+    }
+
+    /**
      * 添加面料
      */
-    var addFabric = function () {
+    var addFabric = function (fabricInfo) {
+
+        //if (fabricInfo == undefined){
+        //    fabricInfo = fabric;
+        //}
 
         $("div[id^=fabricAllInfoId]").hide(); //页面加载时，面料全部隐藏
 
@@ -53,6 +75,7 @@
                     "currenId": nextIdNum,
                     "fabricDivId": "fabricDivId" + nextIdNum,
                     "fabricTitleId": "fabricTitleId" + nextIdNum,
+                    "fabricId": "fabricId" + nextIdNum,
                     "fabricTitleName": "面料_" + nextIdNum,
                     "fabricEyeId": "fabricEyeId" + nextIdNum,
                     "fabricTrashId": "fabricTrashId" + nextIdNum,
@@ -70,13 +93,19 @@
                     "dyeId": "dyeId" + nextIdNum,
                     "finishId": "finishId" + nextIdNum,
                     "blcId": "blcId" + nextIdNum,
-                    "mcId": "mcId" + nextIdNum,
-                    "comcId": "comcId" + nextIdNum,
+                    "momcId": "momcId" + nextIdNum,
+                    "comocId": "comocId" + nextIdNum,
                     "wvpId": "wvpId" + nextIdNum,
                     "mtId": "mtId" + nextIdNum,
-                    "woblcid": "woblcid" + nextIdNum,
+                    "woblcId": "woblcId" + nextIdNum,
                     "unitId": "unitId" + nextIdNum,
-                    "positionId": "positionId" + nextIdNum
+                    "positionId": "positionId" + nextIdNum,
+                    "unitAmount": "unitAmount" + nextIdNum,
+                    "orderCount": "orderCount" + nextIdNum,
+                    "attritionRate": "attritionRate" + nextIdNum,
+                    "unitPrice": "unitPrice" + nextIdNum,
+                    "totalAmount": "totalAmount" + nextIdNum,
+                    "totalPrice": "totalPrice" + nextIdNum
                 }
             ]
         };
@@ -84,11 +113,23 @@
         var myTemplate = Handlebars.compile($("#fabric-template").html());
         $("#fabricsItemInfo").append(myTemplate(data));
 
-        //加载下拉列表数据
-        reloadFabricDetailSelectData(nextIdNum);
+        //加载下拉列表数据,付初始值
+        reloadFabricDetailSelectData(nextIdNum,function(){
+            if(fabricInfo != undefined){
+
+                initFabricFields(nextIdNum,fabricInfo);
+
+                $("div[id^=fabricAllInfoId]").hide(); //页面加载时，面料全部隐藏
+
+                $("span[id^=fabricEyeId]").removeClass("glyphicon glyphicon-eye-open").addClass("glyphicon glyphicon-eye-close");
+            }
+
+        });
 
         //表单字段监听
         startBootstrapValidatorListner(nextIdNum);
+
+
     }
 
 
@@ -171,7 +212,7 @@
 
 
     var saveFabricById = function (id, formDataStr) {
-        var jsonObj = strToJson(formDataStr);
+        var jsonObj = $.strToJson(formDataStr);
         bom.fabricItems[id - 1] = jsonObj;
         if (!$("#fabricAllInfoId" + id).is(':hidden')) {
             bom.fabricItems[id - 1].showFlag = true;//是否显示
@@ -213,15 +254,15 @@
     }
 
 
-    var reloadBomSelect = function(id){
+    var reloadBomSelect = function(id,callback){
         $.sendRestFulAjax(path + "/system/baseinfo/bom_select", null, 'GET', 'json', function (data) {
-            _doFabricSuccess_info(data, id);
+            _doFabricSuccess_info(data, id,callback);
         });
     }
 
     //第一次初始化下拉列表
-    var reloadFabricDetailSelectData = function (id) {
-        reloadBomSelect(id);
+    var reloadFabricDetailSelectData = function (id,callback) {
+        reloadBomSelect(id,callback);
 
         //if ($.cookie('systemBaseMaps') == undefined) {
         //    //第一次初始化下拉列表，存放到cookies中
@@ -237,13 +278,13 @@
 
 
     //cookie重新赋值，给下拉列表赋值
-    var _doFabricSuccess_info = function (_data, id) {
+    var _doFabricSuccess_info = function (_data, id,callback) {
         //$.cookie('systemBaseMaps', JSON.stringify(_data));//JSON 数据转化成字符串
-        initFabricSelect(_data,id)
+        initFabricSelect(_data,id,callback);
     }
 
    //给下拉列表赋值
-    var initFabricSelect = function (_data,id) {
+    var initFabricSelect = function (_data,id,callback) {
         var idNum = id;
         var data = _data;//JSON.parse($.cookie('systemBaseMaps'));//字符串转化成JSON 数据
 
@@ -350,24 +391,24 @@
 
         //膜或涂层的材质列表
         var mcIdItems = data["momcItems"];
-        $("#mcId" + idNum).empty();
-        $("<option></option>").val('').text("请选择...").appendTo($("#mcId"+ idNum));
+        $("#momcId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#momcId"+ idNum));
         $.each(mcIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
                 .text(item["name"])
-                .appendTo($("#mcId" + idNum));
+                .appendTo($("#momcId" + idNum));
         });
 
         //膜或涂层的颜色列表
         var comcIdItems = data["comocItems"];
-        $("#comcId" + idNum).empty();
-        $("<option></option>").val('').text("请选择...").appendTo($("#comcId"+ idNum));
+        $("#comocId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#comocId"+ idNum));
         $.each(comcIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
                 .text(item["name"])
-                .appendTo($("#comcId" + idNum));
+                .appendTo($("#comocId" + idNum));
         });
 
         //透湿程度列表
@@ -393,14 +434,14 @@
         });
 
         // 贴膜或涂层工艺列表
-        var woblcidItems = data["wblcItems"];
-        $("#woblcid" + idNum).empty();
-        $("<option></option>").val('').text("请选择...").appendTo($("#woblcid"+ idNum));
-        $.each(woblcidItems, function (i, item) {
+        var woblcIdItems = data["wblcItems"];
+        $("#woblcId" + idNum).empty();
+        $("<option></option>").val('').text("请选择...").appendTo($("#woblcId"+ idNum));
+        $.each(woblcIdItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
                 .text(item["name"])
-                .appendTo($("#woblcid" + idNum));
+                .appendTo($("#woblcId" + idNum));
         });
 
         // 物料位置列表
@@ -425,6 +466,11 @@
                 .appendTo($("#unitId" + idNum));
         });
 
+
+        if($.isFunction(callback)){
+            callback();
+        }
+
     }
 
     /**
@@ -434,6 +480,7 @@
     var fabric = {
         bomId: "",
         fabricId: "",
+        nameNum:"",
         fabricsName: "",
         materialTypeId: "",
         classicId: "",
@@ -534,41 +581,41 @@
                 }
             }
         },
-        mcId: {
-            validators: {
-                notEmpty: {
-                    message: '膜或涂层材质为必填项'
-                }
-            }
-        },
-        comcId: {
-            validators: {
-                notEmpty: {
-                    message: '膜或涂层颜色为必填项'
-                }
-            }
-        },
-        wvpId: {
-            validators: {
-                notEmpty: {
-                    message: '透湿程度为必填项'
-                }
-            }
-        },
-        mtId: {
-            validators: {
-                notEmpty: {
-                    message: '膜的厚度为必填项'
-                }
-            }
-        },
-        woblcid: {
-            validators: {
-                notEmpty: {
-                    message: '贴膜或涂层工艺为必填项'
-                }
-            }
-        },
+        //momcId: {
+        //    validators: {
+        //        notEmpty: {
+        //            message: '膜或涂层材质为必填项'
+        //        }
+        //    }
+        //},
+        //comocId: {
+        //    validators: {
+        //        notEmpty: {
+        //            message: '膜或涂层颜色为必填项'
+        //        }
+        //    }
+        //},
+        //wvpId: {
+        //    validators: {
+        //        notEmpty: {
+        //            message: '透湿程度为必填项'
+        //        }
+        //    }
+        //},
+        //mtId: {
+        //    validators: {
+        //        notEmpty: {
+        //            message: '膜的厚度为必填项'
+        //        }
+        //    }
+        //},
+        //woblcId: {
+        //    validators: {
+        //        notEmpty: {
+        //            message: '贴膜或涂层工艺为必填项'
+        //        }
+        //    }
+        //},
         unitId: {
             validators: {
                 notEmpty: {

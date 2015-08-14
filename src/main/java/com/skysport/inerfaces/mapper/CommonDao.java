@@ -2,6 +2,7 @@ package com.skysport.inerfaces.mapper;
 
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.bean.system.SelectItem2;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public interface CommonDao<T> {
 
     public String queryCurrentSeqNo();
 
-    public List<SelectItem2> querySelectList(String name);
+    public List<SelectItem2> querySelectList(@Param(value = "name") String name);
 
     public void addBatch(List<T> infos);
 }

@@ -67,18 +67,16 @@
         update
             t_fabrics
         set
---             fabricsName = #{name},
             material_type_id = #{materialTypeId},
             classic_id = #{classicId},
-            sp_id = #{spIid},
+            sp_id = #{spId},
             year_code = #{yearCode},
             product_type_id = #{productTypeId},
             serial_number = #{serialNumber},
             pantone_id = #{pantoneId},
             position_id = #{positionId},
             project_id = #{projectId},
-            bom_id = #{bomId},
-            remark = #{remark}
+            bom_id = #{bomId}
         WHERE
             fabrics_id =#{natrualkey}
     </update>
@@ -98,7 +96,7 @@
 			mt_id = #{mtId},
 			woblc_id = #{woblcId}
         WHERE
-			fabrics_id =#{natrualkey}
+			fabrics_id =#{fabricId}
     </update>
 
     <update id="updateDosage">
@@ -106,14 +104,14 @@
 			t_material_unit_dosage
         set
 			unit_id = #{unitId},
-			unit_amount = #{unitAmout}
+			unit_amount = #{unitAmount}
         WHERE
-			material_id =#{natrualkey}
+			material_id =#{materialId}
     </update>
 
 
     <update id="updateSp">
- 	update
+ 	    update
 			t_material_spinfo
         set
 			order_count = #{orderCount},
@@ -122,7 +120,7 @@
 			total_amount = #{totalAmount},
 			total_price = #{totalPrice}
         WHERE
-			material_id =#{natrualkey}
+			material_id =#{materialId}
     </update>
 
     <insert id="add">
@@ -138,7 +136,7 @@
 
     <insert id="addDosage">
      insert into t_material_unit_dosage(material_id,unit_id,unit_amount)
-      values (#{materialId},#{unitId},#{unitAmout});
+      values (#{materialId},#{unitId},#{unitAmount});
     </insert>
 
 
@@ -161,7 +159,7 @@
     </select>
 
     <delete id="deleteFabircsByIds" parameterType="String">
-        DELETE t_fabrics
+        DELETE from t_fabrics
         where fabrics_id IN
         <foreach item="idItem" collection="list" open="(" separator="," close=")">
             #{idItem}
@@ -208,7 +206,7 @@
 
     <select id="queryFabricList" resultType="FabricInfo">
       SELECT
-        a.fabrics_id AS fabricsId,
+        a.fabrics_id AS fabricId,
         a.fabrics_name AS fabricsName,
         a.material_type_id AS materialTypeId,
         a.classic_id AS classicId,

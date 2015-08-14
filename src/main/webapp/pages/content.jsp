@@ -982,9 +982,9 @@
 												</div>
 
 												<div class="name">
-													<a href="#">John</a>
+													<a href="#">Mike</a>
 												</div>
-												<div class="text">框架很好用嘛</div>
+												<div class="text">系统很好用嘛</div>
 
 												<div class="tools">
 													<a href="#" class="btn btn-minier btn-info"> <i
@@ -1005,7 +1005,7 @@
 												</div>
 
 												<div class="name">
-													<a href="#">Bob</a> <span
+													<a href="#">Tom</a> <span
 														class="label label-info arrowed arrowed-in-right">admin</span>
 												</div>
 												<div class="text">欢迎大家使用SkySport供应链管理系统.</div>
@@ -1029,7 +1029,7 @@
 												</div>
 
 												<div class="name">
-													<a href="#">Jim</a>
+													<a href="#">Minna</a>
 												</div>
 												<div class="text">大家多提提BUG</div>
 
@@ -1052,9 +1052,9 @@
 												</div>
 
 												<div class="name">
-													<a href="#">Alexa</a>
+													<a href="#">Jenny</a>
 												</div>
-												<div class="text">继续支持ACE后台系统</div>
+												<div class="text">继续支持本系统</div>
 
 												<div class="tools">
 													<a href="#" class="btn btn-minier btn-info"> <i

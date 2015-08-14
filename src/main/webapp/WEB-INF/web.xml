@@ -137,7 +137,7 @@
 	<error-page>
 		<!-- 路径不正确 -->
 		<error-code>404</error-code>
-		<location>/WEB-INF/errorpage/404.jsp</location>
+		<location>/pages/errorpage/404.jsp</location>
 	</error-page>
 	<error-page>
 		<!-- 没有访问权限，访问被禁止 -->

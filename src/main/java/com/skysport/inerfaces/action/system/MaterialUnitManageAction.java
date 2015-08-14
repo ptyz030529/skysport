@@ -116,7 +116,7 @@ public class MaterialUnitManageAction extends BaseAction<String, Object, Materia
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
-        ApplicationContext appContext = (ApplicationContext) RequestContextUtils.getWebApplicationContext(request).getServletContext();
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
         // 用量单位列表
         MaterialUnitServiceHelper.SINGLETONE.refreshSelect(appContext);
         return resultMap;

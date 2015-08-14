@@ -6,7 +6,7 @@ var pantoneId="";
  * @param _pantoneId
  */
 var info = function(_pantoneId){
-    sendRestFulAjax("info/"+_pantoneId,null,'GET','json',_doSuccess_info);
+    $.sendRestFulAjax("info/"+_pantoneId,null,'GET','json',_doSuccess_info);
     pantoneId = _pantoneId;
 }
 /**
@@ -42,7 +42,7 @@ var del = function(_pantoneId){
  * @param result
  */
 var doDel = function(result){
-    if(result)  sendRestFulAjax("del/"+pantoneId,null,'DELETE','json',_doSuccess_del);
+    if(result)  $.sendRestFulAjax("del/"+pantoneId,null,'DELETE','json',_doSuccess_del);
 }
 /**
  * 删除信息后的处理
@@ -66,7 +66,7 @@ var save= function(){
  */
 function edit(_url,_data,_type,_dataType) {
     var data = _data+"&pantoneId="+pantoneId;
-    sendRestFulAjax(_url,data,_type,_dataType,_doSuccess_edit);
+    $.sendRestFulAjax(_url,data,_type,_dataType,_doSuccess_edit);
 }
 
 function _doSuccess_edit(data){

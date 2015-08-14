@@ -10,6 +10,7 @@
         <property name="jdbcPassword" value="123456"/>
         <!-- 自动构建数据库表，设置value="true"，第一次启动建表；设置value="drop-create"，每次启动时建新表-->
         <property name="databaseSchemaUpdate" value="true" />
+        <property name="jobExecutorActivate" value="false"/>
     </bean>
    
 </beans>

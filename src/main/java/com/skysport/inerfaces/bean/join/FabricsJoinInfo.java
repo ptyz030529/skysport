@@ -11,7 +11,7 @@ import com.skysport.inerfaces.bean.MaterialUnitDosage;
  * Created by zhangjh on 2015/7/24.
  */
 public class FabricsJoinInfo extends SelectItem2 {
-    
+
     private FabricsInfo fabricsInfo;
     private FabricsDetailInfo fabricsDetailInfo;
     private MaterialSpInfo materialSpInfo;
