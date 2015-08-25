@@ -1,9 +1,11 @@
 package com.skysport.inerfaces.model.common.impl;
 
-import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.inerfaces.mapper.CommonDao;
 import com.skysport.inerfaces.model.common.ICommonService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
  * Created by zhangjh on 2015/6/8.
  */
 public class CommonServiceImpl<T> implements ICommonService<T> {
+    protected transient Log logger = LogFactory.getLog(getClass());
     public CommonDao<T> commonDao;
 
     @Override

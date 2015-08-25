@@ -10,7 +10,6 @@ import com.skysport.inerfaces.bean.system.permission.UserInfo;
 import com.skysport.inerfaces.model.permission.userinfo.helper.UserInfoHelper;
 import com.skysport.inerfaces.model.permission.userinfo.service.IUserInfoService;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +31,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/system/userinfo")
 public class UserInfoAction extends BaseAction<String, Object, UserInfo> {
-    Logger log = Logger.getLogger(UserInfoAction.class);
     @Resource(name = "userInfoService")
     private IUserInfoService userInfoService;
 
@@ -110,7 +108,7 @@ public class UserInfoAction extends BaseAction<String, Object, UserInfo> {
                     // 转存文件
                     file.transferTo(emptyFile);
                 } catch (Exception e) {
-                    log.error("保存上传文件异常", e);
+                    logger.error("保存上传文件异常", e);
                 }
             }
         }

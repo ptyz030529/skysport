@@ -12,7 +12,6 @@ import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.develop.project.helper.ProjectManageHelper;
 import com.skysport.inerfaces.model.develop.project.service.IProjectManageService;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +34,6 @@ import java.util.Map;
 @RequestMapping("/development/project")
 public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
 
-    Logger log = Logger.getLogger(ProjectAction.class);
     @Resource(name = "projectManageService")
     private IProjectManageService projectManageService;
 
@@ -95,7 +93,7 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
                     // 转存文件
                     file.transferTo(emptyFile);
                 } catch (Exception e) {
-                    log.error("保存上传文件异常", e);
+                    logger.error("保存上传文件异常", e);
                 }
             }
         }

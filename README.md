@@ -4,5 +4,6 @@
 -----------------------------------
 ### JAVA后台技术：SpringMVC、Mybatis、Activiti(工作流)
 ### 前端实现：bootstrap、datatables,bootstrapValidator等
+### 技术支持：firebata@gmail.com
 
 
