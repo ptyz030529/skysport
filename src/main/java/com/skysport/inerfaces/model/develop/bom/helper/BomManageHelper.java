@@ -73,7 +73,6 @@ public class BomManageHelper {
             }
         }
         bomManageService.addBatch(bomInfos);
-        throw  new RuntimeException("测试用的运行时异常");
     }
 
     public static String buildKindName(ProjectBomInfo info) {
