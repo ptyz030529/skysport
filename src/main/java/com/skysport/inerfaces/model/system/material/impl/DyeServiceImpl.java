@@ -17,7 +17,7 @@ public class DyeServiceImpl  extends CommonServiceImpl<DyeInfo> implements Initi
     private DyeManageMapper dyeDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = dyeDao;
     }
 }

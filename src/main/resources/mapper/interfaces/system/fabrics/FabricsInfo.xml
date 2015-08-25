@@ -24,17 +24,17 @@
     <select id="queryInfo" resultType="FabricsInfo">
         select
         <include refid="searchInfoSql"/>
-        FROM t_fabrics
+        FROM t_kf_fabrics
         WHERE fabrics_id =#{natrualkey}
         limit 1
     </select>
 
     <select id="listInfosCounts" resultType="Integer">
-        SELECT COUNT(*) FROM   t_fabrics where del_flag=0
+        SELECT COUNT(*) FROM   t_kf_fabrics where del_flag=0
     </select>
 
     <select id="listFilteredInfosCounts" resultType="Integer">
-        SELECT COUNT(*) FROM t_fabrics where del_flag=0
+        SELECT COUNT(*) FROM t_kf_fabrics where del_flag=0
         <if test="searchValue !=null and searchValue != ''">
             and (
             fabrics_name like concat('%',#{searchValue},'%') or
@@ -47,7 +47,7 @@
     <select id="searchInfos" resultType="FabricsInfo">
         SELECT
         <include refid="searchInfoSql"/>
-        FROM t_fabrics
+        FROM t_kf_fabrics
         WHERE del_flag=0
         <if test="searchValue!=null and searchValue != ''">
             and (
@@ -65,7 +65,7 @@
 
     <update id="updateInfo">
         update
-            t_fabrics
+            t_kf_fabrics
         set
             material_type_id = #{materialTypeId},
             classic_id = #{classicId},
@@ -84,7 +84,7 @@
 
     <update id="updateDetail">
        	update
-			t_fabrics_detail
+			t_kf_fabrics_detail
         set
 			specfication_id = #{specificationId},
 			dye_id = #{dyeId},
@@ -101,7 +101,7 @@
 
     <update id="updateDosage">
 	  	update
-			t_material_unit_dosage
+			t_kf_material_unit_dosage
         set
 			unit_id = #{unitId},
 			unit_amount = #{unitAmount}
@@ -112,7 +112,7 @@
 
     <update id="updateSp">
  	    update
-			t_material_spinfo
+			t_kf_material_spinfo
         set
 			order_count = #{orderCount},
 			attrition_rate = #{attritionRate},
@@ -124,42 +124,42 @@
     </update>
 
     <insert id="add">
-        insert into  t_fabrics (fabrics_id,fabrics_name,material_type_id,classic_id,sp_id,year_code,product_type_id,serial_number,pantone_id,position_id,project_id,bom_id,remark,name_num)
+        insert into  t_kf_fabrics (fabrics_id,fabrics_name,material_type_id,classic_id,sp_id,year_code,product_type_id,serial_number,pantone_id,position_id,project_id,bom_id,remark,name_num)
         values (#{natrualkey},#{name},#{materialTypeId},#{classicId},#{spId},#{yearCode},#{productTypeId},#{serialNumber},#{pantoneId},#{positionId},#{projectId},#{bomId},#{remark},#{nameNum})
     </insert>
 
     <insert id="addDetail">
-      insert into t_fabrics_detail(fabrics_id,specfication_id,dye_id,finish_id,blc_id,momc_id,comoc_id,wvp_id,mt_id,woblc_id)
+      insert into t_kf_fabrics_detail(fabrics_id,specfication_id,dye_id,finish_id,blc_id,momc_id,comoc_id,wvp_id,mt_id,woblc_id)
       values (#{fabricId},#{specificationId},#{dyeId},#{finishId},#{blcId},#{momcId},#{comocId},#{wvpId},#{mtId},#{woblcId});
     </insert>
 
 
     <insert id="addDosage">
-     insert into t_material_unit_dosage(material_id,unit_id,unit_amount)
+     insert into t_kf_material_unit_dosage(material_id,unit_id,unit_amount)
       values (#{materialId},#{unitId},#{unitAmount});
     </insert>
 
 
     <insert id="addSp">
-     insert into t_material_spinfo(material_id,sp_id,order_count,attrition_rate,unit_price,total_amount,total_price)
+     insert into t_kf_material_spinfo(material_id,sp_id,order_count,attrition_rate,unit_price,total_amount,total_price)
       values (#{materialId},#{spId},#{orderCount},#{attritionRate},#{unitPrice},#{totalAmount},#{totalPrice});
     </insert>
 
 
     <update id="del">
-        update t_fabrics
+        update t_kf_fabrics
         set  del_flag=1
         where fabrics_id =#{natrualkey}
     </update>
 
     <select id="selectAllFabricId" resultType="String">
       SELECT fabrics_id
-      FROM t_fabrics a
+      FROM t_kf_fabrics a
       WHERE a.bom_id = #{natrualkey}
     </select>
 
     <delete id="deleteFabircsByIds" parameterType="String">
-        DELETE from t_fabrics
+        DELETE from t_kf_fabrics
         where fabrics_id IN
         <foreach item="idItem" collection="list" open="(" separator="," close=")">
             #{idItem}
@@ -167,28 +167,28 @@
     </delete>
 
     <update id="delDetail">
-        update t_fabrics_detail
+        update t_kf_fabrics_detail
         set  del_flag=1
         where fabrics_id =#{natrualkey}
     </update>
 
 
     <update id="delDosage">
-        update t_material_unit_dosage
+        update t_kf_material_unit_dosage
         set  del_flag=1
         where material_id =#{natrualkey}
     </update>
 
 
     <update id="delSp">
-        update t_material_spinfo
+        update t_kf_material_spinfo
         set  del_flag=1
         where fabrics_id =#{natrualkey}
     </update>
 
 
     <select id="queryCurrentSeqNo" resultType="String">
-        select case when  max(fabrics_id) is NULL then 0 else max(fabrics_id) end from t_fabrics
+        select case when  max(fabrics_id) is NULL then 0 else max(fabrics_id) end from t_kf_fabrics
     </select>
 
     <!--信息下拉列表-->
@@ -196,7 +196,7 @@
         select
         fabrics_id AS natrualkey,
         fabrics_name AS name
-        from t_fabrics
+        from t_kf_fabrics
         where del_flag=0
         <if test="name!=null and name!=''">
             and upper(fabricsName) like concat('%',#{factoryName},'%')
@@ -238,10 +238,10 @@
         d.mt_id AS mtId,
         d.woblc_id AS woblcId
     FROM
-        t_fabrics a
-    LEFT JOIN t_material_unit_dosage b ON a.fabrics_id = b.material_id
-    LEFT JOIN t_material_spinfo c ON a.fabrics_id = c.material_id
-    LEFT JOIN t_fabrics_detail d ON a.fabrics_id = d.fabrics_id
+        t_kf_fabrics a
+    LEFT JOIN t_kf_material_unit_dosage b ON a.fabrics_id = b.material_id
+    LEFT JOIN t_kf_material_spinfo c ON a.fabrics_id = c.material_id
+    LEFT JOIN t_kf_fabrics_detail d ON a.fabrics_id = d.fabrics_id
     WHERE a.bom_id = #{natrualkey} and a.del_flag=0
     order by a.name_num ASC
     </select>

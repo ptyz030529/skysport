@@ -1141,36 +1141,7 @@
 			{ label: "direct traffic",  data: 18.6, color: "#DA5430"},
 			{ label: "other",  data: 10, color: "#FEE074"}
 		]
-		function drawPieChart(placeholder, data, position) {
-			$.plot(placeholder, data, {
-				series: {
-					pie: {
-						show: true,
-						tilt:0.8,
-						highlight: {
-							opacity: 0.25
-						},
-						stroke: {
-							color: '#fff',
-							width: 2
-						},
-						startAngle: 2
-					}
-				},
-				legend: {
-					show: true,
-					position: position || "ne",
-					labelBoxBorderColor: null,
-					margin:[-30,15]
-				}
-				,
-				grid: {
-					hoverable: true,
-					clickable: true
-				}
-			})
-		}
-		drawPieChart(placeholder, data);
+
 
 		/**
 		 we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically

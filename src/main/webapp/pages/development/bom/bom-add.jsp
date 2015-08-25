@@ -42,119 +42,138 @@
         <div class="col-xs-12">
             <form class="form-horizontal" role="form">
                 <div id="bomDesc">
-                        <div id="bomDescTitle">
-                            <h5 class="header smaller lighter blue">
-                                描述
-                                <small></small>
-                                <input type="hidden" name="natrualkey" id="natrualkey" value="${natrualkey}"/>
-                            </h5>
+                    <div id="bomDescTitle">
+                        <h5 class="header smaller lighter blue">
+                            描述
+                            <small></small>
+                            <input type="hidden" name="natrualkey" id="natrualkey" value="${natrualkey}"/>
+                        </h5>
+                    </div>
+                    <div id="bomDescDetail">
+                        <div class="form-group">
+
+                            <label class="col-xs-2  control-label" for="customerId" id="customerLableId"> 客户 </label>
+
+                            <div class="col-xs-3">
+                                <select class="col-xs-12" data-style="btn-info" id="customerId" name="customerId"
+                                        placeholder="客户" disabled="disabled">
+                                    <option value="1" selected>客户</option>
+                                </select>
+                            </div>
+                            <label class="col-xs-2  control-label" for="areaId"> 区域 </label>
+
+                            <div class="col-xs-3">
+                                <select class="col-xs-12" data-style="btn-info" id="areaId" name="areaId"
+                                        placeholder="区域" disabled="disabled">
+                                    <option value="1" selected>区域</option>
+                                </select>
+                            </div>
+
+
                         </div>
-                        <div id="bomDescDetail">
-                            <div class="form-group">
 
-                                <label class="col-xs-2  control-label" for="customerId" id="customerLableId"> 客户 </label>
+                        <%-- <!-- #section:custom/extra.hr -->
+                     <div class="hr hr32 hr-dotted"></div>--%>
+                        <div class="form-group">
+                            <label class="col-xs-2  control-label" for="seriesId"> 系列 </label>
 
-                                <div class="col-xs-3">
-                                    <select class="col-xs-12" data-style="btn-info" id="customerId" name="customerId"
-                                            placeholder="客户" disabled="disabled">
-                                        <option value="1" selected>客户</option>
-                                    </select>
-                                </div>
-                                <label class="col-xs-2  control-label" for="areaId"> 区域 </label>
-
-                                <div class="col-xs-3">
-                                    <select class="col-xs-12" data-style="btn-info" id="areaId" name="areaId"
-                                            placeholder="区域" disabled="disabled">
-                                        <option value="1" selected>区域</option>
-                                    </select>
-                                </div>
-
-
+                            <div class="col-xs-3">
+                                <select class="col-xs-12" data-style="btn-info" id="seriesId" name="seriesId"
+                                        placeholder="系列" disabled="disabled">
+                                    <option value="1" selected>系列</option>
+                                </select>
                             </div>
 
-                            <%-- <!-- #section:custom/extra.hr -->
-                         <div class="hr hr32 hr-dotted"></div>--%>
-                            <div class="form-group">
-                                <label class="col-xs-2  control-label" for="seriesId"> 系列 </label>
+                            <label class="col-xs-2  control-label"
+                                   for="collectionNum"> 款式 </label>
 
-                                <div class="col-xs-3">
-                                    <select class="col-xs-12" data-style="btn-info" id="seriesId" name="seriesId"
-                                            placeholder="系列" disabled="disabled">
-                                        <option value="1" selected>系列</option>
-                                    </select>
-                                </div>
-
-                                <label class="col-xs-2  control-label"
-                                       for="collectionNum"> 款式 </label>
-
-                                <div class="col-xs-3">
-                                    <input type="text" id="collectionNum" name="collectionNum"
-                                           placeholder="款式" class="col-xs-10 col-sm-12" disabled="disabled"/>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <label class="col-xs-2  control-label"
-                                       for="mainColor"> 主颜色 </label>
-
-                                <div class="col-xs-3">
-                                    <input type="text" id="mainColor" name="mainColor"
-                                           placeholder="主颜色" class="col-xs-10 col-sm-12" disabled="disabled"/>
-                                </div>
-
-
-                                <label class="col-xs-2  control-label"
-                                       for="offerAmount"> 订单数量 </label>
-
-                                <div class="col-xs-3">
-                                    <input type="text" id="offerAmount" name="offerAmount"
-                                           placeholder="订单数量" class="col-xs-10 col-sm-12"/>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-xs-2  control-label"
-                                       for="fabricsEndDate"> 面料交货时间 </label>
-
-                                <div class="col-xs-3">
-                                    <input type="text" id="fabricsEndDate" name="fabricsEndDate"
-                                           placeholder="面料交货时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
-                                </div>
-
-                                <label class="col-xs-2  control-label"
-                                       for="accessoriesEndDate"> 辅料交货时间 </label>
-
-                                <div class="col-xs-3">
-                                    <input type="text" id="accessoriesEndDate" name="accessoriesEndDate"
-                                           placeholder="辅料交货时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
-                                </div>
-
-
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-xs-2  control-label"
-                                       for="preOfferDate"> 成衣报价时间 </label>
-
-                                <div class="col-xs-3">
-                                    <input type="text" id="preOfferDate" name="preOfferDate"
-                                           placeholder="成衣报价时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
-                                </div>
-
-                                <label class="col-xs-2  control-label"
-                                       for="clothReceivedDate"> 成衣收到时间 </label>
-
-                                <div class="col-xs-3">
-                                    <input type="text" id="clothReceivedDate" name="clothReceivedDate"
-                                           placeholder="成衣收到时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
-                                </div>
-
+                            <div class="col-xs-3">
+                                <input type="text" id="collectionNum" name="collectionNum"
+                                       placeholder="款式" class="col-xs-10 col-sm-12" disabled="disabled"/>
                             </div>
 
                         </div>
+
+                        <div class="form-group">
+
+                            <label class="col-xs-2  control-label"
+                                   for="mainColor"> 主颜色 </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="mainColor" name="mainColor"
+                                       placeholder="主颜色" class="col-xs-10 col-sm-12" disabled="disabled"/>
+                            </div>
+
+
+                            <label class="col-xs-2  control-label"
+                                   for="offerAmount"> 订单数量 </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="offerAmount" name="offerAmount"
+                                       placeholder="订单数量" class="col-xs-10 col-sm-12"/>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-2  control-label"
+                                   for="fabricsEndDate"> 面料交货时间 </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="fabricsEndDate" name="fabricsEndDate"
+                                       placeholder="面料交货时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
+                            </div>
+
+                            <label class="col-xs-2  control-label"
+                                   for="accessoriesEndDate"> 辅料交货时间 </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="accessoriesEndDate" name="accessoriesEndDate"
+                                       placeholder="辅料交货时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-2  control-label"
+                                   for="preOfferDate"> 成衣报价时间 </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="preOfferDate" name="preOfferDate"
+                                       placeholder="成衣报价时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
+                            </div>
+
+                            <label class="col-xs-2  control-label"
+                                   for="clothReceivedDate"> 成衣收到时间 </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="clothReceivedDate" name="clothReceivedDate"
+                                       placeholder="成衣收到时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-xs-2  control-label"
+                                   for="factoryOffer"> 工厂报价 </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="factoryOffer" name="factoryOffer"
+                                       placeholder="工厂报价" class="col-xs-10 col-sm-12" />
+                            </div>
+
+                            <label class="col-xs-2  control-label"
+                                   for="factoryMargins"> 工厂报价利润率</label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="factoryMargins" name="factoryMargins"
+                                       placeholder=" 工厂报价利润率" class="col-xs-10 col-sm-12" />
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
                 <div id="fabricsInfo">
                     <h5 class="header smaller lighter blue">
@@ -190,10 +209,14 @@
                 <div id="bomBtnInfo">
 
                     <div class="col-xs-offset-4 col-xs-2">
-                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.bomSave()" id="saveBtnId">保存</button>
+                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.bomSave()"
+                                id="saveBtnId">保存
+                        </button>
                     </div>
                     <div class="col-xs-2">
-                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.bomSubmit()" id="commitBtnId">提交</button>
+                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.bomSubmit()"
+                                id="commitBtnId">提交
+                        </button>
                     </div>
                 </div>
             </form>
@@ -210,6 +233,6 @@
 
 
 </html>
-<script type="text/javascript" src="<%=path%>/resources/development/bom/bom-add.js"></script>
-<script type="text/javascript" src="<%=path%>/resources/development/bom/bom-desc.js"></script>
-<script type="text/javascript" src="<%=path%>/resources/development/bom/bom-fabric.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/development/bom/bom-add.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/development/bom/bom-desc.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/development/bom/bom-fabric.js"></script>

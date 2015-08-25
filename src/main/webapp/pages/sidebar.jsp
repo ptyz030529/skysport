@@ -729,23 +729,7 @@
                 <span class="menu-text"> 品管 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-            <ul class="submenu">
-                <li>
-                    <a href="#">
-                        设计
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        打样要求
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        产品要求清单
-                    </a>
-                </li>
-            </ul>
+           
         </li>
         <li>
             <a href="#" class="dropdown-toggle">
@@ -753,23 +737,7 @@
                 <span class="menu-text"> 财务 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-            <ul class="submenu">
-                <li>
-                    <a href="#">
-                        设计
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        打样要求
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        产品要求清单
-                    </a>
-                </li>
-            </ul>
+           
         </li>
 
         <li>
@@ -832,23 +800,7 @@
                 <span class="menu-text"> 采购部</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-            <ul class="submenu">
-                <li>
-                    <a href="#">
-                        设计
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        打样要求
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        产品要求清单
-                    </a>
-                </li>
-            </ul>
+           
         </li>
         <li>
             <a href="#" class="dropdown-toggle">
@@ -856,23 +808,7 @@
                 <span class="menu-text"> 客户接口 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-            <ul class="submenu">
-                <li>
-                    <a href="#">
-                        设计
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        打样要求
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        产品要求清单
-                    </a>
-                </li>
-            </ul>
+           
         </li>
         <li>
             <a href="#" class="dropdown-toggle">
@@ -880,23 +816,7 @@
                 <span class="menu-text"> 供应商接口 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-            <ul class="submenu">
-                <li>
-                    <a href="#">
-                        设计
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        打样要求
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        产品要求清单
-                    </a>
-                </li>
-            </ul>
+           
         </li>
         <li>
             <a href="#" class="dropdown-toggle">
@@ -904,45 +824,28 @@
                 <span class="menu-text"> 运营 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-            <ul class="submenu">
-                <li>
-                    <a href="#">
-                        设计
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        打样要求
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        产品要求清单
-                    </a>
-                </li>
-            </ul>
+           
         </li>
 
         <li>
             <a href="#" class="dropdown-toggle">
-
-                <span class="menu-text"> 其他管理 </span>
+                <span class="menu-text"> 系统管理 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
             <ul class="submenu">
                 <li>
-                    <a href="#">
-                        用户信息
+                    <a href="javascript:onclick('<%=path%>/system/permission/user-tab/3')">
+                        用户& 权限
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:onclick('<%=path%>/system/permission/user-tab')">
+                       个人信息
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        权限分配
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        收件箱
+                        信箱
                     </a>
                 </li>
                 <li>
@@ -950,12 +853,6 @@
                         改密码
                     </a>
                 </li>
-                <li>
-                    <a href="#">
-                        登陆 & 注册
-                    </a>
-                </li>
-
             </ul>
 
         </li>

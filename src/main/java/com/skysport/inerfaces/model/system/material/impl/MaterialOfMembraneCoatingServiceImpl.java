@@ -17,7 +17,7 @@ public class MaterialOfMembraneCoatingServiceImpl  extends CommonServiceImpl<Mat
     private MaterialOfMembraneCoatingDao materialOfMembraneCoatingDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = materialOfMembraneCoatingDao;
     }
 }

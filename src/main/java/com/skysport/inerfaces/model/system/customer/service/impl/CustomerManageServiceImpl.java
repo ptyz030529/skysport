@@ -17,7 +17,7 @@ public class CustomerManageServiceImpl extends CommonServiceImpl<CustomerInfo> i
     private CustomerManageDao customerManageDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = customerManageDao;
     }
 }

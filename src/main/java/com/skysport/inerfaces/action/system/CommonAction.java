@@ -3,7 +3,7 @@ package com.skysport.inerfaces.action.system;
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.bean.system.SelectItem;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.SexInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -49,7 +49,7 @@ public class CommonAction extends BaseAction<String, Object, SexInfo> {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search()  {
         ModelAndView mav = new ModelAndView("/system/sex/list");
         return mav;
     }
@@ -64,9 +64,9 @@ public class CommonAction extends BaseAction<String, Object, SexInfo> {
     @RequestMapping(value = "/search")
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request)
-            throws Exception {
+             {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.SEX_TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.SEX_TABLE_COLUMN, request);
         // 总记录数
         int recordsTotal = sexManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -89,7 +89,7 @@ public class CommonAction extends BaseAction<String, Object, SexInfo> {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(SexInfo sexInfo, HttpServletRequest request,
-                                    HttpServletResponse respones) throws Exception {
+                                    HttpServletResponse respones)  {
         sexManageService.edit(sexInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -106,7 +106,7 @@ public class CommonAction extends BaseAction<String, Object, SexInfo> {
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(SexInfo sexInfo) throws Exception {
+    public Map<String, Object> add(SexInfo sexInfo)  {
         String currentNo = sexManageService.queryCurrentSeqNo();
         //设置ID
         sexInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.SEX_INFO, currentNo, incrementNumber));

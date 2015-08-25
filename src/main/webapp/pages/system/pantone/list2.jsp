@@ -51,7 +51,7 @@
     <button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
     {{/each}}
 </script>
-<script type="text/javascript" src="<%=path%>/resources/system/pantone/pantone-list.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/system/pantone/pantone-list.js"></script>
 
 </body>
 

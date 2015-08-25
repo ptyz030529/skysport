@@ -19,7 +19,7 @@
 	<select id="querySpInfo" resultType="SpInfo">
 			select
 				<include refid="searchSPSql"/>
-			FROM t_supplier
+			FROM t_jc_supplier
 			WHERE sp_id =#{spId}
 			limit 1
 	</select>
@@ -27,11 +27,11 @@
 
 	<select id="listSPInfosCounts" resultType="Integer">
 		SELECT COUNT(*) FROM
-		t_supplier where del_flag=0
+		t_jc_supplier where del_flag=0
 	</select>
 
 	<select id="listFilteredSPInfosCounts" resultType="Integer">
-		SELECT COUNT(*) FROM t_supplier where del_flag=0
+		SELECT COUNT(*) FROM t_jc_supplier where del_flag=0
 		<if test="searchValue !=null and searchValue != ''">
 			and (
 				sp_id like concat('%',#{searchValue},'%') or
@@ -48,7 +48,7 @@
 	<select id="searchSP" resultType="SpInfo">
 		SELECT
 		<include refid="searchSPSql" />
-		FROM t_supplier
+		FROM t_jc_supplier
 		WHERE del_flag=0
 		<if test="searchValue!=null and searchValue != ''">
 			and (
@@ -70,11 +70,11 @@
 
 	<!--<insert id="updateSp">
 		<selectKey keyProperty="filterCounts" resultType="int" order="BEFORE">
-			select count(*) from t_supplier WHERE sp_id =#{spId}
+			select count(*) from t_jc_supplier WHERE sp_id =#{spId}
 		</selectKey>
 		<choose>
 			<when test="filterCounts > 0 ">
-				update t_supplier 	set 
+				update t_jc_supplier 	set
 					sp_name=#{name},
 					sp_kind=#{type},
 					sp_address=#{address},
@@ -86,7 +86,7 @@
 			</when>
 			<otherwise>
 				insert into	
-				t_supplier (sp_id,sp_name,sp_kind,sp_address,sp_tel1,sp_contact,cooperation_time,remark)
+				t_jc_supplier (sp_id,sp_name,sp_kind,sp_address,sp_tel1,sp_contact,cooperation_time,remark)
 				values (#{spId},#{name},#{type},#{address},#{tel},#{contact},#{cooperationTime},#{remark})
 			</otherwise>
 		</choose>
@@ -94,7 +94,7 @@
 
 
 	<update id="updateSp">
-		update t_supplier 	set
+		update t_jc_supplier 	set
 		sp_name=#{name},
 		sp_kind=#{type},
 		sp_address=#{address},
@@ -111,12 +111,12 @@
 
 	<insert id="add">
 		insert into
-		t_supplier (sp_id,sp_name,sp_kind,sp_address,sp_tel1,sp_contact,cooperation_time,remark)
+		t_jc_supplier (sp_id,sp_name,sp_kind,sp_address,sp_tel1,sp_contact,cooperation_time,remark)
 		values (#{spId},#{name},#{type},#{address},#{tel},#{contact},#{cooperationTime},#{remark})
 	</insert>
 	
 	<update id="del">
-		update t_supplier
+		update t_jc_supplier
 		set  del_flag=1
 		where sp_id =#{spId}
 	</update>
@@ -127,7 +127,7 @@
 		select
 		sp_id AS natrualkey,
 		sp_name AS name
-		from t_supplier
+		from t_jc_supplier
 		where del_flag=0
 		<if test="name!=null and name != ''">
 			and upper(sp_name) like concat('%',#{name},'%')

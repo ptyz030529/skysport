@@ -17,7 +17,7 @@ public class ProductTypeManageServiceImpl extends CommonServiceImpl<ProductTypeI
     private ProductTypeManageDao<ProductTypeInfo> productTypeManageDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = productTypeManageDao;
     }
 }

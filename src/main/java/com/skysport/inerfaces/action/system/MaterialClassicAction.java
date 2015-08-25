@@ -3,7 +3,7 @@ package com.skysport.inerfaces.action.system;
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.MaterialClassicInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -49,7 +49,7 @@ public class MaterialClassicAction extends BaseAction<String, Object, MaterialCl
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search()  {
         ModelAndView mav = new ModelAndView("/system/material_classic/list");
         return mav;
     }
@@ -64,9 +64,9 @@ public class MaterialClassicAction extends BaseAction<String, Object, MaterialCl
     @RequestMapping(value = "/search")
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request)
-            throws Exception {
+             {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.MATERIAL_CLASSIC_TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.MATERIAL_CLASSIC_TABLE_COLUMN, request);
         // 总记录数
         int recordsTotal = materialClassicManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -89,7 +89,7 @@ public class MaterialClassicAction extends BaseAction<String, Object, MaterialCl
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(MaterialClassicInfo material_classicInfo, HttpServletRequest request,
-                                    HttpServletResponse respones) throws Exception {
+                                    HttpServletResponse respones)  {
         materialClassicManageService.edit(material_classicInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -106,7 +106,7 @@ public class MaterialClassicAction extends BaseAction<String, Object, MaterialCl
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(MaterialClassicInfo material_classicInfo) throws Exception {
+    public Map<String, Object> add(MaterialClassicInfo material_classicInfo)  {
         String currentNo = materialClassicManageService.queryCurrentSeqNo();
         //设置ID
         material_classicInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.MATERIAL_CLASSIC_INFO, currentNo, incrementNumber));

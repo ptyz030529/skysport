@@ -69,4 +69,4 @@
                     </div>
                 </div>
             </div>
-<script type="text/javascript" src="<%=path%>/resources/system/pantone/pantone.js"/>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/system/pantone/pantone.js"/>

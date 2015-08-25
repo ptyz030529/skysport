@@ -17,7 +17,7 @@ public class MaterialTypeManageServiceImpl extends CommonServiceImpl<MaterialTyp
     private MaterialTypeManageDao materialTypeManageDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = materialTypeManageDao;
     }
 }

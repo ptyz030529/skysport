@@ -2,7 +2,7 @@ package com.skysport.inerfaces.action.system;
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.bean.system.SelectItem;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.MaterialPositionInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -44,7 +44,7 @@ public class MaterialPositionManageAction extends BaseAction<String, Object, Mat
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search()  {
         ModelAndView mav = new ModelAndView("/system/material/position/list");
         return mav;
     }
@@ -59,9 +59,9 @@ public class MaterialPositionManageAction extends BaseAction<String, Object, Mat
     @RequestMapping(value = "/search")
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request)
-            throws Exception {
+             {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.MATERIAL_POSITION_TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.MATERIAL_POSITION_TABLE_COLUMN, request);
         // 总记录数
         int recordsTotal = materialPositionService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -83,7 +83,7 @@ public class MaterialPositionManageAction extends BaseAction<String, Object, Mat
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(MaterialPositionInfo info) throws Exception {
+    public Map<String, Object> edit(MaterialPositionInfo info)  {
         materialPositionService.edit(info);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -100,7 +100,7 @@ public class MaterialPositionManageAction extends BaseAction<String, Object, Mat
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(MaterialPositionInfo info) throws Exception {
+    public Map<String, Object> add(MaterialPositionInfo info)  {
         String currentNo = materialPositionService.queryCurrentSeqNo();
         //设置ID
         info.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.T_MATERIAL_POSITION_INFO, currentNo, incrementNumber));

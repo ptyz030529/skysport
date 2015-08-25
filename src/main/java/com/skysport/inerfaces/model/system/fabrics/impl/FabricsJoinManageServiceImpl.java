@@ -20,7 +20,7 @@ public class FabricsJoinManageServiceImpl extends CommonServiceImpl<FabricsInfo>
     private FabricsManageDao fabricsManageDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = fabricsManageDao;
     }
 

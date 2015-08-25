@@ -30,7 +30,7 @@ public class FabricsServiceImpl extends CommonServiceImpl<FabricsInfo> implement
     private IncrementNumber incrementNumber;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = fabricsManageDao;
     }
 

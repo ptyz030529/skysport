@@ -18,7 +18,7 @@ public class WorkmanshipOfBondingLaminatingCoatingServiceImpl extends CommonServ
     private WorkmanshipOfBondingLaminatingCoatingDao workmanshipOfBondingLaminatingCoatingDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = workmanshipOfBondingLaminatingCoatingDao;
     }
 }

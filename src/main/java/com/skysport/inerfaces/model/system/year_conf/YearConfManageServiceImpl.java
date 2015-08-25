@@ -17,7 +17,7 @@ public class YearConfManageServiceImpl extends CommonServiceImpl<YearConfInfo> i
     private YearConfManageDao<YearConfInfo> yearConfManageDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = yearConfManageDao;
     }
 }

@@ -18,18 +18,18 @@
 	<select id="queryInfo" resultType="PantoneInfo">
 			select
 				<include refid="searchInfoSql"/>
-			FROM t_pantone
+			FROM t_jc_pantone
 			WHERE pantone_id =#{pantoneId}
 			limit 1
 	</select>
 
 	<select id="listInfosCounts" resultType="Integer">
 		SELECT COUNT(*) FROM
-		t_pantone where del_flag=0
+		t_jc_pantone where del_flag=0
 	</select>
 
 	<select id="listFilteredInfosCounts" resultType="Integer">
-		SELECT COUNT(*) FROM t_pantone where del_flag=0
+		SELECT COUNT(*) FROM t_jc_pantone where del_flag=0
 		<if test="searchValue !=null and searchValue != ''">
 			and (
 			    color_no like concat('%',#{searchValue},'%') or
@@ -46,7 +46,7 @@
 	<select id="searchInfos" resultType="PantoneInfo">
 		SELECT
 		<include refid="searchInfoSql" />
-		FROM t_pantone
+		FROM t_jc_pantone
 		WHERE del_flag=0
 		<if test="searchValue!=null and searchValue != ''">
 			and (
@@ -66,7 +66,7 @@
 	</select>
 
 	<update id="updateInfo">
-		update t_pantone 	set
+		update t_jc_pantone 	set
 		color_no=#{colorNo},
 		en_name=#{enName},
 		zh_name=#{zhName},
@@ -79,12 +79,12 @@
 
 	<insert id="add">
 		insert into
-		t_pantone (pantone_id,color_no,kind,en_name,zh_name,page_no,code_color,rgb,remark)
+		t_jc_pantone (pantone_id,color_no,kind,en_name,zh_name,page_no,code_color,rgb,remark)
 		values (#{pantoneId},#{colorNo},#{kind},#{enName},#{zhName},#{pageNo},#{codeColor},#{rgb},#{remark})
 	</insert>
 	
 	<update id="del">
-		update t_pantone
+		update t_jc_pantone
 		set  del_flag=1
 		where pantone_id =#{pantoneId}
 	</update>
@@ -94,7 +94,7 @@
 		select
 		pantone_id AS natrualkey,
 		ifnull(zh_name,en_name) AS name
-		from t_pantone
+		from t_jc_pantone
 		where del_flag=0
 		<if test="name!=null and name != ''">
 			and upper(zh_name) like concat('%',#{name},'%')

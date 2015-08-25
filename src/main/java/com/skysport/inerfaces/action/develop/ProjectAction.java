@@ -2,14 +2,13 @@ package com.skysport.inerfaces.action.develop;
 
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem2;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
+import com.skysport.core.utils.SeqCreateUtils;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
 import com.skysport.inerfaces.constant.ApplicationConstant;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
 import com.skysport.inerfaces.helper.BuildSeqNoHelper;
-import com.skysport.inerfaces.model.develop.bom.IBomManageService;
-import com.skysport.inerfaces.model.develop.bom.helper.BomManageHelper;
 import com.skysport.inerfaces.model.develop.project.helper.ProjectManageHelper;
 import com.skysport.inerfaces.model.develop.project.service.IProjectManageService;
 import org.apache.commons.lang3.StringUtils;
@@ -28,18 +27,18 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 项目
+ * 项目维护
  * Created by zhangjh on 2015/6/23.
  */
 @Scope("prototype")
 @Controller
 @RequestMapping("/development/project")
 public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
+
     Logger log = Logger.getLogger(ProjectAction.class);
     @Resource(name = "projectManageService")
     private IProjectManageService projectManageService;
-    @Resource(name = "bomManageService")
-    private IBomManageService bomManageService;
+
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;
 
@@ -52,7 +51,7 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/development/project/project-list");
         return mav;
     }
@@ -65,7 +64,7 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
      */
     @RequestMapping(value = "/add/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView add(@PathVariable String natrualKey) throws Exception {
+    public ModelAndView add(@PathVariable String natrualKey) {
 
         ModelAndView mav = new ModelAndView("/development/project/project-add");
         mav.addObject("natrualkey", natrualKey);
@@ -124,11 +123,10 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
      */
     @RequestMapping(value = "/search")
     @ResponseBody
-    public Map<String, Object> search(HttpServletRequest request)
-            throws Exception {
+    public Map<String, Object> search(HttpServletRequest request) {
         //组件queryFory的参数
         ProjectQueryForm queryForm = new ProjectQueryForm();
-        queryForm.setDataTablesInfo(convertToDataTableQrInfo(DictionaryTypeConstant.PROJECT_TABLE_COLULMN, request));
+        queryForm.setDataTablesInfo(convertToDataTableQrInfo(DictionaryKeyConstant.PROJECT_TABLE_COLULMN, request));
         ProjectBomInfo bomInfo = new ProjectBomInfo();
         bomInfo.setYearCode(request.getParameter("yearCode"));
         bomInfo.setCustomerId(request.getParameter("customerId"));
@@ -157,7 +155,7 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(ProjectBomInfo info) throws Exception {
+    public Map<String, Object> edit(ProjectBomInfo info) {
         projectManageService.edit(info);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -174,14 +172,14 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(ProjectBomInfo info) throws Exception {
+    public Map<String, Object> add(ProjectBomInfo info) {
 
-
+//
         String kind_name = ProjectManageHelper.buildKindName(info);
         String seqNo = BuildSeqNoHelper.SINGLETONE.getFullSeqNo(kind_name, incrementNumber, ApplicationConstant.PROJECT_SEQ_NO_LENGTH);
-        //年份+客户+地域+系列+NNN
-        String projectId = kind_name + seqNo;
-
+//        //年份+客户+地域+系列+NNN
+//        String projectId = kind_name + seqNo;
+        String projectId = SeqCreateUtils.newRrojectSeq(info.getSeriesId());
         //设置ID
         info.setNatrualkey(projectId);
         info.setSeqNo(seqNo);
@@ -190,8 +188,6 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
         projectManageService.add(info);
 
 
-        //生成BOM信息并保存
-        BomManageHelper.autoCreateBomInfoAndSave(bomManageService, incrementNumber, info);
 
 
         Map<String, Object> resultMap = new HashMap<String, Object>();

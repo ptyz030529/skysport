@@ -2,7 +2,7 @@ package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.query.DataTablesInfo;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.PantoneInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -47,7 +47,7 @@ public class PantoneManageAction extends BaseAction<String, Object, PantoneInfo>
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search()  {
         ModelAndView mav = new ModelAndView("/system/pantone/list2");
         return mav;
     }
@@ -62,9 +62,9 @@ public class PantoneManageAction extends BaseAction<String, Object, PantoneInfo>
     @RequestMapping(value = "/search")
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request)
-            throws Exception {
+             {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.PANTONE_TABLE_COLUMN,request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.PANTONE_TABLE_COLUMN,request);
         // 总记录数
         int recordsTotal = pantoneManageService.listPantoneInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -87,7 +87,7 @@ public class PantoneManageAction extends BaseAction<String, Object, PantoneInfo>
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(PantoneInfo pantoneInfo, HttpServletRequest request,
-                                    HttpServletResponse respones) throws Exception {
+                                    HttpServletResponse respones)  {
         pantoneManageService.edit(pantoneInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -105,7 +105,7 @@ public class PantoneManageAction extends BaseAction<String, Object, PantoneInfo>
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(PantoneInfo pantoneInfo, HttpServletRequest request,
-                                   HttpServletResponse repantoneonse) throws Exception {
+                                   HttpServletResponse repantoneonse)  {
         //设置ID
         pantoneInfo.setPantoneId(BuildSeqNoHelper.SINGLETONE.getFullSeqNo(TableNameConstant.PANTONE_INFO, incrementNumber));
         pantoneManageService.add(pantoneInfo);

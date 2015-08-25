@@ -2,7 +2,7 @@ package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.query.DataTablesInfo;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.SpInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -47,7 +47,7 @@ public class SpManageAction extends BaseAction<String, Object, SpInfo> {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search()  {
         ModelAndView mav = new ModelAndView("/system/sp/list2");
         return mav;
     }
@@ -62,9 +62,9 @@ public class SpManageAction extends BaseAction<String, Object, SpInfo> {
     @RequestMapping(value = "/search")
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request)
-            throws Exception {
+             {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.SP_TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.SP_TABLE_COLUMN, request);
         // 总记录数
         int recordsTotal = spManageService.listSPInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -88,7 +88,7 @@ public class SpManageAction extends BaseAction<String, Object, SpInfo> {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(SpInfo spInfo, HttpServletRequest request,
-                                    HttpServletResponse response) throws Exception {
+                                    HttpServletResponse response)  {
         spManageService.edit(spInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -106,7 +106,7 @@ public class SpManageAction extends BaseAction<String, Object, SpInfo> {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(SpInfo spInfo, HttpServletRequest request,
-                                   HttpServletResponse response) throws Exception {
+                                   HttpServletResponse response)  {
         //设置ID
         spInfo.setSpId(BuildSeqNoHelper.SINGLETONE.getFullSeqNo(TableNameConstant.SP_INFO, incrementNumber));
         spManageService.add(spInfo);

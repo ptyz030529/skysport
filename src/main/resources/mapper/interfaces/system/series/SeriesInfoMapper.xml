@@ -16,18 +16,18 @@
 	<select id="queryInfo" resultType="SeriesInfo">
 		select
 			<include refid="searchInfoSql"/>
-		FROM t_series a,t_area b
+		FROM t_jc_series a,t_jc_area b
 		WHERE a.series_id =#{natrualkey} and a.area_id = b.area_id
 		limit 1
 	</select>
 
 	<select id="listInfosCounts" resultType="Integer">
-		SELECT COUNT(*) FROM		t_series where del_flag=0
+		SELECT COUNT(*) FROM		t_jc_series where del_flag=0
 	</select>
 
 	<select id="listFilteredInfosCounts" resultType="Integer">
 		SELECT COUNT(*)
-		FROM t_series a,t_area b
+		FROM t_jc_series a,t_jc_area b
 		WHERE a.del_flag=0 and a.area_id = b.area_id
 		<if test="searchValue !=null and searchValue != ''">
 			and (
@@ -43,7 +43,7 @@
 	<select id="searchInfos" resultType="SeriesInfo">
 		SELECT
 		<include refid="searchInfoSql" />
-		FROM t_series a,t_area b
+		FROM t_jc_series a,t_jc_area b
 		WHERE a.del_flag=0 and a.area_id = b.area_id
 		<if test="searchValue!=null and searchValue != ''">
 			and (
@@ -61,7 +61,7 @@
 	</select>
 
 	<update id="updateInfo">
-		update t_series 	set
+		update t_jc_series 	set
 		series_name=#{name},
 		area_id=#{areaId},
 		remark=#{remark}
@@ -70,19 +70,19 @@
 
 	<insert id="add">
 		insert into
-		t_series (series_id,area_id,series_name,remark)
+		t_jc_series (series_id,area_id,series_name,remark)
 		values (#{natrualkey},#{areaId},#{name},#{remark})
 	</insert>
 
 	<update id="del">
-		update t_series
+		update t_jc_series
 		set  del_flag=1
 		where series_id =#{natrualkey}
 	</update>
 
 
 	<select id="queryCurrentSeqNo" resultType="String">
-		select case when  max(series_id) is NULL then 0 else max(series_id) end from t_series
+		select case when  max(series_id) is NULL then 0 else max(series_id) end from t_jc_series
 	</select>
 
 	<!--信息下拉列表-->
@@ -90,7 +90,7 @@
 		select
 		series_id AS natrualkey,
 		series_name AS name
-		from t_series
+		from t_jc_series
 		where del_flag=0
 		<if test="name!=null and name != ''">
 			and upper(series_name) like concat('%',#{name},'%')

@@ -4,6 +4,7 @@ import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.constant.CharConstant;
 import com.skysport.core.instance.SystemBaseInfo;
 import com.skysport.core.model.seqno.service.IncrementNumber;
+import com.skysport.core.utils.SeqCreateUtils;
 import com.skysport.inerfaces.bean.BomInfo;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
 import com.skysport.inerfaces.constant.ApplicationConstant;
@@ -54,9 +55,9 @@ public class BomManageHelper {
                 BomInfo bomInfo = new BomInfo();
                 String kind_name = buildKindName(info);
                 String seqNo = BuildSeqNoHelper.SINGLETONE.getFullSeqNo(kind_name, incrementNumber, ApplicationConstant.BOM_SEQ_NO_LENGTH);
-                //年份+客户+地域+系列+NNN
-                String bomId = kind_name + seqNo;
-
+//                //年份+客户+地域+系列+NNN
+//                String bomId = kind_name + seqNo;
+                String bomId = SeqCreateUtils.newBomSeq();
                 bomInfo.setMainColor(mainColor);
                 bomInfo.setSexId(sexId);
                 bomInfo.setProjectId(projectId);
@@ -67,16 +68,12 @@ public class BomManageHelper {
                 bomInfo.setBomId(bomId);//
 //                    bomInfo.setOfferAmount();
                 bomInfo.setNatrualkey(bomId);
-                logger.info(bomInfo);
                 bomInfos.add(bomInfo);
 
             }
         }
-
-
         bomManageService.addBatch(bomInfos);
-
-
+        throw  new RuntimeException("测试用的运行时异常");
     }
 
     public static String buildKindName(ProjectBomInfo info) {
@@ -101,4 +98,6 @@ public class BomManageHelper {
         String id = bomInfo.getSexId();
         return SystemBaseInfo.SINGLETONE.getName(items, id);
     }
+
+
 }

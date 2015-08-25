@@ -29,7 +29,7 @@
         <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">开发</a>
         </li>
 
-        <li><a href="#">项目</a></li>
+        <li><a href="#">用户信息</a></li>
         <li class="active">新增和修改</li>
     </ul>
     <!-- /.breadcrumb -->
@@ -46,7 +46,7 @@
                 <div id="projectDesc">
                     <div id="projectDescTitle">
                         <h5 class="header smaller lighter blue">
-                            项目基本信息
+                            基本信息
                             <small></small>
                             <input type="hidden" name="natrualkey" id="natrualkey" value="${natrualkey}"/>
                         </h5>
@@ -244,4 +244,4 @@
 </script>
 
 </html>
-<script type="text/javascript" src="<%=path%>/resources/development/project/project-add.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/development/project/project-add.js"></script>

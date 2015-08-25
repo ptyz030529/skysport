@@ -14,18 +14,18 @@
     <select id="queryInfo" resultType="DyeInfo">
         select
         <include refid="searchInfoSql"/>
-        FROM t_dye
+        FROM t_wl_dye
         WHERE dye_id =#{natrualkey}
         limit 1
     </select>
 
     <select id="listInfosCounts" resultType="Integer">
 		SELECT COUNT(*) FROM
-		t_dye where del_flag=0
+		t_wl_dye where del_flag=0
 	</select>
 
     <select id="listFilteredInfosCounts" resultType="Integer">
-        SELECT COUNT(*) FROM t_dye where del_flag=0
+        SELECT COUNT(*) FROM t_wl_dye where del_flag=0
         <if test="searchValue !=null and searchValue != ''">
             and (
             dye_name like concat('%',#{searchValue},'%') or
@@ -38,7 +38,7 @@
     <select id="searchInfos" resultType="DyeInfo">
         SELECT
         <include refid="searchInfoSql"/>
-        FROM t_dye
+        FROM t_wl_dye
         WHERE del_flag=0
         <if test="searchValue!=null and searchValue != ''">
             and (
@@ -54,7 +54,7 @@
     </select>
 
     <update id="updateInfo">
-		update t_dye 	set
+		update t_wl_dye 	set
 		dye_name=#{name},
 		remark=#{remark}
 		WHERE dye_id =#{natrualkey}
@@ -62,19 +62,19 @@
 
     <insert id="add">
 		insert into
-		t_dye (dye_id,dye_name,remark)
+		t_wl_dye (dye_id,dye_name,remark)
 		values (#{natrualkey},#{name},#{remark})
 	</insert>
 
     <update id="del">
-		update t_dye
+		update t_wl_dye
 		set  del_flag=1
 		where dye_id =#{natrualkey}
 	</update>
 
 
     <select id="queryCurrentSeqNo" resultType="String">
-		select case when  max(dye_id) is NULL then 0 else max(dye_id) end from t_dye
+		select case when  max(dye_id) is NULL then 0 else max(dye_id) end from t_wl_dye
 	</select>
 
     <!--信息下拉列表-->
@@ -82,7 +82,7 @@
 		select
 			dye_id AS natrualkey,
 			dye_name AS name
-		from t_dye
+		from t_wl_dye
 		where del_flag=0
         <if test="name!=null and name != ''">
             and upper(dye_name) like concat('%',#{name},'%')

@@ -18,7 +18,7 @@ public class WaterVapourPermeabilityServiceImpl extends CommonServiceImpl<WaterV
     private WaterVapourPermeabilityDao waterVapourPermeabilityDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = waterVapourPermeabilityDao;
     }
 }

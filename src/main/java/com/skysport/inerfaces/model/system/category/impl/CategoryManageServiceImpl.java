@@ -20,7 +20,7 @@ public class CategoryManageServiceImpl extends CommonServiceImpl<CategoryInfo> i
     private CategoryManageMapper categoryManageMapper;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = categoryManageMapper;
     }
 

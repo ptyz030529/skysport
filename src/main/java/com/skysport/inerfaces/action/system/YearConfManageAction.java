@@ -3,7 +3,7 @@ package com.skysport.inerfaces.action.system;
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.YearConfInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -47,7 +47,7 @@ public class YearConfManageAction extends BaseAction<String, Object, YearConfInf
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search()  {
         ModelAndView mav = new ModelAndView("/system/year_conf/list");
         return mav;
     }
@@ -62,9 +62,9 @@ public class YearConfManageAction extends BaseAction<String, Object, YearConfInf
     @RequestMapping(value = "/search")
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request)
-            throws Exception {
+             {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.YEAR_CONF_TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.YEAR_CONF_TABLE_COLUMN, request);
         // 总记录数
         int recordsTotal = yearConfManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -87,7 +87,7 @@ public class YearConfManageAction extends BaseAction<String, Object, YearConfInf
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(YearConfInfo year_confInfo, HttpServletRequest request,
-                                    HttpServletResponse respones) throws Exception {
+                                    HttpServletResponse respones)  {
         yearConfManageService.edit(year_confInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -104,7 +104,7 @@ public class YearConfManageAction extends BaseAction<String, Object, YearConfInf
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(YearConfInfo year_confInfo) throws Exception {
+    public Map<String, Object> add(YearConfInfo year_confInfo)  {
         String currentNo = yearConfManageService.queryCurrentSeqNo();
         //设置ID
         year_confInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.YEAR_CONF_INFO, currentNo, incrementNumber));

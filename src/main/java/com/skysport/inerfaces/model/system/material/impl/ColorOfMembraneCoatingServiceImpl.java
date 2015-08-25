@@ -17,7 +17,7 @@ public class ColorOfMembraneCoatingServiceImpl extends CommonServiceImpl<ColorOf
     private ColorOfMembraneCoatingDao colorOfMembraneCoatingDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = colorOfMembraneCoatingDao;
     }
 

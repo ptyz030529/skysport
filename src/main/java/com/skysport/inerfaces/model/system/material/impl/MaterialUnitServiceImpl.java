@@ -18,7 +18,7 @@ public class MaterialUnitServiceImpl extends CommonServiceImpl<MaterialUnitInfo>
     private MaterialUnitManageDao materialUnitManageDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = materialUnitManageDao;
     }
 }

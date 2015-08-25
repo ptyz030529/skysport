@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.action.develop;
 
 import com.skysport.core.action.BaseAction;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.inerfaces.bean.BomInfo;
 import com.skysport.inerfaces.form.develop.BomQueryForm;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
@@ -37,7 +37,7 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search()  {
         ModelAndView mav = new ModelAndView("/development/bom/bom-list");
         return mav;
     }
@@ -50,7 +50,7 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
      */
     @RequestMapping(value = "/bom-add")
     @ResponseBody
-    public ModelAndView add() throws Exception {
+    public ModelAndView add()  {
         ModelAndView mav = new ModelAndView("/development/bom/bom-add");
         return mav;
     }
@@ -63,7 +63,7 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
      */
     @RequestMapping(value = "/add/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView add(@PathVariable String natrualKey) throws Exception {
+    public ModelAndView add(@PathVariable String natrualKey)  {
         ModelAndView mav = new ModelAndView("/development/bom/bom-add");
         mav.addObject("natrualkey", natrualKey);
         return mav;
@@ -81,7 +81,7 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
     public Map<String, Object> search(HttpServletRequest request) {
         //组件queryFory的参数
         BomQueryForm bomQueryForm = new BomQueryForm();
-        bomQueryForm.setDataTablesInfo(convertToDataTableQrInfo(DictionaryTypeConstant.PROJECT_TABLE_COLULMN, request));
+        bomQueryForm.setDataTablesInfo(convertToDataTableQrInfo(DictionaryKeyConstant.PROJECT_TABLE_COLULMN, request));
         BomInfo bomInfo = new BomInfo();
         bomQueryForm.setBomInfo(bomInfo);
         BomManageHelper.buildBomQueryForm(bomQueryForm, request);
@@ -113,7 +113,7 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(@RequestBody BomInfo info) throws Exception {
+    public Map<String, Object> edit(@RequestBody BomInfo info)  {
         info.setBomId(info.getNatrualkey());
         bomManageService.edit(info);
         Map resultMap = rtnSuccessResultMap(MSG_UPDATE_SUCCESS);

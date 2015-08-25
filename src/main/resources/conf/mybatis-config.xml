@@ -41,6 +41,11 @@
 
         <typeAlias alias="MainColor" type="com.skysport.inerfaces.bean.system.MainColor"/>
         <typeAlias alias="FabricInfo" type="com.skysport.inerfaces.bean.FabricsInfo"/>
+
+
+        <!--权限管理-->
+        <typeAlias alias="UserInfo" type="com.skysport.inerfaces.bean.system.permission.UserInfo"/>
+
     </typeAliases>
 
     <!-- 映射map-->

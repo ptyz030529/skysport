@@ -28,7 +28,7 @@ public class BomManageServiceImpl extends CommonServiceImpl<BomInfo> implements 
 
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = bomManageMapper;
     }
 

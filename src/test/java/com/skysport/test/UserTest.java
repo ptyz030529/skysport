@@ -16,7 +16,7 @@ public class UserTest {
 		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "classpath:conf/spring.xml",
-						"classpath:conf/spring-mybatis.xml" });
+						"classpath:conf/spring-mybatis.xml--"});
 		userService = (IUserService) context.getBean("userServiceImpl");
 	}
 

@@ -14,18 +14,18 @@
     <select id="queryInfo" resultType="FinishInfo">
         select
         <include refid="searchInfoSql"/>
-        FROM t_finish
+        FROM t_wl_finish
         WHERE finish_id =#{natrualkey}
         limit 1
     </select>
 
     <select id="listInfosCounts" resultType="Integer">
 		SELECT COUNT(*) FROM
-		t_finish where del_flag=0
+		t_wl_finish where del_flag=0
 	</select>
 
     <select id="listFilteredInfosCounts" resultType="Integer">
-        SELECT COUNT(*) FROM t_finish where del_flag=0
+        SELECT COUNT(*) FROM t_wl_finish where del_flag=0
         <if test="searchValue !=null and searchValue != ''">
             and (
             finish_name like concat('%',#{searchValue},'%') or
@@ -38,7 +38,7 @@
     <select id="searchInfos" resultType="FinishInfo">
         SELECT
         <include refid="searchInfoSql"/>
-        FROM t_finish
+        FROM t_wl_finish
         WHERE del_flag=0
         <if test="searchValue!=null and searchValue != ''">
             and (
@@ -54,7 +54,7 @@
     </select>
 
     <update id="updateInfo">
-		update t_finish 	set
+		update t_wl_finish 	set
 		finish_name=#{name},
 		remark=#{remark}
 		WHERE finish_id =#{natrualkey}
@@ -62,19 +62,19 @@
 
     <insert id="add">
 		insert into
-		t_finish (finish_id,finish_name,remark)
+		t_wl_finish (finish_id,finish_name,remark)
 		values (#{natrualkey},#{name},#{remark})
 	</insert>
 
     <update id="del">
-		update t_finish
+		update t_wl_finish
 		set  del_flag=1
 		where finish_id =#{natrualkey}
 	</update>
 
 
     <select id="queryCurrentSeqNo" resultType="String">
-		select case when  max(finish_id) is NULL then 0 else max(finish_id) end from t_finish
+		select case when  max(finish_id) is NULL then 0 else max(finish_id) end from t_wl_finish
 	</select>
 
     <!--信息下拉列表-->
@@ -82,7 +82,7 @@
 		select
 			finish_id AS natrualkey,
 			finish_name AS name
-		from t_finish
+		from t_wl_finish
 		where del_flag=0
         <if test="name!=null and name != ''">
             and upper(finish_name) like concat('%',#{name},'%')

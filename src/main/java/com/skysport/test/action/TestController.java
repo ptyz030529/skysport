@@ -27,12 +27,12 @@ public class TestController {
 	 * @param request
 	 * @param response
 	 * @return
-	 * @throws Exception
+	 * @
 	 */
 	@RequestMapping(value = "/list")
 	@ResponseBody
 	public ModelAndView getProducts(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response)  {
 
 		request.setAttribute("name", "张三");
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -50,7 +50,7 @@ public class TestController {
 	@RequestMapping(value = "/info/{proId}", method = RequestMethod.GET)
 	public String getProductInfo(@PathVariable String proId,
 			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+			 {
 
 		request.setAttribute("name", proId);
 
@@ -60,7 +60,7 @@ public class TestController {
 
 	@RequestMapping(value = "/info/{pid}/{pname}", method = RequestMethod.GET)
 	public String getProductInfo(TestModel pro, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response)  {
 
 		request.setAttribute("name", pro.getPid() + "喜欢" + pro.getPname());
 
@@ -72,7 +72,7 @@ public class TestController {
 	@ResponseBody
 	public ModelAndView insertProduct(TestModel pro,
 			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+			 {
 
 		request.setAttribute("name", pro.getPid() + "|" + pro.getPname());
 		ModelAndView mav = new ModelAndView("test/list");
@@ -84,7 +84,7 @@ public class TestController {
 	@ResponseBody
 	public ModelAndView updateProduct(@RequestBody TestModel pro,
 			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+			 {
 		Map<String, String> map = new HashMap<String, String>(1);
 		map.put("success", "true");
 		ModelAndView mav = new ModelAndView("test/list", map);
@@ -93,7 +93,7 @@ public class TestController {
 
 	@RequestMapping(value = "/add")
 	public String add(HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+			 {
 		return "test/add";
 
 	}
@@ -101,7 +101,7 @@ public class TestController {
 	@RequestMapping(value = { "/info2/{pid}", "/info2/{pid}/{pname}.json" }, method = RequestMethod.GET)
 	public ModelAndView getProductInfos(@PathVariable String pid,
 			@PathVariable String pname, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
+			HttpServletResponse response)  {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 

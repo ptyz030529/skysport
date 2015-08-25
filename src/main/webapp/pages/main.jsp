@@ -40,7 +40,7 @@
             <a href="#" class="navbar-brand">
                 <small>
                     <i class="icon-leaf"></i>
-                    SkySport-供应链管理系统
+                    SkySport Supply Chain System
                 </small>
             </a><!-- /.brand -->
         </div>

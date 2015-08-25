@@ -3,7 +3,7 @@ package com.skysport.inerfaces.action.system;
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.AreaInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -50,7 +50,7 @@ public class AreaAction extends BaseAction<String, Object, AreaInfo> {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search()  {
         ModelAndView mav = new ModelAndView("/system/area/list");
         return mav;
     }
@@ -65,9 +65,9 @@ public class AreaAction extends BaseAction<String, Object, AreaInfo> {
     @RequestMapping(value = "/search")
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request)
-            throws Exception {
+             {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.AREA_TABLE_COLULMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.AREA_TABLE_COLULMN, request);
         // 总记录数
         int recordsTotal = areaManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -90,7 +90,7 @@ public class AreaAction extends BaseAction<String, Object, AreaInfo> {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(AreaInfo areaInfo, HttpServletRequest request,
-                                    HttpServletResponse respones) throws Exception {
+                                    HttpServletResponse respones)  {
         areaManageService.edit(areaInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -110,7 +110,7 @@ public class AreaAction extends BaseAction<String, Object, AreaInfo> {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(AreaInfo areaInfo, HttpServletRequest request,
-                                   HttpServletResponse reareaonse) throws Exception {
+                                   HttpServletResponse reareaonse)  {
         String currentNo = areaManageService.queryCurrentSeqNo();
         //设置ID
         areaInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.AREA_INFO, currentNo, incrementNumber));

@@ -3,7 +3,7 @@ package com.skysport.inerfaces.action.system;
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.ProductTypeInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -49,7 +49,7 @@ public class ProductTypeAction extends BaseAction<String, Object, ProductTypeInf
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search()  {
         ModelAndView mav = new ModelAndView("/system/product_type/list");
         return mav;
     }
@@ -64,9 +64,9 @@ public class ProductTypeAction extends BaseAction<String, Object, ProductTypeInf
     @RequestMapping(value = "/search")
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request)
-            throws Exception {
+             {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.PRODUCT_TYPE_TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.PRODUCT_TYPE_TABLE_COLUMN, request);
         // 总记录数
         int recordsTotal = productTypeManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -89,7 +89,7 @@ public class ProductTypeAction extends BaseAction<String, Object, ProductTypeInf
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(ProductTypeInfo product_typeInfo, HttpServletRequest request,
-                                    HttpServletResponse respones) throws Exception {
+                                    HttpServletResponse respones)  {
         productTypeManageService.edit(product_typeInfo);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -106,7 +106,7 @@ public class ProductTypeAction extends BaseAction<String, Object, ProductTypeInf
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(ProductTypeInfo product_typeInfo) throws Exception {
+    public Map<String, Object> add(ProductTypeInfo product_typeInfo)  {
         String currentNo = productTypeManageService.queryCurrentSeqNo();
         //设置ID
         product_typeInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.PRODUCT_TYPE_INFO, currentNo, incrementNumber));

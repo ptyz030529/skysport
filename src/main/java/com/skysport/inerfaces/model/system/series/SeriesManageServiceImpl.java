@@ -16,7 +16,7 @@ public class SeriesManageServiceImpl extends CommonServiceImpl<SeriesInfo> imple
     private SeriesManageDao<SeriesInfo> seriesManageDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = seriesManageDao;
     }
 }

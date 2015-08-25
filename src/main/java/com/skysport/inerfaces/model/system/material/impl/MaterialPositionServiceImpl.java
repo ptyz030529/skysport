@@ -18,7 +18,7 @@ public class MaterialPositionServiceImpl extends CommonServiceImpl<MaterialPosit
     private MaterialPositionManageDao materialPositionManageDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = materialPositionManageDao;
     }
 }

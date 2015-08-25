@@ -53,7 +53,7 @@
   {{/each}}
 </script>
 
-<script type="text/javascript" src="<%=path%>/resources/development/bom/bom-list.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/development/bom/bom-list.js"></script>
 
 </body>
 

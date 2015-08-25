@@ -14,18 +14,18 @@
     <select id="queryInfo" resultType="ColorOfMembraneCoatingInfo">
         select
         <include refid="searchInfoSql"/>
-        FROM t_color_membrane_coating
+        FROM t_wl_color_membrane_coating
         WHERE comoc_id =#{natrualkey}
         limit 1
     </select>
 
     <select id="listInfosCounts" resultType="Integer">
 		SELECT COUNT(*) FROM
-		t_color_membrane_coating where del_flag=0
+		t_wl_color_membrane_coating where del_flag=0
 	</select>
 
     <select id="listFilteredInfosCounts" resultType="Integer">
-        SELECT COUNT(*) FROM t_color_membrane_coating where del_flag=0
+        SELECT COUNT(*) FROM t_wl_color_membrane_coating where del_flag=0
         <if test="searchValue !=null and searchValue != ''">
             and (
             comoc_name like concat('%',#{searchValue},'%') or
@@ -38,7 +38,7 @@
     <select id="searchInfos" resultType="ColorOfMembraneCoatingInfo">
         SELECT
         <include refid="searchInfoSql"/>
-        FROM t_color_membrane_coating
+        FROM t_wl_color_membrane_coating
         WHERE del_flag=0
         <if test="searchValue!=null and searchValue != ''">
             and (
@@ -54,7 +54,7 @@
     </select>
 
     <update id="updateInfo">
-		update t_color_membrane_coating 	set
+		update t_wl_color_membrane_coating 	set
 		name=#{name},
 		remark=#{remark}
 		WHERE comoc_id =#{natrualkey}
@@ -62,19 +62,19 @@
 
     <insert id="add">
 		insert into
-		t_color_membrane_coating (comoc_id,comoc_name,remark)
+		t_wl_color_membrane_coating (comoc_id,comoc_name,remark)
 		values (#{natrualkey},#{name},#{remark})
 	</insert>
 
     <update id="del">
-		update t_color_membrane_coating
+		update t_wl_color_membrane_coating
 		set  del_flag=1
 		where comoc_id =#{natrualkey}
 	</update>
 
 
     <select id="queryCurrentSeqNo" resultType="String">
-		select case when  max(comoc_id) is NULL then 0 else max(comoc_id) end from t_color_membrane_coating
+		select case when  max(comoc_id) is NULL then 0 else max(comoc_id) end from t_wl_color_membrane_coating
 	</select>
 
     <!--信息下拉列表-->
@@ -82,7 +82,7 @@
 		select
 			comoc_id AS natrualkey,
 			comoc_name AS name
-		from t_color_membrane_coating
+		from t_wl_color_membrane_coating
 		where del_flag=0
         <if test="name!=null and name != ''">
             and upper(comoc_name) like concat('%',#{name},'%')

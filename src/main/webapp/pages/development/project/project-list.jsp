@@ -55,7 +55,7 @@
   {{/each}}
 </script>
 
-<script type="text/javascript" src="<%=path%>/resources/development/project/project-list.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/development/project/project-list.js"></script>
 
 </body>
 

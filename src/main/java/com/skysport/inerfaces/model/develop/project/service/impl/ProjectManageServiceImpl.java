@@ -1,10 +1,13 @@
 package com.skysport.inerfaces.model.develop.project.service.impl;
 
+import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
 import com.skysport.inerfaces.bean.system.MainColor;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
 import com.skysport.inerfaces.mapper.ProjectManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
+import com.skysport.inerfaces.model.develop.bom.IBomManageService;
+import com.skysport.inerfaces.model.develop.bom.helper.BomManageHelper;
 import com.skysport.inerfaces.model.develop.project.helper.ProjectManageHelper;
 import com.skysport.inerfaces.model.develop.project.service.IProjectManageService;
 import com.skysport.inerfaces.model.system.main_color.IMainColorService;
@@ -23,14 +26,17 @@ import java.util.List;
 public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectBomInfo> implements IProjectManageService, InitializingBean {
     @Resource(name = "projectManageMapper")
     private ProjectManageMapper projectManageMapper;
-
+    @Resource(name = "bomManageService")
+    private IBomManageService bomManageService;
 
     @Resource(name = "mainColorService")
     private IMainColorService mainColorService;
+    @Resource(name = "incrementNumber")
+    private IncrementNumber incrementNumber;
 
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         commonDao = projectManageMapper;
     }
 
@@ -53,6 +59,10 @@ public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectBomInfo> 
         List<MainColor> mainColorList = MainColorHelper.SINGLETONE.turnMainColorStrToList(t);
         //增加项目主颜色信息
         mainColorService.add(mainColorList);
+
+
+        //生成BOM信息并保存
+        BomManageHelper.autoCreateBomInfoAndSave(bomManageService, incrementNumber, t);
     }
 
     /**

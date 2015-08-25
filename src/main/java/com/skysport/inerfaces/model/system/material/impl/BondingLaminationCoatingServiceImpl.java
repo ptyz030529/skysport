@@ -17,7 +17,7 @@ public class BondingLaminationCoatingServiceImpl extends CommonServiceImpl<Bondi
     private BondingLaminationCoatingDao bondingLaminationCoatingDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = bondingLaminationCoatingDao;
     }
 }

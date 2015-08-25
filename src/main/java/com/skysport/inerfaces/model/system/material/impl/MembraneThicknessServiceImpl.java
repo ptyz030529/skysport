@@ -17,7 +17,7 @@ public class MembraneThicknessServiceImpl extends CommonServiceImpl<MembraneThic
     private MembraneThicknessDao membraneThicknessDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = membraneThicknessDao;
     }
 }

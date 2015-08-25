@@ -15,7 +15,7 @@ public class SexManageServiceImpl extends CommonServiceImpl<SexInfo> implements 
     private SexManageDao<SexInfo> sexManageDao;
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet()  {
         commonDao = sexManageDao;
     }
 }

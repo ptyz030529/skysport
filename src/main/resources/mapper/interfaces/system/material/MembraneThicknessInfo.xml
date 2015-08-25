@@ -14,18 +14,18 @@
     <select id="queryInfo" resultType="MembraneThicknessInfo">
         select
         <include refid="searchInfoSql"/>
-        FROM t_membrane_thickness
+        FROM t_wl_membrane_thickness
         WHERE mt_id =#{natrualkey}
         limit 1
     </select>
 
     <select id="listInfosCounts" resultType="Integer">
         SELECT COUNT(*) FROM
-        t_membrane_thickness where del_flag=0
+        t_wl_membrane_thickness where del_flag=0
     </select>
 
     <select id="listFilteredInfosCounts" resultType="Integer">
-        SELECT COUNT(*) FROM t_membrane_thickness where del_flag=0
+        SELECT COUNT(*) FROM t_wl_membrane_thickness where del_flag=0
         <if test="searchValue !=null and searchValue != ''">
             and (
             mt_name like concat('%',#{searchValue},'%') or
@@ -38,7 +38,7 @@
     <select id="searchInfos" resultType="MembraneThicknessInfo">
         SELECT
         <include refid="searchInfoSql"/>
-        FROM t_membrane_thickness
+        FROM t_wl_membrane_thickness
         WHERE del_flag=0
         <if test="searchValue!=null and searchValue != ''">
             and (
@@ -54,7 +54,7 @@
     </select>
 
     <update id="updateInfo">
-        update t_membrane_thickness 	set
+        update t_wl_membrane_thickness 	set
         mt_name=#{name},
         remark=#{remark}
         WHERE mt_id =#{natrualkey}
@@ -62,19 +62,19 @@
 
     <insert id="add">
         insert into
-        t_membrane_thickness (mt_id,mt_name,remark)
+        t_wl_membrane_thickness (mt_id,mt_name,remark)
         values (#{natrualkey},#{name},#{remark})
     </insert>
 
     <update id="del">
-        update t_membrane_thickness
+        update t_wl_membrane_thickness
         set  del_flag=1
         where mt_id =#{natrualkey}
     </update>
 
 
     <select id="queryCurrentSeqNo" resultType="String">
-        select case when  max(mt_id) is NULL then 0 else max(mt_id) end from t_membrane_thickness
+        select case when  max(mt_id) is NULL then 0 else max(mt_id) end from t_wl_membrane_thickness
     </select>
 
     <!--信息下拉列表-->
@@ -82,7 +82,7 @@
 		select
 			mt_id AS natrualkey,
 			mt_name AS name
-		from t_membrane_thickness
+		from t_wl_membrane_thickness
 		where del_flag=0
         <if test="name!=null and name != ''">
             and upper(mt_name) like concat('%',#{name},'%')

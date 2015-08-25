@@ -3,7 +3,7 @@ package com.skysport.inerfaces.action.system;
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.bean.system.SelectItem;
-import com.skysport.core.constant.DictionaryTypeConstant;
+import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.CategoryInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
@@ -45,7 +45,7 @@ public class CategoryManageAction extends BaseAction<String, Object, CategoryInf
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search() throws Exception {
+    public ModelAndView search()  {
         ModelAndView mav = new ModelAndView("/system/category/list");
         return mav;
     }
@@ -60,9 +60,9 @@ public class CategoryManageAction extends BaseAction<String, Object, CategoryInf
     @RequestMapping(value = "/search")
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request)
-            throws Exception {
+             {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryTypeConstant.CATEGORY_TABLE_COLUMN, request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.CATEGORY_TABLE_COLUMN, request);
         // 总记录数
         int recordsTotal = categoryManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -84,7 +84,7 @@ public class CategoryManageAction extends BaseAction<String, Object, CategoryInf
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(CategoryInfo info) throws Exception {
+    public Map<String, Object> edit(CategoryInfo info)  {
         categoryManageService.edit(info);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -101,7 +101,7 @@ public class CategoryManageAction extends BaseAction<String, Object, CategoryInf
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(CategoryInfo info) throws Exception {
+    public Map<String, Object> add(CategoryInfo info)  {
         String currentNo = categoryManageService.queryCurrentSeqNo();
         //设置ID
         info.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.T_CATEGORY_INFO, currentNo, incrementNumber));
