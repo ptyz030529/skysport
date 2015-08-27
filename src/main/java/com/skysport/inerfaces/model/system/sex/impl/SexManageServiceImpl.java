@@ -1,7 +1,7 @@
-package com.skysport.inerfaces.model.system.sex;
+package com.skysport.inerfaces.model.system.sex.impl;
 
 import com.skysport.inerfaces.bean.system.SexInfo;
-import com.skysport.inerfaces.mapper.SexManageDao;
+import com.skysport.inerfaces.mapper.SexManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,10 @@ import javax.annotation.Resource;
 @Service("sexManageService")
 public class SexManageServiceImpl extends CommonServiceImpl<SexInfo> implements InitializingBean {
     @Resource(name = "sexManageDao")
-    private SexManageDao<SexInfo> sexManageDao;
+    private SexManageMapper sexManageMapper;
 
     @Override
     public void afterPropertiesSet()  {
-        commonDao = sexManageDao;
+        commonDao = sexManageMapper;
     }
 }

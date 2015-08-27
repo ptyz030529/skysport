@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
  * Created by zhangjh on 2015/6/9.
  */
 @Component("areaManageDao")
-public interface AreaManageDao extends CommonDao<AreaInfo> {
+public interface AreaManageMapper extends CommonDao<AreaInfo> {
 
 }

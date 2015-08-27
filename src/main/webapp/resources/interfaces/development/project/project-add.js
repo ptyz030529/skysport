@@ -5,49 +5,14 @@
     "use strict";
     $(function () {
         reloadDetailSelectData();
-        initTags();
+        $("#projectForm").on("change", "select", cb);
     })
-
 
     //第一次初始化下拉列表
     var reloadDetailSelectData = function () {
         $.sendRestFulAjax(path + "/system/baseinfo/project_select", null, 'GET', 'json', initSelectCallBack);
     }
 
-    /**
-     * 初始化标签
-     */
-    var initTags = function () {
-        var tag_input = $('#mainColorNames');
-        try {
-            tag_input.tag(
-                {
-                    placeholder: tag_input.attr('placeholder'),
-                    //enable typeahead by specifying the source array
-                    source: ace.vars['US_STATES']//defined in ace.js >> ace.enable_search_ahead
-                    /**
-                     //or fetch data from database, fetch those that match "query"
-                     source: function(query, process) {
-						  $.ajax({url: 'remote_source.php?q='+encodeURIComponent(query)})
-						  .done(function(result_items){
-							process(result_items);
-						  });
-						}
-                     */
-                }
-            )
-
-            //programmatically add a new
-            //var $tag_obj = $('#mainColorNames').data('tag');
-            //$tag_obj.add('Programmatically Added');
-        }
-        catch (e) {
-            //display a textarea for old IE, because it doesn't support this plugin or another one I tried!
-            tag_input.after('<textarea id="' + tag_input.attr('id') + '" name="' + tag_input.attr('name') + '" rows="3">' + tag_input.val() + '</textarea>').remove();
-            //$('#form-field-tags').autosize({append: "\n"});
-        }
-
-    }
 
     var initSelectCallBack = function (_data) {
         initSelect(_data);
@@ -76,25 +41,15 @@
             }).val(_data[key]);
 
 
-            if (key == 'sexIds') {
+            if (key == 'categoryBid') {
                 var arr = _data[key].split(',');
-                $('#sexIds').selectpicker('val', arr);
+                $('#categoryBid').selectpicker('val', arr);
             }
             else {
                 //下拉框
                 $("#" + key).val(_data[key]);
             }
         });
-
-        //初始化色组
-        if (_data["mainColorNames"] != '') {
-            var mainColors = _data["mainColorNames"].split(",");
-            var $tag_obj = $('#mainColorNames').data('tag');
-            $.each(mainColors, function (n, value) {
-                $tag_obj.add(value);
-            });
-        }
-
 
 
     }
@@ -113,6 +68,7 @@
                 .text(item["name"])
                 .appendTo($("#yearCode"));
         });
+
 
         //客户
         var yearCodeItems = data["customerItems"];
@@ -147,19 +103,6 @@
                 .appendTo($("#seriesId"));
         });
 
-        //性别属性
-        var sexItems = data["sexItems"];
-        $("#sexIds").empty();
-
-        $.each(sexItems, function (i, item) {
-            $("<option></option>")
-                .val(item["natrualkey"])
-                .text(item["name"])
-                .appendTo($("#sexIds"));
-        });
-
-        $('#sexIds').selectpicker({noneSelectedText: '请选择...'});
-
         //一级品类
         var categoryAItems = data["categoryAItems"];
         $("#categoryAid").empty();
@@ -169,17 +112,6 @@
                 .val(item["natrualkey"])
                 .text(item["name"])
                 .appendTo($("#categoryAid"));
-        });
-
-        //二级品类
-        var categoryBItems = data["categoryBItems"];
-        $("#categoryBid").empty();
-        $("<option></option>").val('').text("请选择...").appendTo($("#categoryBid"));
-        $.each(categoryBItems, function (i, item) {
-            $("<option></option>")
-                .val(item["natrualkey"])
-                .text(item["name"])
-                .appendTo($("#categoryBid"));
         });
 
 
@@ -193,24 +125,12 @@
         $('#projectForm').bootstrapValidator('validate');
     }
 
-    $(document).ready(function () {
-        multiselect();
-    });
-
-    var multiselect = function () {
-        //$('#sexIds').multiselect({
-        //    onDropdownHide: function(event) {
-        //        alert('Dropdown closed.');
-        //    }
-        //});
-    }
-
 
     var doSaveAction = function () {
-        var $tag_obj = $('#mainColorNames').data('tag');
+        //var $tag_obj = $('#mainColorNames').data('tag');
         project.categoryAid = '';
         project.categoryBid = '';
-        project.collectionNumber = '';
+        //project.collectionNumber = '';
 
         var formDataStr = $("#projectForm").serialize();
         //var formDataJson = $.strToJson(formDataStr);
@@ -223,8 +143,8 @@
             url = path + "/development/project/edit";
         }
 
-        var sexIds = $("#sexIds").val();
-        $.sendRestFulAjax(url, formDataStr + "&sexIds=" + sexIds, 'POST', 'json', function () {
+        var categoryBid = $("#categoryBid").val();
+        $.sendRestFulAjax(url, formDataStr + "&categoryBid=" + categoryBid, 'POST', 'json', function () {
             window.location.href = path + "/development/project/list";
         });
     }
@@ -234,96 +154,50 @@
      * 新增/修改校验字段描述
      * @returns {{name: {validators: {notEmpty: {message: string}}}, customerId: {validators: {notEmpty: {message: string}}}}}
      */
-    var fieldsDesc = function () {
-        var fieldsDesc =
-        {
-            yearCode: {
-                validators: {
-                    notEmpty: {
-                        message: '年份为必填项'
-                    }
-                }
-            },
-            customerId: {
-                validators: {
-                    notEmpty: {
-                        message: '客户为必填项'
-                    }
-                }
-            },
-            areaId: {
-                validators: {
-                    notEmpty: {
-                        message: '区域为必填项'
-                    }
-                }
-            },
-            seriesId: {
-                validators: {
-                    notEmpty: {
-                        message: '区域为必填项'
-                    }
-                }
-            },
-            //sampleDelivery: {
-            //    validators: {
-            //        notEmpty: {
-            //            message: '样品交付日期为必填项'
-            //        }
-            //    }
-            //},
-            //needPreOfferDate: {
-            //    validators: {
-            //        notEmpty: {
-            //            message: '预报价日期为必填项'
-            //        }
-            //    }
-            //},
-            categoryAid: {
-                validators: {
-                    notEmpty: {
-                        message: '品类一级名称为必填项'
-                    }
-                }
-            },
-            categoryBid: {
-                validators: {
-                    notEmpty: {
-                        message: '品类二级名称为必填项'
-                    }
-                }
-            },
-            sexIds: {
-                validators: {
-                    notEmpty: {
-                        message: '性别属性为必填项'
-                    }
-                }
-            },
-            collectionNumber: {
-                validators: {
-                    notEmpty: {
-                        message: '款式数量为必填项'
-                    }
-                }
-            },
-            mainColorNames: {
-                validators: {
-                    notEmpty: {
-                        message: '性别属性为必填项'
-                    }
+    var fieldsDesc =
+    {
+        yearCode: {
+            validators: {
+                notEmpty: {
+                    message: '年份为必填项'
                 }
             }
-            //,
-            //sketchReceivedDate: {
-            //    validators: {
-            //        notEmpty: {
-            //            message: '产品描述收到时间为必填项'
-            //        }
-            //    }
-            //}
+        },
+        customerId: {
+            validators: {
+                notEmpty: {
+                    message: '客户为必填项'
+                }
+            }
+        },
+        areaId: {
+            validators: {
+                notEmpty: {
+                    message: '区域为必填项'
+                }
+            }
+        },
+        seriesId: {
+            validators: {
+                notEmpty: {
+                    message: '区域为必填项'
+                }
+            }
+        },
+        categoryAid: {
+            validators: {
+                notEmpty: {
+                    message: '品类一级名称为必填项'
+                }
+            }
+        },
+        categoryBid: {
+            validators: {
+                notEmpty: {
+                    message: '品类二级名称为必填项'
+                }
+            }
         }
-        return fieldsDesc;
     }
 
 
@@ -336,18 +210,45 @@
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
-        fields: fieldsDesc()
+        fields: fieldsDesc
     }).on('success.form.bv', function (e) { //表单校验成功，ajax提交数据
         doSaveAction();
     });
 
 
-    //$("#fileLocation").fileinput({
-    //    uploadUrl: path + "/development/project/fileUpload",
-    //    uploadAsync: true,
-    //    minFileCount: 1,
-    //    maxFileCount: 5
-    //});
+    /**
+     * 回调函数
+     */
+    function cb() {
+        if ($(this).attr('id') === 'categoryAid') {
+            var categoryAid = $(this).val();
+            initCategoryB(categoryAid);
+        }
+    }
+
+    /**
+     * 根据一级品类id的改变，查询二级品类id
+     * @param categoryAid
+     */
+    function initCategoryB(categoryAid) {
+
+        $.sendRestFulAjax(path + "/system/category/searchSecond/" + categoryAid, null, 'GET', 'json', function (data) {
+
+            $('#categoryBid').selectpicker();
+
+            $('#categoryBid').selectpicker({noneSelectedText: '请选择...'});
+            //二级品类
+            $.each(data, function (index, value) {
+                $("<option></option>")
+                    .val(value.natrualkey)
+                    .text(value.name)
+                    .appendTo($("#categoryBid"));
+            });
+
+
+        });
+    }
+
 
     var project = {
         projectId: "",
@@ -355,8 +256,6 @@
         categoryAid: "",
         categoryBid: "",
         collectionNumber: "",
-        sexIds: [],//性别属性
-        mainColors: [],//色组
         yearCode: "",
         customerId: "",
         areaId: "",

@@ -3,10 +3,15 @@ package com.skysport.inerfaces.model.develop.project.helper;
 import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.constant.CharConstant;
 import com.skysport.core.instance.SystemBaseInfo;
+import com.skysport.core.model.seqno.service.IncrementNumber;
+import com.skysport.core.utils.SeqCreateUtils;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
-import com.skysport.inerfaces.form.develop.ProjectQueryForm;
+import com.skysport.inerfaces.bean.ProjectCategoryInfo;
+import com.skysport.inerfaces.bean.ProjectInfo;
+import com.skysport.inerfaces.constant.ApplicationConstant;
+import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +20,7 @@ import java.util.List;
  */
 public class ProjectManageHelper {
 
-    public static void buildBomQueryForm(ProjectQueryForm queryForm, HttpServletRequest request) {
+    private ProjectManageHelper() {
 
     }
 
@@ -134,5 +139,57 @@ public class ProjectManageHelper {
         }
 
 
+    }
+
+
+    /**
+     * @param incrementNumber
+     * @param info
+     */
+    public static ProjectInfo buildProjectInfo(IncrementNumber incrementNumber, ProjectInfo info) {
+
+        //构建项目id，名称等信息
+        String kind_name = ProjectManageHelper.buildKindName(info);
+        String seqNo = BuildSeqNoHelper.SINGLETONE.getFullSeqNo(kind_name, incrementNumber, ApplicationConstant.PROJECT_SEQ_NO_LENGTH);
+        String projectId = SeqCreateUtils.newRrojectSeq(info.getSeriesId());
+        //设置ID
+        info.setNatrualkey(projectId);
+        info.setSeqNo(seqNo);
+//        LocalDate today = LocalDate.now();
+        String name = ProjectManageHelper.buildProjectName(info);
+        info.setName(name);
+        info.setProjectName(name);
+
+        List<ProjectCategoryInfo> categoryInfos = info.getCategoryInfos();
+        if (null != categoryInfos && !categoryInfos.isEmpty()) {
+            for (ProjectCategoryInfo categoryInfo : categoryInfos) {
+                categoryInfo.setProjectId(projectId);
+                categoryInfo.setProjectName(name);
+            }
+        }
+
+        return info;
+    }
+
+
+    /**
+     * 组装子项目信息
+     *
+     * @param info ProjectInfo
+     * @return
+     */
+    public static List<ProjectBomInfo> buildProjectBomInfosByProjectInfo(ProjectInfo info) {
+        List<ProjectBomInfo> projectBomInfos = new ArrayList<>();
+        List<ProjectCategoryInfo> categoryInfos = info.getCategoryInfos();
+        if (null != categoryInfos && !categoryInfos.isEmpty()) {
+            for (ProjectCategoryInfo categoryInfo : categoryInfos) {
+                ProjectBomInfo projectBomInfo = info;//直接将项目的大部分项目信息转存到子项目对象中
+                projectBomInfo.setCategoryAid(categoryInfo.getCategoryAid());
+                projectBomInfo.setCategoryBid(categoryInfo.getCategoryBid());
+
+            }
+        }
+
+        return projectBomInfos;
     }
 }

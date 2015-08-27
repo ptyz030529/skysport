@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.develop.project.service;
 
-import com.skysport.inerfaces.bean.ProjectBomInfo;
+import com.skysport.inerfaces.bean.ProjectInfo;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
 import com.skysport.inerfaces.model.common.ICommonService;
 
@@ -10,15 +10,15 @@ import java.util.List;
  * 类说明:
  * Created by zhangjh on 2015/7/13.
  */
-public interface IProjectManageService extends ICommonService<ProjectBomInfo> {
+public interface IProjectManageService extends ICommonService<ProjectInfo> {
 
-    String queryCurrentSeqNo(ProjectBomInfo t);
+    String queryCurrentSeqNo(ProjectInfo t);
 
-    void addBomInfo(ProjectBomInfo t);
+    void addBomInfo(ProjectInfo t);
 
-    void updateBomInfo(ProjectBomInfo t);
+    void updateBomInfo(ProjectInfo t);
 
     int listFilteredInfosCounts(ProjectQueryForm queryForm);
 
-    List<ProjectBomInfo> searchInfos(ProjectQueryForm queryForm);
+    List<ProjectInfo> searchInfos(ProjectQueryForm queryForm);
 }

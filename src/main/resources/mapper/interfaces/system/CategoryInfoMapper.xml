@@ -102,4 +102,15 @@
         where del_flag=0 and level_id=#{levelId}
     </select>
 
+
+
+
+    <select id="searchChildCategoryByCategoryId" resultType="CategoryInfo">
+        select
+            <include refid="searchInfoSql"/>
+        FROM t_jc_category
+        WHERE del_flag=0 and parent_category_id =#{natrualkey}
+    </select>
+
+
 </mapper>

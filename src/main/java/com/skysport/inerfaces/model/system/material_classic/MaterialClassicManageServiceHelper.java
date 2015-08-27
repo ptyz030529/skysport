@@ -2,6 +2,7 @@ package com.skysport.inerfaces.model.system.material_classic;
 
 import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
+import com.skysport.inerfaces.model.system.material_classic.impl.MaterialClassicManageServiceImpl;
 import org.springframework.context.ApplicationContext;
 
 import java.util.List;

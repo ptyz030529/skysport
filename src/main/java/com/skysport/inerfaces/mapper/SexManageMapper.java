@@ -1,11 +1,12 @@
 package com.skysport.inerfaces.mapper;
 
+import com.skysport.inerfaces.bean.system.SexInfo;
 import org.springframework.stereotype.Component;
 
 /**
  * Created by zhangjh on 2015/6/17.
  */
 @Component("sexManageDao")
-public interface SexManageDao<SexInfo> extends CommonDao<SexInfo> {
+public interface SexManageMapper extends CommonDao<SexInfo> {
 
 }

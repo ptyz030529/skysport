@@ -15,12 +15,12 @@ import java.util.List;
  * Created by zhangjh on 2015/6/9.
  */
 @Service("categoryManageService")
-public class CategoryManageServiceImpl extends CommonServiceImpl<CategoryInfo> implements ICategoryManageService<CategoryInfo>, InitializingBean {
+public class CategoryManageServiceImpl extends CommonServiceImpl<CategoryInfo> implements ICategoryManageService, InitializingBean {
     @Resource(name = "categoryManageMapper")
     private CategoryManageMapper categoryManageMapper;
 
     @Override
-    public void afterPropertiesSet()  {
+    public void afterPropertiesSet() {
         commonDao = categoryManageMapper;
     }
 
@@ -28,6 +28,11 @@ public class CategoryManageServiceImpl extends CommonServiceImpl<CategoryInfo> i
     @Override
     public List<SelectItem2> querySelectListByLevelId(String levelId) {
         return categoryManageMapper.querySelectListByLevelId(levelId);
+    }
+
+    @Override
+    public List<CategoryInfo> searchChildCategoryByCategoryId(String categoryId) {
+        return categoryManageMapper.searchChildCategoryByCategoryId(categoryId);
     }
 
 

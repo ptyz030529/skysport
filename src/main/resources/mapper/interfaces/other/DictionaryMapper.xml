@@ -14,7 +14,7 @@
 	<select id="searchDictionary" resultType="Dictionary">
 		SELECT 
 			<include refid="searchDicSql"/>
-		FROM t_jc_dictionary
+		FROM t_sys_dictionary
 	</select>
 	
 

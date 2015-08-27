@@ -35,10 +35,10 @@
         <!--DEVELOP 开发-->
         <typeAlias alias="BomInfo" type="com.skysport.inerfaces.bean.BomInfo"/>
         <typeAlias alias="ProjectBomInfo" type="com.skysport.inerfaces.bean.ProjectBomInfo"/>
-        <typeAlias alias="ProjectInfo" type="com.skysport.inerfaces.bean.ProjectInfo"/>
+        <typeAlias alias="ProjectInfo" type="com.skysport.inerfaces.bean.ProjectBaseInfo"/>
         <typeAlias alias="ProjectQueryForm" type="com.skysport.inerfaces.form.develop.ProjectQueryForm"/>
         <typeAlias alias="BomQueryForm" type="com.skysport.inerfaces.form.develop.BomQueryForm"/>
-
+        <typeAlias alias="ProjectCategoryInfo" type="com.skysport.inerfaces.bean.ProjectCategoryInfo"/>
         <typeAlias alias="MainColor" type="com.skysport.inerfaces.bean.system.MainColor"/>
         <typeAlias alias="FabricInfo" type="com.skysport.inerfaces.bean.FabricsInfo"/>
 

@@ -2,7 +2,7 @@ package com.skysport.inerfaces.model.system.fabrics.impl;
 
 import com.skysport.inerfaces.bean.FabricsInfo;
 import com.skysport.inerfaces.bean.join.FabricsJoinInfo;
-import com.skysport.inerfaces.mapper.FabricsManageDao;
+import com.skysport.inerfaces.mapper.FabricsManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import com.skysport.inerfaces.model.system.fabrics.IFabricsJoinManageService;
 import org.apache.commons.lang3.StringUtils;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class FabricsJoinManageServiceImpl extends CommonServiceImpl<FabricsInfo> implements IFabricsJoinManageService, InitializingBean {
     @Resource(name = "fabricsManageDao")
-    private FabricsManageDao fabricsManageDao;
+    private FabricsManageMapper fabricsManageDao;
 
     @Override
     public void afterPropertiesSet()  {

@@ -9,7 +9,7 @@ import java.util.List;
  * Created by zhangjh on 2015/6/4.
  */
 @Component("pantoneManageDao")
-public interface PantoneManageDao {
+public interface PantoneManageMapper {
 
     /**
      * @param pantonId

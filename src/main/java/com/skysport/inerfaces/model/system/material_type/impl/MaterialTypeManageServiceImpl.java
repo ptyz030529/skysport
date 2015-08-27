@@ -1,7 +1,7 @@
-package com.skysport.inerfaces.model.system.material_type;
+package com.skysport.inerfaces.model.system.material_type.impl;
 
 import com.skysport.inerfaces.bean.system.MaterialTypeInfo;
-import com.skysport.inerfaces.mapper.MaterialTypeManageDao;
+import com.skysport.inerfaces.mapper.MaterialTypeManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 @Service("materialTypeManageService")
 public class MaterialTypeManageServiceImpl extends CommonServiceImpl<MaterialTypeInfo> implements InitializingBean {
     @Resource(name = "materialTypeManageDao")
-    private MaterialTypeManageDao materialTypeManageDao;
+    private MaterialTypeManageMapper materialTypeManageDao;
 
     @Override
     public void afterPropertiesSet()  {

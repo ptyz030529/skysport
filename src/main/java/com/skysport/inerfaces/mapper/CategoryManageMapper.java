@@ -18,4 +18,6 @@ public interface CategoryManageMapper extends CommonDao<CategoryInfo> {
      * @param levelId 级别的品类
      */
     List<SelectItem2> querySelectListByLevelId(String levelId);
+
+    List<CategoryInfo> searchChildCategoryByCategoryId(String categoryId);
 }

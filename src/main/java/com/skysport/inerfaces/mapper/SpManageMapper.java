@@ -13,7 +13,7 @@ import java.util.List;
  * @version:2015年5月5日 下午5:43:26
  */
 @Component("spManageDao")
-public interface SpManageDao {
+public interface SpManageMapper {
 	/**
 	 * 
 	 * @param spId

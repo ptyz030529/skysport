@@ -13,7 +13,7 @@ import java.util.List;
  * Created by zhangjh on 2015/6/29.
  */
 @Component("fabricsManageDao")
-public interface FabricsManageDao extends CommonDao<FabricsInfo> {
+public interface FabricsManageMapper extends CommonDao<FabricsInfo> {
     List<FabricsInfo> queryFabricByBomId(String bomId);
 
 

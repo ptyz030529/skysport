@@ -4,7 +4,7 @@ package com.skysport.inerfaces.bean;
  * 类说明:项目的BOM信息
  * Created by zhangjh on 2015/7/2.
  */
-public class ProjectBomInfo extends ProjectInfo {
+public class ProjectBomInfo extends ProjectBaseInfo {
 
     private String id;
     private String projectId;

@@ -3,13 +3,9 @@ package com.skysport.inerfaces.action.develop;
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.constant.DictionaryKeyConstant;
-import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.core.utils.SeqCreateUtils;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
-import com.skysport.inerfaces.constant.ApplicationConstant;
+import com.skysport.inerfaces.bean.ProjectInfo;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
-import com.skysport.inerfaces.model.develop.project.helper.ProjectManageHelper;
 import com.skysport.inerfaces.model.develop.project.service.IProjectManageService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
@@ -32,14 +28,10 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/development/project")
-public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
+public class ProjectAction extends BaseAction<String, Object, ProjectInfo> {
 
     @Resource(name = "projectManageService")
     private IProjectManageService projectManageService;
-
-    @Resource(name = "incrementNumber")
-    private IncrementNumber incrementNumber;
-
 
     /**
      * 此方法描述的是：展示list页面	 *
@@ -66,6 +58,7 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
 
         ModelAndView mav = new ModelAndView("/development/project/project-add");
         mav.addObject("natrualkey", natrualKey);
+
         return mav;
     }
 
@@ -98,16 +91,6 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
             }
         }
         Map<String, Object> resultMap = new HashMap<String, Object>();
-//        String[] initialPreview = new String[1];
-//        initialPreview[0] = "<img src='/resources/images/desert.jpg' class='file-preview-image' alt='Desert' title='Desert'>";
-//        resultMap.put("initialPreview", initialPreview);
-//        PreviewConfig initialPreviewConfig = new PreviewConfig();
-//        initialPreviewConfig.setCaption("desert.jpg");
-//        initialPreviewConfig.setExtra(new Extra(100));
-//        initialPreviewConfig.setKey("100");
-//        initialPreviewConfig.setUrl("http://localhost/avatar/delete");
-//        initialPreviewConfig.setWidth("120px");
-//        resultMap.put("initialPreviewConfig", initialPreviewConfig);
         // 重定向
         return resultMap;
     }
@@ -131,7 +114,6 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
         bomInfo.setAreaId(request.getParameter("areaId"));
         bomInfo.setSeriesId(request.getParameter("seriesId"));
         queryForm.setProjectBomInfo(bomInfo);
-        ProjectManageHelper.buildBomQueryForm(queryForm, request);
         // 总记录数
         int recordsTotal = projectManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -139,9 +121,13 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
             recordsFiltered = projectManageService.listFilteredInfosCounts(queryForm);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
-        List<ProjectBomInfo> infos = projectManageService.searchInfos(queryForm);
-        ProjectManageHelper.turnIdToName(infos);
+        List<ProjectInfo> infos = projectManageService.searchInfos(queryForm);
+
+//        ProjectManageHelper.turnIdToName(infos);
+
         Map<String, Object> resultMap = buildSearchJsonMap(infos, recordsTotal, recordsFiltered, draw);
+
+
         return resultMap;
     }
 
@@ -153,7 +139,7 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(ProjectBomInfo info) {
+    public Map<String, Object> edit(ProjectInfo info) {
         projectManageService.edit(info);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
@@ -170,22 +156,16 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(ProjectBomInfo info) {
-
-//
-        String kind_name = ProjectManageHelper.buildKindName(info);
-        String seqNo = BuildSeqNoHelper.SINGLETONE.getFullSeqNo(kind_name, incrementNumber, ApplicationConstant.PROJECT_SEQ_NO_LENGTH);
-//        //年份+客户+地域+系列+NNN
-//        String projectId = kind_name + seqNo;
-        String projectId = SeqCreateUtils.newRrojectSeq(info.getSeriesId());
-        //设置ID
-        info.setNatrualkey(projectId);
-        info.setSeqNo(seqNo);
+    public Map<String, Object> add(ProjectInfo info) {
 
         //保存项目信息
         projectManageService.add(info);
 
 
+        //保存项目二级品类信息
+
+
+        //保存生成子项目信息
 
 
         Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -202,8 +182,8 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
      */
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
-    public ProjectBomInfo queryCustomerNo(@PathVariable String natrualKey) {
-        ProjectBomInfo info = projectManageService.queryInfoByNatrualKey(natrualKey);
+    public ProjectInfo queryCustomerNo(@PathVariable String natrualKey) {
+        ProjectInfo info = projectManageService.queryInfoByNatrualKey(natrualKey);
         return info;
     }
 
@@ -273,7 +253,9 @@ public class ProjectAction extends BaseAction<String, Object, ProjectBomInfo> {
         String[] fileNames = uploadDest.list();
         for (int i = 0; i < fileNames.length; i++) {
             //打印出文件名
-            System.out.println(fileNames[i]);
+//            System.out.println(fileNames[i]);
+
+
         }
         return mav;
     }

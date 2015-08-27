@@ -2,16 +2,14 @@ package com.skysport.inerfaces.model.develop.project.service.impl;
 
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
-import com.skysport.inerfaces.bean.system.MainColor;
+import com.skysport.inerfaces.bean.ProjectInfo;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
 import com.skysport.inerfaces.mapper.ProjectManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
-import com.skysport.inerfaces.model.develop.bom.IBomManageService;
-import com.skysport.inerfaces.model.develop.bom.helper.BomManageHelper;
 import com.skysport.inerfaces.model.develop.project.helper.ProjectManageHelper;
+import com.skysport.inerfaces.model.develop.project.service.IProjectCategoryManageService;
+import com.skysport.inerfaces.model.develop.project.service.IProjectItemManageService;
 import com.skysport.inerfaces.model.develop.project.service.IProjectManageService;
-import com.skysport.inerfaces.model.system.main_color.IMainColorService;
-import com.skysport.inerfaces.model.system.main_color.helper.MainColorHelper;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
@@ -23,46 +21,59 @@ import java.util.List;
  * Created by zhangjh on 2015/7/13.
  */
 @Service("projectManageService")
-public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectBomInfo> implements IProjectManageService, InitializingBean {
+public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectInfo> implements IProjectManageService, InitializingBean {
+
+
     @Resource(name = "projectManageMapper")
     private ProjectManageMapper projectManageMapper;
-    @Resource(name = "bomManageService")
-    private IBomManageService bomManageService;
+    @Resource(name = "projectCategoryManageService")
+    private IProjectCategoryManageService projectCategoryManageService;
+    @Resource(name = "projectItemManageService")
+    private IProjectItemManageService projectItemManageService;
 
-    @Resource(name = "mainColorService")
-    private IMainColorService mainColorService;
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;
 
 
     @Override
     public void afterPropertiesSet() {
+
         commonDao = projectManageMapper;
+
+
     }
 
 
     @Override
-    public String queryCurrentSeqNo(ProjectBomInfo info) {
+    public String queryCurrentSeqNo(ProjectInfo info) {
+
         return projectManageMapper.queryCurrentSeqNo(info);
+
     }
 
     @Override
-    public void add(ProjectBomInfo t) {
-//        LocalDate today = LocalDate.now();
-        String name = ProjectManageHelper.buildProjectName(t);
-        t.setName(name);
-        t.setProjectName(name);
+    public void add(ProjectInfo info) {
+
+        info = ProjectManageHelper.buildProjectInfo(incrementNumber, info);
+
+
+        //大项目新增
         //增加主项目信息
-        super.add(t);
-        //增加项目BOM信息
-        addBomInfo(t);
-        List<MainColor> mainColorList = MainColorHelper.SINGLETONE.turnMainColorStrToList(t);
-        //增加项目主颜色信息
-        mainColorService.add(mainColorList);
+        super.add(info);
+
+        //增加项目的品类信息
+        projectCategoryManageService.addBatch(info.getCategoryInfos());
+
+        List<ProjectBomInfo> projectBomInfos = ProjectManageHelper.buildProjectBomInfosByProjectInfo(info);
+
+        //增加子项目
+        projectItemManageService.addBatch(projectBomInfos);
 
 
-        //生成BOM信息并保存
-        BomManageHelper.autoCreateBomInfoAndSave(bomManageService, incrementNumber, t);
+    }
+
+    private void buildProjectInfo(ProjectInfo info) {
+
     }
 
     /**
@@ -71,7 +82,7 @@ public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectBomInfo> 
      * @param info
      */
     @Override
-    public void edit(ProjectBomInfo info) {
+    public void edit(ProjectInfo info) {
 
         String seqNo = queryInfoByNatrualKey(info.getNatrualkey()).getSeqNo();
         info.setSeqNo(seqNo);
@@ -82,25 +93,19 @@ public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectBomInfo> 
 
         //更新t_project表
         super.edit(info);
-        //更新t_project_bominfo表
-        updateBomInfo(info);
 
-        //增加项目主颜色信息
-        mainColorService.delete(info.getNatrualkey());
-        List<MainColor> mainColorList = MainColorHelper.SINGLETONE.turnMainColorStrToList(info);
-        //增加项目主颜色信息
 
-        mainColorService.add(mainColorList);
+
 
     }
 
     @Override
-    public void addBomInfo(ProjectBomInfo info) {
+    public void addBomInfo(ProjectInfo info) {
         projectManageMapper.addBomInfo(info);
     }
 
     @Override
-    public void updateBomInfo(ProjectBomInfo info) {
+    public void updateBomInfo(ProjectInfo info) {
         projectManageMapper.updateBomInfo(info);
     }
 
@@ -110,7 +115,7 @@ public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectBomInfo> 
     }
 
     @Override
-    public List<ProjectBomInfo> searchInfos(ProjectQueryForm queryForm) {
+    public List<ProjectInfo> searchInfos(ProjectQueryForm queryForm) {
         return projectManageMapper.searchInfos(queryForm);
     }
 }

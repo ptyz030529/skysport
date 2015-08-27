@@ -90,29 +90,6 @@
 
 
                         </div>
-
-                        <%--<div class="form-group">
-
-                            <label class="col-xs-2  control-label"
-                                   for="name"> 名称 </label>
-
-                            <div class="col-xs-3">
-                                <input type="text" id="name" name="name"
-                                       placeholder="名称" class="col-xs-10 col-sm-12"/>
-                            </div>
-
-
-                            <label class="col-xs-2  control-label"
-                                   for="version"> 版本号 </label>
-
-                            <div class="col-xs-3">
-                                <input type="text" id="version" name="version"
-                                       placeholder="版本号" class="col-xs-10 col-sm-12"/>
-                            </div>
-
-                        </div>--%>
-
-
                         <div class="form-group">
                             <label class="col-xs-2  control-label"
                                    for="sampleDelivery"> 样品交付日期 </label>
@@ -151,47 +128,11 @@
                             <label class="col-xs-2  control-label" for="categoryBid"> 品类二级名称 </label>
 
                             <div class="col-xs-3">
-                                <select class="col-xs-12" data-style="btn-info" id="categoryBid" name="categoryBid"
-                                        placeholder="品类二级名称">
+                                <select data-style="btn-info" data-width="100%"  id="categoryBid" multiple="multiple"  placeholder="品类二级名称">
                                 </select>
                             </div>
 
                         </div>
-
-                        <%-- <!-- #section:custom/extra.hr -->
-                     <div class="hr hr32 hr-dotted"></div>--%>
-                        <div class="form-group">
-                            <label class="col-xs-2  control-label" for="sexIds">性别属性</label>
-                            <div class="col-xs-3">
-                                <!-- #section:plugins/input.multiselect -->
-                                <select id="sexIds" multiple="multiple" >
-                                </select>
-                                <!-- /section:plugins/input.multiselect -->
-                            </div>
-                            <label class="col-xs-2  control-label"
-                                   for="collectionNumber"> 款式数量 </label>
-
-                            <div class="col-xs-3">
-                                <input type="text" id="collectionNumber" name="collectionNumber"
-                                       placeholder="款式数量" class="col-xs-10 col-sm-12"/>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-xs-2  control-label"
-                                   for="mainColorNames"> 色组 </label>
-
-                            <div class="col-xs-3">
-                                <!-- #section:plugins/input.tag-input -->
-                                <input type="text" class="tags col-xs-12 col-sm-12" name="mainColorNames"
-                                       id="mainColorNames" placeholder="输入色组 ..."/>
-                                <!-- /section:plugins/input.tag-input -->
-                            </div>
-
-                        </div>
-
-                    </div>
                 </div>
                 <div id="accessoriesInfo">
                     <h5 class="header smaller lighter blue">

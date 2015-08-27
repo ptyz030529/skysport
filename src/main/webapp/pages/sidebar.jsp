@@ -208,6 +208,13 @@
 
                     <ul class="submenu">
                         <li class="">
+                            <a href="javascript:onclick('<%=path%>/development/project/add/null')">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                项目新建
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
                             <a href="javascript:onclick('<%=path%>/development/project/list')">
                                 <i class="menu-icon fa fa-caret-right"></i>
                                 项目列表
@@ -216,11 +223,10 @@
                             <b class="arrow"></b>
                         </li>
                         <li class="">
-                            <a href="javascript:onclick('<%=path%>/development/project/add/null')">
+                            <a href="javascript:onclick('<%=path%>/development/project_item/list')">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                项目新建
+                                子项目列表
                             </a>
-
                             <b class="arrow"></b>
                         </li>
                     </ul>

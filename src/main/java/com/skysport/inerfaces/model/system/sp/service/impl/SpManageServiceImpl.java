@@ -3,7 +3,7 @@ package com.skysport.inerfaces.model.system.sp.service.impl;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.inerfaces.bean.system.SpInfo;
-import com.skysport.inerfaces.mapper.SpManageDao;
+import com.skysport.inerfaces.mapper.SpManageMapper;
 import com.skysport.inerfaces.model.system.sp.service.ISpManageService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
@@ -20,10 +20,10 @@ import java.util.List;
 @Service("spManageService")
 public class SpManageServiceImpl implements ISpManageService {
     @Resource(name = "spManageDao")
-    private SpManageDao spManageDao;
+    private SpManageMapper spManageMapper;
 
     public SpManageServiceImpl() {
-        System.out.println("spManageDao:" + spManageDao);
+        System.out.println("spManageMapper:" + spManageMapper);
     }
 
     /**
@@ -31,7 +31,7 @@ public class SpManageServiceImpl implements ISpManageService {
      */
     @Override
     public int listSPInfosCounts() {
-        return spManageDao.listSPInfosCounts();
+        return spManageMapper.listSPInfosCounts();
     }
 
     /**
@@ -47,7 +47,7 @@ public class SpManageServiceImpl implements ISpManageService {
         // // 数据长度
         // int length = dataTablesInfo.getLength();
 
-        return spManageDao.listFilteredSPInfosCounts(dataTablesInfo);
+        return spManageMapper.listFilteredSPInfosCounts(dataTablesInfo);
     }
 
     /**
@@ -55,15 +55,15 @@ public class SpManageServiceImpl implements ISpManageService {
      */
     @Override
     public List<SpInfo> searchSP(DataTablesInfo dataTablesInfo) {
-        return spManageDao.searchSP(dataTablesInfo);
+        return spManageMapper.searchSP(dataTablesInfo);
     }
 
-    public SpManageDao getSpManageDao() {
-        return spManageDao;
+    public SpManageMapper getSpManageMapper() {
+        return spManageMapper;
     }
 
-    public void setSpManageDao(SpManageDao spManageDao) {
-        this.spManageDao = spManageDao;
+    public void setSpManageMapper(SpManageMapper spManageMapper) {
+        this.spManageMapper = spManageMapper;
     }
 
     /**
@@ -71,27 +71,27 @@ public class SpManageServiceImpl implements ISpManageService {
      */
     @Override
     public void edit(SpInfo spInfo) {
-        spManageDao.updateSp(spInfo);
+        spManageMapper.updateSp(spInfo);
     }
 
     @Override
     public SpInfo querySpInfoBySpId(@Param(value = "spId") String spId) {
-        return spManageDao.querySpInfo(spId);
+        return spManageMapper.querySpInfo(spId);
     }
 
     @Override
     public void add(SpInfo spInfo) {
-        spManageDao.add(spInfo);
+        spManageMapper.add(spInfo);
     }
 
     @Override
     public void del(String spId) {
-        spManageDao.del(spId);
+        spManageMapper.del(spId);
     }
 
     @Override
     public List<SelectItem2> querySelectList(String name) {
-        return spManageDao.querySelectList(name);
+        return spManageMapper.querySelectList(name);
     }
 
 

@@ -6,7 +6,7 @@ import com.skysport.inerfaces.bean.FabricsInfo;
 import com.skysport.inerfaces.bean.join.FabricsJoinInfo;
 import com.skysport.inerfaces.constant.ApplicationConstant;
 import com.skysport.inerfaces.helper.BuildSeqNoHelper;
-import com.skysport.inerfaces.mapper.FabricsManageDao;
+import com.skysport.inerfaces.mapper.FabricsManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import com.skysport.inerfaces.model.system.fabrics.IFabricsService;
 import org.apache.commons.lang3.StringUtils;
@@ -24,7 +24,7 @@ import java.util.List;
 @Service("fabricsManageService")
 public class FabricsServiceImpl extends CommonServiceImpl<FabricsInfo> implements IFabricsService, InitializingBean {
     @Resource(name = "fabricsManageDao")
-    private FabricsManageDao fabricsManageDao;
+    private FabricsManageMapper fabricsManageDao;
 
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;

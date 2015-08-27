@@ -7,5 +7,5 @@ import org.springframework.stereotype.Component;
  * Created by zhangjh on 2015/6/17.
  */
 @Component("materialTypeManageDao")
-public interface MaterialTypeManageDao extends   CommonDao<MaterialTypeInfo> {
+public interface MaterialTypeManageMapper extends   CommonDao<MaterialTypeInfo> {
 }
