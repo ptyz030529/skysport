@@ -30,7 +30,7 @@ public class FabricsServiceImpl extends CommonServiceImpl<FabricsInfo> implement
     private IncrementNumber incrementNumber;
 
     @Override
-    public void afterPropertiesSet()  {
+    public void afterPropertiesSet() {
         commonDao = fabricsManageDao;
     }
 
@@ -58,6 +58,8 @@ public class FabricsServiceImpl extends CommonServiceImpl<FabricsInfo> implement
             //面料id存在，修改；面料id不存在则新增
             for (FabricsJoinInfo fabricsJoinInfo : fabricItems) {
                 String fabricId = fabricsJoinInfo.getFabricsInfo().getFabricId();
+
+
                 //有id，更新
                 if (StringUtils.isNotBlank(fabricId)) {
                     fabricsManageDao.updateInfo(fabricsJoinInfo.getFabricsInfo());
@@ -84,6 +86,7 @@ public class FabricsServiceImpl extends CommonServiceImpl<FabricsInfo> implement
         }
 
     }
+
 
     private void setFabricId(FabricsJoinInfo fabricsJoinInfo, String fabricId, String bomId) {
 

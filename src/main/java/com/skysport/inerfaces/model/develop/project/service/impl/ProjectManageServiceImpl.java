@@ -1,8 +1,11 @@
 package com.skysport.inerfaces.model.develop.project.service.impl;
 
+import com.skysport.core.exception.CnfwsyException;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.ProjectBomInfo;
 import com.skysport.inerfaces.bean.ProjectInfo;
+import com.skysport.inerfaces.constant.ApplicationConstant;
+import com.skysport.inerfaces.constant.develop.DevelopmentReturnConstant;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
 import com.skysport.inerfaces.mapper.ProjectManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
@@ -37,10 +40,7 @@ public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectInfo> imp
 
     @Override
     public void afterPropertiesSet() {
-
         commonDao = projectManageMapper;
-
-
     }
 
 
@@ -54,8 +54,10 @@ public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectInfo> imp
     @Override
     public void add(ProjectInfo info) {
 
+        //新增项目时组装项目名等信息
         info = ProjectManageHelper.buildProjectInfo(incrementNumber, info);
-
+        //组装项目品类信息
+        info = ProjectManageHelper.buildProjectCategoryInfo(info);
 
         //大项目新增
         //增加主项目信息
@@ -70,9 +72,8 @@ public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectInfo> imp
         projectItemManageService.addBatch(projectBomInfos);
 
 
-    }
+        projectItemManageService.addBatchBomInfo(projectBomInfos);
 
-    private void buildProjectInfo(ProjectInfo info) {
 
     }
 
@@ -83,18 +84,36 @@ public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectInfo> imp
      */
     @Override
     public void edit(ProjectInfo info) {
+        ProjectInfo infoInDb = super.queryInfoByNatrualKey(info.getNatrualkey());
 
-        String seqNo = queryInfoByNatrualKey(info.getNatrualkey()).getSeqNo();
-        info.setSeqNo(seqNo);
+        if (infoInDb.getStatus() == ApplicationConstant.PROJECT_CANOT_EDIT) {
+            throw new CnfwsyException(DevelopmentReturnConstant.PROJECT_CANNOT_EDIT.getCode(), DevelopmentReturnConstant.PROJECT_CANNOT_EDIT.getMsg());
+        }
 
-        String name = ProjectManageHelper.buildProjectName(info);
-        info.setName(name);
-        info.setProjectName(name);
+        //判断bom有没有生成，如果bom已生成，不能修改项目信息
+//        if(){
+//            throw new CnfwsyException("100001","bom已生成，不能修改项目信息");
+//        }
+
+        info = ProjectManageHelper.buildProjectInfo(incrementNumber, info);
 
         //更新t_project表
         super.edit(info);
 
+        //删除项目相关的所有信息
+        projectManageMapper.delInfoAboutProject(info.getNatrualkey());
 
+        info = ProjectManageHelper.buildProjectCategoryInfo(info);
+        //增加项目的品类信息
+        projectCategoryManageService.addBatch(info.getCategoryInfos());
+
+        List<ProjectBomInfo> projectBomInfos = ProjectManageHelper.buildProjectBomInfosByProjectInfo(info);
+
+        //增加子项目
+        projectItemManageService.addBatch(projectBomInfos);
+
+
+        projectItemManageService.addBatchBomInfo(projectBomInfos);
 
 
     }
@@ -117,5 +136,10 @@ public class ProjectManageServiceImpl extends CommonServiceImpl<ProjectInfo> imp
     @Override
     public List<ProjectInfo> searchInfos(ProjectQueryForm queryForm) {
         return projectManageMapper.searchInfos(queryForm);
+    }
+
+    @Override
+    public void updateProjectStatus(String projectId, int status) {
+        projectManageMapper.updateProjectStatus(projectId, status);
     }
 }

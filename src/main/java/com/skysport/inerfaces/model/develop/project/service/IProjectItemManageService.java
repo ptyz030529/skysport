@@ -21,4 +21,6 @@ public interface IProjectItemManageService extends ICommonService<ProjectBomInfo
     int listFilteredInfosCounts(ProjectQueryForm queryForm);
 
     List<ProjectBomInfo> searchInfos(ProjectQueryForm queryForm);
+
+    void addBatchBomInfo(List<ProjectBomInfo> info);
 }

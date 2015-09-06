@@ -8,6 +8,7 @@ public class ProjectBomInfo extends ProjectBaseInfo {
 
     private String id;
     private String projectId;
+    private String parentProjectId;
     private String projectName;
     private String categoryAid;
     private String categoryAname;
@@ -130,5 +131,19 @@ public class ProjectBomInfo extends ProjectBaseInfo {
 
     public void setSexIds(String sexIds) {
         this.sexIds = sexIds;
+    }
+
+    public String getParentProjectId() {
+        return parentProjectId;
+    }
+
+    public void setParentProjectId(String parentProjectId) {
+        this.parentProjectId = parentProjectId;
+    }
+
+    @Override
+    public ProjectBomInfo clone() throws CloneNotSupportedException {
+        ProjectBomInfo projectBomInfo = (ProjectBomInfo) super.clone();
+        return projectBomInfo;
     }
 }

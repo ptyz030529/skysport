@@ -9,13 +9,14 @@ public class CnfwsyException extends RuntimeException {
     private String message;
 
     public CnfwsyException() {
+
     }
 
     public CnfwsyException(String code) {
         this.code = code;
     }
 
-    public CnfwsyException(String message, String code) {
+    public CnfwsyException(String code, String message) {
         super(message);
         this.code = code;
         this.message = message;

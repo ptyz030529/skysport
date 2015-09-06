@@ -47,22 +47,29 @@ public class ProjectItemManageServiceImpl extends CommonServiceImpl<ProjectBomIn
     }
 
     @Override
-    public void add(ProjectBomInfo t) {
+    public void add(ProjectBomInfo info) {
 //        LocalDate today = LocalDate.now();
-        String name = ProjectManageHelper.buildProjectName(t);
-        t.setName(name);
-        t.setProjectName(name);
+        String name = ProjectManageHelper.buildProjectName(info);
+        info.setName(name);
+        info.setProjectName(name);
+
         //增加主项目信息
-        super.add(t);
+        super.add(info);
+
         //增加项目BOM信息
-        addBomInfo(t);
-        List<MainColor> mainColorList = MainColorHelper.SINGLETONE.turnMainColorStrToList(t);
+        addBomInfo(info);
+
+        List<MainColor> mainColorList = MainColorHelper.SINGLETONE.turnMainColorStrToList(info);
+
         //增加项目主颜色信息
         mainColorService.add(mainColorList);
 
 
         //生成BOM信息并保存
-        BomManageHelper.autoCreateBomInfoAndSave(bomManageService, incrementNumber, t);
+        BomManageHelper.autoCreateBomInfoAndSave(bomManageService, incrementNumber, info);
+
+
+
     }
 
     /**
@@ -76,9 +83,9 @@ public class ProjectItemManageServiceImpl extends CommonServiceImpl<ProjectBomIn
         String seqNo = queryInfoByNatrualKey(info.getNatrualkey()).getSeqNo();
         info.setSeqNo(seqNo);
 
-        String name = ProjectManageHelper.buildProjectName(info);
-        info.setName(name);
-        info.setProjectName(name);
+//        String name = ProjectManageHelper.buildProjectName(info);
+//        info.setName(name);
+//        info.setProjectName(name);
 
         //更新t_project表
         super.edit(info);
@@ -87,10 +94,20 @@ public class ProjectItemManageServiceImpl extends CommonServiceImpl<ProjectBomIn
 
         //增加项目主颜色信息
         mainColorService.delete(info.getNatrualkey());
+
         List<MainColor> mainColorList = MainColorHelper.SINGLETONE.turnMainColorStrToList(info);
+
         //增加项目主颜色信息
 
         mainColorService.add(mainColorList);
+
+
+        info =  super.queryInfoByNatrualKey(info.getNatrualkey());
+        bomManageService.delByProjectId(info.getNatrualkey());
+        //生成BOM信息并保存
+        BomManageHelper.autoCreateBomInfoAndSave(bomManageService, incrementNumber, info);
+
+
 
     }
 
@@ -112,5 +129,10 @@ public class ProjectItemManageServiceImpl extends CommonServiceImpl<ProjectBomIn
     @Override
     public List<ProjectBomInfo> searchInfos(ProjectQueryForm queryForm) {
         return projectItemManageMapper.searchInfos(queryForm);
+    }
+
+    @Override
+    public void addBatchBomInfo(List<ProjectBomInfo> info) {
+        projectItemManageMapper.addBatchBomInfo(info);
     }
 }

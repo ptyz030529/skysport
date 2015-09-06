@@ -88,7 +88,6 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
     </aop:config>
 
-
     <!--使用AspectJ方式配置AOP-->
     <!--解决上面..*Impl配置时，报的java.lang.ClassCastException: com.sun.proxy异常-->
     <aop:aspectj-autoproxy proxy-target-class="true"/>

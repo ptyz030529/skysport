@@ -80,4 +80,9 @@ public class BomManageServiceImpl extends CommonServiceImpl<BomInfo> implements 
 
     }
 
+    @Override
+    public void delByProjectId(String projectId) {
+        bomManageMapper.delByProjectId(projectId);
+    }
+
 }

@@ -128,13 +128,6 @@ $(document).ready(function() {
                         }
                     }
                 },
-                corTime: {
-                    validators: {
-                        notEmpty: {
-                            message: '合作时间为必填项'
-                        }
-                    }
-                },
                 address: {
                     validators: {
                         notEmpty: {

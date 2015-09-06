@@ -32,8 +32,6 @@
      * @param _data
      */
     var initFormFields = function (_data) {
-        console.info("the info of project:" + _data);
-
         Object.keys(_data).map(function (key) {
 
             $('#projectForm input').filter(function () {
@@ -41,22 +39,54 @@
             }).val(_data[key]);
 
 
-            if (key == 'categoryBid') {
-                var arr = _data[key].split(',');
-                $('#categoryBid').selectpicker('val', arr);
+            $("#" + key).val(_data[key]);
+            if (key == 'categoryAid') {
+                //
+                //var categoryAid = _data[key];
+                //initCategoryB(categoryAid);
+
+                //var arr = _data[key].split(',');
+                //$('#categoryBid').selectpicker('val', arr);
             }
             else {
                 //下拉框
-                $("#" + key).val(_data[key]);
+                //$("#" + key).val(_data[key]);
             }
         });
 
+        initCategory();
 
     }
 
+    var initCategory = function () {
+        var natrualkey = $("#natrualkey").val();
+        var url = "/development/project-category/infoCategory/" + natrualkey;
+        $.sendRestFulAjax(path + url, null, 'GET', 'json', initCategoryFields);
+    }
+
+    var initCategoryFields = function (_data) {
+        console.info("_data:" + _data);
+        if(_data === '') return;
+        var categoryAid = _data[0].categoryAid;
+        $("#categoryAid").val(_data[0].categoryAid);
+
+        initCategoryB(categoryAid,function(){
+            selectCategoryB(_data);
+        });
+
+    }
+
+    var selectCategoryB= function(_data){
+        var categoryBids =[];
+        for (var index = 0; index < _data.length; index++) {
+            categoryBids.push(_data[index].categoryBid);
+        }
+        $('#categoryBid').selectpicker("val",categoryBids)
+    }
+
+
 
     var initSelect = function (_data) {
-
         var data = _data;
         //年份
         var yearCodeItems = data["yearItems"];
@@ -68,7 +98,6 @@
                 .text(item["name"])
                 .appendTo($("#yearCode"));
         });
-
 
         //客户
         var yearCodeItems = data["customerItems"];
@@ -222,7 +251,9 @@
     function cb() {
         if ($(this).attr('id') === 'categoryAid') {
             var categoryAid = $(this).val();
-            initCategoryB(categoryAid);
+            initCategoryB(categoryAid,function(){
+
+            });
         }
     }
 
@@ -230,13 +261,12 @@
      * 根据一级品类id的改变，查询二级品类id
      * @param categoryAid
      */
-    function initCategoryB(categoryAid) {
+    function initCategoryB(categoryAid,callback) {
 
         $.sendRestFulAjax(path + "/system/category/searchSecond/" + categoryAid, null, 'GET', 'json', function (data) {
 
-            $('#categoryBid').selectpicker();
+            $('#categoryBid').empty();
 
-            $('#categoryBid').selectpicker({noneSelectedText: '请选择...'});
             //二级品类
             $.each(data, function (index, value) {
                 $("<option></option>")
@@ -245,8 +275,12 @@
                     .appendTo($("#categoryBid"));
             });
 
-
+            $('#categoryBid').selectpicker({noneSelectedText: '请选择...'});
+            $('#categoryBid').selectpicker('refresh');
+            callback();
         });
+
+
     }
 
 

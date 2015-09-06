@@ -21,4 +21,5 @@ public interface IBomManageService extends ICommonService<BomInfo> {
      */
     public void edit(BomInfo bomInfo);
 
+    void delByProjectId(String natrualkey);
 }

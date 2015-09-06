@@ -9,10 +9,10 @@
     })
 
     var project_selectURL = "/system/baseinfo/project_select";
-    var project_infoURL = "/development/project/info/";
-    var project_listURL ="/development/project/list";
-    var project_newURL = "/development/project/new";
-    var project_editURL = "/development/project/edit";
+    var project_infoURL = "/development/project_item/info/";
+    var project_listURL ="/development/project_item/list";
+    var project_newURL = "/development/project_item/new";
+    var project_editURL = "/development/project_item/edit";
 
     //第一次初始化下拉列表
     var reloadDetailSelectData = function () {
@@ -83,16 +83,20 @@
 
             if (key == 'sexIds') {
                 var arr = _data[key].split(',');
-                $('#sexIds').selectpicker('val', arr);
+                $('#sexIds').selectpicker("val",arr)
+                //$('#sexIds').val(arr);
             }
             else {
                 //下拉框
                 $("#" + key).val(_data[key]);
+                if(key!='fileLocation' && key!='collectionNumber' && key!='natrualkey'){
+                    $("#" + key).attr('disabled','disabled');
+                }
             }
         });
 
         //初始化色组
-        if (_data["mainColorNames"] != '') {
+        if (_data["mainColorNames"] != null && _data["mainColorNames"] != '') {
             var mainColors = _data["mainColorNames"].split(",");
             var $tag_obj = $('#mainColorNames').data('tag');
             $.each(mainColors, function (n, value) {
@@ -157,13 +161,11 @@
         $("#sexIds").empty();
 
         $.each(sexItems, function (i, item) {
-            $("<option></option>")
-                .val(item["natrualkey"])
-                .text(item["name"])
-                .appendTo($("#sexIds"));
+            $("<option></option>").val(item["natrualkey"]).text(item["name"]).appendTo($("#sexIds"));
         });
 
         $('#sexIds').selectpicker({noneSelectedText: '请选择...'});
+        $('#sexIds').selectpicker('refresh');
 
         //一级品类
         var categoryAItems = data["categoryAItems"];
@@ -213,6 +215,7 @@
 
     var doSaveAction = function () {
         var $tag_obj = $('#mainColorNames').data('tag');
+        var tagValues =$tag_obj.values.join(',');
         project.categoryAid = '';
         project.categoryBid = '';
         project.collectionNumber = '';
@@ -229,7 +232,9 @@
         }
 
         var sexIds = $("#sexIds").val();
-        $.sendRestFulAjax(url, formDataStr + "&sexIds=" + sexIds, 'POST', 'json', function () {
+
+
+        $.sendRestFulAjax(url, formDataStr + "&sexIds=" + sexIds+"&mainColorNames="+tagValues, 'POST', 'json', function () {
             window.location.href = path + project_listURL;
         });
     }

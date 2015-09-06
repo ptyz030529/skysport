@@ -21,4 +21,6 @@ public interface IProjectManageService extends ICommonService<ProjectInfo> {
     int listFilteredInfosCounts(ProjectQueryForm queryForm);
 
     List<ProjectInfo> searchInfos(ProjectQueryForm queryForm);
+
+    void updateProjectStatus(String projectId,int status);
 }

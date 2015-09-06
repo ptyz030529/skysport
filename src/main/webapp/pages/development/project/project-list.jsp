@@ -11,14 +11,34 @@
   <!--<script type="text/javascript" src="/dt-page/extjs.js"></script>-->
 </head>
 <body>
+<div class="breadcrumbs" id="breadcrumbs">
+  <script type="text/javascript">
+    try {
+      ace.settings.check('breadcrumbs', 'fixed')
+    } catch (e) {
+
+    }
+  </script>
+
+  <ul class="breadcrumb">
+    <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">开发</a>
+    </li>
+
+    <li><a href="#">项目</a></li>
+    <li class="active">查询</li>
+  </ul>
+  <!-- /.breadcrumb -->
+  <!-- /section:basics/content.searchbox -->
+</div>
+
 <div class="page-content">
   <%--<%@ include file="base/ace-setting.jsp"%>--%>
-  <div class="page-header">
+  <%--<div class="page-header">
     <h1>
       开发
       <small><i class="icon-double-angle-right"></i> 项目列表信息</small>
     </h1>
-  </div>
+  </div>--%>
   <!-- PAGE CONTENT BEGINS -->
   <div class="row">
     <div class="col-xs-12">
@@ -54,11 +74,6 @@
   <button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
   {{/each}}
 </script>
-
 <script type="text/javascript" src="<%=path%>/resources/interfaces/development/project/project-list.js"></script>
-
 </body>
-
-
-
 </html>

@@ -13,8 +13,9 @@ import java.util.List;
 @Component("bomManageMapper")
 public interface BomManageMapper extends CommonDao<BomInfo> {
 
-    public int listFilteredInfosCounts(BomQueryForm bomQueryForm);
+    int listFilteredInfosCounts(BomQueryForm bomQueryForm);
 
-    public List<BomInfo> searchInfos(BomQueryForm bomQueryForm);
+    List<BomInfo> searchInfos(BomQueryForm bomQueryForm);
 
+    void delByProjectId(String projectId);
 }

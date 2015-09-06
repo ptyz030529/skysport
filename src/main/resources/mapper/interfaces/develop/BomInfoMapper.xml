@@ -106,6 +106,7 @@
 		where bom_id =#{natrualkey}
 	</update>
 
+
     <update id="delDetail">
 		update t_kf_fabrics_detail
 		set  del_flag=1
@@ -137,5 +138,12 @@
 		from t_kf_bominfo
 		where del_flag=0 and bom_name like concat('%',#{name},'%')
 	</select>
+
+
+	<delete id="delByProjectId">
+		update t_kf_bominfo
+		set  del_flag=1
+		where project_id =#{projectId}
+	</delete>
 
 </mapper>

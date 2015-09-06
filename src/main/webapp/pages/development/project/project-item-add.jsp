@@ -11,9 +11,8 @@
     <jsp:include page="../../base/upload.jsp"></jsp:include>
     <script language="javascript" type="text/javascript"
             src="<%=path%>/resources/My97DatePicker/WdatePicker.js"></script>
-    <script language="javascript" type="text/javascript"    src="<%=path%>/resources/js/bootstrap-multiselect.js"></script>
     <link rel="stylesheet" href="<%=path%>/resources/css/page-header.css"/>
-    <link rel="stylesheet" href="<%=path%>/resources/css/bootstrap-multiselect.css"/>
+
 </head>
 <body>
 <div class="breadcrumbs" id="breadcrumbs">
@@ -24,13 +23,11 @@
 
         }
     </script>
-
     <ul class="breadcrumb">
         <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">开发</a>
         </li>
-
-        <li><a href="#">用户信息</a></li>
-        <li class="active">新增和修改</li>
+        <li><a href="#">子项目</a></li>
+        <li class="active">新增/修改</li>
     </ul>
     <!-- /.breadcrumb -->
     <!-- /section:basics/content.searchbox -->
@@ -163,10 +160,9 @@
                         <div class="form-group">
                             <label class="col-xs-2  control-label" for="sexIds">性别属性</label>
                             <div class="col-xs-3">
-                                <!-- #section:plugins/input.multiselect -->
-                                <select id="sexIds" multiple="multiple" >
+                                <select data-style="btn-info" class="selectpicker show-menu-arrow" data-width="100%"
+                                        id="sexIds" multiple placeholder="性别属性">"
                                 </select>
-                                <!-- /section:plugins/input.multiselect -->
                             </div>
                             <label class="col-xs-2  control-label"
                                    for="collectionNumber"> 款式数量 </label>

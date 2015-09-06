@@ -38,13 +38,13 @@ public class CommonServiceImpl<T> implements ICommonService<T> {
     }
 
     @Override
-    public T queryInfoByNatrualKey(String natrualKey) {
-        return commonDao.queryInfo(natrualKey);
+    public void add(T t) {
+        commonDao.add(t);
     }
 
     @Override
-    public void add(T t) {
-        commonDao.add(t);
+    public T queryInfoByNatrualKey(String natrualKey) {
+        return commonDao.queryInfo(natrualKey);
     }
 
     @Override

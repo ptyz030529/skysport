@@ -8,6 +8,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * 类说明:
@@ -22,5 +23,10 @@ public class ProjectCategoryManageServiceImpl extends CommonServiceImpl<ProjectC
     public void afterPropertiesSet() throws Exception {
         commonDao = projectCategoryManageMapper;
 
+    }
+
+    @Override
+    public List<ProjectCategoryInfo> queryProjectCategoryInfo(String natrualKey) {
+        return projectCategoryManageMapper.queryProjectCategoryInfo(natrualKey);
     }
 }

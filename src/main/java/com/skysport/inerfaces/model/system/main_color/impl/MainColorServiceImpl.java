@@ -14,6 +14,7 @@ import java.util.List;
  */
 @Service("mainColorService")
 public class MainColorServiceImpl implements IMainColorService {
+
     @Resource(name = "mainColorManageMapper")
     private MainColorManageMapper mainColorManageMapper;
 
@@ -45,4 +46,7 @@ public class MainColorServiceImpl implements IMainColorService {
     public void delete(String natrualkey) {
         mainColorManageMapper.delete(natrualkey);
     }
+
+
+
 }

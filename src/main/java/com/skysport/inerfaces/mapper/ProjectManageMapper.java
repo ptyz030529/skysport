@@ -21,4 +21,8 @@ public interface ProjectManageMapper extends CommonDao<ProjectInfo> {
     int listFilteredInfosCounts(ProjectQueryForm queryForm);
 
     List<ProjectInfo> searchInfos(ProjectQueryForm queryForm);
+
+    void delInfoAboutProject(String natrualkey);
+
+    void updateProjectStatus(String projectId, int status);
 }

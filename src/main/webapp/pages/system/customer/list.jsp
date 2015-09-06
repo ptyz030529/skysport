@@ -43,6 +43,12 @@
 
         <%@ include file="edit.jsp"%>
 </div>
+
+</body>
+
+
+
+</html>
 <jsp:include page="../../base/footCommon.jsp"></jsp:include>
 <!--定义操作列按钮模板-->
 <script id="tpl" type="text/x-handlebars-template">
@@ -53,8 +59,6 @@
 <script type="text/javascript" src="<%=path%>/resources/interfaces/system/customer/customer2.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/interfaces/system/list.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/interfaces/system/edit.js"></script>
-</body>
 
-
-
-</html>
+<script language="javascript" type="text/javascript"
+        src="<%=path%>/resources/My97DatePicker/WdatePicker.js"></script>

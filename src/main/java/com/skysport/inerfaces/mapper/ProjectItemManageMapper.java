@@ -21,4 +21,6 @@ public interface ProjectItemManageMapper extends CommonDao<ProjectBomInfo> {
     int listFilteredInfosCounts(ProjectQueryForm queryForm);
 
     List<ProjectBomInfo> searchInfos(ProjectQueryForm queryForm);
+
+    void addBatchBomInfo(List<ProjectBomInfo> info);
 }

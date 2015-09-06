@@ -62,7 +62,7 @@ public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomI
     @ResponseBody
     public ModelAndView add(@PathVariable String natrualKey) {
 
-        ModelAndView mav = new ModelAndView("/development/project_item/project-item-add");
+        ModelAndView mav = new ModelAndView("/development/project/project-item-add");
         mav.addObject("natrualkey", natrualKey);
         return mav;
     }

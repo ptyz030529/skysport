@@ -37,7 +37,7 @@
                                 <div class="form-group">
                                     <label class="col-xs-3 control-label">合作时间</label>
                                     <div class="col-xs-7">
-                                        <input type="text" class="form-control" id="corTime" name="corTime"  placeholder="合作时间">
+                                        <input type="text" class="form-control" id="corTime" name="corTime"  placeholder="合作时间" onClick="WdatePicker()">
                                     </div>
                                 </div>
                                 <div class="form-group">

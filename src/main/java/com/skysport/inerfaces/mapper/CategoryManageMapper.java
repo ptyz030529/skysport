@@ -2,6 +2,7 @@ package com.skysport.inerfaces.mapper;
 
 import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.inerfaces.bean.system.CategoryInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface CategoryManageMapper extends CommonDao<CategoryInfo> {
      */
     List<SelectItem2> querySelectListByLevelId(String levelId);
 
-    List<CategoryInfo> searchChildCategoryByCategoryId(String categoryId);
+    List<CategoryInfo> searchChildCategoryByCategoryId(@Param(value = "categoryId") String categoryId);
 }

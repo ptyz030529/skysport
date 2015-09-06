@@ -6,7 +6,7 @@ package com.skysport.inerfaces.constant;
  */
 public interface ApplicationConstant {
     String CATEGORY_A_LEVEL = "1";//一级品类
-    String CATEGORY_B_LEVEL = "2";//一级品类
+    String CATEGORY_B_LEVEL = "2";//二级品类
 
     int PROJECT_SEQ_NO_LENGTH = 4; //项目编号长度
     int BOM_SEQ_NO_LENGTH = 4; //BOM编号长度
@@ -19,5 +19,9 @@ public interface ApplicationConstant {
     String PAKING_MATERIAL_TYPE_ID = "B";//包装材料
     String FITTING_MATERIAL_TYPE_ID = "P";//配件
     String CLOTH_MATERIAL_TYPE_ID = "C";//成衣
+
+    int PROJECT_CAN_EDIT = 0;
+    int PROJECT_CANOT_EDIT = 1;
+
 
 }

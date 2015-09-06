@@ -11,9 +11,8 @@
     <jsp:include page="../../base/upload.jsp"></jsp:include>
     <script language="javascript" type="text/javascript"
             src="<%=path%>/resources/My97DatePicker/WdatePicker.js"></script>
-    <script language="javascript" type="text/javascript"    src="<%=path%>/resources/js/bootstrap-multiselect.js"></script>
     <link rel="stylesheet" href="<%=path%>/resources/css/page-header.css"/>
-    <link rel="stylesheet" href="<%=path%>/resources/css/bootstrap-multiselect.css"/>
+
 </head>
 <body>
 <div class="breadcrumbs" id="breadcrumbs">
@@ -24,13 +23,11 @@
 
         }
     </script>
-
     <ul class="breadcrumb">
         <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">开发</a>
         </li>
-
-        <li><a href="#">用户信息</a></li>
-        <li class="active">新增和修改</li>
+        <li><a href="#">项目</a></li>
+        <li class="active">新增/修改</li>
     </ul>
     <!-- /.breadcrumb -->
     <!-- /section:basics/content.searchbox -->
@@ -60,6 +57,7 @@
                                         placeholder="年份">
                                 </select>
                             </div>
+
                             <label class="col-xs-2  control-label" for="customerId"> 客户 </label>
 
                             <div class="col-xs-3">
@@ -76,18 +74,15 @@
                             <label class="col-xs-2  control-label" for="areaId"> 区域 </label>
 
                             <div class="col-xs-3">
-                                <select class="col-xs-12" data-style="btn-info" id="areaId" name="areaId"
-                                        placeholder="区域">
+                                <select class="col-xs-12" data-style="btn-info" id="areaId" name="areaId"    placeholder="区域">
                                 </select>
                             </div>
+
                             <label class="col-xs-2  control-label" for="seriesId"> 系列 </label>
-
                             <div class="col-xs-3">
-                                <select class="col-xs-12" data-style="btn-info" id="seriesId" name="seriesId"
-                                        placeholder="系列">
+                                <select class="col-xs-12" data-style="btn-info" id="seriesId" name="seriesId"      placeholder="系列">
                                 </select>
                             </div>
-
 
                         </div>
                         <div class="form-group">
@@ -116,23 +111,23 @@
                         BOM基础信息
                     </h5>
 
-                    <div id="fabricsItemInfo">
-                        <div class="form-group">
-                            <label class="col-xs-2  control-label" for="categoryAid"> 品类一级名称 </label>
+                    <div class="form-group">
+                        <label class="col-xs-2  control-label" for="categoryAid"> 品类一级名称 </label>
 
-                            <div class="col-xs-3">
-                                <select class="col-xs-12" data-style="btn-info" id="categoryAid" name="categoryAid"
-                                        placeholder="品类一级名称">
-                                </select>
-                            </div>
-                            <label class="col-xs-2  control-label" for="categoryBid"> 品类二级名称 </label>
-
-                            <div class="col-xs-3">
-                                <select data-style="btn-info" data-width="100%"  id="categoryBid" multiple="multiple"  placeholder="品类二级名称">
-                                </select>
-                            </div>
-
+                        <div class="col-xs-3">
+                            <select class="col-xs-12" data-style="btn-info" id="categoryAid" name="categoryAid"
+                                    placeholder="品类一级名称">
+                            </select>
                         </div>
+                        <label class="col-xs-2  control-label" for="categoryBid"> 品类二级名称 </label>
+
+                        <div class="col-xs-3">
+                            <select data-style="btn-info" class="selectpicker show-menu-arrow" data-width="100%"
+                                    id="categoryBid" multiple placeholder="品类二级名称">"
+                            </select>
+                        </div>
+
+                    </div>
                 </div>
                 <div id="accessoriesInfo">
                     <h5 class="header smaller lighter blue">
