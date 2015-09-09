@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
     <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <jsp:include page="../../base/common.jsp" flush="true"></jsp:include>
     <jsp:include page="../../base/commonTable.jsp" flush="true"></jsp:include>
     <link rel="stylesheet" href="<%=path%>/resources/css/zTree/zTreeStyle/zTreeStyle.css" type="text/css">

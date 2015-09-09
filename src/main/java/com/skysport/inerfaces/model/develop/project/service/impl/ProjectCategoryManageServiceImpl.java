@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.develop.project.service.impl;
 
-import com.skysport.inerfaces.bean.ProjectCategoryInfo;
+import com.skysport.inerfaces.bean.develop.ProjectCategoryInfo;
 import com.skysport.inerfaces.mapper.ProjectCategoryManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import com.skysport.inerfaces.model.develop.project.service.IProjectCategoryManageService;

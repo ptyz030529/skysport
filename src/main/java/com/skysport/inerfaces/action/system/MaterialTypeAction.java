@@ -7,9 +7,9 @@ import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.MaterialTypeInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.common.ICommonService;
 import com.skysport.inerfaces.model.system.material_type.MaterialTypeManageServiceHelper;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -52,7 +52,7 @@ public class MaterialTypeAction extends BaseAction<String, Object, MaterialTypeI
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search()  {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/system/material_type/list");
         return mav;
     }
@@ -66,8 +66,7 @@ public class MaterialTypeAction extends BaseAction<String, Object, MaterialTypeI
      */
     @RequestMapping(value = "/search")
     @ResponseBody
-    public Map<String, Object> search(HttpServletRequest request)
-             {
+    public Map<String, Object> search(HttpServletRequest request) {
         // HashMap<String, String> paramMap = convertToMap(params);
         DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.MATERIAL_TYPE_TABLE_COLUMN, request);
         // 总记录数
@@ -92,8 +91,10 @@ public class MaterialTypeAction extends BaseAction<String, Object, MaterialTypeI
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(MaterialTypeInfo material_typeInfo, HttpServletRequest request,
-                                    HttpServletResponse respones)  {
+                                    HttpServletResponse respones) {
         materialTypeManageService.edit(material_typeInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        MaterialTypeManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -109,17 +110,16 @@ public class MaterialTypeAction extends BaseAction<String, Object, MaterialTypeI
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(MaterialTypeInfo material_typeInfo,HttpServletRequest request)  {
+    public Map<String, Object> add(MaterialTypeInfo material_typeInfo, HttpServletRequest request) {
         String currentNo = materialTypeManageService.queryCurrentSeqNo();
         //设置ID
         material_typeInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.MATERIAL_TYPE_INFO, currentNo, incrementNumber));
         materialTypeManageService.add(material_typeInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        MaterialTypeManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
-
-        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
-        MaterialTypeManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         return resultMap;
     }
 

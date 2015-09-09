@@ -1,12 +1,12 @@
 package com.skysport.inerfaces.model.develop.bom.impl;
 
-import com.skysport.inerfaces.bean.BomInfo;
-import com.skysport.inerfaces.bean.FabricsInfo;
+import com.skysport.inerfaces.bean.develop.BomInfo;
+import com.skysport.inerfaces.bean.develop.FabricsInfo;
 import com.skysport.inerfaces.form.develop.BomQueryForm;
 import com.skysport.inerfaces.mapper.BomManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
-import com.skysport.inerfaces.model.system.fabrics.IFabricsService;
+import com.skysport.inerfaces.model.develop.fabric.IFabricsService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 

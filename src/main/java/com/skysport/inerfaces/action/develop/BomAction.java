@@ -2,7 +2,7 @@ package com.skysport.inerfaces.action.develop;
 
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.constant.DictionaryKeyConstant;
-import com.skysport.inerfaces.bean.BomInfo;
+import com.skysport.inerfaces.bean.develop.BomInfo;
 import com.skysport.inerfaces.form.develop.BomQueryForm;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
 import com.skysport.inerfaces.model.develop.bom.helper.BomManageHelper;

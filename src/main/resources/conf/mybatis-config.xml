@@ -28,19 +28,19 @@
         <typeAlias alias="SpecificationInfo" type="com.skysport.inerfaces.bean.material.SpecificationInfo"/>
         <typeAlias alias="WaterVapourPermeabilityInfo" type="com.skysport.inerfaces.bean.material.WaterVapourPermeabilityInfo"/>
         <typeAlias alias="WorkmanshipOfBondingLaminatingCoatingInfo" type="com.skysport.inerfaces.bean.material.WorkmanshipOfBondingLaminatingCoatingInfo"/>
-        <typeAlias alias="FabricsInfo" type="com.skysport.inerfaces.bean.FabricsInfo"/>
+        <typeAlias alias="FabricsInfo" type="com.skysport.inerfaces.bean.develop.FabricsInfo"/>
         <typeAlias alias="CategoryInfo" type="com.skysport.inerfaces.bean.system.CategoryInfo"/>
         <typeAlias alias="MaterialPositionInfo" type="com.skysport.inerfaces.bean.system.MaterialPositionInfo"/>
         <typeAlias alias="MaterialUnitInfo" type="com.skysport.inerfaces.bean.system.MaterialUnitInfo"/>
         <!--DEVELOP 开发-->
-        <typeAlias alias="BomInfo" type="com.skysport.inerfaces.bean.BomInfo"/>
-        <typeAlias alias="ProjectBomInfo" type="com.skysport.inerfaces.bean.ProjectBomInfo"/>
-        <typeAlias alias="ProjectInfo" type="com.skysport.inerfaces.bean.ProjectInfo"/>
+        <typeAlias alias="BomInfo" type="com.skysport.inerfaces.bean.develop.BomInfo"/>
+        <typeAlias alias="ProjectBomInfo" type="com.skysport.inerfaces.bean.develop.ProjectBomInfo"/>
+        <typeAlias alias="ProjectInfo" type="com.skysport.inerfaces.bean.develop.ProjectInfo"/>
         <typeAlias alias="ProjectQueryForm" type="com.skysport.inerfaces.form.develop.ProjectQueryForm"/>
         <typeAlias alias="BomQueryForm" type="com.skysport.inerfaces.form.develop.BomQueryForm"/>
-        <typeAlias alias="ProjectCategoryInfo" type="com.skysport.inerfaces.bean.ProjectCategoryInfo"/>
+        <typeAlias alias="ProjectCategoryInfo" type="com.skysport.inerfaces.bean.develop.ProjectCategoryInfo"/>
         <typeAlias alias="MainColor" type="com.skysport.inerfaces.bean.system.MainColor"/>
-        <typeAlias alias="FabricInfo" type="com.skysport.inerfaces.bean.FabricsInfo"/>
+        <typeAlias alias="FabricInfo" type="com.skysport.inerfaces.bean.develop.FabricsInfo"/>
 
 
         <!--权限管理-->

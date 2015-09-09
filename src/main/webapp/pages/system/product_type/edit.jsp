@@ -11,7 +11,7 @@
             <form id="defaultForm" method="post" class="form-horizontal" action="edit">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="col-xs-3 control-label">屏幕</label>
+                        <label class="col-xs-3 control-label">材质名称</label>
                         <div class="col-xs-7">
                             <input type="text" class="form-control" id="name" name="name"   placeholder="材质名称">
                         </div>

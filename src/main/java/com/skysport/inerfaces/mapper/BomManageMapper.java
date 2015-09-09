@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.mapper;
 
-import com.skysport.inerfaces.bean.BomInfo;
+import com.skysport.inerfaces.bean.develop.BomInfo;
 import com.skysport.inerfaces.form.develop.BomQueryForm;
 import org.springframework.stereotype.Component;
 

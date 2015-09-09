@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <!-- CSS -->
     <link rel="shortcut icon" href="<%=path%>/resources/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="<%=path%>/resources/css/bootstrap.css"	 />
+    <link rel="stylesheet" type="text/css" href="<%=path%>/resources/css/bootstrap.css"/>
     <link rel="stylesheet" href="<%=path%>/resources/css/reset.css">
     <link rel="stylesheet" href="<%=path%>/resources/css/supersized.css">
     <link rel="stylesheet" href="<%=path%>/resources/css/style.css">

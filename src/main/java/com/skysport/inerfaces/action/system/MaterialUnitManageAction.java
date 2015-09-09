@@ -7,9 +7,9 @@ import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.MaterialUnitInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.common.ICommonService;
 import com.skysport.inerfaces.model.system.material.impl.helper.MaterialUnitServiceHelper;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -49,7 +49,7 @@ public class MaterialUnitManageAction extends BaseAction<String, Object, Materia
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search()  {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/system/material/unit/list");
         return mav;
     }
@@ -63,8 +63,7 @@ public class MaterialUnitManageAction extends BaseAction<String, Object, Materia
      */
     @RequestMapping(value = "/search")
     @ResponseBody
-    public Map<String, Object> search(HttpServletRequest request)
-             {
+    public Map<String, Object> search(HttpServletRequest request) {
         // HashMap<String, String> paramMap = convertToMap(params);
         DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.MATERIAL_UNIT_TABLE_COLUMN, request);
         // 总记录数
@@ -88,14 +87,13 @@ public class MaterialUnitManageAction extends BaseAction<String, Object, Materia
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(MaterialUnitInfo info, HttpServletRequest request)  {
+    public Map<String, Object> edit(MaterialUnitInfo info, HttpServletRequest request) {
         materialUnitService.edit(info);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        MaterialUnitServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
-        ApplicationContext appContext = (ApplicationContext) RequestContextUtils.getWebApplicationContext(request).getServletContext();
-        // 用量单位列表
-        MaterialUnitServiceHelper.SINGLETONE.refreshSelect(appContext);
         return resultMap;
     }
 
@@ -108,17 +106,17 @@ public class MaterialUnitManageAction extends BaseAction<String, Object, Materia
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(MaterialUnitInfo info, HttpServletRequest request)  {
+    public Map<String, Object> add(MaterialUnitInfo info, HttpServletRequest request) {
         String currentNo = materialUnitService.queryCurrentSeqNo();
         //设置ID
         info.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.T_MATERIAL_UNIT_INFO, currentNo, incrementNumber));
         materialUnitService.add(info);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        MaterialUnitServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
-        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
-        // 用量单位列表
-        MaterialUnitServiceHelper.SINGLETONE.refreshSelect(appContext);
+
         return resultMap;
     }
 

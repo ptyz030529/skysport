@@ -1,15 +1,17 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.BaseAction;
-import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.CustomerInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.common.ICommonService;
+import com.skysport.inerfaces.model.system.customer.helper.CustomerManageServiceHelper;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -42,12 +45,13 @@ public class CustomerAction extends BaseAction<String, Object, CustomerInfo> {
 
     /**
      * 此方法描述的是：展示list页面
+     *
      * @author: zhangjh
      * @version: 2015年4月29日 下午5:34:53
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search()  {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/system/customer/list");
         return mav;
     }
@@ -61,10 +65,9 @@ public class CustomerAction extends BaseAction<String, Object, CustomerInfo> {
      */
     @RequestMapping(value = "/search")
     @ResponseBody
-    public Map<String, Object> search(HttpServletRequest request)
-             {
+    public Map<String, Object> search(HttpServletRequest request) {
         // HashMap<String, String> paramMap = convertToMap(params);
-        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.CUSTOMER_TABLE_COLUMN,request);
+        DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.CUSTOMER_TABLE_COLUMN, request);
         // 总记录数
         int recordsTotal = customerManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -87,8 +90,10 @@ public class CustomerAction extends BaseAction<String, Object, CustomerInfo> {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(CustomerInfo customerInfo, HttpServletRequest request,
-                                    HttpServletResponse respones)  {
+                                    HttpServletResponse respones) {
         customerManageService.edit(customerInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        CustomerManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -104,11 +109,13 @@ public class CustomerAction extends BaseAction<String, Object, CustomerInfo> {
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(CustomerInfo customerInfo)  {
-        String currentNo =  customerManageService.queryCurrentSeqNo();
+    public Map<String, Object> add(CustomerInfo customerInfo, HttpServletRequest request) {
+        String currentNo = customerManageService.queryCurrentSeqNo();
         //设置ID
-        customerInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.CUSTOMER_INFO, currentNo,incrementNumber));
+        customerInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.CUSTOMER_INFO, currentNo, incrementNumber));
         customerManageService.add(customerInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        CustomerManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
@@ -117,8 +124,7 @@ public class CustomerAction extends BaseAction<String, Object, CustomerInfo> {
 
 
     /**
-     *
-     * @param natrualKey  主键id
+     * @param natrualKey 主键id
      * @return 根据主键id找出详细信息
      */
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
@@ -129,7 +135,6 @@ public class CustomerAction extends BaseAction<String, Object, CustomerInfo> {
     }
 
     /**
-     *
      * @param natrualKey
      * @return 删除
      */
@@ -144,36 +149,19 @@ public class CustomerAction extends BaseAction<String, Object, CustomerInfo> {
     }
 
     /**
-     *
      * @param request
      * @return
      */
     @RequestMapping(value = "/select", method = RequestMethod.GET)
     @ResponseBody
-    public Map<String,Object> querySelectList(HttpServletRequest request){
+    public Map<String, Object> querySelectList(HttpServletRequest request) {
         String name = request.getParameter("name");
-        List<SelectItem> commonBeans =     customerManageService.querySelectList(name);
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        resultMap.put("items",commonBeans);
-        resultMap.put("total_count",commonBeans.size());
+        List<SelectItem> commonBeans = customerManageService.querySelectList(name);
+        Map<String, Object> resultMap = new HashMap<String, Object>();
+        resultMap.put("items", commonBeans);
+        resultMap.put("total_count", commonBeans.size());
         return resultMap;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

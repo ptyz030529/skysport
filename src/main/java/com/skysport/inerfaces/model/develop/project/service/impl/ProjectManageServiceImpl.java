@@ -2,8 +2,8 @@ package com.skysport.inerfaces.model.develop.project.service.impl;
 
 import com.skysport.core.exception.CnfwsyException;
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.ProjectBomInfo;
-import com.skysport.inerfaces.bean.ProjectInfo;
+import com.skysport.inerfaces.bean.develop.ProjectBomInfo;
+import com.skysport.inerfaces.bean.develop.ProjectInfo;
 import com.skysport.inerfaces.constant.ApplicationConstant;
 import com.skysport.inerfaces.constant.develop.DevelopmentReturnConstant;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;

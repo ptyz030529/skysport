@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.BaseAction;
-import com.skysport.inerfaces.bean.MaterialInfo;
+import com.skysport.inerfaces.bean.develop.MaterialInfo;
 
 /**
  * 类说明:

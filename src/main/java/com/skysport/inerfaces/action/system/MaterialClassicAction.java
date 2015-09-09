@@ -1,15 +1,17 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.BaseAction;
-import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.MaterialClassicInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.common.ICommonService;
+import com.skysport.inerfaces.model.system.material_classic.MaterialClassicManageServiceHelper;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -49,7 +52,7 @@ public class MaterialClassicAction extends BaseAction<String, Object, MaterialCl
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search()  {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/system/material_classic/list");
         return mav;
     }
@@ -63,8 +66,7 @@ public class MaterialClassicAction extends BaseAction<String, Object, MaterialCl
      */
     @RequestMapping(value = "/search")
     @ResponseBody
-    public Map<String, Object> search(HttpServletRequest request)
-             {
+    public Map<String, Object> search(HttpServletRequest request) {
         // HashMap<String, String> paramMap = convertToMap(params);
         DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.MATERIAL_CLASSIC_TABLE_COLUMN, request);
         // 总记录数
@@ -89,8 +91,10 @@ public class MaterialClassicAction extends BaseAction<String, Object, MaterialCl
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(MaterialClassicInfo material_classicInfo, HttpServletRequest request,
-                                    HttpServletResponse respones)  {
+                                    HttpServletResponse response) {
         materialClassicManageService.edit(material_classicInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        MaterialClassicManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -106,11 +110,13 @@ public class MaterialClassicAction extends BaseAction<String, Object, MaterialCl
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(MaterialClassicInfo material_classicInfo)  {
+    public Map<String, Object> add(MaterialClassicInfo material_classicInfo, HttpServletRequest request) {
         String currentNo = materialClassicManageService.queryCurrentSeqNo();
         //设置ID
         material_classicInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.MATERIAL_CLASSIC_INFO, currentNo, incrementNumber));
         materialClassicManageService.add(material_classicInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        MaterialClassicManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");

@@ -23,5 +23,16 @@ public interface ApplicationConstant {
     int PROJECT_CAN_EDIT = 0;
     int PROJECT_CANOT_EDIT = 1;
 
+    String FILE_PATH = "file_path";
+    String BASE_PATH = "base_path";
+    String DEVELOP_PATH = "develop_path";
+    String OPERATION_PATH = "operation_path";
+    String TASK_PATH = "task_path";
+    String USER_PATH = "user_path";
+
+
+
+
+
 
 }

@@ -1,15 +1,17 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.BaseAction;
-import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.material.SpecificationInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.common.ICommonService;
+import com.skysport.inerfaces.model.system.material.impl.helper.SpecificationServiceHelper;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,7 +50,7 @@ public class SpecificationAction extends BaseAction<String, Object, Specificatio
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search()  {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/system/material/specification/list");
         return mav;
     }
@@ -60,8 +64,7 @@ public class SpecificationAction extends BaseAction<String, Object, Specificatio
      */
     @RequestMapping(value = "/search")
     @ResponseBody
-    public Map<String, Object> search(HttpServletRequest request)
-             {
+    public Map<String, Object> search(HttpServletRequest request) {
         // HashMap<String, String> paramMap = convertToMap(params);
         DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.SPECIFICATION_TABLE_COLUMN, request);
         // 总记录数
@@ -86,8 +89,10 @@ public class SpecificationAction extends BaseAction<String, Object, Specificatio
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(SpecificationInfo areaInfo, HttpServletRequest request,
-                                    HttpServletResponse respones)  {
+                                    HttpServletResponse respones) {
         specificationService.edit(areaInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        SpecificationServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -104,11 +109,13 @@ public class SpecificationAction extends BaseAction<String, Object, Specificatio
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(SpecificationInfo areaInfo, HttpServletRequest request,
-                                   HttpServletResponse reareaonse)  {
+                                   HttpServletResponse reareaonse) {
         String currentNo = specificationService.queryCurrentSeqNo();
         //设置ID
         areaInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.SPECIFICATION_INFO, currentNo, incrementNumber));
         specificationService.add(areaInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        SpecificationServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");

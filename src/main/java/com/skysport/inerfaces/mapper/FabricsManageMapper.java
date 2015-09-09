@@ -1,9 +1,9 @@
 package com.skysport.inerfaces.mapper;
 
-import com.skysport.inerfaces.bean.FabricsDetailInfo;
-import com.skysport.inerfaces.bean.FabricsInfo;
-import com.skysport.inerfaces.bean.MaterialSpInfo;
-import com.skysport.inerfaces.bean.MaterialUnitDosage;
+import com.skysport.inerfaces.bean.develop.FabricsDetailInfo;
+import com.skysport.inerfaces.bean.develop.FabricsInfo;
+import com.skysport.inerfaces.bean.develop.MaterialSpInfo;
+import com.skysport.inerfaces.bean.develop.MaterialUnitDosage;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

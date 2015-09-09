@@ -93,7 +93,7 @@ public enum SystemBaseInfoHelper {
         // 物料位置列表
         MaterialPositionServiceHelper.SINGLETONE.refreshSelect(appContext);
 
-        // 用量单位列表
+        //
         MaterialUnitServiceHelper.SINGLETONE.refreshSelect(appContext);
 
 

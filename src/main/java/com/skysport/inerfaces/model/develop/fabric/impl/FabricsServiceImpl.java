@@ -1,14 +1,14 @@
-package com.skysport.inerfaces.model.system.fabrics.impl;
+package com.skysport.inerfaces.model.develop.fabric.impl;
 
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.BomInfo;
-import com.skysport.inerfaces.bean.FabricsInfo;
+import com.skysport.inerfaces.bean.develop.BomInfo;
+import com.skysport.inerfaces.bean.develop.FabricsInfo;
 import com.skysport.inerfaces.bean.join.FabricsJoinInfo;
 import com.skysport.inerfaces.constant.ApplicationConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.mapper.FabricsManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
-import com.skysport.inerfaces.model.system.fabrics.IFabricsService;
+import com.skysport.inerfaces.model.develop.fabric.IFabricsService;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
@@ -53,15 +53,18 @@ public class FabricsServiceImpl extends CommonServiceImpl<FabricsInfo> implement
 
         //找出被删除的面料id，并删除
         String bomId = StringUtils.isBlank(bomInfo.getNatrualkey()) ? bomInfo.getBomId() : bomInfo.getNatrualkey();
+
         deleteFabircsByIds(fabricItems, bomId);
+
         if (null != fabricItems) {
             //面料id存在，修改；面料id不存在则新增
             for (FabricsJoinInfo fabricsJoinInfo : fabricItems) {
-                String fabricId = fabricsJoinInfo.getFabricsInfo().getFabricId();
 
+                String fabricId = fabricsJoinInfo.getFabricsInfo().getFabricId();
 
                 //有id，更新
                 if (StringUtils.isNotBlank(fabricId)) {
+                    setFabricId(fabricsJoinInfo, fabricId, bomId);
                     fabricsManageDao.updateInfo(fabricsJoinInfo.getFabricsInfo());
                     fabricsManageDao.updateDetail(fabricsJoinInfo.getFabricsDetailInfo());
                     fabricsManageDao.updateDosage(fabricsJoinInfo.getMaterialUnitDosage());

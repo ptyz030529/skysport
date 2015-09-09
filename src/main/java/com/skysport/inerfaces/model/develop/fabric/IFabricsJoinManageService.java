@@ -1,6 +1,6 @@
-package com.skysport.inerfaces.model.system.fabrics;
+package com.skysport.inerfaces.model.develop.fabric;
 
-import com.skysport.inerfaces.bean.FabricsInfo;
+import com.skysport.inerfaces.bean.develop.FabricsInfo;
 import com.skysport.inerfaces.bean.join.FabricsJoinInfo;
 import com.skysport.inerfaces.model.common.ICommonService;
 

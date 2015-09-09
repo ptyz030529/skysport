@@ -6,9 +6,11 @@ import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.SpInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
+import com.skysport.inerfaces.model.system.sp.helper.SpInfoHelper;
 import com.skysport.inerfaces.model.system.sp.service.ISpManageService;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -47,7 +50,7 @@ public class SpManageAction extends BaseAction<String, Object, SpInfo> {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search()  {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/system/sp/list2");
         return mav;
     }
@@ -61,8 +64,7 @@ public class SpManageAction extends BaseAction<String, Object, SpInfo> {
      */
     @RequestMapping(value = "/search")
     @ResponseBody
-    public Map<String, Object> search(HttpServletRequest request)
-             {
+    public Map<String, Object> search(HttpServletRequest request) {
         // HashMap<String, String> paramMap = convertToMap(params);
         DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.SP_TABLE_COLUMN, request);
         // 总记录数
@@ -87,9 +89,10 @@ public class SpManageAction extends BaseAction<String, Object, SpInfo> {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(SpInfo spInfo, HttpServletRequest request,
-                                    HttpServletResponse response)  {
+    public Map<String, Object> edit(SpInfo spInfo, HttpServletRequest request) {
         spManageService.edit(spInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        SpInfoHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -106,10 +109,12 @@ public class SpManageAction extends BaseAction<String, Object, SpInfo> {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(SpInfo spInfo, HttpServletRequest request,
-                                   HttpServletResponse response)  {
+                                   HttpServletResponse response) {
         //设置ID
         spInfo.setSpId(BuildSeqNoHelper.SINGLETONE.getFullSeqNo(TableNameConstant.SP_INFO, incrementNumber));
         spManageService.add(spInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        SpInfoHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");

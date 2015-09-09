@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.model.develop.project.service.impl;
 
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.ProjectBomInfo;
+import com.skysport.inerfaces.bean.develop.ProjectBomInfo;
 import com.skysport.inerfaces.bean.system.MainColor;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
 import com.skysport.inerfaces.mapper.ProjectItemManageMapper;

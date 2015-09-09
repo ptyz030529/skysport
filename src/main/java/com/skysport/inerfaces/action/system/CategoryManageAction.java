@@ -7,9 +7,11 @@ import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.CategoryInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
+import com.skysport.inerfaces.model.system.category.CategoryManageServiceHelper;
 import com.skysport.inerfaces.model.system.category.ICategoryManageService;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -86,8 +89,10 @@ public class CategoryManageAction extends BaseAction<String, Object, CategoryInf
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(CategoryInfo info) {
+    public Map<String, Object> edit(CategoryInfo info,HttpServletRequest request) {
         categoryManageService.edit(info);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        CategoryManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -103,11 +108,13 @@ public class CategoryManageAction extends BaseAction<String, Object, CategoryInf
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(CategoryInfo info) {
+    public Map<String, Object> add(CategoryInfo info,HttpServletRequest request) {
         String currentNo = categoryManageService.queryCurrentSeqNo();
         //设置ID
         info.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.T_CATEGORY_INFO, currentNo, incrementNumber));
         categoryManageService.add(info);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        CategoryManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
@@ -164,7 +171,6 @@ public class CategoryManageAction extends BaseAction<String, Object, CategoryInf
             categoryInfos = categoryManageService.searchChildCategoryByCategoryId(categoryId);
         }
         return categoryInfos;
-
 
 
     }

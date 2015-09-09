@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.develop.project.service;
 
-import com.skysport.inerfaces.bean.ProjectCategoryInfo;
+import com.skysport.inerfaces.bean.develop.ProjectCategoryInfo;
 import com.skysport.inerfaces.model.common.ICommonService;
 
 import java.util.List;

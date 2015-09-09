@@ -1,15 +1,15 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.BaseAction;
-import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.AreaInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
-import com.skysport.inerfaces.model.system.area.helper.AreaManageServiceHelper;
 import com.skysport.inerfaces.model.common.ICommonService;
+import com.skysport.inerfaces.model.system.area.helper.AreaManageServiceHelper;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
@@ -50,7 +50,7 @@ public class AreaAction extends BaseAction<String, Object, AreaInfo> {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search()  {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/system/area/list");
         return mav;
     }
@@ -64,8 +64,7 @@ public class AreaAction extends BaseAction<String, Object, AreaInfo> {
      */
     @RequestMapping(value = "/search")
     @ResponseBody
-    public Map<String, Object> search(HttpServletRequest request)
-             {
+    public Map<String, Object> search(HttpServletRequest request) {
         // HashMap<String, String> paramMap = convertToMap(params);
         DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.AREA_TABLE_COLULMN, request);
         // 总记录数
@@ -90,13 +89,14 @@ public class AreaAction extends BaseAction<String, Object, AreaInfo> {
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(AreaInfo areaInfo, HttpServletRequest request,
-                                    HttpServletResponse respones)  {
+                                    HttpServletResponse respones) {
         areaManageService.edit(areaInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        AreaManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
-        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
-        AreaManageServiceHelper.SINGLETONE.refreshSelect(appContext);
+
         return resultMap;
     }
 
@@ -110,11 +110,13 @@ public class AreaAction extends BaseAction<String, Object, AreaInfo> {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(AreaInfo areaInfo, HttpServletRequest request,
-                                   HttpServletResponse reareaonse)  {
+                                   HttpServletResponse reareaonse) {
         String currentNo = areaManageService.queryCurrentSeqNo();
         //设置ID
         areaInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.AREA_INFO, currentNo, incrementNumber));
         areaManageService.add(areaInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        AreaManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");

@@ -1,4 +1,4 @@
-package com.skysport.inerfaces.bean;
+package com.skysport.inerfaces.bean.develop;
 
 /**
  * 类说明:项目的BOM信息

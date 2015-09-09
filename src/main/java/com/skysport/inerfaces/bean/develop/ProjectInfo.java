@@ -1,4 +1,4 @@
-package com.skysport.inerfaces.bean;
+package com.skysport.inerfaces.bean.develop;
 
 import java.util.List;
 

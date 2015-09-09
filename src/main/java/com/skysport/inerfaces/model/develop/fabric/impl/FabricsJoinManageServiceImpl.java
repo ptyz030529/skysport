@@ -1,10 +1,10 @@
-package com.skysport.inerfaces.model.system.fabrics.impl;
+package com.skysport.inerfaces.model.develop.fabric.impl;
 
-import com.skysport.inerfaces.bean.FabricsInfo;
+import com.skysport.inerfaces.bean.develop.FabricsInfo;
 import com.skysport.inerfaces.bean.join.FabricsJoinInfo;
 import com.skysport.inerfaces.mapper.FabricsManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
-import com.skysport.inerfaces.model.system.fabrics.IFabricsJoinManageService;
+import com.skysport.inerfaces.model.develop.fabric.IFabricsJoinManageService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 

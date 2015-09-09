@@ -76,9 +76,10 @@
             pantone_id = #{pantoneId},
             position_id = #{positionId},
             project_id = #{projectId},
-            bom_id = #{bomId}
+            bom_id = #{bomId},
+            is_show = #{isShow}
         WHERE
-            fabrics_id =#{natrualkey}
+            fabrics_id =#{fabricId}
     </update>
 
 
@@ -223,6 +224,7 @@
         a.bom_id AS bomId,
         b.unit_id AS unitId,
         b.unit_amount AS unitAmount,
+        a.is_show AS isShow,
         c.sp_id AS spId,
         c.order_count AS orderCount,
         c.attrition_rate AS attritionRate,
@@ -236,7 +238,8 @@
         d.comoc_id AS comocId,
         d.wvp_id AS wvpId,
         d.mt_id AS mtId,
-        d.woblc_id AS woblcId
+        d.woblc_id AS woblcId,
+        d.specfication_id AS specificationId
     FROM
         t_kf_fabrics a
     LEFT JOIN t_kf_material_unit_dosage b ON a.fabrics_id = b.material_id

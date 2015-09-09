@@ -1,15 +1,17 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.BaseAction;
-import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.FabricsInfo;
+import com.skysport.inerfaces.bean.develop.FabricsInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.common.ICommonService;
+import com.skysport.inerfaces.model.develop.fabric.helper.FabricsServiceHelper;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +49,7 @@ public class FabricsAction extends BaseAction<String, Object, FabricsInfo> {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search()  {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/system/fabrics/list");
         return mav;
     }
@@ -60,8 +63,7 @@ public class FabricsAction extends BaseAction<String, Object, FabricsInfo> {
      */
     @RequestMapping(value = "/search")
     @ResponseBody
-    public Map<String, Object> search(HttpServletRequest request)
-             {
+    public Map<String, Object> search(HttpServletRequest request) {
         DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.FABRICS_TABLE_COLUMN, request);
         // 总记录数
         int recordsTotal = fabricsManageService.listInfosCounts();
@@ -84,12 +86,18 @@ public class FabricsAction extends BaseAction<String, Object, FabricsInfo> {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(FabricsInfo fabricsInfo)  {
+    public Map<String, Object> edit(FabricsInfo fabricsInfo, HttpServletRequest request) {
+
         fabricsManageService.edit(fabricsInfo);
+
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        FabricsServiceHelper.SINGLETONE.refreshSelect(appContext);
+
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
         return resultMap;
+
     }
 
 
@@ -101,15 +109,21 @@ public class FabricsAction extends BaseAction<String, Object, FabricsInfo> {
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(FabricsInfo fabricsInfo)  {
+    public Map<String, Object> add(FabricsInfo fabricsInfo, HttpServletRequest request) {
+
         String currentNo = fabricsManageService.queryCurrentSeqNo();
         //设置ID
         fabricsInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.FABRICS_INFO, currentNo, incrementNumber));
         fabricsManageService.add(fabricsInfo);
+
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        FabricsServiceHelper.SINGLETONE.refreshSelect(appContext);
+
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
         return resultMap;
+
     }
 
 

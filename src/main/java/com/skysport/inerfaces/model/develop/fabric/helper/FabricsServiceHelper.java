@@ -1,7 +1,8 @@
-package com.skysport.inerfaces.model.system.fabrics.impl;
+package com.skysport.inerfaces.model.develop.fabric.helper;
 
 import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.instance.SystemBaseInfo;
+import com.skysport.inerfaces.model.develop.fabric.impl.FabricsServiceImpl;
 import org.springframework.context.ApplicationContext;
 
 import java.util.List;

@@ -5,12 +5,12 @@ import com.skysport.core.constant.CharConstant;
 import com.skysport.core.instance.SystemBaseInfo;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.core.utils.SeqCreateUtils;
-import com.skysport.inerfaces.bean.BomInfo;
-import com.skysport.inerfaces.bean.ProjectBomInfo;
+import com.skysport.inerfaces.bean.develop.BomInfo;
+import com.skysport.inerfaces.bean.develop.ProjectBomInfo;
 import com.skysport.inerfaces.constant.ApplicationConstant;
 import com.skysport.inerfaces.form.develop.BomQueryForm;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;

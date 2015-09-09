@@ -4,6 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>修改BOM信息</title>
     <jsp:include page="../../base/common.jsp" flush="true"></jsp:include>
     <jsp:include page="../../base/commonTable.jsp" flush="true"></jsp:include>
@@ -84,48 +85,43 @@
                                 </select>
                             </div>
 
-                            <label class="col-xs-2  control-label"
-                                   for="collectionNum"> 款式 </label>
+                            <label class="col-xs-2  control-label" for="collectionNum"> 款式 </label>
 
                             <div class="col-xs-3">
-                                <input type="text" id="collectionNum" name="collectionNum"
-                                       placeholder="款式" class="col-xs-10 col-sm-12" disabled="disabled"/>
+                                <input type="text" id="collectionNum" name="collectionNum" placeholder="款式"
+                                       class="col-xs-10 col-sm-12" disabled="disabled"/>
                             </div>
 
                         </div>
 
                         <div class="form-group">
 
-                            <label class="col-xs-2  control-label"
-                                   for="mainColor"> 主颜色 </label>
+                            <label class="col-xs-2  control-label" for="mainColor"> 主颜色 </label>
 
                             <div class="col-xs-3">
-                                <input type="text" id="mainColor" name="mainColor"
-                                       placeholder="主颜色" class="col-xs-10 col-sm-12" disabled="disabled"/>
+                                <input type="text" id="mainColor" name="mainColor" placeholder="主颜色"
+                                       class="col-xs-10 col-sm-12" disabled="disabled"/>
                             </div>
 
 
-                            <label class="col-xs-2  control-label"
-                                   for="offerAmount"> 订单数量 </label>
+                            <label class="col-xs-2  control-label" for="offerAmount"> 订单数量 </label>
 
                             <div class="col-xs-3">
-                                <input type="text" id="offerAmount" name="offerAmount"
-                                       placeholder="订单数量" class="col-xs-10 col-sm-12"/>
+                                <input type="text" id="offerAmount" name="offerAmount" placeholder="订单数量"
+                                       class="col-xs-10 col-sm-12"/>
                             </div>
 
                         </div>
 
                         <div class="form-group">
-                            <label class="col-xs-2  control-label"
-                                   for="fabricsEndDate"> 面料交货时间 </label>
+                            <label class="col-xs-2  control-label" for="fabricsEndDate"> 面料交货时间 </label>
 
                             <div class="col-xs-3">
-                                <input type="text" id="fabricsEndDate" name="fabricsEndDate"
-                                       placeholder="面料交货时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
+                                <input type="text" id="fabricsEndDate" name="fabricsEndDate" placeholder="面料交货时间"
+                                       class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
                             </div>
 
-                            <label class="col-xs-2  control-label"
-                                   for="accessoriesEndDate"> 辅料交货时间 </label>
+                            <label class="col-xs-2  control-label" for="accessoriesEndDate"> 辅料交货时间 </label>
 
                             <div class="col-xs-3">
                                 <input type="text" id="accessoriesEndDate" name="accessoriesEndDate"
@@ -136,39 +132,70 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-xs-2  control-label"
-                                   for="preOfferDate"> 成衣报价时间 </label>
+                            <label class="col-xs-2  control-label" for="preOfferDate"> 成衣报价时间 </label>
 
                             <div class="col-xs-3">
-                                <input type="text" id="preOfferDate" name="preOfferDate"
-                                       placeholder="成衣报价时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
+                                <input type="text" id="preOfferDate" name="preOfferDate" placeholder="成衣报价时间"
+                                       class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
                             </div>
 
-                            <label class="col-xs-2  control-label"
-                                   for="clothReceivedDate"> 成衣收到时间 </label>
+                            <label class="col-xs-2  control-label" for="clothReceivedDate"> 成衣收到时间 </label>
 
                             <div class="col-xs-3">
-                                <input type="text" id="clothReceivedDate" name="clothReceivedDate"
-                                       placeholder="成衣收到时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
+                                <input type="text" id="clothReceivedDate" name="clothReceivedDate" placeholder="成衣收到时间"
+                                       class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
                             </div>
 
                         </div>
 
                         <div class="form-group">
-                            <label class="col-xs-2  control-label"
-                                   for="factoryOffer"> 工厂报价 </label>
+                            <label class="col-xs-2  control-label" for="factoryOffer"> 工厂报价 </label>
 
                             <div class="col-xs-3">
-                                <input type="text" id="factoryOffer" name="factoryOffer"
-                                       placeholder="工厂报价" class="col-xs-10 col-sm-12" />
+                                <input type="text" id="factoryOffer" name="factoryOffer" placeholder="工厂报价"
+                                       class="col-xs-10 col-sm-12"/>
                             </div>
 
-                            <label class="col-xs-2  control-label"
-                                   for="factoryMargins"> 工厂报价利润率</label>
+                            <label class="col-xs-2  control-label" for="factoryMargins"> 工厂报价利润率</label>
 
                             <div class="col-xs-3">
-                                <input type="text" id="factoryMargins" name="factoryMargins"
-                                       placeholder=" 工厂报价利润率" class="col-xs-10 col-sm-12" />
+                                <input type="text" id="factoryMargins" name="factoryMargins" placeholder=" 工厂报价利润率"
+                                       class="col-xs-10 col-sm-12"/>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-xs-2  control-label" for="lpPrice"> 包装费(€) </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="lpPrice" name="lpPrice" placeholder="包装费"
+                                       class="col-xs-10 col-sm-12"/>
+                            </div>
+
+                            <label class="col-xs-2  control-label" for="commission">佣金(€) (C1，C2...)</label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="commission" name="commission" placeholder="佣金(C1，C2...)"
+                                       class="col-xs-10 col-sm-12"/>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2  control-label" for="exchangeCosts"> 换汇成本 </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="exchangeCosts" name="exchangeCosts" placeholder="换汇成本"
+                                       class="col-xs-10 col-sm-12"/>
+                            </div>
+
+
+                            <label class="col-xs-2  control-label" for="costing">成本核算</label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="costing" name="costing" placeholder="成本核算"
+                                       class="col-xs-10 col-sm-12"/>
                             </div>
 
                         </div>

@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.form.develop;
 
 import com.skysport.core.bean.query.DataTablesInfo;
-import com.skysport.inerfaces.bean.ProjectBomInfo;
+import com.skysport.inerfaces.bean.develop.ProjectBomInfo;
 
 /**
  * 类说明:项目查询表单

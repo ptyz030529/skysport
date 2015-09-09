@@ -1,15 +1,17 @@
 package com.skysport.inerfaces.action.system;
 
 import com.skysport.core.action.BaseAction;
-import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.bean.query.DataTablesInfo;
+import com.skysport.core.bean.system.SelectItem;
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.inerfaces.bean.system.YearConfInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.common.ICommonService;
+import com.skysport.inerfaces.model.system.year_conf.YearConfManageServiceHelper;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.RequestContextUtils;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,7 +50,7 @@ public class YearConfManageAction extends BaseAction<String, Object, YearConfInf
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search()  {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/system/year_conf/list");
         return mav;
     }
@@ -61,8 +64,7 @@ public class YearConfManageAction extends BaseAction<String, Object, YearConfInf
      */
     @RequestMapping(value = "/search")
     @ResponseBody
-    public Map<String, Object> search(HttpServletRequest request)
-             {
+    public Map<String, Object> search(HttpServletRequest request) {
         // HashMap<String, String> paramMap = convertToMap(params);
         DataTablesInfo dataTablesInfo = convertToDataTableQrInfo(DictionaryKeyConstant.YEAR_CONF_TABLE_COLUMN, request);
         // 总记录数
@@ -86,9 +88,10 @@ public class YearConfManageAction extends BaseAction<String, Object, YearConfInf
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(YearConfInfo year_confInfo, HttpServletRequest request,
-                                    HttpServletResponse respones)  {
+    public Map<String, Object> edit(YearConfInfo year_confInfo, HttpServletRequest request) {
         yearConfManageService.edit(year_confInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        YearConfManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
@@ -104,11 +107,13 @@ public class YearConfManageAction extends BaseAction<String, Object, YearConfInf
      */
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> add(YearConfInfo year_confInfo)  {
+    public Map<String, Object> add(YearConfInfo year_confInfo, HttpServletRequest request) {
         String currentNo = yearConfManageService.queryCurrentSeqNo();
         //设置ID
         year_confInfo.setNatrualkey(BuildSeqNoHelper.SINGLETONE.getNextSeqNo(TableNameConstant.YEAR_CONF_INFO, currentNo, incrementNumber));
         yearConfManageService.add(year_confInfo);
+        ApplicationContext appContext = RequestContextUtils.getWebApplicationContext(request);
+        YearConfManageServiceHelper.SINGLETONE.refreshSelect(appContext);
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");

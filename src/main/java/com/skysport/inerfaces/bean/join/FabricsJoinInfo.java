@@ -1,10 +1,10 @@
 package com.skysport.inerfaces.bean.join;
 
 import com.skysport.core.bean.system.SelectItem2;
-import com.skysport.inerfaces.bean.FabricsDetailInfo;
-import com.skysport.inerfaces.bean.FabricsInfo;
-import com.skysport.inerfaces.bean.MaterialSpInfo;
-import com.skysport.inerfaces.bean.MaterialUnitDosage;
+import com.skysport.inerfaces.bean.develop.FabricsDetailInfo;
+import com.skysport.inerfaces.bean.develop.FabricsInfo;
+import com.skysport.inerfaces.bean.develop.MaterialSpInfo;
+import com.skysport.inerfaces.bean.develop.MaterialUnitDosage;
 
 /**
  * 类说明:

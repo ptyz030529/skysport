@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.develop.project.service;
 
-import com.skysport.inerfaces.bean.ProjectInfo;
+import com.skysport.inerfaces.bean.develop.ProjectInfo;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
 import com.skysport.inerfaces.model.common.ICommonService;
 

@@ -21,12 +21,18 @@
 		a.offer_amount AS offerAmount,
 		a.del_flag AS delFlag,
 		a.update_time AS updateTime,
-		a.remark AS remark
+		a.remark AS remark,
+		a.factory_offer  AS factoryOffer,
+		a.factory_margins  AS factoryMargins,
+		a.lp_price AS lpPrice,
+		a.commission   AS commission,
+		a.exchange_costs   AS  exchangeCosts,
+		a.costing   AS costing
 	</sql>
 
     <select id="queryInfo" resultType="BomInfo">
         select
-        <include refid="searchInfoSql"/>
+       		 <include refid="searchInfoSql"/>
         FROM t_kf_bominfo a
         WHERE a.bom_id =#{natrualkey}
         limit 1
@@ -62,8 +68,8 @@
         </if>
         <if test="dataTablesInfo.searchValue !=null and dataTablesInfo.searchValue != ''">
             and (
-            bom_name like concat('%',#{dataTablesInfo.searchValue},'%') or
-            remark like concat('%',#{dataTablesInfo.searchValue},'%')
+            	bom_name like concat('%',#{dataTablesInfo.searchValue},'%') or
+            	remark like concat('%',#{dataTablesInfo.searchValue},'%')
             )
         </if>
         <if test="dataTablesInfo.orderColumn!=null and dataTablesInfo.orderColumn != ''">
@@ -74,15 +80,23 @@
     </select>
 
     <update id="updateInfo">
-		update t_kf_bominfo 	set
-		collectionNum =#{collectionNum},
-		fabrics_end_date =#{fabricsEndDate},
-		accessories_end_date =#{accessoriesEndDate},
-		preoffer_date =#{preOfferDate},
-		cloth_received_date =#{clothReceivedDate},
-		offer_amount =#{offerAmount},
-		remark=#{remark}
-		WHERE bom_id =#{natrualkey}
+		update
+			t_kf_bominfo
+		set
+			fabrics_end_date =#{fabricsEndDate},
+			accessories_end_date =#{accessoriesEndDate},
+			preoffer_date =#{preOfferDate},
+			cloth_received_date =#{clothReceivedDate},
+			offer_amount =#{offerAmount},
+			remark=#{remark},
+			factory_offer=#{factoryOffer},
+			factory_margins=#{factoryMargins},
+			lp_price =#{lpPrice},
+			commission=#{commission},
+			exchange_costs=#{exchangeCosts},
+			costing=#{costing}
+		WHERE
+			bom_id =#{natrualkey}
 	</update>
 
     <insert id="addBatch" parameterType="list">

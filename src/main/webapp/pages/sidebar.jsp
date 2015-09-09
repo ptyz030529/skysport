@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <div class="sidebar responsive" id="sidebar">
     <script type="text/javascript">
         try {
@@ -7,6 +7,32 @@
         }
     </script>
     <ul class="nav nav-list">
+        <li>
+            <a href="#" class="dropdown-toggle">
+                <span class="menu-text"> 任务管理 </span>
+                <b class="arrow fa fa-angle-down"></b>
+            </a>
+            <ul class="submenu">
+                <li>
+                    <a href="javascript:onclick('<%=path%>/task/list/undo')">
+                       我的待办
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:onclick('<%=path%>/task/list/done')">
+                        历史任务
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:onclick('<%=path%>/task/list/all')">
+                        所有待办
+                    </a>
+                </li>
+            </ul>
+
+        </li>
+
+
         <li>
             <a href="javascript:onclick('<%=path%>/system/sp/list')" class="dropdown-toggle">
                 <span class="menu-text"> 基础资料 </span>
@@ -255,7 +281,7 @@
                 <li class="">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-caret-right"></i>
-                        预成本核算
+                        开发控制流
                         <b class="arrow fa fa-angle-down"></b>
                     </a>
 
@@ -265,7 +291,7 @@
                         <li class="">
                             <a href="top-menu.html">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                成本核算列表
+                                预报价
                             </a>
 
                             <b class="arrow"></b>
@@ -274,7 +300,7 @@
                         <li class="">
                             <a href="two-menu-1.html">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                成本核算信息
+                                色样报价
                             </a>
 
                             <b class="arrow"></b>
@@ -283,92 +309,14 @@
                         <li class="">
                             <a href="two-menu-2.html">
                                 <i class="menu-icon fa fa-caret-right"></i>
-                                成本核算新建
+                                正式报价
                             </a>
-
                             <b class="arrow"></b>
                         </li>
 
                     </ul>
                 </li>
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        预报价报价单
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
 
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="top-menu.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                报价单列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                报价单信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                报价单新建
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        预报价客户反馈
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="top-menu.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                客户反馈列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                客户反馈信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                客户反馈新建
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-
-                    </ul>
-                </li>
                 <li class="">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-caret-right"></i>
@@ -415,312 +363,6 @@
                         </li>
                     </ul>
                 </li>
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        色样成本核算
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="top-menu.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                成本核算列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                成本核算信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                成本核算新建
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        色样报价
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="top-menu.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                色样报价列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                色样报价信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                色样报价新建
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                    </ul>
-                </li>
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        色样客户端反馈
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="top-menu.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                色样客户端反馈列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                色样客户端反馈信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                色样客户端反馈新建
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-
-                    </ul>
-                </li>
-
-
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        开发样
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="top-menu.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                开发样列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                开发样信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                开发样新建
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-
-                    </ul>
-                </li>
-
-
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        开发样成本核算
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="top-menu.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                开发样成本核算列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                开发样成本核算信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                开发样成本核算新建
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-
-                    </ul>
-                </li>
-
-
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        开发样报价
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="top-menu.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                开发样报价列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                开发样报价信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                开发样报价新建
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-
-                    </ul>
-                </li>
-
-                <li class="">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        正式BOM完善
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="top-menu.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                BOM列表
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                BOM信息
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                BOM新建
-                            </a>
-                            <b class="arrow"></b>
-                        </li>
-
-
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="javascript:onclick('development/design/list')">
-                        设计
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        打样管理
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:onclick('development/design/wizard.html')">
-                        开发进度
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        产品要求清单
-                    </a>
-                </li>
             </ul>
         </li>
         <li class="active">
@@ -735,7 +377,7 @@
                 <span class="menu-text"> 品管 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-           
+
         </li>
         <li>
             <a href="#" class="dropdown-toggle">
@@ -743,7 +385,7 @@
                 <span class="menu-text"> 财务 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-           
+
         </li>
 
         <li>
@@ -806,7 +448,7 @@
                 <span class="menu-text"> 采购部</span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-           
+
         </li>
         <li>
             <a href="#" class="dropdown-toggle">
@@ -814,7 +456,7 @@
                 <span class="menu-text"> 客户接口 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-           
+
         </li>
         <li>
             <a href="#" class="dropdown-toggle">
@@ -822,7 +464,7 @@
                 <span class="menu-text"> 供应商接口 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-           
+
         </li>
         <li>
             <a href="#" class="dropdown-toggle">
@@ -830,7 +472,7 @@
                 <span class="menu-text"> 运营 </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
-           
+
         </li>
 
         <li>
@@ -846,7 +488,7 @@
                 </li>
                 <li>
                     <a href="javascript:onclick('<%=path%>/system/permission/user-tab')">
-                       个人信息
+                        个人信息
                     </a>
                 </li>
                 <li>

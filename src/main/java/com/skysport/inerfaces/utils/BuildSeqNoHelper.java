@@ -1,4 +1,4 @@
-package com.skysport.inerfaces.helper;
+package com.skysport.inerfaces.utils;
 
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.instance.DictionaryInfo;

@@ -34,11 +34,6 @@ public class TableKeyManager implements IncrementNumber {
     }
 
     @Override
-    public int nextVal(String kind_name, String currentSeqNo) {
-        return 0;
-    }
-
-    @Override
     public String nextVal(String kind_name, int length, String currentSeqNo) {
         Map<String, Object> paramsMap = new HashMap<String, Object>();
         paramsMap.put("kind_name", kind_name);

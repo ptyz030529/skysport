@@ -1,21 +1,23 @@
 package com.skysport.inerfaces.action.develop;
+
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.core.utils.SeqCreateUtils;
-import com.skysport.inerfaces.bean.ProjectBomInfo;
+import com.skysport.inerfaces.bean.develop.ProjectBomInfo;
 import com.skysport.inerfaces.constant.ApplicationConstant;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
 import com.skysport.inerfaces.model.develop.project.helper.ProjectManageHelper;
 import com.skysport.inerfaces.model.develop.project.service.IProjectItemManageService;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -96,16 +98,6 @@ public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomI
             }
         }
         Map<String, Object> resultMap = new HashMap<String, Object>();
-//        String[] initialPreview = new String[1];
-//        initialPreview[0] = "<img src='/resources/images/desert.jpg' class='file-preview-image' alt='Desert' title='Desert'>";
-//        resultMap.put("initialPreview", initialPreview);
-//        PreviewConfig initialPreviewConfig = new PreviewConfig();
-//        initialPreviewConfig.setCaption("desert.jpg");
-//        initialPreviewConfig.setExtra(new Extra(100));
-//        initialPreviewConfig.setKey("100");
-//        initialPreviewConfig.setUrl("http://localhost/avatar/delete");
-//        initialPreviewConfig.setWidth("120px");
-//        resultMap.put("initialPreviewConfig", initialPreviewConfig);
         // 重定向
         return resultMap;
     }

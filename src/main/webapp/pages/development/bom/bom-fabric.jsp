@@ -83,9 +83,8 @@
                         <label class="col-xs-2  control-label" for="{{pantoneId}}"> 颜色 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="{{pantoneId}}" name="pantoneId"
-                                    placeholder="颜色">
-                            </select>
+                            <input type="text" id="{{pantoneId}}" name="pantoneId" placeholder="颜色"
+                                   class="col-xs-10 col-sm-12"/>
                         </div>
                         <label class="col-xs-2  control-label" for="{{productTypeId}}"> 品名 </label>
 
@@ -172,10 +171,10 @@
                                     placeholder="贴膜或涂层工艺">
                             </select>
                         </div>
-                        <label class="col-xs-2  control-label" for="isShow"> 报价表中是否显示 </label>
+                        <label class="col-xs-2  control-label" for="{{isShow}}"> 报价表中是否显示 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="isShow" name="mtId" placeholder="报价表中">
+                            <select class="col-xs-12" data-style="btn-info" id="{{isShow}}" name="isShow" placeholder="报价表中">
                                 <option value="">请选择</option>
                                 <option value="1">不显示</option>
                                 <option value="2">显示</option>

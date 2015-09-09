@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.develop;
 
-import com.skysport.inerfaces.bean.ProjectCategoryInfo;
+import com.skysport.inerfaces.bean.develop.ProjectCategoryInfo;
 import com.skysport.inerfaces.model.develop.project.service.IProjectCategoryManageService;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;

@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.material;
 
-import com.skysport.inerfaces.bean.MaterialInfo;
+import com.skysport.inerfaces.bean.develop.MaterialInfo;
 
 import java.util.List;
 

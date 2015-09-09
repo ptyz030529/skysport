@@ -6,11 +6,11 @@ import com.skysport.core.exception.CnfwsyException;
 import com.skysport.core.instance.SystemBaseInfo;
 import com.skysport.core.model.seqno.service.IncrementNumber;
 import com.skysport.core.utils.SeqCreateUtils;
-import com.skysport.inerfaces.bean.ProjectBomInfo;
-import com.skysport.inerfaces.bean.ProjectCategoryInfo;
-import com.skysport.inerfaces.bean.ProjectInfo;
+import com.skysport.inerfaces.bean.develop.ProjectBomInfo;
+import com.skysport.inerfaces.bean.develop.ProjectCategoryInfo;
+import com.skysport.inerfaces.bean.develop.ProjectInfo;
 import com.skysport.inerfaces.constant.ApplicationConstant;
-import com.skysport.inerfaces.helper.BuildSeqNoHelper;
+import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;

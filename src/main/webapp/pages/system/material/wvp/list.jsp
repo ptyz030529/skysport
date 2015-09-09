@@ -4,6 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>查询透湿程度信息</title>
     <jsp:include page="../../../base/common.jsp" flush="true"></jsp:include>
     <jsp:include page="../../../base/commonTable.jsp" flush="true"></jsp:include>

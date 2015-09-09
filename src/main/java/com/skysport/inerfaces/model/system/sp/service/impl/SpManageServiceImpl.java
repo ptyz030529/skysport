@@ -58,14 +58,6 @@ public class SpManageServiceImpl implements ISpManageService {
         return spManageMapper.searchSP(dataTablesInfo);
     }
 
-    public SpManageMapper getSpManageMapper() {
-        return spManageMapper;
-    }
-
-    public void setSpManageMapper(SpManageMapper spManageMapper) {
-        this.spManageMapper = spManageMapper;
-    }
-
     /**
      *
      */

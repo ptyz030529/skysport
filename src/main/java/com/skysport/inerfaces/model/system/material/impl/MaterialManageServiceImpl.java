@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.material.impl;
 
-import com.skysport.inerfaces.bean.MaterialInfo;
+import com.skysport.inerfaces.bean.develop.MaterialInfo;
 import com.skysport.inerfaces.mapper.MaterialManageMapper;
 import com.skysport.inerfaces.model.system.material.IMaterialManageService;
 import org.springframework.stereotype.Component;

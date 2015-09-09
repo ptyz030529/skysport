@@ -1,4 +1,6 @@
-package com.skysport.inerfaces.bean;
+package com.skysport.inerfaces.bean.develop;
+
+import com.skysport.inerfaces.bean.Extra;
 
 /**
  * 类说明:
