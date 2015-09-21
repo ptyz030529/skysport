@@ -8,7 +8,7 @@
     <title>404 您输入的网页不存在</title>
 </head>
 
-<body  style="width:500px; margin:0 auto">
+<body style="width:500px; margin:0 auto">
 <img src="<%=path%>/resources/css/404/1/404-2.png" width="100%" height="50%" border="0"/>
 </body>
 </html>

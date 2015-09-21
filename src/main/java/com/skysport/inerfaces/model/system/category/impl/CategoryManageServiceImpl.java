@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.model.system.category.impl;
 
 import com.skysport.core.bean.system.SelectItem2;
-import com.skysport.inerfaces.bean.system.CategoryInfo;
+import com.skysport.inerfaces.bean.basic.CategoryInfo;
 import com.skysport.inerfaces.mapper.CategoryManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import com.skysport.inerfaces.model.system.category.ICategoryManageService;

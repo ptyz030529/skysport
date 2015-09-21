@@ -4,7 +4,7 @@ import com.skysport.core.action.BaseAction;
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.system.PantoneInfo;
+import com.skysport.inerfaces.bean.basic.PantoneInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
 import com.skysport.inerfaces.model.system.pantone.service.IPantoneManageService;
 import com.skysport.inerfaces.utils.BuildSeqNoHelper;

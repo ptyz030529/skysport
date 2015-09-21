@@ -2,7 +2,7 @@ package com.skysport.inerfaces.model.system.sp.service.impl;
 
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.bean.system.SelectItem2;
-import com.skysport.inerfaces.bean.system.SpInfo;
+import com.skysport.inerfaces.bean.basic.SpInfo;
 import com.skysport.inerfaces.mapper.SpManageMapper;
 import com.skysport.inerfaces.model.system.sp.service.ISpManageService;
 import org.apache.ibatis.annotations.Param;

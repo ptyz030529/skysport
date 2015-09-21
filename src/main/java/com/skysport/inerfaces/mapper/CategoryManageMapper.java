@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.mapper;
 
 import com.skysport.core.bean.system.SelectItem2;
-import com.skysport.inerfaces.bean.system.CategoryInfo;
+import com.skysport.inerfaces.bean.basic.CategoryInfo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 

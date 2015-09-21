@@ -689,9 +689,7 @@
         //页面加载时，面料全部隐藏
         $("div[id^=fabricAllInfoId]").hide();
 
-        $("#bomDescTitle").click(function () {
-            $("#bomDescDetail").toggle(300);
-        });
+
 
         //点击添加面料
         $("#imgAddFabric").click(function () {

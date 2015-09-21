@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.area.impl;
 
-import com.skysport.inerfaces.bean.system.AreaInfo;
+import com.skysport.inerfaces.bean.basic.AreaInfo;
 import com.skysport.inerfaces.mapper.AreaManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;

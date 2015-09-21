@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.action.system;
 
-import com.skysport.inerfaces.bean.system.MainColor;
+import com.skysport.inerfaces.bean.basic.MainColor;
 import com.skysport.inerfaces.model.system.main_color.IMainColorService;
 import com.skysport.inerfaces.model.system.main_color.helper.MainColorHelper;
 import org.springframework.context.annotation.Scope;

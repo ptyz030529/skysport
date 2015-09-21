@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.material.impl;
 
-import com.skysport.inerfaces.bean.system.MaterialUnitInfo;
+import com.skysport.inerfaces.bean.basic.MaterialUnitInfo;
 import com.skysport.inerfaces.mapper.material.MaterialUnitManageDao;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;

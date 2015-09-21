@@ -1,7 +1,7 @@
 package com.skysport.inerfaces.model.system.customer.service;
 
 import com.skysport.core.bean.query.DataTablesInfo;
-import com.skysport.inerfaces.bean.system.CustomerInfo;
+import com.skysport.inerfaces.bean.basic.CustomerInfo;
 
 import java.util.List;
 

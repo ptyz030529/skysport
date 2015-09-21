@@ -2,7 +2,7 @@ package com.skysport.inerfaces.mapper;
 
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.bean.system.SelectItem2;
-import com.skysport.inerfaces.bean.system.SpInfo;
+import com.skysport.inerfaces.bean.basic.SpInfo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

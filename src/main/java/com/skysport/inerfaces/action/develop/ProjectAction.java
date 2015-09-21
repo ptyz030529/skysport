@@ -7,6 +7,7 @@ import com.skysport.inerfaces.bean.develop.ProjectBomInfo;
 import com.skysport.inerfaces.bean.develop.ProjectInfo;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
 import com.skysport.inerfaces.model.develop.project.service.IProjectManageService;
+import com.skysport.inerfaces.model.develop.quoted.service.IQuotedService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +35,9 @@ public class ProjectAction extends BaseAction<String, Object, ProjectInfo> {
 
     @Resource(name = "projectManageService")
     private IProjectManageService projectManageService;
+
+    @Resource(name = "quotedService")
+    private IQuotedService quotedService;
 
     /**
      * 此方法描述的是：展示list页面	 *
@@ -161,18 +167,21 @@ public class ProjectAction extends BaseAction<String, Object, ProjectInfo> {
         //保存项目信息
         projectManageService.add(info);
 
-
-        //保存项目二级品类信息
-
-
-        //保存生成子项目信息
-
-
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "新增成功");
         return resultMap;
 
+    }
+
+    /**
+     * @return 导出报价表
+     * @throws IOException
+     */
+    @RequestMapping("/download_offer/{natrualkeys}")
+    public ModelAndView downloadOffer(@PathVariable String natrualkeys, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        quotedService.download(request, response, natrualkeys);
+        return null;
     }
 
 
@@ -183,10 +192,11 @@ public class ProjectAction extends BaseAction<String, Object, ProjectInfo> {
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
     public ProjectInfo queryCustomerNo(@PathVariable String natrualKey) {
+
         ProjectInfo info = projectManageService.queryInfoByNatrualKey(natrualKey);
         return info;
-    }
 
+    }
 
 
     /**
@@ -212,33 +222,6 @@ public class ProjectAction extends BaseAction<String, Object, ProjectInfo> {
         resultMap.put("items", commonBeans);
         resultMap.put("total_count", commonBeans.size());
         return resultMap;
-    }
-
-
-    /**
-     * 上传文件 用@RequestParam注解来指定表单上的file为MultipartFile
-     *
-     * @param files
-     * @return
-     */
-    @RequestMapping("fileUpload")
-    public String fileUpload(@RequestParam("file") MultipartFile[] files, HttpServletRequest request) {
-        for (MultipartFile file : files) {
-            // 判断文件是否为空
-            if (!file.isEmpty()) {
-                try {
-                    // 文件保存路径
-                    String filePath = request.getSession().getServletContext().getRealPath("/") + "upload/"
-                            + file.getOriginalFilename();
-                    // 转存文件
-                    file.transferTo(new File(filePath));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        // 重定向
-        return "redirect:/list.html";
     }
 
 

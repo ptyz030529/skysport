@@ -2,7 +2,7 @@ package com.skysport.inerfaces.model.system.main_color.helper;
 
 import com.skysport.core.constant.CharConstant;
 import com.skysport.inerfaces.bean.develop.ProjectBomInfo;
-import com.skysport.inerfaces.bean.system.MainColor;
+import com.skysport.inerfaces.bean.basic.MainColor;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;

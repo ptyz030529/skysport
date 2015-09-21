@@ -5,7 +5,7 @@ import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.bean.system.SelectItem2;
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.core.model.seqno.service.IncrementNumber;
-import com.skysport.inerfaces.bean.system.CategoryInfo;
+import com.skysport.inerfaces.bean.basic.CategoryInfo;
 import com.skysport.inerfaces.constant.TableNameConstant;
 import com.skysport.inerfaces.model.system.category.CategoryManageServiceHelper;
 import com.skysport.inerfaces.model.system.category.ICategoryManageService;

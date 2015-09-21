@@ -187,4 +187,6 @@ public class UserInfo extends SelectItem {
     public void setProfileAddress(String profileAddress) {
         this.profileAddress = profileAddress;
     }
+
+
 }

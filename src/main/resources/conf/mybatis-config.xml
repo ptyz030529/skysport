@@ -6,18 +6,18 @@
     <!-- 命名空间 -->
     <typeAliases>
         <typeAlias alias="CommonBean" type="com.skysport.core.bean.system.SelectItem2"/>
-        <typeAlias alias="SpInfo" type="com.skysport.inerfaces.bean.system.SpInfo"/>
+        <typeAlias alias="SpInfo" type="com.skysport.inerfaces.bean.basic.SpInfo"/>
         <typeAlias alias="Dictionary" type="com.skysport.core.bean.system.DictionaryInfo"/>
-        <typeAlias alias="PantoneInfo" type="com.skysport.inerfaces.bean.system.PantoneInfo"/>
-        <typeAlias alias="CustomerInfo" type="com.skysport.inerfaces.bean.system.CustomerInfo"/>
-        <typeAlias alias="AreaInfo" type="com.skysport.inerfaces.bean.system.AreaInfo"/>
-        <typeAlias alias="SeriesInfo" type="com.skysport.inerfaces.bean.system.SeriesInfo"/>
-        <typeAlias alias="FactoryInfo" type="com.skysport.inerfaces.bean.system.FactoryInfo"/>
-        <typeAlias alias="MaterialClassicInfo" type="com.skysport.inerfaces.bean.system.MaterialClassicInfo"/>
-        <typeAlias alias="MaterialTypeInfo" type="com.skysport.inerfaces.bean.system.MaterialTypeInfo"/>
-        <typeAlias alias="ProductTypeInfo" type="com.skysport.inerfaces.bean.system.ProductTypeInfo"/>
-        <typeAlias alias="SexInfo" type="com.skysport.inerfaces.bean.system.SexInfo"/>
-        <typeAlias alias="YearConfInfo" type="com.skysport.inerfaces.bean.system.YearConfInfo"/>
+        <typeAlias alias="PantoneInfo" type="com.skysport.inerfaces.bean.basic.PantoneInfo"/>
+        <typeAlias alias="CustomerInfo" type="com.skysport.inerfaces.bean.basic.CustomerInfo"/>
+        <typeAlias alias="AreaInfo" type="com.skysport.inerfaces.bean.basic.AreaInfo"/>
+        <typeAlias alias="SeriesInfo" type="com.skysport.inerfaces.bean.basic.SeriesInfo"/>
+        <typeAlias alias="FactoryInfo" type="com.skysport.inerfaces.bean.basic.FactoryInfo"/>
+        <typeAlias alias="MaterialClassicInfo" type="com.skysport.inerfaces.bean.basic.MaterialClassicInfo"/>
+        <typeAlias alias="MaterialTypeInfo" type="com.skysport.inerfaces.bean.basic.MaterialTypeInfo"/>
+        <typeAlias alias="ProductTypeInfo" type="com.skysport.inerfaces.bean.basic.ProductTypeInfo"/>
+        <typeAlias alias="SexInfo" type="com.skysport.inerfaces.bean.basic.SexInfo"/>
+        <typeAlias alias="YearConfInfo" type="com.skysport.inerfaces.bean.basic.YearConfInfo"/>
         <typeAlias alias="DyeInfo" type="com.skysport.inerfaces.bean.material.DyeInfo"/>
         <!--物料-->
         <typeAlias alias="BondingLaminationCoatingInfo" type="com.skysport.inerfaces.bean.material.BondingLaminationCoatingInfo"/>
@@ -29,9 +29,9 @@
         <typeAlias alias="WaterVapourPermeabilityInfo" type="com.skysport.inerfaces.bean.material.WaterVapourPermeabilityInfo"/>
         <typeAlias alias="WorkmanshipOfBondingLaminatingCoatingInfo" type="com.skysport.inerfaces.bean.material.WorkmanshipOfBondingLaminatingCoatingInfo"/>
         <typeAlias alias="FabricsInfo" type="com.skysport.inerfaces.bean.develop.FabricsInfo"/>
-        <typeAlias alias="CategoryInfo" type="com.skysport.inerfaces.bean.system.CategoryInfo"/>
-        <typeAlias alias="MaterialPositionInfo" type="com.skysport.inerfaces.bean.system.MaterialPositionInfo"/>
-        <typeAlias alias="MaterialUnitInfo" type="com.skysport.inerfaces.bean.system.MaterialUnitInfo"/>
+        <typeAlias alias="CategoryInfo" type="com.skysport.inerfaces.bean.basic.CategoryInfo"/>
+        <typeAlias alias="MaterialPositionInfo" type="com.skysport.inerfaces.bean.basic.MaterialPositionInfo"/>
+        <typeAlias alias="MaterialUnitInfo" type="com.skysport.inerfaces.bean.basic.MaterialUnitInfo"/>
         <!--DEVELOP 开发-->
         <typeAlias alias="BomInfo" type="com.skysport.inerfaces.bean.develop.BomInfo"/>
         <typeAlias alias="ProjectBomInfo" type="com.skysport.inerfaces.bean.develop.ProjectBomInfo"/>
@@ -39,9 +39,9 @@
         <typeAlias alias="ProjectQueryForm" type="com.skysport.inerfaces.form.develop.ProjectQueryForm"/>
         <typeAlias alias="BomQueryForm" type="com.skysport.inerfaces.form.develop.BomQueryForm"/>
         <typeAlias alias="ProjectCategoryInfo" type="com.skysport.inerfaces.bean.develop.ProjectCategoryInfo"/>
-        <typeAlias alias="MainColor" type="com.skysport.inerfaces.bean.system.MainColor"/>
+        <typeAlias alias="MainColor" type="com.skysport.inerfaces.bean.basic.MainColor"/>
         <typeAlias alias="FabricInfo" type="com.skysport.inerfaces.bean.develop.FabricsInfo"/>
-
+        <typeAlias alias="QuotedInfo" type="com.skysport.inerfaces.bean.develop.QuotedInfo"/>
 
         <!--权限管理-->
         <typeAlias alias="UserInfo" type="com.skysport.inerfaces.bean.system.permission.UserInfo"/>

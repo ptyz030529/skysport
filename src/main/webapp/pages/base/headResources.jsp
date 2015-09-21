@@ -3,7 +3,6 @@
 <!-- bootstrap & fontawesome -->
 <link rel="stylesheet" href="<%=path%>/resources/css/bootstrap.css" />
 <link rel="stylesheet" href="<%=path%>/resources/css/font-awesome.css" />
-
 <jsp:include page="aceHead.jsp" flush="true"/>
 
 <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->

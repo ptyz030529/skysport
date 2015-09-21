@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_skysport" default="compile.module.skysport">
+  <dirname property="module.skysport.basedir" file="${ant.file.module_skysport}"/>
+  
+  <property name="module.jdk.home.skysport" value="${jdk.home.1.8}"/>
+  <property name="module.jdk.bin.skysport" value="${jdk.bin.1.8}"/>
+  <property name="module.jdk.classpath.skysport" value="jdk.classpath.1.8"/>
+  
+  <property name="compiler.args.skysport" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="skysport.output.dir" value="${module.skysport.basedir}/target/classes"/>
+  <property name="skysport.testoutput.dir" value="${module.skysport.basedir}/target/test-classes"/>
+  
+  <path id="skysport.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="skysport.module.production.classpath">
+    <path refid="${module.jdk.classpath.skysport}"/>
+    <path refid="library.commonjar.classpath"/>
+    <path refid="library.maven:_net.tanesha.recaptcha4j:recaptcha4j:0.0.7.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-engine:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-bpmn-converter:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-bpmn-model:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-process-validation:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-image-generator:5.17.0.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-email:1.2.classpath"/>
+    <path refid="library.maven:_javax.mail:mail:1.4.1.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.6.release.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.6.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-spring:5.17.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:4.0.6.release.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.4.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.1.6.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-oxm:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.1.6.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aspects:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.8.5.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.xstream:xstream:1.4.8.classpath"/>
+    <path refid="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath"/>
+    <path refid="library.maven:_xpp3:xpp3_min:1.1.4c.classpath"/>
+    <path refid="library.maven:_taglibs:standard:1.1.2.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.2.4.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.2.2.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.29.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi-ooxml:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi-ooxml-schemas:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.xmlbeans:xmlbeans:2.6.0.classpath"/>
+    <path refid="library.maven:_stax:stax-api:1.0.1.classpath"/>
+    <path refid="library.maven:_com.alibaba:druid:1.0.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.5.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.5.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.5.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.4.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.9.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.6.6.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_commons-fileupload:commons-fileupload:1.3.1.classpath"/>
+    <path refid="library.maven:_com.fasterxml.uuid:java-uuid-generator:3.1.4.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.10.classpath"/>
+  </path>
+  
+  <path id="skysport.runtime.production.module.classpath">
+    <pathelement location="${skysport.output.dir}"/>
+    <path refid="library.commonjar.classpath"/>
+    <path refid="library.maven:_net.tanesha.recaptcha4j:recaptcha4j:0.0.7.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-engine:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-bpmn-converter:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-bpmn-model:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-process-validation:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-image-generator:5.17.0.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-email:1.2.classpath"/>
+    <path refid="library.maven:_javax.mail:mail:1.4.1.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.6.release.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.6.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-spring:5.17.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:4.0.6.release.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.4.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.1.6.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-oxm:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.1.6.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aspects:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.8.5.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.xstream:xstream:1.4.8.classpath"/>
+    <path refid="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath"/>
+    <path refid="library.maven:_xpp3:xpp3_min:1.1.4c.classpath"/>
+    <path refid="library.maven:_taglibs:standard:1.1.2.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.2.4.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.2.2.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.29.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi-ooxml:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi-ooxml-schemas:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.xmlbeans:xmlbeans:2.6.0.classpath"/>
+    <path refid="library.maven:_stax:stax-api:1.0.1.classpath"/>
+    <path refid="library.maven:_com.alibaba:druid:1.0.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.5.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.5.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.5.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.4.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.9.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.6.6.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_commons-fileupload:commons-fileupload:1.3.1.classpath"/>
+    <path refid="library.maven:_com.fasterxml.uuid:java-uuid-generator:3.1.4.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.10.classpath"/>
+  </path>
+  
+  <path id="skysport.module.classpath">
+    <path refid="${module.jdk.classpath.skysport}"/>
+    <pathelement location="${skysport.output.dir}"/>
+    <path refid="library.commonjar.classpath"/>
+    <path refid="library.maven:_net.tanesha.recaptcha4j:recaptcha4j:0.0.7.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-engine:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-bpmn-converter:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-bpmn-model:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-process-validation:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-image-generator:5.17.0.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-email:1.2.classpath"/>
+    <path refid="library.maven:_javax.mail:mail:1.4.1.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.6.release.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.6.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-spring:5.17.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:4.0.6.release.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.4.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.1.6.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-oxm:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.1.6.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aspects:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.8.5.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.xstream:xstream:1.4.8.classpath"/>
+    <path refid="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath"/>
+    <path refid="library.maven:_xpp3:xpp3_min:1.1.4c.classpath"/>
+    <path refid="library.maven:_taglibs:standard:1.1.2.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.2.4.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.2.2.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.29.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi-ooxml:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi-ooxml-schemas:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.xmlbeans:xmlbeans:2.6.0.classpath"/>
+    <path refid="library.maven:_stax:stax-api:1.0.1.classpath"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.10.19.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:2.1.classpath"/>
+    <path refid="library.maven:_com.alibaba:druid:1.0.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.5.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.5.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.5.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.4.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.9.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.6.6.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_commons-fileupload:commons-fileupload:1.3.1.classpath"/>
+    <path refid="library.maven:_com.fasterxml.uuid:java-uuid-generator:3.1.4.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.10.classpath"/>
+  </path>
+  
+  <path id="skysport.runtime.module.classpath">
+    <pathelement location="${skysport.testoutput.dir}"/>
+    <pathelement location="${skysport.output.dir}"/>
+    <path refid="library.commonjar.classpath"/>
+    <path refid="library.maven:_net.tanesha.recaptcha4j:recaptcha4j:0.0.7.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-engine:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-bpmn-converter:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-bpmn-model:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-process-validation:5.17.0.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-image-generator:5.17.0.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-email:1.2.classpath"/>
+    <path refid="library.maven:_javax.mail:mail:1.4.1.classpath"/>
+    <path refid="library.maven:_javax.activation:activation:1.1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:4.0.6.release.classpath"/>
+    <path refid="library.maven:_joda-time:joda-time:2.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:jcl-over-slf4j:1.7.6.classpath"/>
+    <path refid="library.maven:_org.activiti:activiti-spring:5.17.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:4.0.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-orm:4.0.6.release.classpath"/>
+    <path refid="library.maven:_commons-dbcp:commons-dbcp:1.4.classpath"/>
+    <path refid="library.maven:_commons-pool:commons-pool:1.5.4.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:4.1.6.release.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-web:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-oxm:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-tx:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jdbc:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-webmvc:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:4.1.6.release.classpath"/>
+    <path refid="library.maven:_aopalliance:aopalliance:1.0.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context-support:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aspects:4.1.6.release.classpath"/>
+    <path refid="library.maven:_org.aspectj:aspectjweaver:1.8.5.classpath"/>
+    <path refid="library.maven:_com.thoughtworks.xstream:xstream:1.4.8.classpath"/>
+    <path refid="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath"/>
+    <path refid="library.maven:_xpp3:xpp3_min:1.1.4c.classpath"/>
+    <path refid="library.maven:_taglibs:standard:1.1.2.classpath"/>
+    <path refid="library.maven:_jstl:jstl:1.2.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis:3.2.4.classpath"/>
+    <path refid="library.maven:_org.mybatis:mybatis-spring:1.2.2.classpath"/>
+    <path refid="library.maven:_mysql:mysql-connector-java:5.1.29.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi-ooxml:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.poi:poi-ooxml-schemas:3.12.classpath"/>
+    <path refid="library.maven:_org.apache.xmlbeans:xmlbeans:2.6.0.classpath"/>
+    <path refid="library.maven:_stax:stax-api:1.0.1.classpath"/>
+    <path refid="library.maven:_junit:junit:4.12.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:1.10.19.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:2.1.classpath"/>
+    <path refid="library.maven:_com.alibaba:druid:1.0.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.5.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.5.2.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.5.2.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-core-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.codehaus.jackson:jackson-mapper-asl:1.9.13.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-lang3:3.4.classpath"/>
+    <path refid="library.maven:_log4j:log4j:1.2.9.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.6.6.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-log4j12:1.6.6.classpath"/>
+    <path refid="library.maven:_commons-io:commons-io:2.4.classpath"/>
+    <path refid="library.maven:_commons-fileupload:commons-fileupload:1.3.1.classpath"/>
+    <path refid="library.maven:_com.fasterxml.uuid:java-uuid-generator:3.1.4.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.10.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.skysport">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.skysport">
+    <patternset refid="excluded.from.module.skysport"/>
+  </patternset>
+  
+  <path id="skysport.module.sourcepath">
+    <dirset dir="${module.skysport.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="skysport.module.test.sourcepath">
+    <dirset dir="${module.skysport.basedir}">
+      <include name="src/test/java"/>
+      <include name="src/test/resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.skysport" depends="compile.module.skysport.production,compile.module.skysport.tests" description="Compile module skysport"/>
+  
+  <target name="compile.module.skysport.production" depends="register.custom.compilers" description="Compile module skysport; production classes">
+    <mkdir dir="${skysport.output.dir}"/>
+    <javac2 destdir="${skysport.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.skysport}/javac">
+      <compilerarg line="${compiler.args.skysport}"/>
+      <bootclasspath refid="skysport.module.bootclasspath"/>
+      <classpath refid="skysport.module.production.classpath"/>
+      <src refid="skysport.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.skysport"/>
+    </javac2>
+    
+    <copy todir="${skysport.output.dir}">
+      <fileset dir="${module.skysport.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.skysport.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.skysport.tests" depends="register.custom.compilers,compile.module.skysport.production" description="compile module skysport; test classes" unless="skip.tests">
+    <mkdir dir="${skysport.testoutput.dir}"/>
+    <javac2 destdir="${skysport.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.skysport}/javac">
+      <compilerarg line="${compiler.args.skysport}"/>
+      <bootclasspath refid="skysport.module.bootclasspath"/>
+      <classpath refid="skysport.module.classpath"/>
+      <src refid="skysport.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.skysport"/>
+    </javac2>
+    
+    <copy todir="${skysport.testoutput.dir}">
+      <fileset dir="${module.skysport.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.skysport.basedir}/src/test/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.skysport" description="cleanup module">
+    <delete dir="${skysport.output.dir}"/>
+    <delete dir="${skysport.testoutput.dir}"/>
+  </target>
+</project>

@@ -2,7 +2,7 @@ package com.skysport.inerfaces.model.system.pantone.service;
 
 import com.skysport.core.bean.query.DataTablesInfo;
 import com.skysport.core.bean.system.SelectItem;
-import com.skysport.inerfaces.bean.system.PantoneInfo;
+import com.skysport.inerfaces.bean.basic.PantoneInfo;
 
 import java.util.List;
 

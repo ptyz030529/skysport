@@ -21,13 +21,7 @@
 		a.offer_amount AS offerAmount,
 		a.del_flag AS delFlag,
 		a.update_time AS updateTime,
-		a.remark AS remark,
-		a.factory_offer  AS factoryOffer,
-		a.factory_margins  AS factoryMargins,
-		a.lp_price AS lpPrice,
-		a.commission   AS commission,
-		a.exchange_costs   AS  exchangeCosts,
-		a.costing   AS costing
+		a.remark AS remark
 	</sql>
 
     <select id="queryInfo" resultType="BomInfo">
@@ -88,13 +82,7 @@
 			preoffer_date =#{preOfferDate},
 			cloth_received_date =#{clothReceivedDate},
 			offer_amount =#{offerAmount},
-			remark=#{remark},
-			factory_offer=#{factoryOffer},
-			factory_margins=#{factoryMargins},
-			lp_price =#{lpPrice},
-			commission=#{commission},
-			exchange_costs=#{exchangeCosts},
-			costing=#{costing}
+			remark=#{remark}
 		WHERE
 			bom_id =#{natrualkey}
 	</update>

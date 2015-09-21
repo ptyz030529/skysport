@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.mapper;
 
-import com.skysport.inerfaces.bean.system.MaterialTypeInfo;
+import com.skysport.inerfaces.bean.basic.MaterialTypeInfo;
 import org.springframework.stereotype.Component;
 
 /**

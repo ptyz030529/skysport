@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.main_color;
 
-import com.skysport.inerfaces.bean.system.MainColor;
+import com.skysport.inerfaces.bean.basic.MainColor;
 
 import java.util.List;
 

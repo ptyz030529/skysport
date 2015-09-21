@@ -10,6 +10,7 @@ import com.skysport.inerfaces.constant.ApplicationConstant;
 import com.skysport.inerfaces.form.develop.ProjectQueryForm;
 import com.skysport.inerfaces.model.develop.project.helper.ProjectManageHelper;
 import com.skysport.inerfaces.model.develop.project.service.IProjectItemManageService;
+import com.skysport.inerfaces.model.develop.quoted.service.IQuotedService;
 import com.skysport.inerfaces.utils.BuildSeqNoHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
@@ -20,7 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,7 +35,7 @@ import java.util.Map;
 @Scope("prototype")
 @Controller
 @RequestMapping("/development/project_item")
-public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomInfo> {
+public class ProjectItemAction extends BaseAction<String, Object, ProjectBomInfo> {
 
     @Resource(name = "projectItemManageService")
     private IProjectItemManageService projectItemManageService;
@@ -40,6 +43,8 @@ public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomI
     @Resource(name = "incrementNumber")
     private IncrementNumber incrementNumber;
 
+    @Resource(name = "quotedService")
+    private IQuotedService quotedService;
 
     /**
      * 此方法描述的是：展示list页面	 *
@@ -79,12 +84,17 @@ public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomI
     @RequestMapping(value = "/add/{natrualKey}", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> add(@RequestParam("fileLocation") MultipartFile[] fileLocation, HttpServletRequest request) {
+
+
         for (MultipartFile file : fileLocation) {
+
             // 判断文件是否为空
             if (!file.isEmpty()) {
+
+
                 try {
                     // 文件保存路径
-//                    String uploadDir = request.getSession().getServletContext().getRealPath("/") + "upload/";
+                    // String uploadDir = request.getSession().getServletContext().getRealPath("/") + "upload/";
                     String filePath = "D:\\work\\project\\upload\\skysport\\project\\" + file.getOriginalFilename();
                     File emptyFile = new File(filePath);
                     if (!emptyFile.exists()) {
@@ -95,13 +105,28 @@ public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomI
                 } catch (Exception e) {
                     logger.error("保存上传文件异常", e);
                 }
+
+
             }
         }
         Map<String, Object> resultMap = new HashMap<String, Object>();
+
         // 重定向
         return resultMap;
     }
 
+
+    /**
+     * @return 导出报价表
+     * @throws IOException
+     */
+    @RequestMapping("/download_offer/{natrualkeys}")
+    public ModelAndView downloadOffer(@PathVariable String natrualkeys, HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        quotedService.download(request, response, natrualkeys);
+
+        return null;
+    }
 
     /**
      * 此方法描述的是：
@@ -112,6 +137,8 @@ public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomI
     @RequestMapping(value = "/search")
     @ResponseBody
     public Map<String, Object> search(HttpServletRequest request) {
+
+
         //组件queryFory的参数
         ProjectQueryForm queryForm = new ProjectQueryForm();
         queryForm.setDataTablesInfo(convertToDataTableQrInfo(DictionaryKeyConstant.PROJECT_TABLE_COLULMN, request));
@@ -121,6 +148,7 @@ public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomI
         bomInfo.setAreaId(request.getParameter("areaId"));
         bomInfo.setSeriesId(request.getParameter("seriesId"));
         queryForm.setProjectBomInfo(bomInfo);
+
         // 总记录数
         int recordsTotal = projectItemManageService.listInfosCounts();
         int recordsFiltered = recordsTotal;
@@ -128,9 +156,14 @@ public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomI
             recordsFiltered = projectItemManageService.listFilteredInfosCounts(queryForm);
         }
         int draw = Integer.parseInt(request.getParameter("draw"));
+
         List<ProjectBomInfo> infos = projectItemManageService.searchInfos(queryForm);
+
         ProjectManageHelper.turnIdToName(infos);
+
         Map<String, Object> resultMap = buildSearchJsonMap(infos, recordsTotal, recordsFiltered, draw);
+
+
         return resultMap;
     }
 
@@ -143,10 +176,14 @@ public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomI
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> edit(ProjectBomInfo info) {
+
         projectItemManageService.edit(info);
+
         Map<String, Object> resultMap = new HashMap<String, Object>();
         resultMap.put("code", "0");
         resultMap.put("message", "更新成功");
+
+
         return resultMap;
     }
 
@@ -207,6 +244,7 @@ public class  ProjectItemAction   extends BaseAction<String, Object, ProjectBomI
         resultMap.put("message", "删除成功");
         return resultMap;
     }
+
 
     @RequestMapping(value = "/select", method = RequestMethod.GET)
     @ResponseBody

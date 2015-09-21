@@ -6,14 +6,9 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>新增/修改项目信息</title>
-    <jsp:include page="../../base/common.jsp" flush="true"></jsp:include>
-    <jsp:include page="../../base/commonTable.jsp" flush="true"></jsp:include>
-    <jsp:include page="../../base/headResources.jsp"></jsp:include>
+    <jsp:include page="../../base/hb-headc.jsp"></jsp:include>
     <jsp:include page="../../base/upload.jsp"></jsp:include>
-    <script language="javascript" type="text/javascript"
-            src="<%=path%>/resources/My97DatePicker/WdatePicker.js"></script>
-    <link rel="stylesheet" href="<%=path%>/resources/css/page-header.css"/>
-
+    <link rel="stylesheet" type="text/css" href="<%=path%>/resources/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 </head>
 <body>
 <div class="breadcrumbs" id="breadcrumbs">
@@ -116,15 +111,12 @@
                         <label class="col-xs-2  control-label" for="categoryAid"> 品类一级名称 </label>
 
                         <div class="col-xs-3">
-                            <select class="col-xs-12" data-style="btn-info" id="categoryAid" name="categoryAid"
-                                    placeholder="品类一级名称">
+                            <select class="col-xs-12" data-style="btn-info" id="categoryAid" name="categoryAid"                        placeholder="品类一级名称">
                             </select>
                         </div>
                         <label class="col-xs-2  control-label" for="categoryBid"> 品类二级名称 </label>
-
                         <div class="col-xs-3">
-                            <select data-style="btn-info" class="selectpicker show-menu-arrow" data-width="100%"
-                                    id="categoryBid" multiple placeholder="品类二级名称">"
+                            <select data-style="btn-info" class="selectpicker show-menu-arrow" data-width="100%"             id="categoryBid" multiple placeholder="品类二级名称">"
                             </select>
                         </div>
 
@@ -137,21 +129,17 @@
 
                     <div class="form-group">
 
-                        <label class="col-xs-2  control-label"
-                               for="sketchReceivedDate"> 产品描述收到时间 </label>
+                        <label class="col-xs-2  control-label"         for="sketchReceivedDate"> 产品描述收到时间 </label>
 
                         <div class="col-xs-3">
-                            <input type="text" id="sketchReceivedDate" name="sketchReceivedDate"
-                                   placeholder="产品描述收到时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
+                            <input type="text" id="sketchReceivedDate" name="sketchReceivedDate"            placeholder="产品描述收到时间" class="col-xs-10 col-sm-12" onClick="WdatePicker()"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-xs-2  control-label"
-                               for="fileLocation"> 附件上传 </label>
+                        <label class="col-xs-2  control-label"            for="fileLocation"> 附件上传 </label>
 
                         <div class="col-xs-10">
-                            <input id="fileLocation" class="file" type="file" name="fileLocation" multiple
-                                   data-preview-file-type="any" data-upload-url="#" data-preview-file-icon="">
+                            <input id="fileLocation" class="file" type="file" name="fileLocation" multiple        data-preview-file-type="any" data-upload-url="#" data-preview-file-icon="">
                         </div>
 
                     </div>
@@ -169,9 +157,14 @@
         <!-- Button trigger modal -->
     </div>
 </div>
-<jsp:include page="../../base/footCommon.jsp"></jsp:include>
-<jsp:include page="../../base/aceFoot.jsp"></jsp:include>
+
 </body>
+
+</html>
+<jsp:include page="../../base/hb-footj.jsp"></jsp:include>
+<script type="text/javascript" src='<%=path%>/resources/js/fileinput.js'></script>
+<script type="text/javascript" src='<%=path%>/resources/js/fileinput_locale_zh.js'></script>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/development/project/project-add.js"></script>
 <script>
     $("#fileLocation").fileinput({
         uploadUrl: path + "/development/project/fileUpload", // server upload action
@@ -179,6 +172,3 @@
         maxFileCount: 5
     });
 </script>
-
-</html>
-<script type="text/javascript" src="<%=path%>/resources/interfaces/development/project/project-add.js"></script>

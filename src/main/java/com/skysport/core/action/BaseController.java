@@ -15,7 +15,7 @@ public class BaseController<T> {
 
     protected transient Log logger = LogFactory.getLog(getClass());
 
-    public <T> Map<String, Object> buildCallBackMap(BaseResp resp, T t) {
+    protected <T> Map<String, Object> buildCallBackMap(BaseResp resp, T t) {
         Map<String, Object> rtnMap = new HashMap<>();
         rtnMap.put("resp", resp);
         rtnMap.put("data", t);

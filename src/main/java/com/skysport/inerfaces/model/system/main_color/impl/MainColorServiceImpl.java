@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.main_color.impl;
 
-import com.skysport.inerfaces.bean.system.MainColor;
+import com.skysport.inerfaces.bean.basic.MainColor;
 import com.skysport.inerfaces.mapper.MainColorManageMapper;
 import com.skysport.inerfaces.model.system.main_color.IMainColorService;
 import org.springframework.stereotype.Service;

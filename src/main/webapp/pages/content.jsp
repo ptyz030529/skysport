@@ -11,7 +11,8 @@
 	<meta name="keywords" content="skysport,翊凯" />
 	<meta name="description" content="skysport,翊凯" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<jsp:include page="base/headResources.jsp"></jsp:include>
+	<jsp:include page="base/hb-headc.jsp"></jsp:include>
+	<link rel="stylesheet" type="text/css" href="<%=path%>/resources/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 </head>
 <body>
 <div class="main-content-inner">
@@ -1097,7 +1098,7 @@
 	</div>
 	<!-- /.page-content -->
 </div>
-<jsp:include page="base/footResources.jsp"></jsp:include>
+<jsp:include page="base/hb-footj.jsp"></jsp:include>
 <script type="text/javascript">
 	jQuery(function($) {
 		$('.easy-pie-chart.percentage').each(function(){

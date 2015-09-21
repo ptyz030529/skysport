@@ -8,27 +8,26 @@
     var projectSelectUrl = path + "/system/baseinfo/project_select";
 
     $.extend({
-        initDesc: initDesc
+        initBomDesc: initDesc
     })
 
     /**
      * 初始化描述信息
      */
     function initDesc(callback) {
+
         //初始化下拉列表
         reloadDescSelectData();
 
+
         initDescFileds(callback);
+
 
         //国际化
         i18nDesc();
-    }
 
-    //$(function () {
-    //
-    //
-    //
-    //})
+
+    }
 
 
     function i18nDesc() {
@@ -108,5 +107,10 @@
 
     }
 
+    $(function () {
+        $("#bomDescTitle").click(function () {
+            $("#bomDescDetail").toggle(300);
+        });
 
+    })
 }(jQuery));

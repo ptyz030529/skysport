@@ -9,6 +9,7 @@
      */
     var columnsName = function () {
         var columnsName = [
+            {"data": null},
             {"data": "natrualkey"},
             {"data": "name"},
             {"data": "customerId"},
@@ -23,7 +24,7 @@
         return columnsName;
     }
 
-    var mHtml = ' <div class="dataTables_length col-xs-2" id="yearCode_example_length"><label>年份&nbsp;<select name="yearCode" placeholder="选择" id="yearCode" aria-controls="example" class="form-control input-sm placeholder"><option value="2015"></option></select></label></div><div class="dataTables_length col-xs-2" id="customerId_example_length"><label>客户&nbsp;<select name="customerId" id="customerId" aria-controls="example" class="form-control input-sm"></select></label></div><div class="dataTables_length col-xs-2" id="areaId_example_length"><label>区域&nbsp;<select name="areaId" id="areaId" aria-controls="example" class="form-control input-sm"></select></label></div><div class="dataTables_length col-xs-2" id="seriesId_example_length"><label>系列&nbsp;<select name="seriesId" id="seriesId" aria-controls="example" class="form-control input-sm"></select></label></div>';
+    var mHtml = '<div class="dataTables_length col-xs-2" id="yearCode_example_length"><label>年份&nbsp;<select name="yearCode" placeholder="选择" id="yearCode" aria-controls="example" class="form-control input-sm placeholder"><option value="2015"></option></select></label></div><div class="dataTables_length col-xs-2" id="customerId_example_length"><label>客户&nbsp;<select name="customerId" id="customerId" aria-controls="example" class="form-control input-sm"></select></label></div><div class="dataTables_length col-xs-2" id="areaId_example_length"><label>区域&nbsp;<select name="areaId" id="areaId" aria-controls="example" class="form-control input-sm"></select></label></div><div class="dataTables_length col-xs-2" id="seriesId_example_length"><label>系列&nbsp;<select name="seriesId" id="seriesId" aria-controls="example" class="form-control input-sm"></select></label></div><div class="dataTables_length col-xs-2" id="offer_example_length"><label><button type="button" class="btn btn-info btn-md" onclick="javascript:_mergeList()">报价表</button></label></div>';
     var table;
     $(function () {
 
@@ -41,6 +42,13 @@
             order: [[0, "desc"]], /*默认第一列倒序*/
             fnDrawCallback: reloadDetailSelectData,
             columnDefs: [
+                {
+                    targets: 0,
+                    render: function (data, type, row, meta) {
+                        var html= "<input type='checkbox' name='checkList' value='" + data.natrualkey + "'>";
+                        return html;
+                    }
+                },
                 {
                     targets: indexOpreation,
                     render: function (data, type, row, meta) {

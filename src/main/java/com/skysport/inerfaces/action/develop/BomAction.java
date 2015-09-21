@@ -3,9 +3,11 @@ package com.skysport.inerfaces.action.develop;
 import com.skysport.core.action.BaseAction;
 import com.skysport.core.constant.DictionaryKeyConstant;
 import com.skysport.inerfaces.bean.develop.BomInfo;
+import com.skysport.inerfaces.bean.develop.QuotedInfo;
 import com.skysport.inerfaces.form.develop.BomQueryForm;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
 import com.skysport.inerfaces.model.develop.bom.helper.BomManageHelper;
+import com.skysport.inerfaces.model.develop.quoted.service.IQuotedService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,9 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
     @Resource(name = "bomManageService")
     private IBomManageService bomManageService;
 
+    @Resource(name = "quotedService")
+    private IQuotedService quotedService;
+
     /**
      * 此方法描述的是：展示list页面	 *
      *
@@ -37,7 +42,7 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public ModelAndView search()  {
+    public ModelAndView search() {
         ModelAndView mav = new ModelAndView("/development/bom/bom-list");
         return mav;
     }
@@ -50,7 +55,7 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
      */
     @RequestMapping(value = "/bom-add")
     @ResponseBody
-    public ModelAndView add()  {
+    public ModelAndView add() {
         ModelAndView mav = new ModelAndView("/development/bom/bom-add");
         return mav;
     }
@@ -63,7 +68,7 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
      */
     @RequestMapping(value = "/add/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView add(@PathVariable String natrualKey)  {
+    public ModelAndView add(@PathVariable String natrualKey) {
         ModelAndView mav = new ModelAndView("/development/bom/bom-add");
         mav.addObject("natrualkey", natrualKey);
         return mav;
@@ -113,13 +118,12 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> edit(@RequestBody BomInfo info)  {
+    public Map<String, Object> edit(@RequestBody BomInfo info) {
         info.setBomId(info.getNatrualkey());
         bomManageService.edit(info);
         Map resultMap = rtnSuccessResultMap(MSG_UPDATE_SUCCESS);
         return resultMap;
     }
-
 
 
     /**
@@ -129,7 +133,16 @@ public class BomAction extends BaseAction<String, Object, BomInfo> {
     @RequestMapping(value = "/info/{natrualKey}", method = RequestMethod.GET)
     @ResponseBody
     public BomInfo queryCustomerNo(@PathVariable String natrualKey) {
+
         BomInfo info = bomManageService.queryInfoByNatrualKey(natrualKey);
+
+
+        QuotedInfo quotedInfo = quotedService.queryInfoByNatrualKey(natrualKey);
+
+        info.setQuotedInfo(quotedInfo);
+
+
+
         return info;
     }
 

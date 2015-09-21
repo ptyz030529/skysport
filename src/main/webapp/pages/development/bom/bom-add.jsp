@@ -9,8 +9,7 @@
     <jsp:include page="../../base/common.jsp" flush="true"></jsp:include>
     <jsp:include page="../../base/commonTable.jsp" flush="true"></jsp:include>
     <jsp:include page="../../base/headResources.jsp"></jsp:include>
-    <script language="javascript" type="text/javascript"
-            src="<%=path%>/resources/My97DatePicker/WdatePicker.js"></script>
+    <script language="javascript" type="text/javascript"   src="<%=path%>/resources/My97DatePicker/WdatePicker.js"></script>
     <link rel="stylesheet" href="<%=path%>/resources/css/page-header.css"/>
     <link rel="stylesheet" href="<%=path%>/resources/css/font-awesome.min.css"/>
 </head>
@@ -52,7 +51,6 @@
                     </div>
                     <div id="bomDescDetail">
                         <div class="form-group">
-
                             <label class="col-xs-2  control-label" for="customerId" id="customerLableId"> 客户 </label>
 
                             <div class="col-xs-3">
@@ -148,57 +146,7 @@
 
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-xs-2  control-label" for="factoryOffer"> 工厂报价 </label>
 
-                            <div class="col-xs-3">
-                                <input type="text" id="factoryOffer" name="factoryOffer" placeholder="工厂报价"
-                                       class="col-xs-10 col-sm-12"/>
-                            </div>
-
-                            <label class="col-xs-2  control-label" for="factoryMargins"> 工厂报价利润率</label>
-
-                            <div class="col-xs-3">
-                                <input type="text" id="factoryMargins" name="factoryMargins" placeholder=" 工厂报价利润率"
-                                       class="col-xs-10 col-sm-12"/>
-                            </div>
-
-                        </div>
-
-
-                        <div class="form-group">
-                            <label class="col-xs-2  control-label" for="lpPrice"> 包装费(€) </label>
-
-                            <div class="col-xs-3">
-                                <input type="text" id="lpPrice" name="lpPrice" placeholder="包装费"
-                                       class="col-xs-10 col-sm-12"/>
-                            </div>
-
-                            <label class="col-xs-2  control-label" for="commission">佣金(€) (C1，C2...)</label>
-
-                            <div class="col-xs-3">
-                                <input type="text" id="commission" name="commission" placeholder="佣金(C1，C2...)"
-                                       class="col-xs-10 col-sm-12"/>
-                            </div>
-
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-2  control-label" for="exchangeCosts"> 换汇成本 </label>
-
-                            <div class="col-xs-3">
-                                <input type="text" id="exchangeCosts" name="exchangeCosts" placeholder="换汇成本"
-                                       class="col-xs-10 col-sm-12"/>
-                            </div>
-
-
-                            <label class="col-xs-2  control-label" for="costing">成本核算</label>
-
-                            <div class="col-xs-3">
-                                <input type="text" id="costing" name="costing" placeholder="成本核算"
-                                       class="col-xs-10 col-sm-12"/>
-                            </div>
-
-                        </div>
 
                     </div>
                 </div>
@@ -223,8 +171,7 @@
                 <div id="packageMaterialsInfo">
                     <h5 class="header smaller lighter blue">
                         包材
-                        <span class="glyphicon glyphicon-plus-sign blue" alt="增加包装材料"
-                              id="imgAddPackageMaterials"></span>
+                        <span class="glyphicon glyphicon-plus-sign blue" alt="增加包装材料"   id="imgAddPackageMaterials"></span>
                     </h5>
                 </div>
                 <div id="factoryInfo">
@@ -233,17 +180,68 @@
                         <span class="glyphicon glyphicon-plus-sign blue" alt="增加成衣厂" id="imgAddFacotry"></span>
                     </h5>
                 </div>
-                <div id="bomBtnInfo">
+                <div id="offerInfo">
+                    <div id="offerDescTitle">
+                        <h5 class="header smaller lighter blue">
+                            报价表
+                        </h5>
+                    </div>
+                    <div id="offerDescDetail" style="display: none" >
+                        <div class="form-group">
+                            <label class="col-xs-2  control-label" for="factoryOffer"> 工厂报价 </label>
 
+                            <div class="col-xs-3">
+                                <input type="text" id="factoryOffer" name="factoryOffer" placeholder="工厂报价"    class="col-xs-10 col-sm-12"/>
+                            </div>
+
+                            <label class="col-xs-2  control-label" for="factoryMargins"> 工厂报价利润率</label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="factoryMargins" name="factoryMargins" placeholder=" 工厂报价利润率"   class="col-xs-10 col-sm-12"/>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-xs-2  control-label" for="lpPrice"> 包装费(€) </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="lpPrice" name="lpPrice" placeholder="包装费"   class="col-xs-10 col-sm-12"/>
+                            </div>
+
+                            <label class="col-xs-2  control-label" for="commission">佣金(€) (C1，C2...)</label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="commission" name="commission" placeholder="佣金(C1，C2...)"      class="col-xs-10 col-sm-12"/>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-2  control-label" for="exchangeCosts"> 换汇成本 </label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="exchangeCosts" name="exchangeCosts" placeholder="换汇成本"  class="col-xs-10 col-sm-12"/>
+                            </div>
+
+
+                            <label class="col-xs-2  control-label" for="costing">成本核算</label>
+
+                            <div class="col-xs-3">
+                                <input type="text" id="costing" name="costing" placeholder="成本核算"    class="col-xs-10 col-sm-12"/>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div id="bomBtnInfo">
                     <div class="col-xs-offset-4 col-xs-2">
-                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.bomSave()"
-                                id="saveBtnId">保存
-                        </button>
+                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.bomSave()"    id="saveBtnId">保存</button>
                     </div>
                     <div class="col-xs-2">
-                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.bomSubmit()"
-                                id="commitBtnId">提交
-                        </button>
+                        <button type="button" class="btn btn-info btn-md" onclick="javascript:$.bomSubmit()"  id="commitBtnId">提交</button>
                     </div>
                 </div>
             </form>
@@ -263,3 +261,4 @@
 <script type="text/javascript" src="<%=path%>/resources/interfaces/development/bom/bom-add.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/interfaces/development/bom/bom-desc.js"></script>
 <script type="text/javascript" src="<%=path%>/resources/interfaces/development/bom/bom-fabric.js"></script>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/development/bom/bom-quoted.js"></script>

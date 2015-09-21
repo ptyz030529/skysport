@@ -16,7 +16,10 @@
     function initBom() {
         //初始化描述信息
         //var natrualkey = $("#natrualkey").val();
-        $.initDesc(function (_data) {
+        $.initBomDesc(function (_data) {
+            //初始化报价信息
+            $.iniBomQuotedInfo(_data.quotedInfo);
+            //初始化面料
             $.initFabric(_data.fabrics);
         });
 
@@ -28,6 +31,7 @@
         var fabricItems = [];
         for (var index = 1; index <= size; index++) {
             var fabricItem = {};
+
             var fabricsInfo = {};//面料基本信息
             fabricsInfo.spId = $("#spId" + index).val();
             fabricsInfo.yearCode = $("#yearCode" + index).val();
@@ -39,6 +43,7 @@
             fabricsInfo.nameNum = index;
             fabricsInfo.fabricId = $("#fabricId" + index).val();
             fabricsInfo.isShow = $("#isShow" + index).val();
+
             var fabricsDetailInfo = {};//面料描述信息
             fabricsDetailInfo.specificationId = $("#specificationId" + index).val();
             fabricsDetailInfo.dyeId = $("#dyeId" + index).val();
@@ -50,6 +55,7 @@
             fabricsDetailInfo.mtId = $("#mtId" + index).val();
             fabricsDetailInfo.woblcId = $("#woblcId" + index).val();
             fabricsDetailInfo.fabricId = fabricsInfo.fabricId;
+
             var materialSpInfo = {};//面料用量信息
             materialSpInfo.orderCount = $("#orderCount" + index).val();
             materialSpInfo.attritionRate = $("#attritionRate" + index).val();
@@ -57,6 +63,7 @@
             materialSpInfo.totalAmount = $("#totalAmount" + index).val();
             materialSpInfo.totalPrice = $("#totalPrice" + index).val();
             materialSpInfo.fabricId = fabricsInfo.fabricId;
+
             var materialUnitDosage = {};//面料单位用量
             materialUnitDosage.unitId = $("#unitId" + index).val();
             materialUnitDosage.unitAmount = $("#unitAmount" + index).val();
@@ -71,18 +78,14 @@
     }
 
     function buildBomDesc() {
+
         bominfo.offerAmount = $("#offerAmount").val();
         bominfo.fabricsEndDate = $("#fabricsEndDate").val();
         bominfo.accessoriesEndDate = $("#accessoriesEndDate").val();
         bominfo.preOfferDate = $("#preOfferDate").val();
         bominfo.clothReceivedDate = $("#clothReceivedDate").val();
         bominfo.natrualkey = $("#natrualkey").val();
-        bominfo.factoryOffer = $("#factoryOffer").val();
-        bominfo.factoryMargins = $("#factoryMargins").val();
-        bominfo.costing = $("#costing").val();
-        bominfo.lpPrice = $("#lpPrice").val();
-        bominfo.commission = $("#commission").val();
-        bominfo.exchangeCosts = $("#exchangeCosts").val();
+
     }
 
     /**
@@ -96,20 +99,35 @@
     }
 
     /**
+     * 报价信息
+     */
+    function buildBomQuoted() {
+        bominfo.quotedInfo={};
+        bominfo.quotedInfo.factoryOffer = $("#factoryOffer").val();
+        bominfo.quotedInfo.factoryMargins = $("#factoryMargins").val();
+        bominfo.quotedInfo.costing = $("#costing").val();
+        bominfo.quotedInfo.lpPrice = $("#lpPrice").val();
+        bominfo.quotedInfo.commission = $("#commission").val();
+        bominfo.quotedInfo.exchangeCosts = $("#exchangeCosts").val();
+        bominfo.quotedInfo.bomId = $("#natrualkey").val();
+
+    }
+
+    /**
      * 构建保存数据，并保存
      */
     function bomSave() {
 
-
-
         //描述信息
         buildBomDesc();
+
         //面料信息
         var fabricItems = buildFabricItems();
         bominfo.fabricItems = fabricItems;
+
+        buildBomQuoted();
+
         bomSaveFun();
-
-
     }
 
     function bomSubmit() {

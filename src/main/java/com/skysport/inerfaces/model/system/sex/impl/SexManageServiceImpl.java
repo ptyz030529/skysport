@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.sex.impl;
 
-import com.skysport.inerfaces.bean.system.SexInfo;
+import com.skysport.inerfaces.bean.basic.SexInfo;
 import com.skysport.inerfaces.mapper.SexManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;

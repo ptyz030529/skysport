@@ -6,14 +6,9 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>新增/修改项目信息</title>
-    <jsp:include page="../../base/common.jsp" flush="true"></jsp:include>
-    <jsp:include page="../../base/commonTable.jsp" flush="true"></jsp:include>
-    <jsp:include page="../../base/headResources.jsp"></jsp:include>
+    <jsp:include page="../../base/hb-headc.jsp"></jsp:include>
     <jsp:include page="../../base/upload.jsp"></jsp:include>
-    <script language="javascript" type="text/javascript"
-            src="<%=path%>/resources/My97DatePicker/WdatePicker.js"></script>
-    <link rel="stylesheet" href="<%=path%>/resources/css/page-header.css"/>
-
+    <link rel="stylesheet" type="text/css" href="<%=path%>/resources/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 </head>
 <body>
 <div class="breadcrumbs" id="breadcrumbs">
@@ -160,6 +155,7 @@
                      <div class="hr hr32 hr-dotted"></div>--%>
                         <div class="form-group">
                             <label class="col-xs-2  control-label" for="sexIds">性别属性</label>
+
                             <div class="col-xs-3">
                                 <select data-style="btn-info" class="selectpicker show-menu-arrow" data-width="100%"
                                         id="sexIds" multiple placeholder="性别属性">"
@@ -229,9 +225,14 @@
         <!-- Button trigger modal -->
     </div>
 </div>
-<jsp:include page="../../base/footCommon.jsp"></jsp:include>
-<jsp:include page="../../base/aceFoot.jsp"></jsp:include>
 </body>
+
+
+</html>
+<jsp:include page="../../base/hb-footj.jsp"></jsp:include>
+<script type="text/javascript" src='<%=path%>/resources/js/fileinput.js'></script>
+<script type="text/javascript" src='<%=path%>/resources/js/fileinput_locale_zh.js'></script>
+<script type="text/javascript" src="<%=path%>/resources/interfaces/development/project/project-item-add.js"></script>
 <script>
     $("#fileLocation").fileinput({
         uploadUrl: path + "/development/project_item/fileUpload", // server upload action
@@ -239,6 +240,3 @@
         maxFileCount: 5
     });
 </script>
-
-</html>
-<script type="text/javascript" src="<%=path%>/resources/interfaces/development/project/project-item-add.js"></script>

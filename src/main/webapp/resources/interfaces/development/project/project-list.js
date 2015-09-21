@@ -9,6 +9,7 @@
      */
     var columnsName = function () {
         var columnsName = [
+            {"data": null},
             {"data": "natrualkey"},
             {"data": "name"},
             {"data": "customerId"},
@@ -23,24 +24,32 @@
         return columnsName;
     }
 
+
     var mHtml = ' <div class="dataTables_length col-xs-2" id="yearCode_example_length"><label>年份&nbsp;<select name="yearCode" placeholder="选择" id="yearCode" aria-controls="example" class="form-control input-sm placeholder"><option value="2015"></option></select></label></div><div class="dataTables_length col-xs-2" id="customerId_example_length"><label>客户&nbsp;<select name="customerId" id="customerId" aria-controls="example" class="form-control input-sm"></select></label></div><div class="dataTables_length col-xs-2" id="areaId_example_length"><label>区域&nbsp;<select name="areaId" id="areaId" aria-controls="example" class="form-control input-sm"></select></label></div><div class="dataTables_length col-xs-2" id="seriesId_example_length"><label>系列&nbsp;<select name="seriesId" id="seriesId" aria-controls="example" class="form-control input-sm"></select></label></div>';
     var table;
-    $(function () {
 
+    $(function () {
         var tpl = $("#tpl").html();
         //预编译模板
         var template = Handlebars.compile(tpl);
         var indexOpreation = columnsName().length - 1;
-        table= $('#example').DataTable({
+        table = $('#example').DataTable({
             ajax: {
                 url: "search",
-                data:setPersonalParam
+                data: setPersonalParam
             },
             serverSide: true,
             columns: columnsName(),
-            order: [[0, "desc"]], /*默认第一列倒序*/
+            order: [[1, "desc"]], /*默认第一列倒序*/
             fnDrawCallback: reloadDetailSelectData,
             columnDefs: [
+                {
+                    targets: 0,
+                    render: function (data, type, row, meta) {
+                        var html = "<input type='checkbox' name='checkList' value='" + data.natrualkey + "'>";
+                        return html;
+                    }
+                },
                 {
                     targets: indexOpreation,
                     render: function (data, type, row, meta) {
@@ -48,14 +57,14 @@
                         {
                             func: [
                                 {"name": "修改", "fn": "$.editProject(\'" + data.natrualkey + "\')", "type": "primary"},
-                                {"name": "删除", "fn": "del(\'" + data.natrualkey + "\')", "type": "danger"}
+                                {"name": "删除", "fn": "del(\'" + data.natrualkey + "\')", "type": "danger"},
+                                {"name": "报价表", "fn": "downoffer(\'" + data.natrualkey + "\')", "type": "primary"}
                             ]
                         };
                         var html = template(context);
                         return html;
                     }
                 }
-
             ],
             "language": {
                 "lengthMenu": "_MENU_",
@@ -82,26 +91,27 @@
 
     var yearCode = "-1";
     var customerId = "-1";
-    var areaId ="-1";
-    var seriesId ="-1";
+    var areaId = "-1";
+    var seriesId = "-1";
 
-    var editProject = function(_projectId){
-        window.location.href="add/"+_projectId;
+
+    var editProject = function (_projectId) {
+        window.location.href = "add/" + _projectId;
     }
 
-    var setPersonalParam  = function(d){
-        d.yearCode = yearCode =$("#yearCode").val();
-        d.customerId = customerId =$("#customerId").val();
-        d.areaId = areaId =$("#areaId").val();
-        d.seriesId = seriesId =$("#seriesId").val();
+    var setPersonalParam = function (d) {
+        d.yearCode = yearCode = $("#yearCode").val();
+        d.customerId = customerId = $("#customerId").val();
+        d.areaId = areaId = $("#areaId").val();
+        d.seriesId = seriesId = $("#seriesId").val();
     }
 
-    var reloadTable = function(){
+    var reloadTable = function () {
         //触发dt的重新加载数据的方法
         table.ajax.reload();
     }
 
-    var addSelectChangeListner = function(){
+    var addSelectChangeListner = function () {
         $("#yearCode").change(reloadTable);
         $("#customerId").change(reloadTable);
         $("#areaId").change(reloadTable);
@@ -115,57 +125,56 @@
     }
 
 
-
     var initSelect = function (_data) {
         addSelectChangeListner();
         var data = _data;
         //年份
         var yearCodeItems = data["yearItems"];
         $("#yearCode").empty();
-        $("<option></option>") .val('') .text("请选择...").appendTo($("#yearCode"));
+        $("<option></option>").val('').text("请选择...").appendTo($("#yearCode"));
         $.each(yearCodeItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
                 .text(item["name"])
                 .appendTo($("#yearCode"));
         });
-        $("#yearCode").val(yearCode == undefined?'':yearCode);
+        $("#yearCode").val(yearCode == undefined ? '' : yearCode);
 
         //客户
         var yearCodeItems = data["customerItems"];
         $("#customerId").empty();
-        $("<option></option>") .val('') .text("请选择...").appendTo($("#customerId"));
+        $("<option></option>").val('').text("请选择...").appendTo($("#customerId"));
         $.each(yearCodeItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
                 .text(item["name"])
                 .appendTo($("#customerId"));
         });
-        $("#customerId").val(customerId == undefined?'':customerId);
+        $("#customerId").val(customerId == undefined ? '' : customerId);
 
         //区域
         var areaItems = data["areaItems"];
         $("#areaId").empty();
-        $("<option></option>") .val('') .text("请选择...").appendTo($("#areaId"));
+        $("<option></option>").val('').text("请选择...").appendTo($("#areaId"));
         $.each(areaItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
                 .text(item["name"])
                 .appendTo($("#areaId"));
         });
-        $("#areaId").val(areaId == undefined?'':areaId);
+        $("#areaId").val(areaId == undefined ? '' : areaId);
 
         //系列
         var seriesItems = data["seriesItems"];
         $("#seriesId").empty();
-        $("<option></option>") .val('') .text("请选择...").appendTo($("#seriesId"));
+        $("<option></option>").val('').text("请选择...").appendTo($("#seriesId"));
         $.each(seriesItems, function (i, item) {
             $("<option></option>")
                 .val(item["natrualkey"])
                 .text(item["name"])
                 .appendTo($("#seriesId"));
         });
-        $("#seriesId").val(seriesId == undefined?'':seriesId);
+        $("#seriesId").val(seriesId == undefined ? '' : seriesId);
     }
     $.editProject = editProject;
 }());

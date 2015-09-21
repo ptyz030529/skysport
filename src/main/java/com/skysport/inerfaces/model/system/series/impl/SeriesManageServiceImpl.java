@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.model.system.series.impl;
 
-import com.skysport.inerfaces.bean.system.SeriesInfo;
+import com.skysport.inerfaces.bean.basic.SeriesInfo;
 import com.skysport.inerfaces.mapper.SeriesManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import org.springframework.beans.factory.InitializingBean;

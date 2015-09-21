@@ -9,6 +9,7 @@
     $.extend({
         sendRestFulAjax: sendRestFulAjax,//ajax
         sendJsonAjax:sendJsonAjax,
+        downloadAjax:downloadAjax,
         strToJson: strToJson,//&连接字符串转json对象
         strIsEmpty: strIsEmpty,//判断字符串为空
         strIsNotEmpty: strIsNotEmpty//判断字符串不为空
@@ -35,6 +36,7 @@
             error: doNotSucess
         });
     }
+
     /**
      *
      * @param _url 路径
@@ -55,6 +57,28 @@
             error: doNotSucess
         });
     }
+
+    /**
+     *
+     * @param _url 路径
+     * @param _data 数据
+     * @param _type HTTP方法
+     * @param _dataType 数据类型
+     * @param _doSuccess 成功回调函数
+     */
+    function downloadAjax(_url, _data,_contentType, _doSuccess) {
+        var sf = strIsEmpty(_doSuccess) ? doSucess : _doSuccess;
+        $.ajax({
+            url: _url,
+            data: JSON.stringify(_data),
+            type: "POST",
+            dataType: "json",
+            contentType: _contentType,
+            success: sf,
+            error: doNotSucess
+        });
+    }
+
     /*bootbox.setLocale("zh_CN");*/
     var doNotSucess = function (XMLHttpRequest, textStatus, errorThrown) {
         //console.error(XMLHttpRequest);

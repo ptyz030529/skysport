@@ -7,6 +7,7 @@ import com.skysport.inerfaces.mapper.BomManageMapper;
 import com.skysport.inerfaces.model.common.impl.CommonServiceImpl;
 import com.skysport.inerfaces.model.develop.bom.IBomManageService;
 import com.skysport.inerfaces.model.develop.fabric.IFabricsService;
+import com.skysport.inerfaces.model.develop.quoted.service.IQuotedService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
@@ -26,9 +27,11 @@ public class BomManageServiceImpl extends CommonServiceImpl<BomInfo> implements 
     @Resource(name = "fabricsManageService")
     private IFabricsService fabricsManageService;
 
+    @Resource(name = "quotedService")
+    private IQuotedService quotedService;
 
     @Override
-    public void afterPropertiesSet()  {
+    public void afterPropertiesSet() {
         commonDao = bomManageMapper;
     }
 
@@ -68,15 +71,16 @@ public class BomManageServiceImpl extends CommonServiceImpl<BomInfo> implements 
         super.edit(bomInfo);
 
         //保存面料信息
-        fabricsManageService.updateBatch(bomInfo.getFabricItems(),bomInfo);
+        fabricsManageService.updateBatch(bomInfo.getFabricItems(), bomInfo);
 
         //保存辅料信息
 
-
         //保存包装材料信息
 
-
         //保存成衣厂信息
+
+        //保存报价信息
+        quotedService.updateOrAdd(bomInfo.getQuotedInfo());
 
     }
 

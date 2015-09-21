@@ -1,6 +1,6 @@
 package com.skysport.inerfaces.mapper;
 
-import com.skysport.inerfaces.bean.system.SexInfo;
+import com.skysport.inerfaces.bean.basic.SexInfo;
 import org.springframework.stereotype.Component;
 
 /**
